@@ -9,7 +9,7 @@ interface IAnimateWraperProps {
 
 class AnimateWraper extends React.Component<IAnimateWraperProps, any> {
   public state = {
-    closed: false
+    closed: false,
   }
 
   public toggleShow = () => {
@@ -18,7 +18,7 @@ class AnimateWraper extends React.Component<IAnimateWraperProps, any> {
   }
 
   render() {
-    const { children } = this.props
+    const children: any = this.props.children!
     return children && children({ ...this.state, toggleShow: this.toggleShow })
   }
 
@@ -44,8 +44,20 @@ describe('Animate', () => {
   })
 
   it('can pass other props down', () => {
-    const animate = mount(animateFactory({ 'data-testprop': 'testValue' }))
-    expect(animate.find('div').hostNodes().prop('data-testprop')).toContain('testValue')
+    let guaid = false
+    const otherProps = {
+      className: 'other-class',
+      style: { color: 'red' },
+      'data-testprop': 'testValue',
+      onClick: () => guaid = true,
+    }
+    const animate = mount(animateFactory(otherProps))
+    const div = animate.find('div').hostNodes()
+    div.simulate('click')
+    expect(div.prop('data-testprop')).toContain('testValue')
+    expect(div.hasClass('other-class')).toBe(true)
+    expect(div.prop('style')!.color).toEqual('red')
+    expect(guaid).toEqual(true)
   })
 
   it('can pass className down', () => {
@@ -55,17 +67,35 @@ describe('Animate', () => {
 
   it('should set default styles to container elements', () => {
     const animate = mount(animateFactory({
-      from: { opacity: 1 }
+      from: { opacity: 1 },
     }))
     const style = animate.find('div').hostNodes().prop('style') || {}
     expect(style.opacity).toBe(1)
+  })
+
+  it('should handle different format from property', () => {
+    const keyVal = { opacity: 0, height: 100 }
+    const keyObj = { opacity: {value: 0, config: {}}, height: 100 }
+    const animate = mount(animateFactory({from: keyVal})).find('Motion')
+    const animate2 = mount(animateFactory({from: keyObj})).find('Motion')
+    expect(animate.prop('defaultStyle')).toEqual(animate2.prop('defaultStyle'))
+  })
+
+  it('can set the appropriate for different style properties', () => {
+    const from = {
+      opacity: { value: 1, config: {precision: 0.1} },
+      height: { value: 100, config: {precision: 10} },
+    }
+    const animate = mount(animateFactory({from})).find('Motion')
+    expect((animate.prop('style')!.opacity as any).precision).toEqual(0.1)
+    expect((animate.prop('style')!.height as any).precision).toEqual(10)
   })
 
   it('should invoked afterStateChange handler when Animiate component state has been changed', (next) => {
     let animate: ReactWrapper
     let trigger: () => void
     const afterStateChange = () => {
-      expect(animate.find('div.test-div').render().css('opacity')).toBe("0")
+      expect(animate.find('div.test-div').render().css('opacity')).toBe('0')
       next()
     }
 

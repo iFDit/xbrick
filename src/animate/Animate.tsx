@@ -1,13 +1,13 @@
 import * as React from 'react'
 import { IProps } from 'src/common/props'
 import { get, omit, isObject } from 'lodash'
-import { spring, Motion, PlainStyle } from 'react-motion'
+import { spring, Motion, presets, PlainStyle } from 'react-motion'
 
 export interface IAnimateProps extends IProps {
   /**
    * Set transition style start props.
    */
-  from?: { [prop: string]: number }
+  from?: { [prop: string]: number | { value: number, config: {[props: string]: number} } }
 
   /**
    * Set transition style end props.
@@ -36,7 +36,7 @@ export class Animate extends React.Component<IAnimateProps, any> {
 
   public static getDerivedStateFromProps(props: IAnimateProps) {
     return {
-      [props.trigger!]: !!props[props.trigger!]
+      [props.trigger!]: !!props[props.trigger!],
     }
   }
 
@@ -44,22 +44,22 @@ export class Animate extends React.Component<IAnimateProps, any> {
     tag: 'div',
     from: {},
     to: {},
-    trigger: 'show'
+    trigger: 'show',
   }
 
   public state = {
-    [this.props.trigger!]: !!this.props[this.props.trigger!]
+    [this.props.trigger!]: !!this.props[this.props.trigger!],
   }
 
   public render() {
     const { from, to, trigger, afterStateChange: onRest, ...rest } = this.props
     const Tag = this.props.tag!
-    const defaultStyle = from
+    const defaultStyle = this.createDefaultStyle()
     const style = this.createStyle()
     const motionProps = { defaultStyle, style, onRest }
 
     return (
-      <Motion {...motionProps} >
+      <Motion {...motionProps} key={JSON.stringify(defaultStyle)}>
         {(interpolatingStyle: PlainStyle) => (
           // custom render component
           <Tag {...omit(rest, [trigger!, 'tag'])} style={{ ...(isObject(rest.style) ? rest.style : {}), ...interpolatingStyle }}>
@@ -70,13 +70,29 @@ export class Animate extends React.Component<IAnimateProps, any> {
     )
   }
 
-  private createStyle() {
-    const { from, to, trigger } = this.props
-    const show = this.state[trigger!]
+  private createDefaultStyle() {
+    const { from } = this.props
     const styleKeys = Object.keys(from!)
 
     return styleKeys
-      .map(key => ({[key]: spring(show ? get(to, key, from![key]) : from![key])}))
+      .map(key => ({[key]: isObject(from![key]) ? (from![key] as any).value : from![key]}))
       .reduce((initial, next) => ({...initial, ...next}), {})
+  }
+
+  private createStyle() {
+    const { from } = this.props
+    const styleKeys = Object.keys(from!)
+
+    return styleKeys
+      .map(this.createSpring)
+      .reduce((initial, next) => ({...initial, ...next}), {})
+  }
+
+  private createSpring = (key: string) => {
+    const { from, to, trigger } = this.props
+    const show = this.state[trigger!]
+    const fromVal = isObject(from![key]) ? (from![key] as any).value : from![key]
+    const config =  isObject(from![key]) ? (from![key] as any).config : presets.noWobble
+    return { [key]: spring(show ? get(to, key, fromVal) : fromVal, config) }
   }
 }
