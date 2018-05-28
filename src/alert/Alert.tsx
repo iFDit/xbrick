@@ -1,16 +1,61 @@
 import * as React from 'react'
-import { isString } from 'lodash'
+import * as ReactDOM from 'react-dom'
+import { isString, isNaN, omit } from 'lodash'
 import { Animate } from 'src/animate/Animate'
-import * as props from 'src/common/props'
+import { AlertType, IProps } from 'src/common/props'
 import * as classes from 'src/common/classes'
 import * as classNames from 'classnames'
 
-export interface IAlertProps extends props.IProps {
+interface IAnimateWraperProps extends IProps {
+  children?(props: {
+    closed: boolean,
+    height: number,
+    toggleShow(arg: void): void,
+    displayNone(arg: void): void,
+    display?: string,
+  }): React.ReactNode
+}
+
+interface IAnimateWraperState {
+  closed: boolean
+  height: number
+  display?: string
+}
+
+class AnimateWraper extends React.Component<IAnimateWraperProps, IAnimateWraperState> {
+  public state = { closed: false, height: 0 }
+
+  public toggleShow = () => {
+    const prev = this.state.closed
+    this.setState({ closed: !prev })
+  }
+
+  public displayNone = () => {
+    this.setState({ display: 'none' })
+  }
+
+  public componentDidMount() {
+    const dom = ReactDOM.findDOMNode(this) as HTMLElement
+    const { height } = dom.getBoundingClientRect()
+    this.setState({ height })
+  }
+
+  render() {
+    const children: (...args: any[]) => any = this.props.children!
+    return children && children({
+      ...this.state,
+      toggleShow: this.toggleShow,
+      displayNone: this.displayNone,
+    })
+  }
+}
+
+export interface IAlertProps extends IProps {
   /**
    * Set Alert component type. Different types show different styles.
    * @default primary
    */
-  type: props.AlertType
+  type?: AlertType
 
   /**
    * Alert custom render tag.
@@ -44,22 +89,25 @@ export interface IAlertProps extends props.IProps {
   onClose?(e?: React.MouseEvent<any>): void
 }
 
-export const Alert: React.StatelessComponent<IAlertProps> = function Alert(props: IAlertProps) {
+export const Alert: React.StatelessComponent<IAlertProps> = function (props: IAlertProps) {
   const { onClose, afterClose, closable, closeText, ...rest } = props
   const renderCloseText = isString(closeText) ? closeText : '×'
-  const close = isString(closeText) ? <span aria-hidden={true}>{renderCloseText}</span> : closeText
+  const close = isString(closeText || renderCloseText) ?
+    <span aria-hidden={true}>{renderCloseText}</span>
+    : closeText
 
   return (
     <AnimateWraper>
-      {({ closed, toggleShow }) => (
+      {({ closed, height, display, toggleShow, displayNone }) => (
         <Animate
+          {...omit(rest, 'type')}
           close={closed}
-          from={{opacity: 1}}
-          to={{opacity: 0}}
-          afterStateChange={afterClose}
+          from={createAnimationFrom(height)}
+          to={{opacity: 0, height: 0}}
+          afterStateChange={() => displayNone((afterClose || noop)())}
           className={AlertClasses(props)}
-          trigger='close'
-          {...rest}
+          trigger="close"
+          style={{ ...rest.style, overflow: 'hidden', display: display || ''}}
         >
           {props.children}
           {closable ?
@@ -77,35 +125,26 @@ Alert.displayName = 'as-component.Alert'
 
 Alert.defaultProps = {
   tag: 'div',
+  style: {},
   onClose: noop,
   type: 'primary',
   closable: false,
 }
 
-function noop() {}
+function noop() { /**/ }
+
+function createAnimationFrom(height: number): {[props: string]: number} {
+  return height > 0 && !isNaN(height) ?
+    {opacity: 1, height}
+    : {opacity: 1}
+}
 
 function AlertClasses(props: IAlertProps) {
-  const { type, className } = props
+  const { type, closable, className } = props
   return classNames(
     className,
     classes.ALERT,
-    `${classes.ALERT}-${classes[type.toUpperCase()]}`,
+    closable && `${classes.ALERT_DISMISSIBLE}`,
+    `${classes.ALERT}-${classes[type!.toUpperCase()]}`,
   )
-}
-
-interface IAnimateWraperProps extends props.IProps {
-  children?(props: { closed: boolean, toggleShow(arg: void): void }): React.ReactNode
-}
-
-class AnimateWraper extends React.Component<IAnimateWraperProps, {closed: boolean}> {
-  public state = { closed: false }
-
-  public toggleShow = () => {
-    const prev = this.state.closed
-    this.setState({ closed: !prev })
-  }
-
-  render() {
-    return this.props.children && this.props.children({ ...this.state, toggleShow: this.toggleShow })
-  }
 }

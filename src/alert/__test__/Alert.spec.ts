@@ -6,11 +6,42 @@ import { Alert } from 'src/alert/Alert'
 describe('Alert', () => {
   const props = {}
   const link = React.createFactory<any>('a')
+  const p = React.createFactory<any>('p')
+  const span = React.createFactory<any>('span')
   const AlertFactory = React.createFactory<any>(Alert)
 
-  it('should render text children', () => {
-    const alert = mount(AlertFactory(props, 'OK~'))
-    expect(alert.text()).toBe('OK~')
+  it('renders its content correctly', () => {
+    const alert = mount(AlertFactory(
+      {
+        style: {color: 'red'},
+        className: 'alert-test-class',
+      },
+      p(null, 'There is alert'),
+      span(null, 'In the alert content'),
+    ))
+
+    expect(alert.find('p').hostNodes().length).toBe(1)
+    expect(alert.find('span').hostNodes().length).toBe(1)
+    expect(alert.find('div.alert').hostNodes().length).toBe(1)
+    expect(alert.find('div.alert').hasClass('alert-test-class')).toBe(true)
+    expect(alert.find('div.alert').prop('style')!.color).toBe('red')
+  })
+
+  it('should pass down custom properties', () => {
+    let eventTrigged = false
+    const custom = {
+      style: { fontSize: 20 },
+      className: 'pass-down',
+      'data-other': 'custom',
+      onMouseEnter: () => eventTrigged = true,
+    }
+    const alert = mount(AlertFactory(custom))
+    alert.find('div').hostNodes().simulate('mouseenter')
+    
+    expect(alert.find('div').hasClass('pass-down')).toBe(true)
+    expect(alert.find('div').prop('style')!.fontSize).toBe(20)
+    expect(alert.find('div').prop('data-other')).toBe('custom')
+    expect(eventTrigged).toBe(true)
   })
 
   it('render default type is primary', () => {
@@ -53,6 +84,13 @@ describe('Alert', () => {
     expect(btn.hostNodes().length).toBe(0)
   })
 
+  it('should render correct className when closable is true', () => {
+    const alert = mount(AlertFactory({ closable: true }))
+    const btn = alert.find('button')
+    expect(alert.find('div').hasClass('alert-dismissible')).toBe(true)
+    expect(btn.hasClass('close')).toBe(true)
+  })
+
   it('can be dismissing when props.closable === true ', () => {
     const alert = mount(AlertFactory({ closable: true }))
     const btn = alert.find('button')
@@ -63,7 +101,7 @@ describe('Alert', () => {
   it('can use custom close text', () => {
     const alert = mount(AlertFactory({
       closable: true,
-      closeText: link(null, 'custom close')
+      closeText: link(null, 'custom close'),
     }))
     const linkElem = alert.find('a')
     expect(linkElem.text()).toBe('custom close')
