@@ -37,7 +37,7 @@ describe('Alert', () => {
     }
     const alert = mount(AlertFactory(custom))
     alert.find('div').hostNodes().simulate('mouseenter')
-    
+
     expect(alert.find('div').hasClass('pass-down')).toBe(true)
     expect(alert.find('div').prop('style')!.fontSize).toBe(20)
     expect(alert.find('div').prop('data-other')).toBe('custom')
@@ -116,6 +116,7 @@ describe('Alert', () => {
   })
 
   it('should be called after alert has been dismissed', (next) => {
+    jest.setTimeout(1000 * 10)
     let flag = true
     const alert = mount(AlertFactory({
       closable: true,
@@ -126,7 +127,17 @@ describe('Alert', () => {
         expect(flag).toBe(false)
         next()
       },
-      
+    }))
+    alert.find('button').hostNodes().simulate('click')
+  })
+
+  it('should set display: none when component has beed dismissed', (next) => {
+    const alert = mount(AlertFactory({
+      closable: true,
+      afterClose: () => {
+        expect(alert.find('div').render().css('display')).toBe('none')
+        next()
+      },
     }))
     alert.find('button').hostNodes().simulate('click')
   })

@@ -1,54 +1,11 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { isString, isNaN, omit } from 'lodash'
+import { isString, omit } from 'lodash'
 import { Animate } from 'src/animate/Animate'
 import { AlertType, IProps } from 'src/common/props'
+import { AnimateWraper } from 'src/animate/AnimateWraper'
 import * as classes from 'src/common/classes'
 import * as classNames from 'classnames'
-
-interface IAnimateWraperProps extends IProps {
-  children?(props: {
-    closed: boolean,
-    height: number,
-    toggleShow(arg: void): void,
-    displayNone(arg: void): void,
-    display?: string,
-  }): React.ReactNode
-}
-
-interface IAnimateWraperState {
-  closed: boolean
-  height: number
-  display?: string
-}
-
-class AnimateWraper extends React.Component<IAnimateWraperProps, IAnimateWraperState> {
-  public state = { closed: false, height: 0 }
-
-  public toggleShow = () => {
-    const prev = this.state.closed
-    this.setState({ closed: !prev })
-  }
-
-  public displayNone = () => {
-    this.setState({ display: 'none' })
-  }
-
-  public componentDidMount() {
-    const dom = ReactDOM.findDOMNode(this) as HTMLElement
-    const { height } = dom.getBoundingClientRect()
-    this.setState({ height })
-  }
-
-  render() {
-    const children: (...args: any[]) => any = this.props.children!
-    return children && children({
-      ...this.state,
-      toggleShow: this.toggleShow,
-      displayNone: this.displayNone,
-    })
-  }
-}
 
 export interface IAlertProps extends IProps {
   /**
@@ -89,29 +46,55 @@ export interface IAlertProps extends IProps {
   onClose?(e?: React.MouseEvent<any>): void
 }
 
+interface IAnimateWraperState {
+  closed: boolean
+  height?: number
+  bottom?: number
+  display?: string
+}
+
 export const Alert: React.StatelessComponent<IAlertProps> = function (props: IAlertProps) {
   const { onClose, afterClose, closable, closeText, ...rest } = props
   const renderCloseText = isString(closeText) ? closeText : '×'
   const close = isString(closeText || renderCloseText) ?
     <span aria-hidden={true}>{renderCloseText}</span>
     : closeText
+  const initState: IAnimateWraperState = { closed: false }
+  let wrap: any = null
 
   return (
-    <AnimateWraper>
-      {({ closed, height, display, toggleShow, displayNone }) => (
+    <AnimateWraper initState={initState}>
+      {({ closed, height, bottom, display, changeState }) => (
         <Animate
           {...omit(rest, 'type')}
           close={closed}
-          from={createAnimationFrom(height)}
-          to={{opacity: 0, height: 0}}
-          afterStateChange={() => displayNone((afterClose || noop)())}
+          from={closed ? createAnimationFrom(height!, bottom!) : {}}
+          to={{opacity: 0, height: 0, marginBottom: 0}}
+          afterStateChange={() => {changeState('display', 'none'); (afterClose || noop)()}}
           className={AlertClasses(props)}
           trigger="close"
-          style={{ ...rest.style, overflow: 'hidden', display: display || ''}}
+          style={{
+            ...rest.style,
+            overflow: 'hidden',
+            display: display || '',
+            paddingTop: closed ? 0 : '',
+            paddingBottom: closed ? 0 : '',
+          }}
+          ref={(instance) => wrap = instance}
         >
           {props.children}
           {closable ?
-            <button className={classes.CLOSE} onClick={(e) => toggleShow(onClose!(e))} aria-label="close">
+            <button
+              className={classes.CLOSE}
+              onClick={(e) => {
+                const dom = ReactDOM.findDOMNode(wrap) as HTMLElement
+                const { height: h } = dom.getBoundingClientRect()
+                const b = parseInt(getComputedStyle(dom).getPropertyValue('margin-bottom') || '0', 10)
+                changeState({ height: h, bottom: b, closed: true })
+                onClose!(e)
+              }}
+              aria-label="close"
+            >
               {close}
             </button>
             : null}
@@ -133,10 +116,21 @@ Alert.defaultProps = {
 
 function noop() { /**/ }
 
-function createAnimationFrom(height: number): {[props: string]: number} {
-  return height > 0 && !isNaN(height) ?
-    {opacity: 1, height}
-    : {opacity: 1}
+type FromType =  {
+  [props: string]: number | {value: number, config: {[prop: string]: number}},
+}
+
+function createAnimationFrom(height: number, bottom: number): FromType {
+  const heightConfig = {precision: 5}
+  const opacityConfig = {precision: 0.2}
+  const opacity = {opacity: { value: 1, config: opacityConfig }}
+  return height > 0 && bottom > 0 && !isNaN(height) ?
+    {
+      ...opacity,
+      height: { value: height, config: heightConfig},
+      marginBottom: { value: bottom, config: heightConfig},
+    }
+    : opacity
 }
 
 function AlertClasses(props: IAlertProps) {
