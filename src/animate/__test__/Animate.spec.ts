@@ -3,11 +3,11 @@ import * as React from 'react'
 import { mount, ReactWrapper } from 'enzyme'
 import { Animate } from 'src/animate/Animate'
 
-interface IAnimateWraperProps {
+interface IAnimateWrapperProps {
   children?(props: {closed: boolean, toggleShow: any}): any
 }
 
-class AnimateWraper extends React.Component<IAnimateWraperProps, any> {
+class AnimateWrapper extends React.Component<IAnimateWrapperProps, any> {
   public state = {
     closed: false,
   }
@@ -26,7 +26,7 @@ class AnimateWraper extends React.Component<IAnimateWraperProps, any> {
 
 describe('Animate', () => {
   const animateFactory = React.createFactory<any>(Animate)
-  const animateWraper = React.createFactory<IAnimateWraperProps>(AnimateWraper)
+  const animateWrapper = React.createFactory<IAnimateWrapperProps>(AnimateWrapper)
 
   it('should render default tag by div', () => {
     const animate = mount(animateFactory())
@@ -99,7 +99,7 @@ describe('Animate', () => {
       next()
     }
 
-    animate = mount(animateWraper({}, (({closed, toggleShow}) => {
+    animate = mount(animateWrapper({}, (({closed, toggleShow}) => {
       if (!trigger) {
         trigger = () => toggleShow()
       }
