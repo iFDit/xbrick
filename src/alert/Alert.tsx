@@ -1,9 +1,9 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { isString, omit } from 'lodash'
+import { omit } from 'lodash'
 import { Animate } from 'src/animate/Animate'
 import { AlertType, IProps } from 'src/common/props'
-import { AnimateWraper } from 'src/animate/AnimateWraper'
+import { AnimateWrapper } from 'src/animate/AnimateWrapper'
 import * as classes from 'src/common/classes'
 import * as classNames from 'classnames'
 
@@ -46,7 +46,7 @@ export interface IAlertProps extends IProps {
   onClose?(e?: React.MouseEvent<any>): void
 }
 
-interface IAnimateWraperState {
+interface IAnimateWrapperState {
   closed: boolean
   height?: number
   bottom?: number
@@ -55,52 +55,38 @@ interface IAnimateWraperState {
 
 export const Alert: React.StatelessComponent<IAlertProps> = function (props: IAlertProps) {
   const { onClose, afterClose, closable, closeText, ...rest } = props
-  const renderCloseText = isString(closeText) ? closeText : '×'
-  const close = isString(closeText || renderCloseText) ?
-    <span aria-hidden={true}>{renderCloseText}</span>
-    : closeText
-  const initState: IAnimateWraperState = { closed: false }
+  const initState: IAnimateWrapperState = { closed: false }
   let wrap: any = null
 
   return (
-    <AnimateWraper initState={initState}>
-      {({ closed, height, bottom, display, changeState }) => (
+    <AnimateWrapper initState={initState}>
+      {({ closed, changeState, ...otherStyle}) => (
         <Animate
           {...omit(rest, 'type')}
           close={closed}
-          from={closed ? createAnimationFrom(height!, bottom!) : {}}
+          from={closed ? createAnimationFrom(otherStyle as any) : {}}
           to={{opacity: 0, height: 0, marginBottom: 0}}
           afterStateChange={() => {changeState('display', 'none'); (afterClose || noop)()}}
           className={AlertClasses(props)}
           trigger="close"
-          style={{
-            ...rest.style,
-            overflow: 'hidden',
-            display: display || '',
-            paddingTop: closed ? 0 : '',
-            paddingBottom: closed ? 0 : '',
-          }}
+          style={{...rest.style, ...otherStyle}}
           ref={(instance) => wrap = instance}
         >
           {props.children}
           {closable ?
             <button
               className={classes.CLOSE}
-              onClick={(e) => {
-                const dom = ReactDOM.findDOMNode(wrap) as HTMLElement
-                const { height: h } = dom.getBoundingClientRect()
-                const b = parseInt(getComputedStyle(dom).getPropertyValue('margin-bottom') || '0', 10)
-                changeState({ height: h, bottom: b, closed: true })
-                onClose!(e)
-              }}
+              onClick={(e) => 
+                changeState(handleClose(ReactDOM.findDOMNode(wrap) as HTMLElement, () => onClose!(e)))
+              }
               aria-label="close"
             >
-              {close}
+              {closeText || <span aria-hidden={true}>×</span>}
             </button>
             : null}
         </Animate>
       )}
-    </AnimateWraper>
+    </AnimateWrapper>
   )
 }
 
@@ -120,7 +106,7 @@ type FromType =  {
   [props: string]: number | {value: number, config: {[prop: string]: number}},
 }
 
-function createAnimationFrom(height: number, bottom: number): FromType {
+function createAnimationFrom({height, bottom}: {height: number, bottom: number}): FromType {
   const heightConfig = {precision: 5}
   const opacityConfig = {precision: 0.2}
   const opacity = {opacity: { value: 1, config: opacityConfig }}
@@ -131,6 +117,16 @@ function createAnimationFrom(height: number, bottom: number): FromType {
       marginBottom: { value: bottom, config: heightConfig},
     }
     : opacity
+}
+
+function handleClose(dom: HTMLElement, onClose?: () => void) {
+  const overflow = 'hidden'
+  const paddingTop = 0
+  const paddingBottom = 0
+  const { height } = dom.getBoundingClientRect()
+  const bottom = parseInt(getComputedStyle(dom).getPropertyValue('margin-bottom') || '0', 10)
+  onClose && onClose()
+  return {closed: true, height, bottom, overflow, paddingTop, paddingBottom}
 }
 
 function AlertClasses(props: IAlertProps) {
