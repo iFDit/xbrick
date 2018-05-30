@@ -1,7 +1,9 @@
 {
-  "name": "components",
+  "name": "xbrick",
   "version": "0.1.0",
   "private": true,
+  "main": "src/index",
+  "typings": "src/index",
   "dependencies": {
     "@types/bootstrap": "^4.1.0",
     "@types/classnames": "^2.2.3",
