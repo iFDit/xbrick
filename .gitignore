@@ -23,3 +23,4 @@ yarn-error.log*
 # other
 /config
 /scripts
+/dist
