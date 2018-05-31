@@ -130,15 +130,4 @@ describe('Alert', () => {
     }))
     alert.find('button').hostNodes().simulate('click')
   })
-
-  it('should set display: none when component has beed dismissed', (next) => {
-    const alert = mount(AlertFactory({
-      closable: true,
-      afterClose: () => {
-        expect(alert.find('div').render().css('display')).toBe('none')
-        next()
-      },
-    }))
-    alert.find('button').hostNodes().simulate('click')
-  })
 })
