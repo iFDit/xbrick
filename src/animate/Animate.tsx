@@ -73,7 +73,6 @@ export class Animate extends React.Component<IAnimateProps, any> {
   private createDefaultStyle() {
     const { from } = this.props
     const styleKeys = Object.keys(from!)
-
     return styleKeys
       .map(key => ({[key]: isObject(from![key]) ? (from![key] as any).value : from![key]}))
       .reduce((initial, next) => ({...initial, ...next}), {})
