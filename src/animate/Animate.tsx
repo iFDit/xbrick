@@ -40,6 +40,8 @@ export class Animate extends React.Component<IAnimateProps, any> {
     }
   }
 
+  public static displayName = 'xbrick.Animate'
+
   public static defaultProps = {
     tag: 'div',
     from: {},

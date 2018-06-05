@@ -11,6 +11,8 @@ export class SlideUp extends React.Component<ISlideupProps> {
 
   public state = { close: false, styles: {} }
 
+  public static displayName = 'xbrick.SlideUp'
+
   public static defaultProps = {
     trigger: 'close',
     tag: 'div',
