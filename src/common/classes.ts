@@ -17,3 +17,7 @@ export const ALERT_LINK = 'alert-link'
 export const ALERT_HEADING = 'alert-heading'
 export const ALERT_DISMISSIBLE = 'alert-dismissible'
 
+export const BADGE = 'badge'
+export const BADGE_TOP = 'badge-top'
+export const BADGE_WRAP = 'badge-wrap'
+export const BADGE_PILL = 'badge-pill'
