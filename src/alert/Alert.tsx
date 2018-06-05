@@ -77,7 +77,7 @@ export const Alert: React.StatelessComponent<IAlertProps> = function (props: IAl
   )
 }
 
-Alert.displayName = 'as-component.Alert'
+Alert.displayName = 'xbrick.Alert'
 
 Alert.defaultProps = {
   tag: 'div',
