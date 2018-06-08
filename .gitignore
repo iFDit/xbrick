@@ -24,3 +24,12 @@ yarn-error.log*
 /config
 /scripts
 /dist
+
+# custom
+App.test.tsx
+App.css
+App.tsx
+index.css
+main.tsx
+logo.svg
+registerServiceWorker.ts
