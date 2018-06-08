@@ -4,14 +4,14 @@ import { Badge } from 'xbrick'
 const Example = () => {
   return (
     <>
-      <Badge type="primary" link>primary</Badge>
-      <Badge type="secondary" link>Secondary</Badge>
-      <Badge type="warning" link>Warning</Badge>
-      <Badge type="success" link>Success</Badge>
-      <Badge type="danger" link>Danger</Badge>
-      <Badge type="info" link>Info</Badge>
-      <Badge type="light" link>Light</Badge>
-      <Badge type="dark" link>Dark</Badge>
+      <Badge bstype="primary" link>primary</Badge>
+      <Badge bstype="secondary" link>Secondary</Badge>
+      <Badge bstype="warning" link>Warning</Badge>
+      <Badge bstype="success" link>Success</Badge>
+      <Badge bstype="danger" link>Danger</Badge>
+      <Badge bstype="info" link>Info</Badge>
+      <Badge bstype="light" link>Light</Badge>
+      <Badge bstype="dark" link>Dark</Badge>
     </>
   )
 }

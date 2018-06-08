@@ -13,10 +13,10 @@ const afterClose = () => {
 
 ReactDOM.render(
   <>
-    <Alert type="warning" onClose={onClose} afterClose={afterClose}>
+    <Alert bstype="warning" onClose={onClose} afterClose={afterClose}>
       Warning Alert with dismiss button.Click-Click-Click
     </Alert>
-    <Alert type="error" onClose={onClose} afterClose={afterClose}>
+    <Alert bstype="error" onClose={onClose} afterClose={afterClose}>
       Error Alert with dismiss button.Click-Click-Click
     </Alert>
   </>

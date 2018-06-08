@@ -5,14 +5,14 @@ import { Badge } from 'xbrick';
 
 ReactDOM.render(
   <>
-    <Badge type="primary">primary</Badge>
-    <Badge type="secondary">Secondary</Badge>
-    <Badge type="warning">Warning</Badge>
-    <Badge type="success">Success</Badge>
-    <Badge type="danger">Danger</Badge>
-    <Badge type="info">Info</Badge>
-    <Badge type="light">Light</Badge>
-    <Badge type="dark">Dark</Badge>
+    <Badge bstype="primary">primary</Badge>
+    <Badge bstype="secondary">Secondary</Badge>
+    <Badge bstype="warning">Warning</Badge>
+    <Badge bstype="success">Success</Badge>
+    <Badge bstype="danger">Danger</Badge>
+    <Badge bstype="info">Info</Badge>
+    <Badge bstype="light">Light</Badge>
+    <Badge bstype="dark">Dark</Badge>
   </>
 , rootNode);
 ````

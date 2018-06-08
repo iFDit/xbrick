@@ -4,7 +4,7 @@ import { Alert } from 'xbrick'
 const Example = () => {
   return (
     <>
-      <Alert type="success">
+      <Alert bstype="success">
         <h4 className="alert-heading">Well done!</h4>
         <p>
           Aww yeah, you successfully read this important alert message. This example text is going
