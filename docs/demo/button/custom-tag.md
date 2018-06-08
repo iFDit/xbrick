@@ -7,6 +7,8 @@ import { Button } from 'xbrick'
 
 ReactDOM.render(
   <>
+    <Button tag="a" href="">Link</Button>
+    <Button tag="input" type="button" value="Input" />
     <Button tag="input" type="reset" value="Reset" />
     <Button tag="input" type="submit" value="Submit" />
   </>
