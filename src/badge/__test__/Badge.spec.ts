@@ -15,7 +15,7 @@ describe('Badge', () => {
 
   it('should have default props', () => {
     const defaultProps = {
-      type: 'primary',
+      bstype: 'primary',
       tag: 'span',
       pill: false,
       link: false,
@@ -24,7 +24,7 @@ describe('Badge', () => {
       maxCount: 99,
     }
     const badge = mount(BadgeFactory())
-    expect(badge.prop('type')).toBe(defaultProps.type)
+    expect(badge.prop('bstype')).toBe(defaultProps.bstype)
     expect(badge.prop('tag')).toBe(defaultProps.tag)
     expect(badge.prop('pill')).toBe(defaultProps.pill)
     expect(badge.prop('link')).toBe(defaultProps.link)
@@ -83,7 +83,6 @@ describe('Badge', () => {
 
   it('should render correct count when props.top is true', () => {
     const badge = mount(BadgeFactory({ top: true, count: 10 }))
-    console.log(badge.html())
     expect(badge.find('span.badge').text()).toBe('10')
   })
 

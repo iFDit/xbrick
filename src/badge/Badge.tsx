@@ -9,7 +9,7 @@ export interface IBadgeProps extends IProps {
    * Set Badge component type.
    * @default primary
    */
-  type?: BadgeType
+  bstype?: BadgeType
 
   /**
    * Badge render element.
@@ -51,7 +51,7 @@ export interface IBadgeProps extends IProps {
   maxCount?: number
 }
 
-const omitProps = ['type', 'pill']
+const omitProps = ['bstype', 'pill']
 
 export const Badge: React.StatelessComponent<IBadgeProps> = function (props: IBadgeProps) {
   const { tag, top, link, count, maxCount, children, ...rest } = props
@@ -61,7 +61,7 @@ export const Badge: React.StatelessComponent<IBadgeProps> = function (props: IBa
   const nextProps = {
     ...omit(rest, omitProps),
     href: '#',
-    className: BadgeClasses(props),
+    className: badgeClasses(props),
   }
   if (!link) { Reflect.deleteProperty(nextProps, 'href') }
   return (
@@ -79,18 +79,18 @@ Badge.defaultProps = {
   count: 0,
   maxCount: 99,
   tag: 'span',
-  type: 'primary',
+  bstype: 'primary',
   pill: false,
   link: false,
   top: false,
 }
 
-function BadgeClasses(props: IBadgeProps) {
-  const { type, pill, top } = props
+function badgeClasses(props: IBadgeProps) {
+  const { bstype, pill, top } = props
   return classNames(
     classes.BADGE,
     top ? classes.BADGE_TOP : null,
     pill ? classes.BADGE_PILL : null,
-    `${classes.BADGE}-${classes[type!.toUpperCase()]}`,
+    `${classes.BADGE}-${classes[bstype!.toUpperCase()]}`,
   )
 }
