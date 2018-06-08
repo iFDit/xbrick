@@ -7,9 +7,16 @@ export const WARNING = 'warning'
 export const INFO = 'info'
 export const LIGHT = 'light'
 export const DARK = 'dark'
+export const LINK = 'link'
+
+// size
+export const LARGE = 'large'
+export const SMALL = 'small'
 
 // inline
 export const CLOSE = 'close'
+export const ACTIVE = 'active'
+export const DISABLED = 'disabled'
 
 // components
 export const ALERT = 'alert'
@@ -21,3 +28,9 @@ export const BADGE = 'badge'
 export const BADGE_TOP = 'badge-top'
 export const BADGE_WRAP = 'badge-wrap'
 export const BADGE_PILL = 'badge-pill'
+
+export const BREADCRUMB = 'breadcrumb'
+export const BREADCRUMB_ITEM = 'breadcrumb-item'
+
+export const BUTTON = 'btn'
+export const BUTTON_BLOCK = 'btn-block'
