@@ -47,7 +47,7 @@ describe('Alert', () => {
   it('render default type is primary', () => {
     const alert = mount(AlertFactory())
     const div = alert.find('div')
-    expect(alert.prop('type')).toEqual('primary')
+    expect(alert.prop('bstype')).toEqual('primary')
     expect(div.hasClass('alert-primary')).toBe(true)
   })
 

@@ -9,7 +9,7 @@ export interface IAlertProps extends IProps {
    * Set Alert component type. Different types show different styles.
    * @default primary
    */
-  type?: AlertType
+  bstype?: AlertType
 
   /**
    * Alert custom render tag.
@@ -54,7 +54,7 @@ export const Alert: React.StatelessComponent<IAlertProps> = function (props: IAl
   const nextProps = {
     ...rest,
     afterStateChange: afterClose,
-    className: AlertClasses(props),
+    className: alertClasses(props),
   }
 
   return (
@@ -83,18 +83,18 @@ Alert.defaultProps = {
   tag: 'div',
   style: {},
   onClose: noop,
-  type: 'primary',
+  bstype: 'primary',
   closable: false,
 }
 
 function noop() { /**/ }
 
-function AlertClasses(props: IAlertProps) {
-  const { type, closable, className } = props
+function alertClasses(props: IAlertProps) {
+  const { bstype, closable, className } = props
   return classNames(
     className,
     classes.ALERT,
     closable && `${classes.ALERT_DISMISSIBLE}`,
-    `${classes.ALERT}-${classes[type!.toUpperCase()]}`,
+    `${classes.ALERT}-${classes[bstype!.toUpperCase()]}`,
   )
 }
