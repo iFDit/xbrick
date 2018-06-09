@@ -33,6 +33,12 @@ describe('Buttons', () => {
     expect(props.onClick.called).toBe(true)
   })
 
+  it('should render with custom tag', () => {
+    const render = mount(F({ tag: 'span' }))
+
+    expect(render.find('span').hostNodes().length).toBe(1)
+  })
+
   it('should have correct default props', () => {
     const render = mount(F())
 
