@@ -14,9 +14,11 @@ export const LARGE = 'large'
 export const SMALL = 'small'
 
 // inline
+export const GROUP = 'group'
 export const CLOSE = 'close'
 export const ACTIVE = 'active'
 export const DISABLED = 'disabled'
+export const VERTICAL = 'vertical'
 
 // components
 export const ALERT = 'alert'
@@ -34,3 +36,5 @@ export const BREADCRUMB_ITEM = 'breadcrumb-item'
 
 export const BUTTON = 'btn'
 export const BUTTON_BLOCK = 'btn-block'
+
+export const BUTTON_TOOLBAR = 'btn-toolbar'
