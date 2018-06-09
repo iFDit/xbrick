@@ -11,10 +11,10 @@ export interface IBreadcrumbProps extends IProps {
 }
 
 export const Breadcrumb: React.StatelessComponent<IBreadcrumbProps> = function (props: IBreadcrumbProps) {
-  const { tag, children, ...rest } = props
+  const { tag, children, ...others } = props
   const Tag = tag!
   return (
-    <Tag {...rest} aria-label="breadcrumb">
+    <Tag {...others} aria-label="breadcrumb">
       <ol className={classes.BREADCRUMB}>
         {children}
       </ol>

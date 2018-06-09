@@ -54,7 +54,7 @@ export class Animate extends React.Component<IAnimateProps, any> {
   }
 
   public render() {
-    const { from, to, trigger, afterStateChange: onRest, ...rest } = this.props
+    const { from, to, trigger, afterStateChange: onRest, ...others } = this.props
     const Tag = this.props.tag!
     const defaultStyle = this.createDefaultStyle()
     const style = this.createStyle()
@@ -64,7 +64,7 @@ export class Animate extends React.Component<IAnimateProps, any> {
       <Motion {...motionProps} key={JSON.stringify(defaultStyle)}>
         {(interpolatingStyle: PlainStyle) => (
           // custom render component
-          <Tag {...omit(rest, [trigger!, 'tag'])} style={{ ...(isObject(rest.style) ? rest.style : {}), ...interpolatingStyle }}>
+          <Tag {...omit(others, [trigger!, 'tag'])} style={{ ...(isObject(others.style) ? others.style : {}), ...interpolatingStyle }}>
             {this.props.children}
           </Tag>
         )}

@@ -73,12 +73,12 @@ export class SlideUp extends React.Component<ISlideupProps> {
   }
 
   render() {
-    const { children, style, ...rest } = this.props
+    const { children, style, ...others } = this.props
     const { close, styles } = this.state
     const nextstyle = { ...style, ...styles }
     const nextProps = Object.assign(
       { close },
-      rest,
+      others,
       {
         trigger: 'close',
         from: close ? this.createFrom() : {},

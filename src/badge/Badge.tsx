@@ -54,12 +54,12 @@ export interface IBadgeProps extends IProps {
 const omitProps = ['bstype', 'pill']
 
 export const Badge: React.StatelessComponent<IBadgeProps> = function (props: IBadgeProps) {
-  const { tag, top, link, count, maxCount, children, ...rest } = props
+  const { tag, top, link, count, maxCount, children, ...others } = props
   const Tag = link ? 'a' : tag!
   const Wrap = top ? 'span' : Tag
   const wrapProps = { className: classes.BADGE_WRAP }
   const nextProps = {
-    ...omit(rest, omitProps),
+    ...omit(others, omitProps),
     href: '#',
     className: badgeClasses(props),
   }

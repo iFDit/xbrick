@@ -50,9 +50,9 @@ export interface IAlertProps extends IProps {
 }
 
 export const Alert: React.StatelessComponent<IAlertProps> = function (props: IAlertProps) {
-  const { onClose, afterClose, closable, closeText, ...rest } = props
+  const { onClose, afterClose, closable, closeText, ...others } = props
   const nextProps = {
-    ...rest,
+    ...others,
     afterStateChange: afterClose,
     className: alertClasses(props),
   }

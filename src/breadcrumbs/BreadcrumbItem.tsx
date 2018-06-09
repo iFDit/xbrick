@@ -20,8 +20,8 @@ export interface IBreadcrumbItemProps extends IProps {
 }
 
 export const BreadcrumbItem: React.StatelessComponent<IBreadcrumbItemProps> = function (props: IBreadcrumbItemProps) {
-  const { tag, children, ...rest } = props
-  const nextProps = { ...rest, className: breadcrumbItemClasses(props) }
+  const { tag, children, ...others } = props
+  const nextProps = { ...others, className: breadcrumbItemClasses(props) }
   const Tag = tag!
   return (
     <Tag {...omit(nextProps, 'active')}>
