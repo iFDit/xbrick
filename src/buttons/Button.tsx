@@ -52,10 +52,10 @@ const noop = () => {}
 const omitName = ['bstype', 'size', 'block', 'active', 'outline']
 
 export const Button: React.StatelessComponent<IButtonProps> = function (props: IButtonProps) {
-  const { tag, onClick, disabled, children, ...rest } = props
+  const { tag, onClick, disabled, children, ...others } = props
   const Tag = tag!
   const nextProps = {
-    ...rest,
+    ...others,
     onClick: disabled ? noop : onClick,
     className: buttonClasses(props),
   }
@@ -95,7 +95,7 @@ function buttonClasses(props: IButtonProps) {
       [classes.ACTIVE]: !!active,
       [classes.DISABLED]: !!disabled,
       [classes.BUTTON_BLOCK]: !!block,
-      [`${classes.BUTTON}-${sizeMap[size!]}`]: !! sizeMap[size!],
+      [`${classes.BUTTON}-${sizeMap[size!]}`]: !!sizeMap[size!],
     }
   )
 }
