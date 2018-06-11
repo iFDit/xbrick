@@ -38,3 +38,10 @@ export const BUTTON = 'btn'
 export const BUTTON_BLOCK = 'btn-block'
 
 export const BUTTON_TOOLBAR = 'btn-toolbar'
+
+export const CARD = 'card'
+export const CARD_INVERSE = 'text-white'
+export const CARD_ALIGN_CENTER = 'text-center'
+export const CARD_ALIGN_RIGHT = 'text-right'
+export const CARD_BG = 'bg'
+export const CARD_BORDER = 'border'
