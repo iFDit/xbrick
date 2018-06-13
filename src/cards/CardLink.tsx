@@ -15,7 +15,11 @@ export const CardLink: React.StatelessComponent<ICardLinkProps> = function (prop
   const { tag, ...others } = props
   const Tag = tag!
   const className = classNames(props.className, classes.CARD_LINK)
-  return <Tag {...others} className={className} />
+  const nextProps = others
+  if (Tag === 'a') {
+    nextProps.href = '#'
+  }
+  return <Tag {...nextProps} className={className} />
 }
 
 CardLink.displayName = 'xbrick.CardLink'

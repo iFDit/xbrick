@@ -44,5 +44,15 @@ describe('CardTitle', () => {
     const render = mount(F())
 
     expect(render.prop('tag')).toBe('h5')
+    expect(render.prop('subtitle')).toBe(false)
+  })
+
+  it('should have correct className', () => {
+    const render = mount(F())
+
+    expect(render.find('h5').hasClass('card-title')).toBe(true)
+
+    render.setProps({ subtitle: true })
+    expect(render.find('h6').hasClass('card-subtitle')).toBe(true)
   })
 })

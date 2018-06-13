@@ -1,11 +1,11 @@
 import * as React from 'react'
 import * as sinon from 'sinon'
 import { mount } from 'enzyme'
-import { CardLink } from 'src/cards/CardLink'
+import { CardDeck } from 'src/cards/CardDeck'
 
-describe('CardLink', () => {
+describe('CardBody', () => {
   const p = React.createFactory('p')
-  const F = React.createFactory<any>(CardLink)
+  const F = React.createFactory<any>(CardDeck)
 
   it('should render without crash', () => {
     mount(F())
@@ -27,7 +27,7 @@ describe('CardLink', () => {
   it('should pass down other props', () => {
     const props = { className: 'test', onClick: sinon.spy() }
     const render = mount(F(props))
-    const btn = render.find('a')
+    const btn = render.find('div')
 
     btn.simulate('click')
     expect(btn.hasClass('test'))
@@ -43,12 +43,12 @@ describe('CardLink', () => {
   it('should have default props', () => {
     const render = mount(F())
 
-    expect(render.prop('tag')).toBe('a')
+    expect(render.prop('tag')).toBe('div')
   })
 
   it('should have correct className', () => {
     const render = mount(F())
-
-    expect(render.find('a').hasClass('card-link')).toBe(true)
+    
+    expect(render.find('div').hasClass('card-deck')).toBe(true)
   })
 })

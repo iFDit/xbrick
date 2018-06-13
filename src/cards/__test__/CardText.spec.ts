@@ -4,7 +4,7 @@ import { mount } from 'enzyme'
 import { CardText } from 'src/cards/CardText'
 
 describe('CardText', () => {
-  const p = React.createFactory('p')
+  const span = React.createFactory('span')
   const F = React.createFactory<any>(CardText)
 
   it('should render without crash', () => {
@@ -12,10 +12,10 @@ describe('CardText', () => {
   })
 
   it('should render ReactNode Children', () => {
-    const render = mount(F(null, p(null, 'button')))
+    const render = mount(F(null, span(null, 'button')))
 
-    expect(render.find('p').hostNodes().length).toBe(1)
-    expect(render.find('p').text()).toBe('button')
+    expect(render.find('span').hostNodes().length).toBe(1)
+    expect(render.find('span').text()).toBe('button')
   })
 
   it('should render text node', () => {
@@ -44,5 +44,11 @@ describe('CardText', () => {
     const render = mount(F())
 
     expect(render.prop('tag')).toBe('p')
+  })
+
+  it('should have correct className', () => {
+    const render = mount(F())
+
+    expect(render.find('p').hasClass('card-text')).toBe(true)
   })
 })

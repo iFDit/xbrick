@@ -1,11 +1,11 @@
 import * as React from 'react'
 import * as sinon from 'sinon'
 import { mount } from 'enzyme'
-import { Card } from 'src/cards/Card'
+import { CardBody } from 'src/cards/CardBody'
 
 describe('CardBody', () => {
   const p = React.createFactory('p')
-  const F = React.createFactory<any>(Card)
+  const F = React.createFactory<any>(CardBody)
 
   it('should render without crash', () => {
     mount(F())
@@ -44,5 +44,15 @@ describe('CardBody', () => {
     const render = mount(F())
 
     expect(render.prop('tag')).toBe('div')
+    expect(render.prop('overlay')).toBe(false)
+  })
+
+  it('should have correct className', () => {
+    const render = mount(F())
+    
+    expect(render.find('div').hasClass('card-body')).toBe(true)
+
+    render.setProps({ overlay: true })
+    expect(render.find('div').hasClass('card-img-overlay')).toBe(true)
   })
 })
