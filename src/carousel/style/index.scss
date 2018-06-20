@@ -1,0 +1,24 @@
+.carousel-track {
+  position: relative;
+  white-space: nowrap;
+}
+
+.carousel-track::before {
+  content: '';
+}
+.carousel-track::after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+.carousel-track-item {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+}
+
+.carousel-view {
+  position: relative;
+  overflow: hidden;
+}

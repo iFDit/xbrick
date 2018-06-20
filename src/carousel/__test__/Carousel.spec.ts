@@ -3,8 +3,9 @@ import * as sinon from 'sinon'
 import { mount } from 'enzyme'
 import { Carousel } from 'src/carousel/Carousel'
 
-describe('Cards', () => {
+describe('Carousel', () => {
   const p = React.createFactory('p')
+  const img = React.createFactory('img')
   const F = React.createFactory<any>(Carousel)
 
   it('should render without crash', () => {
@@ -27,7 +28,7 @@ describe('Cards', () => {
   it('should pass down other props', () => {
     const props = { className: 'test', onClick: sinon.spy() }
     const render = mount(F(props))
-    const btn = render.find('div')
+    const btn = render.find('div.carousel')
 
     btn.simulate('click')
     expect(btn.hasClass('test'))
@@ -50,14 +51,14 @@ describe('Cards', () => {
   it('should autoplay when this props is true', (next) => {
     mount(F({
       autoplay: true,
-      beforeChange: () => next()
+      beforeChange: () => next(),
     }))
   })
 
   it('should invoke beforChange callbacks before item changed', (next) => {
     mount(F({
       autoplay: true,
-      beforeChange: () => next()
+      beforeChange: () => next(),
     }))
   })
 
@@ -74,8 +75,13 @@ describe('Cards', () => {
   })
 
   it('should render correct className', () => {
-    const render = mount(F())
+    const render = mount(F(null, [img({key: 1}), img({key: 2}), img({key: 3})]))
 
     expect(render.find('div.carousel').hostNodes().length).toBe(1)
+    expect(render.find('div.carousel-view').hostNodes().length).toBe(1)
+    expect(render.find('div.carousel-track').hostNodes().length).toBe(1)
+    expect(render.find('div.carousel-item').hostNodes().length).toBe(5)
   })
+
+
 })
