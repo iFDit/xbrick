@@ -1,11 +1,12 @@
 import * as React from 'react'
 import * as sinon from 'sinon'
 import { mount } from 'enzyme'
-import { CarouselCaption } from 'src/carousel/CarouselCaption'
+import { CarouselTrack } from 'src/carousel/CarouselTrack'
 
-describe('CarouselCaption', () => {
+describe('CarouselTrack', () => {
   const p = React.createFactory('p')
-  const F = React.createFactory<any>(CarouselCaption)
+  const div = React.createFactory('div')
+  const F = React.createFactory<any>(CarouselTrack)
 
   it('should render without crash', () => {
     mount(F())
@@ -18,16 +19,10 @@ describe('CarouselCaption', () => {
     expect(render.find('p').text()).toBe('button')
   })
 
-  it('should render text node', () => {
-    const render = mount(F(null, 'textnode'))
-
-    expect(render.text()).toBe('textnode')
-  })
-
   it('should pass down other props', () => {
     const props = { className: 'test', onClick: sinon.spy() }
     const render = mount(F(props))
-    const btn = render.find('div.carousel-caption')
+    const btn = render.find('div.carousel-view')
 
     btn.simulate('click')
     expect(btn.hasClass('test'))
@@ -44,14 +39,13 @@ describe('CarouselCaption', () => {
     const render = mount(F())
 
     expect(render.prop('tag')).toBe('div')
+    expect(render.prop('from')).toBe(0)
+    expect(render.prop('to')).toBe(0)
   })
 
-  it('should have correct className', () => {
+  it('should render correct className', () => {
     const render = mount(F())
 
-    expect(render.find('div').hasClass('carousel-caption')).toBe(true)
-    expect(render.find('div').hasClass('d-none')).toBe(true)
-    expect(render.find('div').hasClass('d-md-block')).toBe(true)
+    expect(render.find('div.carousel-view').hostNodes().length).toBe(1)
   })
-
 })

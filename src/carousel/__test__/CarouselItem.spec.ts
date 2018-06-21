@@ -3,7 +3,7 @@ import * as sinon from 'sinon'
 import { mount } from 'enzyme'
 import { CarouselItem } from 'src/carousel/CarouselItem'
 
-describe('Carousel', () => {
+describe('CarouselItem', () => {
   const p = React.createFactory('p')
   const F = React.createFactory<any>(CarouselItem)
 
@@ -27,7 +27,7 @@ describe('Carousel', () => {
   it('should pass down other props', () => {
     const props = { className: 'test', onClick: sinon.spy() }
     const render = mount(F(props))
-    const btn = render.find('div.carousel')
+    const btn = render.find('div.carousel-track-item')
 
     btn.simulate('click')
     expect(btn.hasClass('test'))
@@ -49,7 +49,7 @@ describe('Carousel', () => {
   it('should have correct className', () => {
     const render = mount(F())
 
-    expect(render.find('div').hasClass('carousel-item')).toBe(true)
+    expect(render.find('div').hasClass('carousel-track-item')).toBe(true)
   })
 
 })
