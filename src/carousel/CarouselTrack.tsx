@@ -41,11 +41,22 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
     items: [],
   }
 
+  private timer: NodeJS.Timer | null = null
+  private lastHandle: any = null
+
   public componentDidMount() {
     const trackDOM: Element = ReactDOM.findDOMNode(this) as Element
     const items = toArray(trackDOM.querySelector('.carousel-track')!.childNodes).filter(Boolean)
-
+    this.lastHandle = window.onresize
+    window.onresize = () => {
+      this.handleResize()
+      this.lastHandle && this.lastHandle()
+    }
     this.setState({ items: items })
+  }
+
+  public componentWillUnmount() {
+    window.onresize = this.lastHandle
   }
 
   render() {
@@ -69,12 +80,19 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
     )
   }
 
+  private handleResize = () => {
+    if (this.timer) {
+      clearTimeout(this.timer!)
+      this.timer = null
+    }
+    this.timer = setTimeout(() => this.setState({}), 50)
+  }
+
   private calculateStyle = () => {
     const { from, to } = this.props
     const { items } = this.state
-    const startleft = this.getWidthFromArray(items.slice(0, from! + 1))
-    const endleft = this.getWidthFromArray(items.slice(0, to! + 1))
-    console.log(startleft)
+    const startleft = this.getWidthFromArray(items.slice(0, +from! + 1))
+    const endleft = this.getWidthFromArray(items.slice(0, +to! + 1))
     return { start: startleft, end: endleft }
   }
 
