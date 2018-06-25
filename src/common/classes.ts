@@ -73,3 +73,5 @@ export const CAROUSEL_CAPTION = 'carousel-caption'
 export const CAROUSEL_INDICATORS = 'carousel-indicators'
 export const CAROUSEL_CONTROL_PREV = 'carousel-control-prev'
 export const CAROUSEL_CONTROL_NEXT = 'carousel-control-next'
+
+export const COLLAPSE = 'collapse'
