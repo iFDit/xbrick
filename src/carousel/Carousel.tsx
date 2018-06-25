@@ -26,7 +26,7 @@ export interface ICarouselProps extends IProps {
 
 const omitProps = ['autoplay', 'afterChange']
 export const Carousel: React.StatelessComponent<ICarouselProps> = function (props: ICarouselProps) {
-  const { tag, children, ...others } = props
+  const { tag, ...others } = props
   const Tag = tag!
   const className = classNames(props.className, classes.CAROUSEL)
 
