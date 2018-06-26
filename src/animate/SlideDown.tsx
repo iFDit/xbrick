@@ -3,22 +3,20 @@ import * as ReactDOM from 'react-dom'
 import { getcss } from 'src/common/util'
 import { IAnimateProps, Animate } from 'src/animate/Animate'
 
-export interface ISlideupProps extends IAnimateProps {
+export interface ISlideDownProps extends IAnimateProps {
   children?(fn: (...args: any[]) => void): React.ReactNode
 }
 
-export class SlideUp extends React.Component<ISlideupProps> {
+export class SlideDown extends React.Component<ISlideDownProps> {
 
-  public state = { close: false, styles: {} }
+  public state = { show: false, styles: {} }
 
-  public static displayName = 'xbrick.SlideUp'
+  public static displayName = 'xbrick.SlideDown'
 
   public static defaultProps = {
-    trigger: 'close',
+    trigger: 'show',
     tag: 'div',
-    from: {},
-    style: {},
-    to: {
+    from: {
       height: 0,
       opacity: 0,
       marginTop: 0,
@@ -26,35 +24,17 @@ export class SlideUp extends React.Component<ISlideupProps> {
       marginBottom: 0,
       paddingBottom: 0,
     },
+    style: {},
+    to: {},
   }
 
-  public createFrom = () => {
-    const { styles } = this.state
-    const {height, marginBottom, marginTop, paddingTop, paddingBottom} = styles as any
-    const heightConfig = {precision: 5}
-    const opacityConfig = {precision: 0.2}
-    const opacity = {opacity: { value: 1, config: opacityConfig }}
-    return height > 0 && !isNaN(height) ?
-      {
-        ...opacity,
-        height: { value: height, config: heightConfig},
-        marginBottom,
-        marginTop,
-        paddingTop,
-        paddingBottom,
-      }
-      : opacity
-  }
-
-  public slideup = () => {
-    const overflow = 'hidden'
+  public componentDidMount() {
     const dom = ReactDOM.findDOMNode(this) as HTMLElement
     const { height } = dom ? dom.getBoundingClientRect() : {height: 0}
     this.setState({
-      close: true,
       styles: {
         height,
-        overflow,
+        opacity: 1,
         marginTop: getcss(dom, 'margin-top', 0),
         paddingTop: getcss(dom, 'padding-top', 0),
         marginBottom: getcss(dom, 'margin-bottom', 0),
@@ -63,10 +43,18 @@ export class SlideUp extends React.Component<ISlideupProps> {
     })
   }
 
+  public createTo = () => {
+    return this.state.styles
+  }
+
+  public slidedown = () => {
+    this.setState({ show: true })
+  }
+
   public afterClose = () => {
     const { afterStateChange } = this.props
     const { styles } = this.state
-    const finalStyle = { ...styles, display: 'none' }
+    const finalStyle = { ...styles }
     this.setState({styles: finalStyle}, () => {
       afterStateChange && afterStateChange()
     })
@@ -74,22 +62,22 @@ export class SlideUp extends React.Component<ISlideupProps> {
 
   render() {
     const { children, style, ...others } = this.props
-    const { close, styles } = this.state
-    const nextstyle = { ...style, ...styles }
+    const { show, styles } = this.state
+    const nextstyle = { ...style, overflow: 'hidden' }
     const nextProps = Object.assign(
-      { close },
+      { show },
       others,
       {
-        trigger: 'close',
-        from: close ? this.createFrom() : {},
-        to: SlideUp.defaultProps.to,
+        trigger: 'show',
+        from: SlideDown.defaultProps.from,
+        to: show ? styles : {},
         afterStateChange: this.afterClose,
       },
     )
 
     return (
       <Animate {...nextProps} style={nextstyle}>
-        {children && children(this.slideup)}
+        {children && children(this.slidedown)}
       </Animate>
     )
   }

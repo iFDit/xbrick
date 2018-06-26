@@ -59,7 +59,7 @@ export class Animate extends React.Component<IAnimateProps, any> {
     const defaultStyle = this.createDefaultStyle()
     const style = this.createStyle()
     const motionProps = { defaultStyle, style, onRest }
-
+    
     return (
       <Motion {...motionProps} key={JSON.stringify(defaultStyle)}>
         {(interpolatingStyle: PlainStyle) => (
