@@ -9,21 +9,14 @@ export interface ISlideDownProps extends IAnimateProps {
 
 export class SlideDown extends React.Component<ISlideDownProps> {
 
-  public state = { show: false, styles: {} }
+  public state = { show: false, styles: {}, from: {} }
 
   public static displayName = 'xbrick.SlideDown'
 
   public static defaultProps = {
     trigger: 'show',
     tag: 'div',
-    from: {
-      height: 0,
-      opacity: 0,
-      marginTop: 0,
-      paddingTop: 0,
-      marginBottom: 0,
-      paddingBottom: 0,
-    },
+    from: {},
     style: {},
     to: {},
   }
@@ -32,6 +25,14 @@ export class SlideDown extends React.Component<ISlideDownProps> {
     const dom = ReactDOM.findDOMNode(this) as HTMLElement
     const { height } = dom ? dom.getBoundingClientRect() : {height: 0}
     this.setState({
+      from: {
+        height: { value: 0, config: { precision: 1 } },
+        marginBottom: 0,
+        marginTop: 0,
+        opacity: 0,
+        paddingBottom: 0,
+        paddingTop: 0,
+      },
       styles: {
         height,
         opacity: 1,
@@ -62,14 +63,14 @@ export class SlideDown extends React.Component<ISlideDownProps> {
 
   render() {
     const { children, style, ...others } = this.props
-    const { show, styles } = this.state
+    const { show, from, styles } = this.state
     const nextstyle = { ...style, overflow: 'hidden' }
     const nextProps = Object.assign(
       { show },
       others,
       {
+        from,
         trigger: 'show',
-        from: SlideDown.defaultProps.from,
         to: show ? styles : {},
         afterStateChange: this.afterClose,
       },

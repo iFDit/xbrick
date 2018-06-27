@@ -9,14 +9,7 @@ describe('SlideDown', () => {
   const defaultProps = {
     tag: 'div',
     trigger: 'show',
-    from: {
-      height: 0,
-      opacity: 0,
-      marginTop: 0,
-      paddingTop: 0,
-      marginBottom: 0,
-      paddingBottom: 0,
-    },
+    from: {},
     style: {},
     to: {},
   }
