@@ -1,8 +1,7 @@
 import * as React from 'react'
-import { IProps } from 'src/common/props'
-import { Slide } from 'src/animate/Slide'
+import { Slide, ISlideProps } from 'src/animate/Slide'
 
-export interface ICollapseProps extends IProps {
+export interface ICollapseProps extends Pick<ISlideProps, 'children'> {
   /**
    * custom render component.
    * @default div
