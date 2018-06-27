@@ -48,7 +48,7 @@ export interface IButtonProps extends IProps {
   disabled?: boolean
 }
 
-const noop = () => {}
+const noop = () => {/**/}
 const omitName = ['bstype', 'size', 'block', 'active', 'outline']
 
 export const Button: React.StatelessComponent<IButtonProps> = function (props: IButtonProps) {
