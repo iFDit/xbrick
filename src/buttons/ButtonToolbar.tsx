@@ -23,5 +23,5 @@ export const ButtonToolbar: React.StatelessComponent<IButtonToolbarProps> = func
 
 ButtonToolbar.displayName = 'xbrick.ButtonToolbar'
 ButtonToolbar.defaultProps = {
-  tag: 'div'
+  tag: 'div',
 }
