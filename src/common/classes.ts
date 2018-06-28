@@ -44,7 +44,7 @@ export const BREADCRUMB_ITEM = 'breadcrumb-item'
 
 export const BUTTON = 'btn'
 export const BUTTON_BLOCK = 'btn-block'
-
+export const BUTTON_GROUP = 'btn-group'
 export const BUTTON_TOOLBAR = 'btn-toolbar'
 
 export const CARD = 'card'
@@ -75,3 +75,13 @@ export const CAROUSEL_CONTROL_PREV = 'carousel-control-prev'
 export const CAROUSEL_CONTROL_NEXT = 'carousel-control-next'
 
 // export const COLLAPSE = 'collapse'
+export const DROPDOWN = 'dropdown'
+export const DROPDOWN_TOGGLE = 'dropdown-toggle'
+export const DROPDOWN_MENU = 'dropdown-menu'
+export const DROPDOWN_ITEM = 'dropdown-item'
+export const DROPDOWN_DIVIDER = 'dropdown-divider'
+export const DROPDOWN_HEADER = 'dropdown-header'
+export const DROPUP = 'dropup'
+export const DROPRIGHT = 'dropright'
+export const DROPLEFT = 'dropleft'
+
