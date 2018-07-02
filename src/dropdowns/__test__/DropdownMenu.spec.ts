@@ -1,18 +1,18 @@
 import * as React from 'react'
 import * as sinon from 'sinon'
 import { mount } from 'enzyme'
-import { DropdownToggle } from 'src/dropdowns/DropdownToggle'
+import { DropdownMenu } from 'src/dropdowns/DropdownMenu'
 
-describe('DropdownToggle', () => {
+describe('DropdownMenu', () => {
   const p = React.createFactory('p')
-  const F = React.createFactory<any>(DropdownToggle)
+  const F = React.createFactory<any>(DropdownMenu)
 
   it('should render without crash', () => {
     mount(F())
   })
 
   it('should render ReactNode Children', () => {
-    const render = mount(F(null, p(null, 'button')))
+    const render = mount(F(null, () => p(null, 'button')))
 
     expect(render.find('p').hostNodes().length).toBe(1)
     expect(render.find('p').text()).toBe('button')
@@ -21,7 +21,7 @@ describe('DropdownToggle', () => {
   it('should pass down other props', () => {
     const props = { className: 'test', onClick: sinon.spy() }
     const render = mount(F(props))
-    const btn = render.find('button')
+    const btn = render.find('div')
 
     btn.simulate('click')
     expect(btn.hasClass('test'))
@@ -37,13 +37,15 @@ describe('DropdownToggle', () => {
   it('should have default props', () => {
     const render = mount(F())
 
-    expect(render.prop('tag')).toBe('button')
-    expect(render.prop('size')).toBe('middle')
-    expect(render.prop('bstype')).toBe('primary')
+    expect(render.prop('tag')).toBe('div')
+    expect(render.prop('right')).toBe(false)
   })
 
-  it('should render correct default className', () => {
+  it('should render correct className with different props', () => {
     const render = mount(F())
-    expect(render.find('button').hasClass('dropdown-toggle')).toBe(true)
+
+    expect(render.find('div').hasClass('dropdown-menu')).toBe(true)
+    render.setProps({ right: true })
+    expect(render.find('div').hasClass('dropdown-menu-right'))
   })
 })
