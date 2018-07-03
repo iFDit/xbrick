@@ -27,6 +27,7 @@ export const MD_BLOCK = 'd-md-block'
 export const ICON = 'icon'
 export const PREV = 'prev'
 export const NEXT = 'next'
+export const MENU = 'xbrick-menu'
 
 // components
 export const ALERT = 'alert'
