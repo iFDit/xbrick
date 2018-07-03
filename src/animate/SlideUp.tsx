@@ -32,7 +32,7 @@ export class SlideUp extends React.Component<ISlideupProps> {
     const { styles } = this.state
     const {height, marginBottom, marginTop, paddingTop, paddingBottom} = styles as any
     const heightConfig = {precision: 5}
-    const opacityConfig = {precision: 0.2}
+    const opacityConfig = {precision: 0.3}
     const opacity = {opacity: { value: 1, config: opacityConfig }}
     return height > 0 && !isNaN(height) ?
       {

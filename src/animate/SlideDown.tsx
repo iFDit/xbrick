@@ -26,12 +26,12 @@ export class SlideDown extends React.Component<ISlideDownProps> {
     const { height } = dom ? dom.getBoundingClientRect() : {height: 0}
     this.setState({
       from: {
-        height: { value: 0, config: { precision: 1 } },
-        marginBottom: 0,
-        marginTop: 0,
-        opacity: 0,
-        paddingBottom: 0,
-        paddingTop: 0,
+        height: { value: 0, config: { precision: 5 } },
+        marginBottom: { value: 0, config: { precision: 2 } },
+        marginTop: { value: 0, config: { precision: 2 } },
+        opacity: { value: 0, config: { precision: 0.3 } },
+        paddingBottom: { value: 0, config: { precision: 2 } },
+        paddingTop: { value: 0, config: { precision: 2 } },
       },
       styles: {
         height,
