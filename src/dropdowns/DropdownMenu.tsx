@@ -2,9 +2,9 @@ import * as React from 'react'
 import * as classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
-import { Slide } from 'src/animate/Slide'
+import { Slide, ISlideProps } from 'src/animate/Slide'
 
-export interface IDropdownMenuProps extends IProps {
+export interface IDropdownMenuProps extends IProps, Pick<ISlideProps, 'children'> {
   /**
    * custom render component.
    * @default div
@@ -20,7 +20,12 @@ export interface IDropdownMenuProps extends IProps {
 
 export const DropdownMenu: React.StatelessComponent<IDropdownMenuProps> = function (props: IDropdownMenuProps) {
   const { right, ...others } = props
-  const className = classNames(props.className, classes.DROPDOWN_MENU, {[`${classes.DROPDOWN_MENU}-right`]: right})
+  const className = classNames(
+    props.className,
+    classes.MENU,
+    classes.DROPDOWN_MENU,
+    {[`${classes.DROPDOWN_MENU}-right`]: right},
+  )
   return <Slide {...others} className={className} />
 }
 
