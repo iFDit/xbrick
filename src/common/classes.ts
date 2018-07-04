@@ -28,6 +28,7 @@ export const ICON = 'icon'
 export const PREV = 'prev'
 export const NEXT = 'next'
 export const MENU = 'xbrick-menu'
+export const ROW = 'row'
 
 // components
 export const ALERT = 'alert'
@@ -86,3 +87,7 @@ export const DROPUP = 'dropup'
 export const DROPRIGHT = 'dropright'
 export const DROPLEFT = 'dropleft'
 
+export const FORM_INLINE = 'form-inline'
+export const FORM_GROUP = 'form-group'
+export const FORM_CHECK = 'form-check'
+export const FORM_CHECK_INLINE = 'form-check-inline'

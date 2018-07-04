@@ -4,6 +4,7 @@ export type ButtonType = 'primary' | 'secondary' | 'success' | 'danger' | 'warni
 export type ButtonSize = 'small' | 'large' | 'middle'
 export type CardType = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark'
 export type CardAlign = 'left' | 'center' | 'right'
+export type InputSize = 'small' | 'large' | 'middle'
 
 export type Direction = 'left' | 'right' | 'up'
 
