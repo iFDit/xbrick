@@ -54,8 +54,8 @@ function getDropdownClassName(props: IDropdownItemProps) {
   const { header, divider, active, disabled } = props
   return classNames(
     props.className,
-    classes.DROPDOWN_ITEM,
     {
+      [classes.DROPDOWN_ITEM]: !header && !divider,
       [classes.DROPDOWN_HEADER]: !!header,
       [classes.DROPDOWN_DIVIDER]: !!divider,
       [classes.DISABLED]: !!disabled,
