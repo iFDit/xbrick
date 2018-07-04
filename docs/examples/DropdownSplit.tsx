@@ -1,8 +1,8 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'xbrick'
+import { Dropdown, DropdownItem, DropdownMenu, DropdownToggle, Button } from 'xbrick'
 
-class DropdownComponent extends React.Component {
+class DropdownComponent extends React.Component<any> {
   public state = { show: false }
 
   public toggle = () => {
@@ -34,11 +34,10 @@ class DropdownComponent extends React.Component {
     const { show } = this.state
     return (
       <Dropdown>
+        <Button>Primary</Button>
         <DropdownToggle onClick={() => {
           this.toggle()
-        }}>
-          Toggle
-        </DropdownToggle>
+        }} bstype={this.props.bstype} />
         <DropdownMenu afterStateChange={(s: boolean) => this.setState({ show: s })} show={show}>
           {({ slideup, slidedown }) => {
             this.slideup = slideup
@@ -66,7 +65,9 @@ class DropdownComponent extends React.Component {
 
 const Example = () => {
   return (
-    <DropdownComponent />
+    <>
+      <DropdownComponent />
+    </>
   )
 }
 
