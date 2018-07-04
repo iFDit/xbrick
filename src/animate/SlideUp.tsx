@@ -31,17 +31,17 @@ export class SlideUp extends React.Component<ISlideupProps> {
   public createFrom = () => {
     const { styles } = this.state
     const {height, marginBottom, marginTop, paddingTop, paddingBottom} = styles as any
-    const heightConfig = {precision: 5}
-    const opacityConfig = {precision: 0.3}
+    const heightConfig = {precision: 35, stiffness: 270, damping: 24 }
+    const opacityConfig = {precision: 0.5}
     const opacity = {opacity: { value: 1, config: opacityConfig }}
     return height > 0 && !isNaN(height) ?
       {
         ...opacity,
         height: { value: height, config: heightConfig},
-        marginBottom,
-        marginTop,
-        paddingTop,
-        paddingBottom,
+        marginBottom: { value: marginBottom, config: { precision: 10 } },
+        marginTop: { value: marginTop, config: { precision: 10 } },
+        paddingTop: { value: paddingTop, config: { precision: 10 } },
+        paddingBottom: { value: paddingBottom, config: { precision: 10 } },
       }
       : opacity
   }
