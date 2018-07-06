@@ -18,3 +18,8 @@ export function getcss(dom: HTMLElement, props: string, defaultValue: any = null
         !!returnValue
         : returnValue
 }
+
+export function uniqId() {
+  return new Date().getTime() + String(Math.random() * new Date().getTime())
+}
+
