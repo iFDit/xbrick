@@ -1,6 +1,8 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 import * as classes from 'src/common/classes'
+import { uniqId } from 'src/common/util'
+import { Label } from 'src/input-group/Label'
 import { IProps, InputType, InputSize } from 'src/common/props'
 
 export interface IInputProps extends IProps {
@@ -9,6 +11,7 @@ export interface IInputProps extends IProps {
    * @default text
    */
   type?: InputType
+
   /**
    * render readonly plain text when Iuput props type is text.
    * @default false
@@ -20,6 +23,12 @@ export interface IInputProps extends IProps {
    * @default middle
    */
   size?: InputSize
+  
+  /**
+   * A shortcut to create a Label
+   * @default ''
+   */
+  label?: string | React.ReactNode
 }
 
 const sizeMap = {
@@ -28,16 +37,28 @@ const sizeMap = {
 }
 
 export const Input: React.StatelessComponent<IInputProps> = function (props: IInputProps) {
-  const { type, size, plainText, ...others } = props
+  const { id = uniqId(),  type, size, label, plainText, ...others } = props
+  const file = type === 'file'
   const checkOrRadio = type === 'radio' || type === 'checkbox'
   const Tag = type === 'select' ? 'select' : type === 'textarea' ? 'textarea' : 'input'
   const className = classNames(
     props.className,
-    checkOrRadio ? classes.FORM_CHECK_INPUT : classes.FORM_CONTROL,
-    {[classes.FORM_CONTROL_PLAINTEXT]: !!plainText},
+    checkOrRadio ?
+      classes.FORM_CHECK_INPUT
+      : file ?
+        classes.FORM_CONTROL_FILE
+        : plainText ?
+          classes.FORM_CONTROL_PLAINTEXT
+          : classes.FORM_CONTROL,
     getInputSize(props),
   )
-  return <Tag {...others} type={type} className={className} />
+  return (
+    <>
+      {!checkOrRadio && !!label && <Label htmlFor={id}>{label}</Label>}
+      <Tag {...others} id={id} type={type} className={className} />
+      {checkOrRadio && !!label && <Label htmlFor={id}>{label}</Label>}
+    </>
+  )
 }
 
 Input.displayName = 'xbrick.Input'

@@ -46,8 +46,9 @@ describe('Input', () => {
 
     render.setProps({ plainText: true })
     expect(render.find('input').hasClass('form-control-plaintext')).toBe(true)
+    expect(render.find('input').hasClass('form-control')).toBe(false)
 
-    render.setProps({ type: 'select' })
+    render.setProps({ type: 'select', plainText: false })
     expect(render.find('select').hasClass('form-control')).toBe(true)
 
     render.setProps({ type: 'textarea' })
@@ -58,6 +59,10 @@ describe('Input', () => {
 
     render.setProps({ type: 'radio' })
     expect(render.find('input').hasClass('form-check-input')).toBe(true)
+
+    render.setProps({ type: 'file' })
+    expect(render.find('input').hasClass('form-control-file')).toBe(true)
+    expect(render.find('input').hasClass('form-control')).toBe(false)
 
     render.setProps({ type: 'text', size: 'small' })
     expect(render.find('input').hasClass('form-control-sm')).toBe(true)

@@ -5,13 +5,7 @@ import { IProps } from 'src/common/props'
 import { uniqId } from 'src/common/util'
 import { Input, IInputProps, getInputSize } from 'src/input-group/Input'
 
-export interface ICustomInput extends IProps, IInputProps {
-  /**
-   * use with the Custom checkbox or radio.
-   * @default ''
-   */
-  label?: string | React.Factory<any>
-}
+export interface ICustomInput extends IProps, IInputProps {}
 
 export const CustomInput: React.StatelessComponent<ICustomInput> = function (props: ICustomInput) {
   const { type, label, plainText, size, id = uniqId(), ...others } = props
@@ -33,7 +27,7 @@ export const CustomInput: React.StatelessComponent<ICustomInput> = function (pro
     </div>
   ) : type === 'select' ?
     <select {...others} className={className} />
-    : <Input type={type} plainText={plainText} {...others} />
+    : <Input {...props} />
 }
 
 CustomInput.displayName = 'xbrick.CustomInput'
