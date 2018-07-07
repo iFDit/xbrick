@@ -95,6 +95,7 @@ export const FORM_CHECK_INLINE = 'form-check-inline'
 export const FORM_CONTROL = 'form-control'
 export const FORM_CHECK_INPUT = 'form-check-input'
 export const FORM_CONTROL_PLAINTEXT = 'form-control-plaintext'
+export const FORM_CONTROL_FILE = 'form-control-file'
 
 export const FORM_CHECK_LABEL = 'form-check-label'
 export const COL_FORM_LABEL = 'col-form-label'
