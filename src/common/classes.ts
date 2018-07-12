@@ -30,6 +30,8 @@ export const NEXT = 'next'
 export const MENU = 'xbrick-menu'
 export const ROW = 'row'
 export const SR_ONLY = 'sr-only'
+export const CONTAINER = 'container'
+export const CONTAINER_FLUID = 'container-fluid'
 
 // components
 export const ALERT = 'alert'
@@ -106,8 +108,13 @@ export const CUSTOM_CONTROL_INPUT = 'custom-control-input'
 export const CUSTOM_CONTROL = 'custom-control'
 export const CUSTOM_CHECKBOX = 'custom-checkbox'
 export const CUSTOM_RADIO = 'custom-radio'
+export const CUSTOM_CONTROL_INLINE = 'custom-control-inline'
 
 export const INPUT_GROUP = 'input-group'
 export const INPUT_GROUP_PREPEND = 'input-group-prepend'
 export const INPUT_GROUP_APPEND = 'input-group-append'
 export const INPUT_GROUP_TEXT = 'input-group-text'
+export const INPUT_CUSTOM = 'custom'
+
+export const JUMBOTRON = 'jumbotron'
+export const JUMBOTRON_FLUID = 'jumbotron-fluid'
