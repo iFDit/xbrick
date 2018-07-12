@@ -1,0 +1,11 @@
+select.custom {
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+/* For IE10 */
+select.custom::-ms-expand {
+  display: none;
+}

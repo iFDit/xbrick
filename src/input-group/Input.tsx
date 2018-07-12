@@ -1,6 +1,7 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 import * as classes from 'src/common/classes'
+import { omit } from 'lodash'
 import { uniqId } from 'src/common/util'
 import { Label } from 'src/input-group/Label'
 import { IProps, InputType, InputSize } from 'src/common/props'
@@ -36,6 +37,7 @@ const sizeMap = {
   small: 'sm',
 }
 
+const omitProps = ['inline']
 export const Input: React.StatelessComponent<IInputProps> = function (props: IInputProps) {
   const { id = uniqId(),  type, size, label, plainText, ...others } = props
   const file = type === 'file'
@@ -55,7 +57,7 @@ export const Input: React.StatelessComponent<IInputProps> = function (props: IIn
   return (
     <>
       {!checkOrRadio && !!label && <Label htmlFor={id}>{label}</Label>}
-      <Tag {...others} id={id} type={type} className={className} />
+      <Tag {...omit(others, omitProps)} id={id} type={type} className={className} />
       {checkOrRadio && !!label && <Label htmlFor={id}>{label}</Label>}
     </>
   )
