@@ -13,3 +13,28 @@ export type Direction = 'left' | 'right' | 'up'
 export interface IProps {
   [prop: string]: any
 }
+
+export type LayoutDirec = 'start' | 'center' | 'end'
+export type Auto = 'auto'
+export type JustifyDirec = 'around' | 'between'
+export type ColumnSize = Auto | number | {
+  offset?: number,
+  order?: number,
+  size?: number | Auto,
+  align?: LayoutDirec | Auto,
+}
+export type RowSize = { align?: LayoutDirec, justify?: LayoutDirec | JustifyDirec }
+export interface IColumn {
+  xs?: ColumnSize
+  sm?: ColumnSize
+  md?: ColumnSize
+  lg?: ColumnSize
+  xl?: ColumnSize
+}
+export interface IRowLayout {
+  xs?: RowSize
+  sm?: RowSize
+  md?: RowSize
+  lg?: RowSize
+  xl?: RowSize
+}

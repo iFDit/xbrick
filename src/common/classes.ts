@@ -118,3 +118,101 @@ export const INPUT_CUSTOM = 'custom'
 
 export const JUMBOTRON = 'jumbotron'
 export const JUMBOTRON_FLUID = 'jumbotron-fluid'
+
+// XS
+export const JUSTIFY_CONTENT_XS_START = 'justify-content-start'
+export const JUSTIFY_CONTENT_XS_CENTER = 'justify-content-center'
+export const JUSTIFY_CONTENT_XS_END = 'justify-content-end'
+export const JUSTIFY_CONTENT_XS_AROUND = 'justify-content-around'
+export const JUSTIFY_CONTENT_XS_BETWEEN = 'justify-content-between'
+
+export const ALIGN_ITEMS_XS_START = 'align-items-start'
+export const ALIGN_ITEMS_XS_CENTER = 'align-items-start'
+export const ALIGN_ITEMS_XS_END = 'align-items-start'
+
+export const COL_XS = 'col'
+export const ORDER_XS = 'order'
+export const OFFSET_XS = 'offset'
+export const ALIGN_SELF_XS_AUTO = 'align-self-auto'
+export const ALIGN_SELF_XS_START = 'align-self-start'
+export const ALIGN_SELF_XS_CENTER = 'align-self-center'
+export const ALIGN_SELF_XS_END = 'align-self-end'
+
+// SM
+export const JUSTIFY_CONTENT_SM_START = 'justify-content-sm-start'
+export const JUSTIFY_CONTENT_SM_CENTER = 'justify-content-sm-center'
+export const JUSTIFY_CONTENT_SM_END = 'justify-content-sm-end'
+export const JUSTIFY_CONTENT_SM_AROUND = 'justify-content-sm-around'
+export const JUSTIFY_CONTENT_SM_BETWEEN = 'justify-content-sm-between'
+
+export const ALIGN_ITEMS_SM_START = 'align-items-sm-start'
+export const ALIGN_ITEMS_SM_CENTER = 'align-items-sm-start'
+export const ALIGN_ITEMS_SM_END = 'align-items-sm-start'
+
+export const COL_SM = 'col-sm'
+export const ORDER_SM = 'order-sm'
+export const OFFSET_SM = 'offset-sm'
+export const ALIGN_SELF_SM_AUTO = 'align-self-sm-auto'
+export const ALIGN_SELF_SM_START = 'align-self-sm-start'
+export const ALIGN_SELF_SM_CENTER = 'align-self-sm-center'
+export const ALIGN_SELF_SM_END = 'align-self-sm-end'
+
+// MD
+export const JUSTIFY_CONTENT_MD_START = 'justify-content-md-start'
+export const JUSTIFY_CONTENT_MD_CENTER = 'justify-content-md-center'
+export const JUSTIFY_CONTENT_MD_END = 'justify-content-md-end'
+export const JUSTIFY_CONTENT_MD_AROUND = 'justify-content-md-around'
+export const JUSTIFY_CONTENT_MD_BETWEEN = 'justify-content-md-between'
+
+export const ALIGN_ITEMS_MD_START = 'align-items-md-start'
+export const ALIGN_ITEMS_MD_CENTER = 'align-items-md-start'
+export const ALIGN_ITEMS_MD_END = 'align-items-md-start'
+
+export const COL_MD = 'col-md'
+export const ORDER_MD = 'order-md'
+export const OFFSET_MD = 'offset-md'
+export const ALIGN_SELF_MD_AUTO = 'align-self-md-auto'
+export const ALIGN_SELF_MD_START = 'align-self-md-start'
+export const ALIGN_SELF_MD_CENTER = 'align-self-md-center'
+export const ALIGN_SELF_MD_END = 'align-self-md-end'
+
+// LG
+export const JUSTIFY_CONTENT_LG_START = 'justify-content-lg-start'
+export const JUSTIFY_CONTENT_LG_CENTER = 'justify-content-lg-center'
+export const JUSTIFY_CONTENT_LG_END = 'justify-content-lg-end'
+export const JUSTIFY_CONTENT_LG_AROUND = 'justify-content-lg-around'
+export const JUSTIFY_CONTENT_LG_BETWEEN = 'justify-content-lg-between'
+
+export const ALIGN_ITEMS_LG_START = 'align-items-lg-start'
+export const ALIGN_ITEMS_LG_CENTER = 'align-items-lg-start'
+export const ALIGN_ITEMS_LG_END = 'align-items-lg-start'
+
+export const COL_LG = 'col-lg'
+export const ORDER_LG = 'order-lg'
+export const OFFSET_LG = 'offset-lg'
+export const ALIGN_SELF_LG_AUTO = 'align-self-lg-auto'
+export const ALIGN_SELF_LG_START = 'align-self-lg-start'
+export const ALIGN_SELF_LG_CENTER = 'align-self-lg-center'
+export const ALIGN_SELF_LG_END = 'align-self-lg-end'
+
+// XL
+export const JUSTIFY_CONTENT_XL_START = 'justify-content-xl-start'
+export const JUSTIFY_CONTENT_XL_CENTER = 'justify-content-xl-center'
+export const JUSTIFY_CONTENT_XL_END = 'justify-content-xl-end'
+export const JUSTIFY_CONTENT_XL_AROUND = 'justify-content-xl-around'
+export const JUSTIFY_CONTENT_XL_BETWEEN = 'justify-content-xl-between'
+
+export const ALIGN_ITEMS_XL_START = 'align-items-xl-start'
+export const ALIGN_ITEMS_XL_CENTER = 'align-items-xl-start'
+export const ALIGN_ITEMS_XL_END = 'align-items-xl-start'
+
+export const COL_XL = 'col-xl'
+export const ORDER_XL = 'order-xl'
+export const OFFSET_XL = 'offset-xl'
+export const ALIGN_SELF_XL_AUTO = 'align-self-xl-auto'
+export const ALIGN_SELF_XL_START = 'align-self-xl-start'
+export const ALIGN_SELF_XL_CENTER = 'align-self-xl-center'
+export const ALIGN_SELF_XL_END = 'align-self-xl-end'
+
+
+export const NO_GUTTERS = 'no-gutters'
