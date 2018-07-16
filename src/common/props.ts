@@ -17,10 +17,10 @@ export interface IProps {
 export type LayoutDirec = 'start' | 'center' | 'end'
 export type Auto = 'auto'
 export type JustifyDirec = 'around' | 'between'
-export type ColumnSize = Auto | number | {
+export type ColumnSize = string | number | boolean | {
   offset?: number,
   order?: number,
-  size?: number | Auto,
+  size?: number | string,
   align?: LayoutDirec | Auto,
 }
 export type RowSize = { align?: LayoutDirec, justify?: LayoutDirec | JustifyDirec }
