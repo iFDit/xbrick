@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as classNames from 'classnames'
 import * as classes from 'src/common/classes'
-import { omit, isObject, isString, isNumber } from 'lodash'
+import { omit, isObject, isString, isNumber, isBoolean } from 'lodash'
 import { IProps, IColumn } from 'src/common/props'
 
 export interface IColProps extends IProps, IColumn {
@@ -55,6 +55,10 @@ function getColClass(props: IColProps) {
     }
     if (isNumber(size)) {
       result[`${classes[`COL_${propName.toUpperCase()}`]}${size === 0 ? '' : `-${size}`}`] = true
+      return result
+    }
+    if (isBoolean(size)) {
+      result[`${classes[`COL_${propName.toUpperCase()}`]}`] = true
       return result
     }
     if (isObject(size)) {
