@@ -3,11 +3,13 @@
 ````jsx
 import { Container, Row, Col } from 'xbrick'
 
-<Container>
-  <Row>
-    <Col sm>One of three columns</Col>
-    <Col sm>One of three columns</Col>
-    <Col sm>One of three columns</Col>
-  </Row>
-</Container>
+ReactDOM.render(
+  <Container>
+    <Row>
+      <Col sm>One of three columns</Col>
+      <Col sm>One of three columns</Col>
+      <Col sm>One of three columns</Col>
+    </Row>
+  </Container>
+, rootNode)
 ````
