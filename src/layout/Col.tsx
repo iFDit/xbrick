@@ -54,7 +54,7 @@ function getColClass(props: IColProps) {
       return result
     }
     if (isNumber(size)) {
-      result[`${classes[`COL_${propName.toUpperCase()}`]}${size === 0 ? '' : `-${size}`}`] = true
+      result[`${classes[`COL_${propName.toUpperCase()}`]}${+size === 0 ? '' : `-${size}`}`] = true
       return result
     }
     if (isBoolean(size)) {
@@ -65,11 +65,11 @@ function getColClass(props: IColProps) {
       const align = size.align || ''
       const offset = size.offset || 0
       const order = size.order || 0
-      const col = size.col || ''
+      const col = size.col
       result[classes[`ALIGN_SELF_${propName.toUpperCase()}_${align.toUpperCase()}`]] = !!align
       result[`${classes[`OFFSET_${propName.toUpperCase()}`]}-${offset}`] = !!offset
       result[`${classes[`ORDER_${propName.toUpperCase()}`]}-${order}`] = !!order
-      result[`${classes[`COL_${propName.toUpperCase()}`]}${col === 0 ? '' : `-${col}`}`] = !!col || col === 0
+      result[`${classes[`COL_${propName.toUpperCase()}`]}${+col === 0 ? '' : `-${col}`}`] = !!col || col === 0
     }
     return result
   }).reduce((o1, o2) => ({...o1, ...o2}), {})
