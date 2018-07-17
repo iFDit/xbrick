@@ -20,7 +20,7 @@ export type JustifyDirec = 'around' | 'between'
 export type ColumnSize = string | number | boolean | {
   offset?: number,
   order?: number,
-  size?: number | string,
+  col?: number | string,
   align?: LayoutDirec | Auto,
 }
 export type RowSize = { align?: LayoutDirec, justify?: LayoutDirec | JustifyDirec }
