@@ -216,3 +216,10 @@ export const ALIGN_SELF_XL_END = 'align-self-xl-end'
 
 
 export const NO_GUTTERS = 'no-gutters'
+
+
+export const LIST_GROUP = 'list-group'
+export const LIST_GROUP_FLUSH = 'list-group-flush'
+
+export const LIST_GROUP_ITEM = 'list-group-item'
+export const LIST_GROUP_ITEM_ACTION = 'list-group-item-action'
