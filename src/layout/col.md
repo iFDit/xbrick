@@ -12,7 +12,6 @@
 | --- | --- | --- | --- |
 | tag | 自定义标签 | string\|ReactNode | `div` |
 | nowrap | 是否添加wrap元素 | boolean | `false` |
-| noGutter | 是否移除padding | boolean | `false` |
 | xs | 无论视口多大，都采用水平布局 | number\|boolean\|string\|{offset?: number;order?: number;col?: number\|"auto";align?: "auto"\|"start"\|"center"\|"end";} | 无 |
 | sm | 当视口大于576px时，采用水平布局 | number\|boolean\|string\|{offset?: number;order?: number;col?: number\|"auto";align?: "auto"\|"start"\|"center"\|"end";} | 无 |
 | md | 当视口大于768px时，采用水平布局 | number\|boolean\|string\|{offset?: number;order?: number;col?: number\|"auto";align?: "auto"\|"start"\|"center"\|"end";} | 无 |

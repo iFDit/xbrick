@@ -16,9 +16,15 @@ export interface IRowProps extends IProps, IRowLayout {
    * @default false
    */
   nowrap?: boolean
+
+  /**
+   * set no gutter between columns.
+   * @default false
+   */
+  noGutter?: boolean
 }
 
-const omitProps = ['xs', 'sm', 'md', 'lg', 'xl']
+const omitProps = ['xs', 'sm', 'md', 'lg', 'xl', 'noGutter']
 export const Row: React.StatelessComponent<IRowProps> = function (props: IRowProps) {
   const { tag, nowrap, ...others } = props
   const Tag = tag!
@@ -33,10 +39,14 @@ Row.displayName = 'xbrick.Row'
 Row.defaultProps = {
   tag: 'div',
   nowrap: false,
+  noGutter: false,
 }
 
 function getRowClass(props: IRowProps) {
   return omitProps.map(propName => {
+    if (propName === 'noGutter') {
+      return {[classes.NO_GUTTERS]: !!props[propName]}
+    }
     const result = {}
     const size = props[propName]
     if (isObject(size)) {

@@ -16,15 +16,9 @@ export interface IColProps extends IProps, IColumn {
    * @default false
    */
   nowrap?: boolean
-
-  /**
-   * set no gutter between columns.
-   * @default false
-   */
-  noGutter?: boolean
 }
 
-const omitProps = ['xs', 'sm', 'md', 'lg', 'xl', 'noGutter']
+const omitProps = ['xs', 'sm', 'md', 'lg', 'xl']
 export const Col: React.StatelessComponent<IColProps> = function (props: IColProps) {
   const { tag, nowrap, ...others } = props
   const Tag = tag!
@@ -39,14 +33,10 @@ Col.defaultProps = {
   tag: 'div',
   xs: 0,
   nowrap: false,
-  noGutter: false,
 }
 
 function getColClass(props: IColProps) {
   return omitProps.map(propName => {
-    if (propName === 'noGutter') {
-      return {[classes.NO_GUTTERS]: !!props[propName]}
-    }
     const result = {}
     const size = props[propName]
     if (isString(size)) {

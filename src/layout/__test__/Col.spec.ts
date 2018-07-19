@@ -45,7 +45,6 @@ describe('Col', () => {
 
     expect(render.prop('tag')).toBe('div')
     expect(render.prop('nowrap')).toBe(false)
-    expect(render.prop('noGutter')).toBe(false)
   })
 
   it('should render correct className when set different props', () => {
@@ -70,9 +69,6 @@ describe('Col', () => {
     expect(render.find('div').hasClass('order-1')).toBe(true)
     render.setProps({ xs: { offset: 1 }})
     expect(render.find('div').hasClass('offset-1')).toBe(true)
-
-    render.setProps({ noGutter: true })
-    expect(render.find('div').hasClass('no-gutters')).toBe(true)
   })
 
   it('should not render wrap component and pass down layout className', () => {

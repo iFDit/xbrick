@@ -45,6 +45,7 @@ describe('Row', () => {
 
     expect(render.prop('tag')).toBe('div')
     expect(render.prop('nowrap')).toBe(false)
+    expect(render.prop('noGutter')).toBe(false)
   })
 
   it('should render correct className when set different props', () => {
