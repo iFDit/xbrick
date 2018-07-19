@@ -223,3 +223,6 @@ export const LIST_GROUP_FLUSH = 'list-group-flush'
 
 export const LIST_GROUP_ITEM = 'list-group-item'
 export const LIST_GROUP_ITEM_ACTION = 'list-group-item-action'
+
+export const MEDIA = 'media'
+export const MEDIA_BODY = 'media-body'
