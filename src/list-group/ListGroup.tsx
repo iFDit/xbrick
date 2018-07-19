@@ -10,7 +10,6 @@ export interface IListGroupProps extends IProps {
    */
   tag?: string | React.Factory<any>
 
-
   /**
    * remove ListGroup components border and rounded corners.
    * @default false
