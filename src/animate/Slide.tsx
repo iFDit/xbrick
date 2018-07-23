@@ -16,6 +16,10 @@ export interface ISlideProps extends IProps {
    */
   afterStateChange? (show: boolean): void
 
+  /**
+   * render props.
+   * @param props 
+   */
   children?(props: {slidedown: any, slideup: any}): React.ReactNode
 }
 

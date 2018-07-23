@@ -30,6 +30,12 @@ export interface IAnimateProps extends IProps {
    * Handle invoked afer state change.
    */
   afterStateChange? (): void
+
+  /**
+   * toggle transition.
+   * @default true
+   */
+  transition?: boolean
 }
 
 export class Animate extends React.Component<IAnimateProps, any> {
@@ -47,6 +53,7 @@ export class Animate extends React.Component<IAnimateProps, any> {
     from: {},
     to: {},
     trigger: 'show',
+    transition: true,
   }
 
   public state = {
@@ -64,7 +71,10 @@ export class Animate extends React.Component<IAnimateProps, any> {
       <Motion {...motionProps} key={JSON.stringify(defaultStyle)}>
         {(interpolatingStyle: PlainStyle) => (
           // custom render component
-          <Tag {...omit(others, [trigger!, 'tag'])} style={{ ...(isObject(others.style) ? others.style : {}), ...interpolatingStyle }}>
+          <Tag
+            {...omit(others, [trigger!, 'tag', 'transition'])}
+            style={{ ...(isObject(others.style) ? others.style : {}), ...interpolatingStyle }}
+          >
             {this.props.children}
           </Tag>
         )}
@@ -90,10 +100,12 @@ export class Animate extends React.Component<IAnimateProps, any> {
   }
 
   private createSpring = (key: string) => {
-    const { from, to, trigger } = this.props
+    const { from, to, trigger, transition } = this.props
     const show = this.state[trigger!]
     const fromVal = isObject(from![key]) ? (from![key] as any).value : from![key]
     const config =  isObject(from![key]) ? (from![key] as any).config : presets.noWobble
-    return { [key]: spring(show ? get(to, key, fromVal) : fromVal, config) }
+    const finalValue = show ? get(to, key, fromVal) : fromVal
+
+    return { [key]: transition ? spring(finalValue, config) : finalValue }
   }
 }
