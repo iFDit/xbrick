@@ -17,6 +17,7 @@ export interface IProps {
 
 export type LayoutDirec = 'start' | 'center' | 'end'
 export type MediaObjectAlign = LayoutDirec
+export type ModalDialogAlign = 'start' | 'center'
 export type Auto = 'auto'
 export type JustifyDirec = 'around' | 'between'
 export type ColumnSize = string | number | boolean | {

@@ -226,3 +226,15 @@ export const LIST_GROUP_ITEM_ACTION = 'list-group-item-action'
 
 export const MEDIA = 'media'
 export const MEDIA_BODY = 'media-body'
+
+
+export const MODAL = 'modal'
+export const MODAL_DIALOG = 'modal-dialog'
+export const MODAL_DIALOG_CENTER = 'modal-dialog-centered'
+export const MODAL_HEADER = 'modal-header'
+export const MODAL_TITLE = 'modal-title'
+export const MODAL_CONTENT = 'modal-content'
+export const MODAL_BODY = 'modal-body'
+export const MODAL_FOOTER = 'modal-footer'
+export const MODAL_BACKDROP = 'modal-backdrop'
+export const MODAL_OPEN = 'modal-open'
