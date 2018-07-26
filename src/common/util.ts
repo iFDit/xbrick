@@ -73,3 +73,43 @@ export function getOriginalBodyPadding() {
     10,
   )
 }
+
+const matchProps = ['matrix', 'translate', 'scale', 'rotate', 'skew']
+const matcher = new RegExp(matchProps.join('|'), 'g')
+const defaultUnits = {
+  matrix: '',
+  translate: 'px',
+  scale: '',
+  rotate: 'reg',
+  skew: 'reg',
+}
+
+export function formatTransformProps(props: any) {
+  const result: any = {}
+  const transform = []
+
+  if (!props || typeof props !== 'object') {
+    return {}
+  }
+  
+  for (let key in props) {
+
+    if (props.hasOwnProperty(key)) {
+      const match = key.match(matcher) ? key.match(matcher)![0] : ''
+
+      if (matcher.test(key)) {
+        const split = key.split('-')
+        const prop = split[0]
+        const unit = split[1] || defaultUnits[match]
+        transform.push(`${prop}(${props[key]}${unit || ''})`)
+      } else {
+        result[key] = props[key]
+      }
+    }
+  }
+
+  if (transform.length > 0) {
+    result.transform = transform.join(' ')
+  }
+  return result
+}
