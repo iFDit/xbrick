@@ -2,14 +2,19 @@ import * as React from 'react'
 import { SlideDown } from 'src/animate/SlideDown'
 import { SlideUp } from 'src/animate/SlideUp'
 import { IProps } from 'src/common/props'
-import { omit } from 'lodash'
+import { get, omit } from 'lodash'
 
 export interface ISlideProps extends IProps {
   /**
-   * initial hidden or showed.
+   * initial hidden or showed(uncontrol component).
    * @default false
    */
-  show?: boolean
+  defaultOpen?: boolean
+
+  /**
+   * control component show/hide.
+   */
+  open?: boolean
 
   /**
    * Handle invoked afer state change.
@@ -26,23 +31,42 @@ export interface ISlideProps extends IProps {
 export class Slide extends React.Component<ISlideProps> {
   static displayName = 'xbrick.Slide'
   static defaultProps = {
-    show: false,
+    defaultOpen: false,
     tag: 'div',
   }
 
-  public state = { show: this.props.show || false }
+  static getDerivedStateFromProps(props: ISlideProps, state: any) {
+    const open = get(props, 'open', props.defaultOpen)
+    if (state.open !== open) {
+      const nextState = {...state}
+      if (props.open != null) {
+        nextState.active = true
+      } else {
+        Reflect.deleteProperty(nextState, 'active')
+        nextState.defaultActive = true
+      }
+      return { ...nextState }
+    }
+    return state
+  }
+
+  public state = {
+    open: !!get(this.props, 'open', this.props.defaultOpen),
+    active: this.props.open ? false : void 0,
+    defaultActive: false,
+  }
 
   render() {
-    const { children, ...others } = this.props
-    const { show } = this.state
-    const Wrap = show ? SlideUp : SlideDown
+    const { children, open: propsOpen, defaultOpen, ...others } = this.props
+    const { open, active, defaultActive } = this.state
+    const Wrap = open ? SlideUp : SlideDown
     const noop = () => {/**/}
     const nextProps = omit(others, ['afterStateChange', 'show'])
     return (
-      <Wrap {...nextProps} afterStateChange={this.handleAfterStateChange}>
+      <Wrap {...nextProps} afterStateChange={this.handleAfterStateChange} active={active} defaultActive={defaultActive}>
         {(slideFn: any) => children && children({
-          slidedown: show ? noop : slideFn,
-          slideup: show ? slideFn : noop,
+          slidedown: open ? noop : slideFn,
+          slideup: open ? slideFn : noop,
         })}
       </Wrap>
     )
@@ -50,8 +74,15 @@ export class Slide extends React.Component<ISlideProps> {
 
   private handleAfterStateChange = () => {
     const { afterStateChange } = this.props
-    const { show } = this.state
+    const { open, active } = this.state
 
-    this.setState({show: !show}, () => afterStateChange && afterStateChange(!show))
+    this.setState(
+      {
+        open: !open,
+        active: active == null ? active : !active,
+        defaultActive: false,
+      },
+      () => afterStateChange && afterStateChange(!open),
+    )
   }
 }

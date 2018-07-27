@@ -1,20 +1,47 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import { get, omit } from 'lodash'
 import { getcss } from 'src/common/util'
 import { IAnimateProps, Animate } from 'src/animate/Animate'
 
 export interface ISlideDownProps extends IAnimateProps {
+  /**
+   * initial active state(uncontrol component).
+   * @default false
+   */
+  defaultActive?: boolean
+
+  /**
+   * start animate(control component).
+   */
+  active?: boolean
+
+  /**
+   * render props.
+   * @param fn 
+   */
   children?(fn: (...args: any[]) => void): React.ReactNode
 }
 
+const omitProps = ['defaultActive', 'active']
+
 export class SlideDown extends React.Component<ISlideDownProps> {
 
-  public state = { show: false, styles: {}, from: {} }
+  static getDerivedStateFromProps(props: ISlideDownProps, state: any) {
+    const active = get(props, 'active', props.defaultActive)
+    if (active !== state.active) {
+      return { ...state, active }
+    }
+    return state
+  }
+
+  public state = { active: !!get(this.props, 'active', this.props.defaultActive), styles: {}, from: {} }
 
   public static displayName = 'xbrick.SlideDown'
 
   public static defaultProps = {
-    trigger: 'show',
+    defaultActive: false,
+    trigger: 'active',
     tag: 'div',
     from: {},
     style: {},
@@ -49,7 +76,9 @@ export class SlideDown extends React.Component<ISlideDownProps> {
   }
 
   public slidedown = () => {
-    this.setState({ show: true })
+    if (this.props.active == null) {
+      this.setState({ active: true })
+    }
   }
 
   public afterClose = () => {
@@ -63,15 +92,15 @@ export class SlideDown extends React.Component<ISlideDownProps> {
 
   render() {
     const { children, style, ...others } = this.props
-    const { show, from, styles } = this.state
+    const { active, from, styles } = this.state
     const nextstyle = { ...style, overflow: 'hidden' }
     const nextProps = Object.assign(
-      { show },
-      others,
+      { active },
+      omit(others, omitProps),
       {
         from,
-        trigger: 'show',
-        to: show ? styles : {},
+        trigger: 'active',
+        to: active ? styles : {},
         afterStateChange: this.afterClose,
       },
     )

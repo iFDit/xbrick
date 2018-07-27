@@ -2,6 +2,7 @@ import * as React from 'react'
 import { IProps } from 'src/common/props'
 import { get, omit, isObject } from 'lodash'
 import { spring, Motion, presets, PlainStyle } from 'react-motion'
+import { formatTransformProps } from 'src/common/util'
 
 export interface IAnimateProps extends IProps {
   /**
@@ -73,7 +74,7 @@ export class Animate extends React.Component<IAnimateProps, any> {
           // custom render component
           <Tag
             {...omit(others, [trigger!, 'tag', 'transition'])}
-            style={{ ...(isObject(others.style) ? others.style : {}), ...interpolatingStyle }}
+            style={{ ...(isObject(others.style) ? others.style : {}), ...formatTransformProps(interpolatingStyle) }}
           >
             {this.props.children}
           </Tag>

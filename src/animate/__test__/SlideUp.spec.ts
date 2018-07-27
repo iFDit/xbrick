@@ -7,8 +7,9 @@ describe('SlideUp', () => {
   const p = React.createFactory<any>('p')
   const SlideupFactory = React.createFactory<any>(SlideUp)
   const defaultProps = {
+    defaultActive: false,
     tag: 'div',
-    trigger: 'close',
+    trigger: 'active',
     from: {},
     style: {},
     to: {
@@ -35,7 +36,7 @@ describe('SlideUp', () => {
       'data-other': 'other',
     }
     const slideup = mount(SlideupFactory(allprops))
-    expect(slideup.find('div').prop('style')).toEqual(style)
+    expect(slideup.find('div').prop('style')!.color).toBe('red')
     expect(slideup.find('div').prop('className')).toBe('test-class')
     expect(slideup.find('div').prop('data-other')).toBe('other')
   })

@@ -8,7 +8,7 @@ describe('Slide', () => {
   const F = React.createFactory<any>(Slide)
   const defaultProps = {
     tag: 'div',
-    show: false,
+    defaultOpen: false,
   }
 
   it('should have correct default props', () => {
@@ -61,7 +61,7 @@ describe('Slide', () => {
     }
     const slide = mount(F(
       {
-        show: true,
+        defaultOpen: true,
         afterStateChange: (show: boolean) => {
           expect(show).toBe(false)
           next()

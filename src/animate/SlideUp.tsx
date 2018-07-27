@@ -1,20 +1,47 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
+import { get, omit } from 'lodash'
 import { getcss } from 'src/common/util'
 import { IAnimateProps, Animate } from 'src/animate/Animate'
 
 export interface ISlideupProps extends IAnimateProps {
+  /**
+   * initial active state(uncontrol component).
+   * @default false
+   */
+  defaultActive?: boolean
+
+  /**
+   * start animate(control component).
+   */
+  active?: boolean
+
+  /**
+   * render props.
+   * @param fn 
+   */
   children?(fn: (...args: any[]) => void): React.ReactNode
 }
 
+const omitProps = ['defaultActive', 'active']
+
 export class SlideUp extends React.Component<ISlideupProps> {
 
-  public state = { close: false, styles: {} }
+  static getDerivedStateFromProps(props: ISlideupProps, state: any) {
+    const active = get(props, 'active', props.defaultActive)
+    if (active !== state.active) {
+      return { ...state, active }
+    }
+    return state
+  }
+
+  public state = { active: !!get(this.props, 'active', this.props.defaultActive), styles: {} }
 
   public static displayName = 'xbrick.SlideUp'
 
   public static defaultProps = {
-    trigger: 'close',
+    defaultActive: false,
+    trigger: 'active',
     tag: 'div',
     from: {},
     style: {},
@@ -47,20 +74,22 @@ export class SlideUp extends React.Component<ISlideupProps> {
   }
 
   public slideup = () => {
-    const overflow = 'hidden'
-    const dom = ReactDOM.findDOMNode(this) as HTMLElement
-    const { height } = dom ? dom.getBoundingClientRect() : {height: 0}
-    this.setState({
-      close: true,
-      styles: {
-        height,
-        overflow,
-        marginTop: getcss(dom, 'margin-top', 0),
-        paddingTop: getcss(dom, 'padding-top', 0),
-        marginBottom: getcss(dom, 'margin-bottom', 0),
-        paddingBottom: getcss(dom, 'padding-bottom', 0),
-      },
-    })
+    if (this.props.active == null) {
+      const overflow = 'hidden'
+      const dom = ReactDOM.findDOMNode(this) as HTMLElement
+      const { height } = dom ? dom.getBoundingClientRect() : {height: 0}
+      this.setState({
+        active: true,
+        styles: {
+          height,
+          overflow,
+          marginTop: getcss(dom, 'margin-top', 0),
+          paddingTop: getcss(dom, 'padding-top', 0),
+          marginBottom: getcss(dom, 'margin-bottom', 0),
+          paddingBottom: getcss(dom, 'padding-bottom', 0),
+        },
+      })
+    }
   }
 
   public afterClose = () => {
@@ -74,13 +103,13 @@ export class SlideUp extends React.Component<ISlideupProps> {
 
   render() {
     const { children, style, ...others } = this.props
-    const { close, styles } = this.state
+    const { active, styles } = this.state
     const nextstyle = { ...style, ...styles }
     const nextProps = Object.assign(
-      { close },
-      others,
+      { active },
+      omit(others, omitProps),
       {
-        trigger: 'close',
+        trigger: 'active',
         from: close ? this.createFrom() : {},
         to: SlideUp.defaultProps.to,
         afterStateChange: this.afterClose,

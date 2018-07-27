@@ -7,8 +7,9 @@ describe('SlideDown', () => {
   const p = React.createFactory<any>('p')
   const F = React.createFactory<any>(SlideDown)
   const defaultProps = {
+    defaultActive: false,
     tag: 'div',
-    trigger: 'show',
+    trigger: 'active',
     from: {},
     style: {},
     to: {},

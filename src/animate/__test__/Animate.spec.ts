@@ -25,6 +25,7 @@ class AnimateWrapper extends React.Component<IAnimateWrapperProps, any> {
 }
 
 describe('Animate', () => {
+  const a = React.createFactory('a')
   const animateFactory = React.createFactory<any>(Animate)
   const animateWrapper = React.createFactory<IAnimateWrapperProps>(AnimateWrapper)
 
@@ -114,5 +115,19 @@ describe('Animate', () => {
     }) as (props: any) => void))
 
     setTimeout(() => trigger && trigger())
+  })
+
+  it('should support transform props animition', () => {
+    const transition = {
+      from: {
+        'translateX-%': 0,
+        scaleX: 0,
+      },
+      to: { 'translarteX-%': 50, scaleX: 1 },
+      tag: 'p',
+    }
+    const render = mount(animateFactory({...transition}, a()))
+
+    expect(render.find('p').props().style).toEqual({ transform: 'translateX(0%) scaleX(0)' })
   })
 })
