@@ -38,12 +38,12 @@ describe('Collapse', () => {
     const render = mount(F())
 
     expect(render.prop('tag')).toBe('div')
-    expect(render.prop('show')).toBe(false)
+    expect(render.prop('defaultOpen')).toBe(false)
   })
 
   it('should invoked afterAnimate when the component animate was done', (next) => {
     const props = {
-      show: true,
+      defaultOpen: true,
       afterAnimate: (show: boolean) => {
         expect(show).toBe(false)
         next()

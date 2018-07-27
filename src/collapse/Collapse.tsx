@@ -12,7 +12,12 @@ export interface ICollapseProps extends Pick<ISlideProps, 'children'> {
    * Set the Collapse hide/show.
    * @default false
    */
-  show?: boolean
+  defaultOpen?: boolean
+
+  /**
+   * Set the Collapse hide/show.
+   */
+  open?: boolean
 
   /**
    * Handler invoked after the Collapse was hidden/showed.
@@ -28,6 +33,6 @@ export const Collapse: React.StatelessComponent<ICollapseProps> = function (prop
 
 Collapse.displayName = 'xbrick.Collapse'
 Collapse.defaultProps = {
-  show: false,
+  defaultOpen: false,
   tag: 'div',
 }
