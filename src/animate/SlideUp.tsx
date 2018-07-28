@@ -55,6 +55,22 @@ export class SlideUp extends React.Component<ISlideupProps> {
     },
   }
 
+  public componentDidMount() {
+    const overflow = 'hidden'
+    const dom = ReactDOM.findDOMNode(this) as HTMLElement
+    const { height } = dom ? dom.getBoundingClientRect() : {height: 0}
+    this.setState({
+      styles: {
+        height,
+        overflow,
+        marginTop: getcss(dom, 'margin-top', 0),
+        paddingTop: getcss(dom, 'padding-top', 0),
+        marginBottom: getcss(dom, 'margin-bottom', 0),
+        paddingBottom: getcss(dom, 'padding-bottom', 0),
+      },
+    })
+  }
+
   public createFrom = () => {
     const { styles } = this.state
     const {height, marginBottom, marginTop, paddingTop, paddingBottom} = styles as any
@@ -75,20 +91,7 @@ export class SlideUp extends React.Component<ISlideupProps> {
 
   public slideup = () => {
     if (this.props.active == null) {
-      const overflow = 'hidden'
-      const dom = ReactDOM.findDOMNode(this) as HTMLElement
-      const { height } = dom ? dom.getBoundingClientRect() : {height: 0}
-      this.setState({
-        active: true,
-        styles: {
-          height,
-          overflow,
-          marginTop: getcss(dom, 'margin-top', 0),
-          paddingTop: getcss(dom, 'padding-top', 0),
-          marginBottom: getcss(dom, 'margin-bottom', 0),
-          paddingBottom: getcss(dom, 'padding-bottom', 0),
-        },
-      })
+      this.setState({active: true})
     }
   }
 
