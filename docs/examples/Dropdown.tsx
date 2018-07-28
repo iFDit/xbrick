@@ -7,7 +7,7 @@ class DropdownComponent extends React.Component {
 
   public toggle = () => {
     const { show } = this.state
-    show ? this.slideup() : this.slidedown()
+    this.setState({ show: !show })
   }
 
   public slideup = () => {/**/}
@@ -39,25 +39,21 @@ class DropdownComponent extends React.Component {
         }}>
           Toggle
         </DropdownToggle>
-        <DropdownMenu afterStateChange={(s: boolean) => this.setState({ show: s })} show={show}>
-          {({ slideup, slidedown }) => {
-            this.slideup = slideup
-            this.slidedown = slidedown
-            return (
-              <>
-                <DropdownItem>Action</DropdownItem>
-                <DropdownItem>Another action</DropdownItem>
-                <DropdownItem>Something else here</DropdownItem>
-                <DropdownItem>Something else here</DropdownItem>
-                <DropdownItem>Something else here</DropdownItem>
-                <DropdownItem>Something else here</DropdownItem>
-                <DropdownItem>Something else here</DropdownItem>
-                <DropdownItem>Something else here</DropdownItem>
-                <DropdownItem>Something else here</DropdownItem>
-                <DropdownItem>Something else here</DropdownItem>
-              </>
-            )
-          }}
+        <DropdownMenu open={show}>
+          {() => (
+            <>
+              <DropdownItem>Action</DropdownItem>
+              <DropdownItem>Another action</DropdownItem>
+              <DropdownItem>Something else here</DropdownItem>
+              <DropdownItem>Something else here</DropdownItem>
+              <DropdownItem>Something else here</DropdownItem>
+              <DropdownItem>Something else here</DropdownItem>
+              <DropdownItem>Something else here</DropdownItem>
+              <DropdownItem>Something else here</DropdownItem>
+              <DropdownItem>Something else here</DropdownItem>
+              <DropdownItem>Something else here</DropdownItem>
+            </>
+          )}
         </DropdownMenu>
       </Dropdown>
     )
