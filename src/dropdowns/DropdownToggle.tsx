@@ -23,11 +23,25 @@ export interface IDropdownToggleProps extends IProps {
    * @default primary
    */
   bstype?: ButtonType
+
+  /**
+   * use in navlink components.
+   * @default false
+   */
+  navLink?: boolean
 }
 
 export const DropdownToggle: React.StatelessComponent<IDropdownToggleProps> = function (props: IDropdownToggleProps) {
-  const className = classNames(props.className, classes.DROPDOWN_TOGGLE)
-  return <Button {...props} className={className} />
+  const { tag, navLink, ...others } = props
+  const t = tag === 'button' && navLink ? 'a' : tag
+  const className = classNames(
+    props.className,
+    classes.DROPDOWN_TOGGLE,
+    {
+      [classes.NAV_LINK]: !!navLink,
+    },
+  )
+  return <Button {...others} tag={t} className={className} />
 }
 
 DropdownToggle.displayName = 'xbrick.DropdownToggle'
@@ -35,4 +49,5 @@ DropdownToggle.defaultProps = {
   tag: 'button',
   size: 'middle',
   bstype: 'primary',
+  navLink: false,
 }

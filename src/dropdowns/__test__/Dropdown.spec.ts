@@ -38,6 +38,7 @@ describe('Dropdown', () => {
     const render = mount(F())
 
     expect(render.prop('tag')).toBe('div')
+    expect(render.prop('navItem')).toBe(false)
   })
 
   it('should render correct className with different props', () => {
@@ -47,12 +48,15 @@ describe('Dropdown', () => {
     expect(render.find('div').hasClass('btn-group')).toBe(true)
 
     render.setProps({ direction: 'up' })
-    expect(render.find('div').hasClass('dropup'))
+    expect(render.find('div').hasClass('dropup')).toBe(true)
 
     render.setProps({ direction: 'right' })
-    expect(render.find('div').hasClass('dropright'))
+    expect(render.find('div').hasClass('dropright')).toBe(true)
 
     render.setProps({ direction: 'left' })
-    expect(render.find('div').hasClass('dropleft'))
+    expect(render.find('div').hasClass('dropleft')).toBe(true)
+
+    render.setProps({ navItem: true })
+    expect(render.find('li.dropdown').hasClass('nav-item')).toBe(true)
   })
 })

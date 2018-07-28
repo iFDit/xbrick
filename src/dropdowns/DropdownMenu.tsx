@@ -4,7 +4,7 @@ import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
 import { Slide, ISlideProps } from 'src/animate/Slide'
 
-export interface IDropdownMenuProps extends IProps, Pick<ISlideProps, 'children'> {
+export interface IDropdownMenuProps extends IProps, Pick<ISlideProps, 'open' | 'children'> {
   /**
    * custom render component.
    * @default div

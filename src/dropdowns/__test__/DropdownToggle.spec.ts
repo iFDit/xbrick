@@ -40,10 +40,14 @@ describe('DropdownToggle', () => {
     expect(render.prop('tag')).toBe('button')
     expect(render.prop('size')).toBe('middle')
     expect(render.prop('bstype')).toBe('primary')
+    expect(render.prop('navLink')).toBe(false)
   })
 
   it('should render correct default className', () => {
     const render = mount(F())
     expect(render.find('button').hasClass('dropdown-toggle')).toBe(true)
+
+    render.setProps({ navLink: true })
+    expect(render.find('a.dropdown-toggle').hasClass('nav-link')).toBe(true)
   })
 })

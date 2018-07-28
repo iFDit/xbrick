@@ -15,16 +15,25 @@ export interface IDropdownProps extends IProps {
    * 'up', 'left', 'right'.
    */
   direction?: Direction
+
+  /**
+   * use in nav-item components.
+   * @default fasle
+   */
+  navItem?: boolean
 }
 
 export const Dropdown: React.StatelessComponent<IDropdownProps> = function (props: IDropdownProps) {
-  const { tag, direction = '', ...others } = props
-  const Tag = tag!
+  const { tag, navItem, direction = '', ...others } = props
+  const Tag = tag === 'div' && navItem ? 'li' : tag!
   const className = classNames(
     props.className,
     classes.DROPDOWN,
     classes.BUTTON_GROUP,
-    { [classes[`DROP${direction.toUpperCase()}`]]: !!direction },
+    {
+      [classes[`DROP${direction.toUpperCase()}`]]: !!direction,
+      [classes.NAV_ITEM]: !!navItem,
+    },
   )
   return <Tag {...others} className={className} />
 }
@@ -32,4 +41,5 @@ export const Dropdown: React.StatelessComponent<IDropdownProps> = function (prop
 Dropdown.displayName = 'xbrick.Dropdown'
 Dropdown.defaultProps = {
   tag: 'div',
+  navItem: false,
 }
