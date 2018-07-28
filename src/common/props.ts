@@ -1,12 +1,12 @@
 export type AlertType = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark'
-export type BadgeType = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark'
-export type ButtonType = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark' | 'link'
+export type BadgeType = AlertType
+export type ButtonType = AlertType | 'link'
 export type ListGroupItemType = ButtonType
 export type ButtonSize = 'small' | 'large' | 'middle'
-export type CardType = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark'
+export type CardType = AlertType
 export type CardAlign = 'left' | 'center' | 'right'
-export type InputSize = 'small' | 'large' | 'middle'
-export type ModalSize = 'small' | 'large' | 'middle'
+export type InputSize = ButtonSize
+export type ModalSize = ButtonSize
 /* tslint:disable */
 export type InputType = 'text' | 'textarea' | 'select' | 'checkbox' | 'radio' | 'button' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'range' | 'reset' | 'search' | 'submit' | 'tel' | 'time' | 'url' | 'week'
 /* tslint:enable */
@@ -42,4 +42,13 @@ export interface IRowLayout {
   md?: RowSize
   lg?: RowSize
   xl?: RowSize
+}
+
+export type NavbarExpand = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+export type NavbarFixed = 'top' | 'bottom'
+export type NavbarJustify = LayoutDirec | JustifyDirec
+export type NavbarBgColor = AlertType
+export interface INavbarChildrenProps<T> {
+  getTogglerProps: (props?: T) => T
+  getCollapseProps: (props?: T) => T
 }
