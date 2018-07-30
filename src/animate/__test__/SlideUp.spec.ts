@@ -71,18 +71,4 @@ describe('SlideUp', () => {
     const slide = mount(SlideupFactory({afterStateChange: () => next()}, child))
     slide.find('p').simulate('click')
   })
-
-  it('should set display: none when component has beed slide up', (next) => {
-    const props = {
-      afterStateChange: () => {
-        expect(alert.find('div').render().css('display')).toBe('none')
-        next()
-      },
-    }
-    const child = (slideup: any) => {
-      return p({ onClick: () => slideup() }, 'text')
-    }
-    const alert = mount(SlideupFactory(props, child))
-    alert.find('p').hostNodes().simulate('click')
-  })
 })

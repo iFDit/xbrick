@@ -30,12 +30,28 @@ export class SlideUp extends React.Component<ISlideupProps> {
   static getDerivedStateFromProps(props: ISlideupProps, state: any) {
     const active = get(props, 'active', props.defaultActive)
     if (active !== state.active) {
-      return { ...state, active }
+      const styles = SlideUp.getToStyle(state.dom)
+      return { ...state, styles, active }
     }
     return state
   }
 
-  public state = { active: !!get(this.props, 'active', this.props.defaultActive), styles: {} }
+  static getToStyle = (dom: HTMLElement) => {
+    if (dom) {
+      const { height } = dom.getBoundingClientRect ? dom.getBoundingClientRect() : {height: 0}
+      return {
+        height,
+        marginTop: getcss(dom, 'margin-top', 0),
+        paddingTop: getcss(dom, 'padding-top', 0),
+        marginBottom: getcss(dom, 'margin-bottom', 0),
+        paddingBottom: getcss(dom, 'padding-bottom', 0),
+      }
+    } else {
+      return {}
+    }
+  }
+
+  public state: any = { active: !!get(this.props, 'active', this.props.defaultActive), styles: {} }
 
   public static displayName = 'xbrick.SlideUp'
 
@@ -56,19 +72,8 @@ export class SlideUp extends React.Component<ISlideupProps> {
   }
 
   public componentDidMount() {
-    const overflow = 'hidden'
     const dom = ReactDOM.findDOMNode(this) as HTMLElement
-    const { height } = dom ? dom.getBoundingClientRect() : {height: 0}
-    this.setState({
-      styles: {
-        height,
-        overflow,
-        marginTop: getcss(dom, 'margin-top', 0),
-        paddingTop: getcss(dom, 'padding-top', 0),
-        marginBottom: getcss(dom, 'margin-bottom', 0),
-        paddingBottom: getcss(dom, 'padding-bottom', 0),
-      },
-    })
+    this.setState({ dom })
   }
 
   public createFrom = () => {
@@ -91,36 +96,38 @@ export class SlideUp extends React.Component<ISlideupProps> {
 
   public slideup = () => {
     if (this.props.active == null) {
-      this.setState({active: true})
+      const styles = SlideUp.getToStyle(this.state.dom)
+      this.setState({active: true, styles})
     }
   }
 
   public afterClose = () => {
     const { afterStateChange } = this.props
-    const { styles } = this.state
-    const finalStyle = { ...styles, display: 'none' }
-    this.setState({styles: finalStyle}, () => {
+    this.setState({active: false}, () => {
       afterStateChange && afterStateChange()
     })
   }
 
   render() {
     const { children, style, ...others } = this.props
-    const { active, styles } = this.state
-    const nextstyle = { ...style, ...styles }
+    const { active } = this.state
+    const nextStyle = { ...style }
     const nextProps = Object.assign(
       { active },
       omit(others, omitProps),
       {
         trigger: 'active',
-        from: close ? this.createFrom() : {},
+        from: active ? this.createFrom() : {},
         to: SlideUp.defaultProps.to,
         afterStateChange: this.afterClose,
       },
     )
 
+    if (active) {
+      nextStyle.overflow = 'hidden'
+    }
     return (
-      <Animate {...nextProps} style={nextstyle}>
+      <Animate {...nextProps} style={nextStyle}>
         {children && children(this.slideup)}
       </Animate>
     )
