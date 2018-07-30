@@ -1,0 +1,26 @@
+.doc-sidebar {
+  position: sticky;
+  top: 4em;
+  height: calc(100vh - 4em);
+  overflow: hidden;
+  transition: all 0.2s;
+  border-right: 1px solid rgba(0,0,0,.05);
+  &:hover {
+    overflow: auto;
+  }
+}
+
+.sidebar-item {
+  a {
+    color: rgba(0,0,0,.65);
+    font-weight: 500;
+    &:hover {
+      color: rgba(0,0,0, .95);
+    }
+  }
+
+  .nav>li>a {
+    font-weight: 400;
+    font-size: 14px;
+  }
+}

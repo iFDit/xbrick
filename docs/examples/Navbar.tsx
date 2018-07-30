@@ -17,12 +17,12 @@ const Example = () => {
   let toggle: any
   let show: boolean = false
   return (
-    <Navbar>
+    <Navbar expand="sm">
       {({ getTogglerProps, getCollapseProps }) => (
         <>
           <NavbarBrand href="/">Navbar</NavbarBrand>
           <NavbarToggler {...getTogglerProps()} />
-          <NavbarCollapse {...getCollapseProps()} style={{paddingTop: 10}}>
+          <NavbarCollapse {...getCollapseProps()}>
             <Nav navbar>
               <NavItem>
                 <NavLink href="#" active>Home</NavLink>
@@ -31,7 +31,7 @@ const Example = () => {
                 <NavLink href="#">Link</NavLink>
               </NavItem>
               <Dropdown navItem>
-                <DropdownToggle navLink bstype="light" onClick={() => {
+                <DropdownToggle navLink custom bstype="light" href="#" onClick={() => {
                   toggle()
                   show = !show
                 }}>Dropdown</DropdownToggle>
