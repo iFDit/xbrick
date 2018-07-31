@@ -2,8 +2,12 @@ import * as React from 'react'
 const logo = require('src/logo.svg')
 import { Form, Input, Button } from 'xbrick'
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarToggler, Nav, NavItem, NavLink } from 'xbrick'
+import { Link, withRouter } from 'react-router-dom'
 
-const Header = () => {
+export const Header = withRouter(props => {
+  const { location = {} } = props
+  const { pathname } = location as any
+
   return (
     <Navbar justify="between" sticky>
       {({ getTogglerProps, getCollapseProps }) => (
@@ -13,13 +17,13 @@ const Header = () => {
           <NavbarCollapse {...getCollapseProps()}>
             <Nav navbar>
               <NavItem>
-                <NavLink href="#">Home</NavLink>
+                <NavLink nowrap active={pathname.indexOf('/home') > -1}><Link to="/home">Home</Link></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Documentation</NavLink>
+                <NavLink nowrap active={pathname.indexOf('/documents') > -1}><Link to="/documents">Documentation</Link></NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">GitHub</NavLink>
+                <NavLink href="https://github.com/iFDit/xbrick">GitHub</NavLink>
               </NavItem>
             </Nav>
           </NavbarCollapse>
@@ -31,6 +35,4 @@ const Header = () => {
       )}
     </Navbar>
   )
-}
-
-export default Header
+})

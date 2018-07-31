@@ -14,7 +14,7 @@
   a {
     color: rgba(0,0,0,.65);
     font-weight: 500;
-    &:hover {
+    &:hover, &.active {
       color: rgba(0,0,0, .95);
     }
   }
@@ -23,4 +23,9 @@
     font-weight: 400;
     font-size: 14px;
   }
+}
+
+.doc-content-header {
+  position: sticky;
+  top: 4em;
 }
