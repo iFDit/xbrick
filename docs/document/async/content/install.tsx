@@ -6,6 +6,6 @@ import * as React from 'react'
 // @ts-ignore
 import * as l from 'docs/document/async/Loading'
 
-export const Document = asyncComponent(() => {
-  return import('docs/document/doc').then(modules => modules.Doc)
-})
+export const AsyncInstall = asyncComponent(() => (
+  import('docs/document/content/getstart/install').then(modules => modules.Install)
+))

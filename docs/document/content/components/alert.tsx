@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Container, Row, Col, Alert } from 'xbrick'
+import { Container, Row } from 'xbrick'
 
 export class AlertContent extends React.Component {
   render () {

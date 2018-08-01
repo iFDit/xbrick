@@ -27,5 +27,26 @@
 
 .doc-content-header {
   position: sticky;
-  top: 4em;
+  top: 1em;
+  padding: 10px;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.05);
+  z-index: 1010;
+  box-shadow: 0px 2px 10px rgba(0,0,0,.05);
+  .sticky-top-content {
+    position: sticky;
+    top: 4em;
+  }
+}
+
+.doc-content-title {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.doc-content-text {
+  width: 60%;
+  min-width: 500px;
+  margin-left: 10px;
+  font-size: 14px;
 }

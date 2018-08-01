@@ -1,5 +1,8 @@
 import * as React from 'react'
 import { Loading } from 'docs/document/async/Loading'
+// @ts-ignore
+// https://github.com/Microsoft/TypeScript/issues/9944
+import { ILoadingProps } from 'docs/document/async/Loading'
 
 export function asyncComponent(getComponent: any) {
   return class AsyncComponent extends React.Component {
