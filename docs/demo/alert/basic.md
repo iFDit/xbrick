@@ -2,10 +2,13 @@
 
 
 ````jsx
-import { Alert } from 'xbrick';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Alert } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
-  <>
+  <div>
     <Alert bstype="primary">
       This is a primary alert — check it out!
     </Alert>
@@ -30,6 +33,6 @@ ReactDOM.render(
     <Alert bstype="dark">
       This is a dark alert — check it out!
     </Alert>
-  </>
-, rootNode);
+  </div>
+, document.getElementById('root'))
 ````

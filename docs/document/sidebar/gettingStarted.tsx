@@ -42,6 +42,7 @@ export class GettingStarted extends React.Component<any> {
     const { open } = this.state
     const path = match.path
     const inRoot = this.itemActive(ROOT)
+    
     return (
       <>
         <NavLink href="#" active={inRoot} onClick={() => this.toggle()} nowrap={!inRoot}>

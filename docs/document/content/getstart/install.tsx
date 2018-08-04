@@ -1,15 +1,15 @@
 import * as React from 'react'
-import { Container, Row, Col, Nav, NavItem, NavLink } from 'xbrick'
+import { Container, Row, Col, Nav, NavItem, NavLink, Fade } from 'xbrick'
 import SyntaxHighlighter from 'react-syntax-highlighter/prism'
 import { xonokai } from 'react-syntax-highlighter/styles/prism'
 
 export const Install = () => {
   return (
-    <>
+    <Fade from={0} to={1}>
       <div className="doc-content-header">
-        <h3 style={{fontWeight: 300}}>Installation</h3>
+        <h1 style={{fontWeight: 300}}>Installation</h1>
         <div className="sticky-top-content">
-          <Nav>
+          <Nav className="doc-nav">
             <NavItem>
               <NavLink href="#install">NPM packages</NavLink>
             </NavItem>
@@ -19,9 +19,12 @@ export const Install = () => {
           </Nav>
         </div>
       </div>
-      <Container fluid style={{paddingTop: 20, paddingBottom: 10}}>
+      <Container fluid className="doc-content-container">
         <Row className="doc-content-title">
-          <Col><h5><a name="install">NPM packages</a></h5></Col>
+          <Col>
+            <a id="install" className="doc-anchor" />
+            <h5>NPM packages</h5>
+          </Col>
         </Row>
         <Row className="doc-content-text">
           <Col xs="12"><p>1. 使用npm或者yarn安装xbrick。</p></Col>
@@ -36,9 +39,18 @@ export const Install = () => {
               {afterInstall}
             </SyntaxHighlighter>
           </Col>
+          <Col xs="12"><p>引入样式：</p></Col>
+          <Col xs="12">
+            <SyntaxHighlighter language="javascript" style={xonokai}>
+              {insertCSS}
+            </SyntaxHighlighter>
+          </Col>
         </Row>
         <Row className="doc-content-title">
-          <Col><h5><a name="compatibility">Compatibility</a></h5></Col>
+          <Col>
+            <a id="compatibility" className="doc-anchor" />
+            <h5>Compatibility</h5>
+          </Col>
         </Row>
         <Row className="doc-content-text">
           <Col xs="12">
@@ -60,12 +72,12 @@ export const Install = () => {
               <a href="https://babeljs.io/docs/en/babel-plugin-transform-runtime/" className="mr-1 ml-1">babel-plugin-transform-runtime</a>
               <br />
               注：<a href="https://github.com/ant-design/ant-design/issues/6512" className="mr-1 ml-1">#6512</a>
-              避免同时使用babel和shim
+              避免同时使用babel和shim所引起的问题
             </p>
           </Col>
         </Row>
       </Container>
-    </>
+    </Fade>
   )
 }
 
@@ -77,9 +89,18 @@ yarn add xbrick
 npm install xbrick --save
 `
 
+const insertCSS = `
+// in the .js?x file
+import 'xbrick/lib/style/index.css'
+
+// or in the .scss file
+@import '~xbrick/lib/style/index.scss'
+`
+
 const afterInstall = `
 import * as React from 'react'
 import { Button, Alert } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 // useing JSX
 const myAlert = <Alert>this is a alert</Alert>

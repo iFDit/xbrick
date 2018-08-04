@@ -1,12 +1,26 @@
+html {
+  // transition on scroll
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-y: scroll;
+}
+
 .doc-sidebar {
   position: sticky;
-  top: 4em;
-  height: calc(100vh - 4em);
+  top: 60px;
   overflow: hidden;
   transition: all 0.2s;
   border-right: 1px solid rgba(0,0,0,.05);
   &:hover {
     overflow: auto;
+  }
+}
+
+@media (min-width: 576px) {
+  .doc-sidebar {
+    height: calc(100vh - 60px);
   }
 }
 
@@ -27,7 +41,7 @@
 
 .doc-content-header {
   position: sticky;
-  top: 1em;
+  top: 0;
   padding: 10px;
   background-color: #fff;
   border-bottom: 1px solid rgba(0,0,0,.05);
@@ -42,6 +56,7 @@
 .doc-content-title {
   font-weight: 500;
   margin-bottom: 5px;
+  margin-top: 5px;
 }
 
 .doc-content-text {
@@ -49,4 +64,90 @@
   min-width: 500px;
   margin-left: 10px;
   font-size: 14px;
+}
+
+.doc-codesandbox-container {
+  padding: 25px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background-color: rgb(238, 238, 238)
+}
+
+.doc-content-container {
+  // padding: 20px 10px 10px;
+}
+
+.doc-nav {
+  a {
+    color: rgba(0, 0, 0, .5);
+    transition: all 0.4s;
+    &:hover {
+      font-weight: 500;
+      color: rgba(0, 0, 0, 1);
+    }
+  }
+}
+
+.doc-code {
+  padding: 0;
+  margin: 0;
+  .doc-code-toolbar {
+    text-align: end;
+    top: 0;
+    opacity: 0;
+    transition: all 0.4s;
+    z-index: 1000;
+  }
+
+  .doc-codesandbox-form {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 20px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .doc-codesandbox-submit {
+    width: 14px;
+    height: 14px;
+    border: 0;
+    background-color: #fff;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .btn-copy {
+    height: 18px;
+    line-height: 0;
+    margin: 1px 10px;
+  }
+
+  &:hover {
+    .doc-code-toolbar {
+      opacity: 1;
+    }
+  }
+}
+
+.doc-api-table-container {
+  margin-bottom: 20px;
+  table {
+    width: 100%;
+  }
+  table, tr, td, th {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+  }
+
+  td {
+    padding: 0 5px;
+  }
+}
+
+.doc-anchor {
+  position: absolute;
+  left: 0;
+  top: -7.5em;
 }

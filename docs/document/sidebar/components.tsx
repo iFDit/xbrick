@@ -43,131 +43,131 @@ export class Components extends React.Component<any> {
         <NavLink href="#" active={inRoot} nowrap={!inRoot} onClick={() => this.toggle()}>
           {inRoot ? 'Components' : <Link to={`/documents/components`} onClick={() => this.toggle()}>Components</Link>}
         </NavLink>
-          <Collapse open={open}>
-            {() => (
-              <Nav vertical>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${ALERTS}`)}>
-                    <Link to={`${path}/${ALERTS}`}>Alerts</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${BADGE}`)}>
-                    <Link to={`${path}/${BADGE}`}>Badge</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${BREADCRUMB}`)}>
-                    <Link to={`${path}/${BREADCRUMB}`}>Breadcrumb</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${BUTTONS}`)}>
-                    <Link to={`${path}/${BUTTONS}`}>Buttons</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${CARD}`)}>
-                    <Link to={`${path}/${CARD}`}>Card</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${CAROUSEL}`)}>
-                    <Link to={`${path}/${CAROUSEL}`}>Carousel</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${COLLAPSE}`)}>
-                    <Link to={`${path}/${COLLAPSE}`}>Collapse</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${DROPDOWN}`)}>
-                    <Link to={`${path}/${DROPDOWN}`}>Dropdowns</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${FORMS}`)}>
-                    <Link to={`${path}/${FORMS}`}>Forms</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${INPUT_GROUP}`)}>
-                    <Link to={`${path}/${INPUT_GROUP}`}>Input group</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${JUMBOTRON}`)}>
-                    <Link to={`${path}/${JUMBOTRON}`}>Jumbotron</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${LAYOUT}`)}>
-                    <Link to={`${path}/${LAYOUT}`}>Layout</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${LIST_GROUP}`)}>
-                    <Link to={`${path}/${LIST_GROUP}`}>List group</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${MEDIA}`)}>
-                    <Link to={`${path}/${MEDIA}`}>Media</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${MODAL}`)}>
-                    <Link to={`${path}/${MODAL}`}>Modal</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${NAVBAR}`)}>
-                    <Link to={`${path}/${NAVBAR}`}>Navbar</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${NAVS}`)}>
-                    <Link to={`${path}/${NAVS}`}>Navs</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${PAGINATION}`)}>
-                    <Link to={`${path}/${PAGINATION}`}>Pagination</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${POPOVERS}`)}>
-                    <Link to={`${path}/${POPOVERS}`}>Popovers</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${PROGRESS}`)}>
-                    <Link to={`${path}/${PROGRESS}`}>Progress</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${SCROLLSPY}`)}>
-                    <Link to={`${path}/${SCROLLSPY}`}>Scrollspy</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${TOOLTIPS}`)}>
-                    <Link to={`${path}/${TOOLTIPS}`}>Tooltips</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${TABLE}`)}>
-                    <Link to={`${path}/${TABLE}`}>Table</Link>
-                  </NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink nowrap active={this.itemActive(`${path}/${TAB}`)}>
-                    <Link to={`${path}/${TAB}`}>Tab</Link>
-                  </NavLink>
-                </NavItem>
-              </Nav>
-            )}
+        <Collapse open={open}>
+          {() => (
+            <Nav vertical>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${ALERTS}`)}>
+                  <Link to={`${path}/${ALERTS}`}>Alerts</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${BADGE}`)}>
+                  <Link to={`${path}/${BADGE}`}>Badge</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${BREADCRUMB}`)}>
+                  <Link to={`${path}/${BREADCRUMB}`}>Breadcrumb</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${BUTTONS}`)}>
+                  <Link to={`${path}/${BUTTONS}`}>Buttons</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${CARD}`)}>
+                  <Link to={`${path}/${CARD}`}>Card</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${CAROUSEL}`)}>
+                  <Link to={`${path}/${CAROUSEL}`}>Carousel</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${COLLAPSE}`)}>
+                  <Link to={`${path}/${COLLAPSE}`}>Collapse</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${DROPDOWN}`)}>
+                  <Link to={`${path}/${DROPDOWN}`}>Dropdowns</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${FORMS}`)}>
+                  <Link to={`${path}/${FORMS}`}>Forms</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${INPUT_GROUP}`)}>
+                  <Link to={`${path}/${INPUT_GROUP}`}>Input group</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${JUMBOTRON}`)}>
+                  <Link to={`${path}/${JUMBOTRON}`}>Jumbotron</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${LAYOUT}`)}>
+                  <Link to={`${path}/${LAYOUT}`}>Layout</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${LIST_GROUP}`)}>
+                  <Link to={`${path}/${LIST_GROUP}`}>List group</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${MEDIA}`)}>
+                  <Link to={`${path}/${MEDIA}`}>Media</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${MODAL}`)}>
+                  <Link to={`${path}/${MODAL}`}>Modal</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${NAVBAR}`)}>
+                  <Link to={`${path}/${NAVBAR}`}>Navbar</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${NAVS}`)}>
+                  <Link to={`${path}/${NAVS}`}>Navs</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${PAGINATION}`)}>
+                  <Link to={`${path}/${PAGINATION}`}>Pagination</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${POPOVERS}`)}>
+                  <Link to={`${path}/${POPOVERS}`}>Popovers</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${PROGRESS}`)}>
+                  <Link to={`${path}/${PROGRESS}`}>Progress</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${SCROLLSPY}`)}>
+                  <Link to={`${path}/${SCROLLSPY}`}>Scrollspy</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${TOOLTIPS}`)}>
+                  <Link to={`${path}/${TOOLTIPS}`}>Tooltips</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${TABLE}`)}>
+                  <Link to={`${path}/${TABLE}`}>Table</Link>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink nowrap active={this.itemActive(`${path}/${TAB}`)}>
+                  <Link to={`${path}/${TAB}`}>Tab</Link>
+                </NavLink>
+              </NavItem>
+            </Nav>
+          )}
         </Collapse>
       </>
     )
