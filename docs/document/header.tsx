@@ -1,8 +1,12 @@
 import * as React from 'react'
 const logo = require('src/logo.svg')
-import { Form, Input, Button } from 'xbrick'
+import { Form, Input } from 'xbrick'
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarToggler, Nav, NavItem, NavLink } from 'xbrick'
 import { Link, withRouter } from 'react-router-dom'
+// @ts-ignore
+// fixed typescript declaration.
+// https://github.com/Microsoft/TypeScript/issues/9944
+import * as rr from 'react-router'
 
 export const Header = withRouter(props => {
   const { location = {} } = props

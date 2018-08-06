@@ -3,7 +3,8 @@ import { getParameters } from 'codesandbox/lib/api/define'
 export function getCodeFromString(str: string) {
   const dom = new DOMParser()
   const doc = dom.parseFromString(str, 'text/html')
-  return doc.querySelector('code') ? doc.querySelector('code')!.textContent : ''
+  const codes = doc.querySelectorAll('code')
+  return codes.length > 0 ? codes[codes.length - 1].textContent : ''
 }
 
 export function getTableFromString(str: string) {

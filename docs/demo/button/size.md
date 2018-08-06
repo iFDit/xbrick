@@ -4,13 +4,16 @@
 默认为中尺寸。
 
 ````jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Button } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
-  <>
+  <div>
     <Button size="large">Primary</Button>
     <Button size="middle">Primary</Button>
     <Button size="small">Primary</Button>
-  </>
-, rootNode)
+  </div>
+, document.getElementById('root'))
 ````

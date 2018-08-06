@@ -30,7 +30,7 @@ export class DocCode extends React.Component<any> {
     const { codeText = '' } = this.props
     const { open, copied } = this.state
     return (
-      <Container fluid>
+      <Container fluid style={{marginTop: 10}}>
         <Row className="doc-content-text" xs={{ justify: 'end' }} style={{marginBottom: 5}}>
           <Col xs="3" sm="3" md="3" lg="3" xl="2" style={{textAlign: 'end'}}>
             <Button

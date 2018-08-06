@@ -60,7 +60,7 @@ body {
 }
 
 .doc-content-text {
-  width: 60%;
+  width: 65%;
   min-width: 500px;
   margin-left: 10px;
   font-size: 14px;
@@ -137,12 +137,18 @@ body {
     width: 100%;
   }
   table, tr, td, th {
+    font-size: 12px;
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
   }
 
   td {
     padding: 0 5px;
+  }
+
+  td, th {
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 }
 
