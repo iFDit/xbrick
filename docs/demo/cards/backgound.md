@@ -3,7 +3,11 @@
 通过 `bstype` 属性设置卡片的背景。
 
 ````jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Card, CardBody, CardTitle, CardText } from 'xbrick'
+import 'xbrick/lib/style/index.css'
+
 
 ReactDOM.render(
   <>
@@ -72,5 +76,5 @@ ReactDOM.render(
       </CardBody>
     </Card>
   </>
-, rootNode)
+, document.getElementById('root'))
 ````

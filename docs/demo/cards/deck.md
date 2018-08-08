@@ -3,7 +3,10 @@
 使用 `CardDeck` 组合多个卡片，并且每个卡片拥有相同的高度和宽度。
 
 ````jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Card, CardBody, CardTitle, CardText, CardDeck } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <CardDeck>
@@ -30,5 +33,5 @@ ReactDOM.render(
       </CardBody>
     </Card>
   </CardDeck>
-, rootNode)
+, document.getElementById('root'))
 ````

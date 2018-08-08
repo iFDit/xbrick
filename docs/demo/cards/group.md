@@ -3,7 +3,10 @@
 使用 `CardGroup` 组件组合多个卡片。
 
 ````jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Card, CardBody, CardTitle, CardText, CardGroup } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <CardGroup>
@@ -30,5 +33,5 @@ ReactDOM.render(
       </CardBody>
     </Card>
   </CardGroup>
-, rootNode)
+, document.getElementById('root'))
 ````

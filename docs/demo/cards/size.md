@@ -3,7 +3,10 @@
 可以通过自定义样式或者使用bootstrap布局类来修改卡片的大小。
 
 ````jsx
-import { Card, CardBody, CardTitle, CardText, Button } from 'xbrick'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { Card, CardTitle, CardBody, CardText, CardImg, Button } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <>
@@ -29,5 +32,5 @@ ReactDOM.render(
       </CardBody>
     </Card>
   </>
-, rootNode)
+, document.getElementById('root'))
 ````

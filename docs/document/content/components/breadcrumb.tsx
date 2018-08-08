@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Col } from 'xbrick'
 import { Breadcrumb, BreadcrumbItem } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
@@ -59,6 +59,7 @@ export function BreadcrumbContent() {
       codeText: getCodeFromString(converter.makeHtml(badgeBase)),
     })
     .addAPI({
+      header: true,
       title: 'Breadcrumb',
       content: getTableFromString(converter.makeHtml(api)),
     })

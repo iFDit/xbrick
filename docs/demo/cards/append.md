@@ -3,7 +3,11 @@
 通过 `CardHeader` 和 `CardFooter` 来展示卡片的头部和脚部信息。
 
 ````jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Card, CardBody, CardTitle, CardText, CardHeader, CardFooter, Button } from 'xbrick'
+import 'xbrick/lib/style/index.css'
+
 
 ReactDOM.render(
   <Card>
@@ -15,5 +19,5 @@ ReactDOM.render(
     </CardBody>
     <CardFooter>footer</CardFooter>
   </Card>
-, rootNode)
+, document.getElementById('root'))
 ````

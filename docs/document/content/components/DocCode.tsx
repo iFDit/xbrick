@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Container, Row, Col, Button , Collapse } from 'xbrick'
 const sandbox = require('docs/document/asset/codesandbox.svg')
 import SyntaxHighlighter from 'react-syntax-highlighter'
@@ -6,10 +6,16 @@ import { tomorrow } from 'react-syntax-highlighter/styles/hljs'
 import { getcodesandboxParam } from 'docs/document/content/util'
 
 export class DocCode extends React.Component<any> {
-  public state = { open: false, copied: false }
+  public state = { defaultOpen: false, open: null, copied: false }
+
   public toggle = () => {
+    const { defaultOpen, open } = this.state
+    this.setState({ open: !(open == null ? defaultOpen : open) })
+  }
+
+  public afterAnimate = () => {
     const { open } = this.state
-    this.setState({ open: !open })
+    this.setState({ open: null, defaultOpen: open })
   }
 
   public copy = (text: string) => {
@@ -28,7 +34,7 @@ export class DocCode extends React.Component<any> {
 
   render () {
     const { codeText = '' } = this.props
-    const { open, copied } = this.state
+    const { defaultOpen, open, copied } = this.state
     return (
       <Container fluid style={{marginTop: 10}}>
         <Row className="doc-content-text" xs={{ justify: 'end' }} style={{marginBottom: 5}}>
@@ -44,7 +50,7 @@ export class DocCode extends React.Component<any> {
         </Row>
         <Row className="doc-content-text">
           <Col xs="12" style={{padding: 0, margin: 0}}>
-            <Collapse open={open}>
+            <Collapse defaultOpen={defaultOpen} open={open} afterAnimate={this.afterAnimate}>
               {() => (
                 <Container fluid className="doc-code">
                   <Row xs={{ justify: 'end' }}>

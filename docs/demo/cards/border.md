@@ -3,7 +3,10 @@
 通过 `bstype` 和 `outline` 属性修改卡片边框颜色。
 
 ````jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Card, CardBody, CardTitle, CardText } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <>
@@ -72,5 +75,5 @@ ReactDOM.render(
       </CardBody>
     </Card>
   </>
-, rootNode)
+, document.getElementById('root'))
 ````

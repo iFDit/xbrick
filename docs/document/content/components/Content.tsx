@@ -19,6 +19,7 @@ export interface ISectionOption {
 export interface IApiOption {
   title: string
   content: React.ReactNode
+  header?: boolean
   wrapProps?: any
 }
 
@@ -89,12 +90,12 @@ export class Content {
           {this.apis.map((api, idx) => {
             return (
               <section key={`api${idx}`}>
-                <Row className="doc-content-title">
+                {api.header ? <Row className="doc-content-title">
                   <Col>
                     <a id="api" className="doc-anchor" />
                     <h5>API</h5>
                   </Col>
-                </Row>
+                </Row> : null }
                 {/* link color content */}
                 <Row className="doc-content-text" {...api.wrapProps}>
                   <h6>{api.title}</h6>

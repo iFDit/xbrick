@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Col } from 'xbrick'
 import { Button } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
@@ -205,6 +205,7 @@ export function ButtonsContent() {
       codeText: getCodeFromString(converter.makeHtml(disabled)),
     })
     .addAPI({
+      header: true,
       title: 'Button',
       content: getTableFromString(converter.makeHtml(api)),
     })

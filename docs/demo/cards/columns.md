@@ -3,7 +3,10 @@
 使用 `CardColumns` 将多个卡片从上到下，从左到右组合在一起。
 
 ````jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Card, CardBody, CardTitle, CardText, CardColumns } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <CardColumns>
@@ -37,5 +40,5 @@ ReactDOM.render(
         <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
       </Card>
   </CardColumns>
-, rootNode)
+, document.getElementById('root'))
 ````

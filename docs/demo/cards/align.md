@@ -3,7 +3,10 @@
 可以设置文本左对齐，右对齐和居中对齐，默认是左对齐。
 
 ````jsx
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { Card, CardBody, CardTitle, CardText, Button } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <>
@@ -29,5 +32,5 @@ ReactDOM.render(
     </CardBody>
   </Card>
   </>
-, rootNode)
+, document.getElementById('root'))
 ````

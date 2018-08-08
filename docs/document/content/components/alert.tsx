@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Col } from 'xbrick'
 import { AlertLink } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
@@ -171,6 +171,7 @@ export function AlertContent() {
       codeText: getCodeFromString(converter.makeHtml(closable)),
     })
     .addAPI({
+      header: true,
       title: 'Alert',
       content: getTableFromString(converter.makeHtml(api)),
     })
