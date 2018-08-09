@@ -1,22 +1,15 @@
 import React from 'react'
-import { Col, Button } from 'xbrick'
-import { Collapse } from 'xbrick'
+import { Col, Button, Card, CardHeader, CardBody } from 'xbrick'
+import { Collapse, UncontrolledCollapse } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
-import basic from 'docs/demo/carousel/basic.md'
-import control from 'docs/demo/carousel/control.md'
-import indicators from 'docs/demo/carousel/indicators.md'
-import captions from 'docs/demo/carousel/captions.md'
-import crossfade from 'docs/demo/carousel/crossfade.md'
+import basic from 'docs/demo/collapse/basic.md'
+import accordion from 'docs/demo/collapse/accordion.md'
+import uncontrolled from 'docs/demo/collapse/uncontrolled.md'
 
 // API
-import api from 'src/carousel/carousel.md'
-import uncontrolledCarouselApi from 'src/carousel/uncontrolled-carousel.md'
-import trackApi from 'src/carousel/carousel-track.md'
-import itemApi from 'src/carousel/carousel-item.md'
-import indicatorsApi from 'src/carousel/carousel-indicators.md'
-import controlApi from 'src/carousel/carousel-control.md'
-import captionApi from 'src/carousel/carousel-caption.md'
+import api from 'src/collapse/collapse.md'
+import uncontrolledApi from 'src/collapse/uncontrolled-collapse.md'
 
 import { Content } from 'docs/document/content/components/Content'
 import * as showdown from 'showdown'
@@ -24,16 +17,11 @@ const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
 class Example extends React.Component {
-  public state = { defaultOpen: true, open: null }
+  public state = { open: true }
 
   public toggle = () => {
-    const { defaultOpen, open } = this.state
-    this.setState({ open: !(open == null ? defaultOpen : open) })
-  }
-
-  public afterAnimate = () => {
     const { open } = this.state
-    this.setState({ open: null, defaultOpen: open })
+    this.setState({ open: !open })
   }
 
   render () {
@@ -41,8 +29,6 @@ class Example extends React.Component {
       <>
         <Button className="mb-2" onClick={() => this.toggle()}>Toggle</Button>
         <Collapse
-          afterAnimate={this.afterAnimate}
-          defaultOpen={this.state.defaultOpen}
           open={this.state.open}
           style={{border: '1px solid rgba(0, 0, 0, 0.1)', borderRadius: 4, padding: 10}}
         >
@@ -54,6 +40,88 @@ class Example extends React.Component {
           </p>
         </Collapse>
       </>
+    )
+  }
+}
+
+class Accordion extends React.Component {
+  public state = {
+    first: true,
+    second: false,
+    last: false,
+  }
+
+  public toggle = (key: string) => {
+    const last = this.state[key]
+    this.setState({
+      first: false,
+      second: false,
+      last: false,
+      [key]: !last,
+    })
+  }
+
+  render () {
+    return (
+      <div className="accordion">
+        <Card>
+          <CardHeader><a href="#" onClick={(e) => {
+            e.preventDefault()
+            this.toggle('first')
+          }}>Collapsible Group Item #1</a></CardHeader>
+          <Collapse open={this.state.first}>
+            <CardBody>
+              Anim pariatur cliche reprehenderit,
+              enim eiusmod high life accusamus terry richardson ad squid.
+              3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+              Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+              raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </CardBody>
+          </Collapse>
+        </Card>
+        <Card>
+          <CardHeader><a href="#" onClick={(e) => {
+            e.preventDefault()
+            this.toggle('second')
+          }}>Collapsible Group Item #2</a></CardHeader>
+          <Collapse open={this.state.second}>
+            <CardBody>
+              Anim pariatur cliche reprehenderit,
+              enim eiusmod high life accusamus terry richardson ad squid.
+              3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+              Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+              raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </CardBody>
+          </Collapse>
+        </Card>
+        <Card>
+          <CardHeader><a href="#" onClick={(e) => {
+            e.preventDefault()
+            this.toggle('last')
+          }}>Collapsible Group Item #3</a></CardHeader>
+          <Collapse open={this.state.last}>
+            <CardBody>
+              Anim pariatur cliche reprehenderit,
+              enim eiusmod high life accusamus terry richardson ad squid.
+              3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+              Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
+              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.
+              Nihil anim keffiyeh helvetica,
+              craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+              raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+            </CardBody>
+          </Collapse>
+        </Card>
+      </div>
     )
   }
 }
@@ -92,6 +160,40 @@ export function CollapseContent() {
           <Example/>
         </Col>
       ),
+      codeText: getCodeFromString(converter.makeHtml(basic)),
+    })
+    .addSection({
+      title: 'Accordion',
+      describe: '',
+      content: (
+        <Col>
+          <Accordion/>
+        </Col>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(accordion)),
+    })
+    .addSection({
+      title: 'Uncontrolled',
+      describe: '',
+      content: (
+        <Col>
+          <UncontrolledCollapse defaultOpen={true}>
+            {({ toggle }) => (
+              <p onClick={() => toggle()}>some text in here, and can be hidden by click me.</p>
+            )}
+          </UncontrolledCollapse>
+        </Col>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(uncontrolled)),
+    })
+    .addAPI({
+      header: true,
+      title: 'Collapse',
+      content: getTableFromString(converter.makeHtml(api)),
+    })
+    .addAPI({
+      title: 'Uncontrolled',
+      content: getTableFromString(converter.makeHtml(uncontrolledApi)),
     })
     .render()
 }

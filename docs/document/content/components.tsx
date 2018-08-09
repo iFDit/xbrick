@@ -7,6 +7,7 @@ import { ButtonsContent } from 'docs/document/content/components/buttons'
 import { CardContent } from 'docs/document/content/components/cards'
 import { CarouselContent } from 'docs/document/content/components/carousel'
 import { CollapseContent } from 'docs/document/content/components/collapse'
+import { DropdownContent } from 'docs/document/content/components/dropdown'
 // @ts-ignore
 // fixed typescript declaration.
 // https://github.com/Microsoft/TypeScript/issues/9944
@@ -24,6 +25,7 @@ export const Components = withRouter(props => {
       <Route path={`${path}/card`} component={CardContent} />
       <Route path={`${path}/carousel`} component={CarouselContent} />
       <Route path={`${path}/collapse`} component={CollapseContent} />
+      <Route path={`${path}/dropdowns`} component={DropdownContent} />
     </>
   )
 })

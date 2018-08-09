@@ -6,16 +6,11 @@ import { tomorrow } from 'react-syntax-highlighter/styles/hljs'
 import { getcodesandboxParam } from 'docs/document/content/util'
 
 export class DocCode extends React.Component<any> {
-  public state = { defaultOpen: false, open: null, copied: false }
+  public state = { open: false, copied: false }
 
   public toggle = () => {
-    const { defaultOpen, open } = this.state
-    this.setState({ open: !(open == null ? defaultOpen : open) })
-  }
-
-  public afterAnimate = () => {
     const { open } = this.state
-    this.setState({ open: null, defaultOpen: open })
+    this.setState({ open: !open })
   }
 
   public copy = (text: string) => {
@@ -50,7 +45,7 @@ export class DocCode extends React.Component<any> {
         </Row>
         <Row className="doc-content-text">
           <Col xs="12" style={{padding: 0, margin: 0}}>
-            <Collapse defaultOpen={defaultOpen} open={open} afterAnimate={this.afterAnimate}>
+            <Collapse open={open}>
               {() => (
                 <Container fluid className="doc-code">
                   <Row xs={{ justify: 'end' }}>

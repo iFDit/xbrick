@@ -34,26 +34,20 @@ class DropdownComponent extends React.Component {
     const { show } = this.state
     return (
       <Dropdown>
-        <DropdownToggle onClick={() => {
-          this.toggle()
-        }}>
+        <DropdownToggle>
           Toggle
         </DropdownToggle>
-        <DropdownMenu open={show}>
-          {() => (
-            <>
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another action</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-            </>
-          )}
+        <DropdownMenu>
+          <DropdownItem>Action</DropdownItem>
+          <DropdownItem>Another action</DropdownItem>
+          <DropdownItem>Something else here</DropdownItem>
+          <DropdownItem>Something else here</DropdownItem>
+          <DropdownItem>Something else here</DropdownItem>
+          <DropdownItem>Something else here</DropdownItem>
+          <DropdownItem>Something else here</DropdownItem>
+          <DropdownItem>Something else here</DropdownItem>
+          <DropdownItem>Something else here</DropdownItem>
+          <DropdownItem>Something else here</DropdownItem>
         </DropdownMenu>
       </Dropdown>
     )
