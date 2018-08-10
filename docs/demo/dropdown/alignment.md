@@ -1,4 +1,3 @@
-基本用法
 
 ````jsx
 import React, { Fragment } from 'react'
@@ -9,9 +8,9 @@ import 'xbrick/lib/style/index.css'
 ReactDOM.render(
   <Dropdown>
     <DropdownToggle button bstype="secondary">
-      Dropdown button
+      Right-aligned menu
     </DropdownToggle>
-    <DropdownMenu>
+    <DropdownMenu right>
       <DropdownItem>Action</DropdownItem>
       <DropdownItem>Another action</DropdownItem>
       <DropdownItem>Something else here</DropdownItem>

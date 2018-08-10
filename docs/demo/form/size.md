@@ -1,7 +1,10 @@
 改变 `Input` 组件的大小。
 
 ````jsx
+import React, { Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import { Form, FormGroup, Input } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <Form>
@@ -30,5 +33,5 @@ ReactDOM.render(
       </Input>
     </FormGroup>
   </Form>
-, rootNode)
+, document.getElementById('root'))
 ````

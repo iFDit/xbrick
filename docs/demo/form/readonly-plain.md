@@ -9,7 +9,7 @@ import 'xbrick/lib/style/index.css'
 ReactDOM.render(
   <Form>
     <FormGroup>
-      <Input placeholder="Readonly input here..." readonly />
+      <Input placeholder="Readonly input here..." plainText readonly />
     </FormGroup>
   </Form>
 , document.getElementById('root'))

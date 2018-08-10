@@ -29,20 +29,9 @@ export class DocCode extends React.Component<any> {
 
   render () {
     const { codeText = '' } = this.props
-    const { defaultOpen, open, copied } = this.state
+    const { open, copied } = this.state
     return (
       <Container fluid style={{marginTop: 10}}>
-        <Row className="doc-content-text" xs={{ justify: 'end' }} style={{marginBottom: 5}}>
-          <Col xs="3" sm="3" md="3" lg="3" xl="2" style={{textAlign: 'end'}}>
-            <Button
-              bstype="light"
-              size="small"
-              onClick={() => this.toggle()}
-            >
-              {`<${open ? 'hide' : 'show'} code>`}
-            </Button>
-          </Col>
-        </Row>
         <Row className="doc-content-text">
           <Col xs="12" style={{padding: 0, margin: 0}}>
             <Collapse open={open}>
@@ -69,6 +58,19 @@ export class DocCode extends React.Component<any> {
                 </Container>
               )}
             </Collapse>
+          </Col>
+        </Row>
+        <Row className="doc-content-text" style={{marginBottom: 15}}>
+          <Col xs="12"  style={{textAlign: 'end'}}>
+            <Button
+              block
+              size="small"
+              bstype="light"
+              onClick={() => this.toggle()}
+              className="doc-view-code-text"
+            >
+              <span>{`</> ${open ? 'hide' : 'view'} code`}</span>
+            </Button>
           </Col>
         </Row>
       </Container>

@@ -1,7 +1,10 @@
 垂直对齐方式
 
 ````jsx
+import React, { Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import { Container, Row, Col } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <Container>
@@ -26,5 +29,5 @@ ReactDOM.render(
       <Col xs={{ align: 'end' }}>One of three columns</Col>
     </Row>
   </Container>
-, rootNode)
+, document.getElementById('root'))
 ````

@@ -1,4 +1,3 @@
-列偏移
 
 ````jsx
 import React, { Fragment } from 'react'
@@ -8,10 +7,11 @@ import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <Container>
-    <Row>
-      <Col md="4">col-md-4</Col>
-      <Col md={{ col: 4, offset: 3 }}>col-md-4</Col>
+    <Row noGutter>
+      <Col xs="12" sm="6" md="8">.col-12 .col-sm-6 .col-md-8</Col>
+      <Col xs="6" md="4">.col-6 .col-md-4</Col>
     </Row>
   </Container>
 , document.getElementById('root'))
+
 ````

@@ -1,4 +1,4 @@
-基本用法
+
 
 ````jsx
 import React, { Fragment } from 'react'
@@ -7,9 +7,9 @@ import { Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Button } from 'xb
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
-  <Dropdown>
+  <Dropdown direction="right">
     <DropdownToggle button bstype="secondary">
-      Dropdown button
+      Dropright
     </DropdownToggle>
     <DropdownMenu>
       <DropdownItem>Action</DropdownItem>

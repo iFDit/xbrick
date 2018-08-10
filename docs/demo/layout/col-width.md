@@ -1,7 +1,10 @@
 设置 `Col` 不同大小
 
 ````jsx
+import React, { Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import { Container, Row, Col } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <Container>
@@ -54,5 +57,5 @@ ReactDOM.render(
       <Col sm>col-sm</Col>
     </Row>
   </Container>
-, rootNode)
+, document.getElementById('root'))
 ````

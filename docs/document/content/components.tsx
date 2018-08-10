@@ -8,6 +8,11 @@ import { CardContent } from 'docs/document/content/components/cards'
 import { CarouselContent } from 'docs/document/content/components/carousel'
 import { CollapseContent } from 'docs/document/content/components/collapse'
 import { DropdownContent } from 'docs/document/content/components/dropdown'
+import { FormContent } from 'docs/document/content/components/forms'
+import { InputGroupContent } from 'docs/document/content/components/inputGroup'
+import { JumbotronContent } from 'docs/document/content/components/jumbotron'
+import { LayoutContent } from 'docs/document/content/components/layout'
+import { ListGroupContent } from 'docs/document/content/components/listGroup'
 // @ts-ignore
 // fixed typescript declaration.
 // https://github.com/Microsoft/TypeScript/issues/9944
@@ -26,6 +31,11 @@ export const Components = withRouter(props => {
       <Route path={`${path}/carousel`} component={CarouselContent} />
       <Route path={`${path}/collapse`} component={CollapseContent} />
       <Route path={`${path}/dropdowns`} component={DropdownContent} />
+      <Route path={`${path}/forms`} component={FormContent} />
+      <Route path={`${path}/input-group`} component={InputGroupContent} />
+      <Route path={`${path}/jumbotron`} component={JumbotronContent} />
+      <Route path={`${path}/layout`} component={LayoutContent} />
+      <Route path={`${path}/list-group`} component={ListGroupContent} />
     </>
   )
 })

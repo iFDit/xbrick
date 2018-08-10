@@ -1,4 +1,3 @@
-`input-group` 基本用法
 
 ````jsx
 import React, { Fragment } from 'react'
@@ -8,10 +7,13 @@ import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <InputGroup>
-    <InputGroupAddon>
-      <InputGroupText>@</InputGroupText>
-    </InputGroupAddon>
-    <Input placehold="Username" />
+    <InputGroupText>
+      $
+    </InputGroupText>
+    <InputGroupText>
+      0.00
+    </InputGroupText>
+    <Input />
   </InputGroup>
 , document.getElementById('root'))
 ````

@@ -88,6 +88,16 @@ body {
   }
 }
 
+.doc-view-code-text {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
+  font-size: 12px;
+  transition: all 0.4s;
+  &:hover {
+    color: rgba(0, 0, 0, 1);
+  }
+}
+
 .doc-code {
   padding: 0;
   margin: 0;
@@ -156,4 +166,15 @@ body {
   position: absolute;
   left: 0;
   top: -7.5em;
+}
+
+.doc-layout-example-container {
+  .row {
+    margin-bottom: 5px;
+    &>div {
+      padding: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: rgb(226, 230, 234);
+    }
+  }
 }

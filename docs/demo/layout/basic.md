@@ -1,15 +1,23 @@
 网格布局基本用法
 
 ````jsx
+import React, { Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import { Container, Row, Col } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <Container>
     <Row>
-      <Col sm>One of three columns</Col>
-      <Col sm>One of three columns</Col>
-      <Col sm>One of three columns</Col>
+      <Col>1 of 2</Col>
+      <Col>2 of 2</Col>
+    </Row>
+    <Row>
+      <Col>1 of 3</Col>
+      <Col>2 of 3</Col>
+      <Col>3 of 3</Col>
     </Row>
   </Container>
-, rootNode)
+, document.getElementById('root'))
+
 ````
