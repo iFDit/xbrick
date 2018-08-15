@@ -1,15 +1,21 @@
 import React from 'react'
-import { Col } from 'xbrick'
-import { Button, Badge } from 'xbrick'
+import { Row, Col, Badge } from 'xbrick'
+import { ListGroup, ListGroupItem } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
-import badgeBase from 'docs/demo/badge/basic.md'
-import contextualVariations from 'docs/demo/badge/contextual-variations.md'
-import pill from 'docs/demo/badge/pill.md'
-import link from 'docs/demo/badge/link.md'
+import basic from 'docs/demo/list-group/basic.md'
+import active from 'docs/demo/list-group/active-item.md'
+import disabled from 'docs/demo/list-group/disabled-item.md'
+import hover from 'docs/demo/list-group/hover-item.md'
+import buttons from 'docs/demo/list-group/buttons.md'
+import flush from 'docs/demo/list-group/flush.md'
+import bstype from 'docs/demo/list-group/bstype.md'
+import badge from 'docs/demo/list-group/with-badge.md'
+import custom from 'docs/demo/list-group/custom.md'
 
 // API
-import api from 'src/badge/badge.md'
+import api from 'src/list-group/list-group.md'
+import itemapi from 'src/list-group/list-group-item.md'
 
 import { Content } from 'docs/document/content/components/Content'
 import * as showdown from 'showdown'
@@ -20,9 +26,14 @@ export function ListGroupContent() {
   return new Content('List Group')
     .addNav({ text: 'Overview', anchor: 'overview' })
     .addNav({ text: 'Examples', anchor: 'examples' })
-    .addNav({ text: 'Contextual variations', anchor: 'contextual-variations' })
-    .addNav({ text: 'Pill badges', anchor: 'pill-badges' })
-    .addNav({ text: 'Links', anchor: 'Links' })
+    .addNav({ text: 'Active items', anchor: 'active-items' })
+    .addNav({ text: 'Disabled items', anchor: 'disabled-items' })
+    .addNav({ text: 'Links', anchor: 'links' })
+    .addNav({ text: 'Buttons', anchor: 'buttons' })
+    .addNav({ text: 'Flush', anchor: 'flush' })
+    .addNav({ text: 'Contextual classes', anchor: 'contextual-classes' })
+    .addNav({ text: 'With badges', anchor: 'with-badges' })
+    .addNav({ text: 'Custom content', anchor: 'custom-content' })
     .addNav({ text: 'API', anchor: 'api' })
     .addSection({
       title: 'Overview',
@@ -41,6 +52,176 @@ export function ListGroupContent() {
           </ul>
         </Col>
       ),
+    })
+    .addSection({
+      title: 'Examples',
+      describe: '',
+      content: (
+        <ListGroup style={{width: '100%'}}>
+          <ListGroupItem>Cras justo odio</ListGroupItem>
+          <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem>Morbi leo risus</ListGroupItem>
+          <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem>Vestibulum at eros</ListGroupItem>
+        </ListGroup>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(basic)),
+    })
+    .addSection({
+      title: 'Active items',
+      describe: '',
+      content: (
+        <ListGroup style={{width: '100%'}}>
+          <ListGroupItem active>Cras justo odio</ListGroupItem>
+          <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem>Morbi leo risus</ListGroupItem>
+          <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem>Vestibulum at eros</ListGroupItem>
+        </ListGroup>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(active)),
+    })
+    .addSection({
+      title: 'Disabled items',
+      describe: '',
+      content: (
+        <ListGroup style={{width: '100%'}}>
+          <ListGroupItem disabled>Cras justo odio</ListGroupItem>
+          <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem>Morbi leo risus</ListGroupItem>
+          <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem>Vestibulum at eros</ListGroupItem>
+        </ListGroup>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(disabled)),
+    })
+    .addSection({
+      title: 'Links',
+      describe: '',
+      content: (
+        <ListGroup style={{width: '100%'}}>
+          <ListGroupItem tag="a" href="#" action>Cras justo odio</ListGroupItem>
+          <ListGroupItem tag="a" href="#" action>Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem tag="a" href="#" action>Morbi leo risus</ListGroupItem>
+          <ListGroupItem tag="a" href="#" action>Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem tag="a" href="#" action>Vestibulum at eros</ListGroupItem>
+        </ListGroup>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(hover)),
+    })
+    .addSection({
+      title: 'Buttons',
+      describe: '',
+      content: (
+        <ListGroup style={{width: '100%'}}>
+          <ListGroupItem tag="button" action>Cras justo odio</ListGroupItem>
+          <ListGroupItem tag="button" action>Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem tag="button" action>Morbi leo risus</ListGroupItem>
+          <ListGroupItem tag="button" action>Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem tag="button" action>Vestibulum at eros</ListGroupItem>
+        </ListGroup>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(buttons)),
+    })
+    .addSection({
+      title: 'Flush',
+      describe: '',
+      content: (
+        <ListGroup flush style={{width: '100%'}}>
+          <ListGroupItem>Cras justo odio</ListGroupItem>
+          <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem>Morbi leo risus</ListGroupItem>
+          <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem>Vestibulum at eros</ListGroupItem>
+        </ListGroup>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(flush)),
+    })
+    .addSection({
+      title: 'Contextual classes',
+      describe: '',
+      content: (
+        <ListGroup style={{width: '100%'}}>
+          <ListGroupItem tag="a" href="#" bstype="primary">Cras justo odio</ListGroupItem>
+          <ListGroupItem tag="a" href="#" bstype="secondary">Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem tag="a" href="#" bstype="warning">Morbi leo risus</ListGroupItem>
+          <ListGroupItem tag="a" href="#" bstype="success">Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem tag="a" href="#" bstype="danger">Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" bstype="info">Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" bstype="light">Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" bstype="dark">Vestibulum at eros</ListGroupItem>
+        </ListGroup>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(bstype)),
+    })
+    .addSection({
+      title: 'With badges',
+      describe: '',
+      content: (
+        <ListGroup style={{width: '100%'}}>
+          <ListGroupItem>
+            <Row xs={{justify: 'between'}}>
+              <Col>Cras justo odio</Col>
+              <Col xs={{align: 'center'}}><Badge pill>14</Badge></Col>
+            </Row>
+          </ListGroupItem>
+          <ListGroupItem>
+            <Row xs={{justify: 'between'}}>
+              <Col>Dapibus ac facilisis in</Col>
+              <Col xs={{align: 'center'}}><Badge pill>14</Badge></Col>
+            </Row>
+          </ListGroupItem>
+          <ListGroupItem>
+            <Row xs={{justify: 'between'}}>
+              <Col>Morbi leo risus</Col>
+              <Col xs={{align: 'center'}}><Badge pill>14</Badge></Col>
+            </Row>
+          </ListGroupItem>
+        </ListGroup>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(badge)),
+    })
+    .addSection({
+      title: 'Custom content',
+      describe: '',
+      content: (
+        <ListGroup style={{width: '100%'}}>
+          <ListGroupItem tag="a" href="#" action active>
+            <Row xs={{justify: 'between'}}>
+              <h5 className="mb-1">List group item heading</h5>
+              <small>3 days ago</small>
+            </Row>
+            <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small>Donec id elit non mi porta.</small>
+          </ListGroupItem>
+          <ListGroupItem tag="a" href="#" action>
+            <Row xs={{justify: 'between'}}>
+              <h5 className="mb-1">List group item heading</h5>
+              <small>3 days ago</small>
+            </Row>
+            <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small>Donec id elit non mi porta.</small>
+          </ListGroupItem>
+          <ListGroupItem tag="a" href="#" action>
+            <Row xs={{justify: 'between'}}>
+              <h5 className="mb-1">List group item heading</h5>
+              <small>3 days ago</small>
+            </Row>
+            <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+            <small>Donec id elit non mi porta.</small>
+          </ListGroupItem>
+        </ListGroup>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(custom)),
+    })
+    .addAPI({
+      header: true,
+      title: 'ListGroup',
+      content: getTableFromString(converter.makeHtml(api)),
+    })
+    .addAPI({
+      title: 'ListGroupItem',
+      content: getTableFromString(converter.makeHtml(itemapi)),
     })
     .render()
 }

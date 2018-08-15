@@ -13,6 +13,11 @@ import { InputGroupContent } from 'docs/document/content/components/inputGroup'
 import { JumbotronContent } from 'docs/document/content/components/jumbotron'
 import { LayoutContent } from 'docs/document/content/components/layout'
 import { ListGroupContent } from 'docs/document/content/components/listGroup'
+import { ModalsContent } from 'docs/document/content/components/modal'
+import { MediaContent } from 'docs/document/content/components/media'
+import { NavbarContent } from 'docs/document/content/components/navbar'
+import { NavsContent } from 'docs/document/content/components/navs'
+
 // @ts-ignore
 // fixed typescript declaration.
 // https://github.com/Microsoft/TypeScript/issues/9944
@@ -36,6 +41,10 @@ export const Components = withRouter(props => {
       <Route path={`${path}/jumbotron`} component={JumbotronContent} />
       <Route path={`${path}/layout`} component={LayoutContent} />
       <Route path={`${path}/list-group`} component={ListGroupContent} />
+      <Route path={`${path}/modal`} component={ModalsContent} />
+      <Route path={`${path}/media`} component={MediaContent} />
+      <Route path={`${path}/navbar`} component={NavbarContent} />
+      <Route path={`${path}/navs`} component={NavsContent} />
     </>
   )
 })

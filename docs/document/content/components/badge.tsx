@@ -22,7 +22,7 @@ export function BadgeContent() {
     .addNav({ text: 'Examples', anchor: 'examples' })
     .addNav({ text: 'Contextual variations', anchor: 'contextual-variations' })
     .addNav({ text: 'Pill badges', anchor: 'pill-badges' })
-    .addNav({ text: 'Links', anchor: 'Links' })
+    .addNav({ text: 'Links', anchor: 'links' })
     .addNav({ text: 'API', anchor: 'api' })
     .addSection({
       title: 'Overview',

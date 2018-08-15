@@ -1,7 +1,10 @@
 垂直展示
 
 ````jsx
+import React, { Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import { Nav, NavItem, NavLink } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <Nav vertical>
@@ -15,8 +18,8 @@ ReactDOM.render(
       <NavLink href="#">Link</NavLink>
     </NavItem>
     <NavItem>
-      <NavLink disabled>Disabled</NavLink>
+      <NavLink disabled href="#">Disabled</NavLink>
     </NavItem>
   </Nav>
-, rootNode)
+, document.getElementById('root'))
 ````

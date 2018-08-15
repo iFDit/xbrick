@@ -1,4 +1,3 @@
-基本使用
 
 ````jsx
 import React, { Fragment } from 'react'
@@ -19,7 +18,7 @@ import {
 } from 'xbrick'
 
 ReactDOM.render(
-  <Navbar>
+  <Navbar expand="xl">
     <NavbarBrand href="/">Navbar</NavbarBrand>
     <NavbarToggler {...getTogglerProps()} />
     <NavbarCollapse {...getCollapseProps()}>

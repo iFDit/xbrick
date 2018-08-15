@@ -1,4 +1,3 @@
-基本使用
 
 ````jsx
 import React, { Fragment } from 'react'
@@ -9,20 +8,21 @@ import 'xbrick/lib/style/index.css'
 class Example extends React.Component {
   public state = { open: false }
 
-  open = () => {
-    this.setState({ open: true })
+  open = (size) => {
+    this.setState({ open: true, size })
   }
 
   close = () => {
     this.setState({ open: false })
   }
   render () {
-    const { open } = this.state
+    const { open, size } = this.state
     return (
       <Fragment>
-        <Button onClick={() => this.open()}>Launch demo modal</Button>
+        <Button onClick={() => this.open('large')}>Large modal</Button>
+        <Button onClick={() => this.open('small')}>Small modal</Button>
         <Modal open={open}>
-          <ModalDialog>
+          <ModalDialog size={size}>
             <ModalContent>
               <ModalHeader onIconClick={() => this.close()}>
                 <ModalTitle>title</ModalTitle>

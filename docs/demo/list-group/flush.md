@@ -1,7 +1,10 @@
 无边框
 
 ````jsx
+import React, { Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import { ListGroup, ListGroupItem } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <ListGroup flush>
@@ -11,5 +14,5 @@ ReactDOM.render(
     <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
     <ListGroupItem>Vestibulum at eros</ListGroupItem>
   </ListGroup>
-, rootNode)
+, document.getElementById('root'))
 ````

@@ -1,7 +1,10 @@
 使用 `bstype` 属性 
 
 ````jsx
+import React, { Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import { ListGroup, ListGroupItem } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <ListGroup>
@@ -14,5 +17,5 @@ ReactDOM.render(
     <ListGroupItem tag="a" href="#" bstype="light">Vestibulum at eros</ListGroupItem>
     <ListGroupItem tag="a" href="#" bstype="dark">Vestibulum at eros</ListGroupItem>
   </ListGroup>
-, rootNode)
+, document.getElementById('root'))
 ````

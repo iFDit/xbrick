@@ -1,4 +1,3 @@
-基本使用
 
 ````jsx
 import React, { Fragment } from 'react'
@@ -21,8 +20,8 @@ class Example extends React.Component {
     return (
       <Fragment>
         <Button onClick={() => this.open()}>Launch demo modal</Button>
-        <Modal open={open}>
-          <ModalDialog>
+        <Modal open={open} >
+          <ModalDialog align="center">
             <ModalContent>
               <ModalHeader onIconClick={() => this.close()}>
                 <ModalTitle>title</ModalTitle>

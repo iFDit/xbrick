@@ -1,7 +1,10 @@
 自定义布局
 
 ````jsx
+import React, { Fragment } from 'react'
+import ReactDOM from 'react-dom'
 import { ListGroup, ListGroupItem, Row, Col } from 'xbrick'
+import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <ListGroup>
@@ -30,5 +33,5 @@ ReactDOM.render(
       <small>Donec id elit non mi porta.</small>
     </ListGroupItem>
   </ListGroup>
-, rootNode)
+, document.getElementById('root'))
 ````
