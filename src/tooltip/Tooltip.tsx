@@ -61,7 +61,6 @@ export class Tooltip extends React.Component<ITooltipProps> {
     currentPlacement: this.props.placement,
   }
 
-
   public handleAnimateEnd = () => {
     this.setState({ active: false })
   }

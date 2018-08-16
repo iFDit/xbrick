@@ -1,3 +1,7 @@
 .xbrick-arrow-wrap::before {
   content: none !important;
 }
+.xbrick-arrow-wrap {
+  width: 0 !important;
+  height: 0 !important;
+}
