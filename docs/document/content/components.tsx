@@ -17,6 +17,8 @@ import { ModalsContent } from 'docs/document/content/components/modal'
 import { MediaContent } from 'docs/document/content/components/media'
 import { NavbarContent } from 'docs/document/content/components/navbar'
 import { NavsContent } from 'docs/document/content/components/navs'
+import { PaginationContent } from 'docs/document/content/components/pagination'
+import { PopoverContent } from 'docs/document/content/components/popover'
 
 // @ts-ignore
 // fixed typescript declaration.
@@ -45,6 +47,8 @@ export const Components = withRouter(props => {
       <Route path={`${path}/media`} component={MediaContent} />
       <Route path={`${path}/navbar`} component={NavbarContent} />
       <Route path={`${path}/navs`} component={NavsContent} />
+      <Route path={`${path}/pagination`} component={PaginationContent} />
+      <Route path={`${path}/popovers`} component={PopoverContent} />
     </>
   )
 })

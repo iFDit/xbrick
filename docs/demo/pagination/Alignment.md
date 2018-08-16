@@ -6,22 +6,36 @@ import { Pagination, PageItem, PageLink } from 'xbrick'
 
 ReactDOM.render(
   <Fragment>
-    <Pagination justify="center">
-      <PageItem><PageLink href="#">Previous</PageLink></PageItem>
-      <PageItem><PageLink href="#">1</PageLink></PageItem>
-      <PageItem><PageLink href="#">2</PageLink></PageItem>
-      <PageItem><PageLink href="#">3</PageLink></PageItem>
-      <PageItem><PageLink href="#">4</PageLink></PageItem>
-      <PageItem><PageLink href="#">Next</PageLink></PageItem>
-    </Pagination>
-    <Pagination justify="end">
-      <PageItem><PageLink href="#">Previous</PageLink></PageItem>
-      <PageItem><PageLink href="#">1</PageLink></PageItem>
-      <PageItem><PageLink href="#">2</PageLink></PageItem>
-      <PageItem><PageLink href="#">3</PageLink></PageItem>
-      <PageItem><PageLink href="#">4</PageLink></PageItem>
-      <PageItem><PageLink href="#">Next</PageLink></PageItem>
-    </Pagination>
+    <div xs="12">
+      <Pagination>
+        <PageItem><PageLink href="#">Previous</PageLink></PageItem>
+        <PageItem><PageLink href="#">1</PageLink></PageItem>
+        <PageItem><PageLink href="#">2</PageLink></PageItem>
+        <PageItem><PageLink href="#">3</PageLink></PageItem>
+        <PageItem><PageLink href="#">4</PageLink></PageItem>
+        <PageItem><PageLink href="#">Next</PageLink></PageItem>
+      </Pagination>
+    </div>
+    <div xs="12">
+      <Pagination justify="center">
+        <PageItem><PageLink href="#">Previous</PageLink></PageItem>
+        <PageItem><PageLink href="#">1</PageLink></PageItem>
+        <PageItem><PageLink href="#">2</PageLink></PageItem>
+        <PageItem><PageLink href="#">3</PageLink></PageItem>
+        <PageItem><PageLink href="#">4</PageLink></PageItem>
+        <PageItem><PageLink href="#">Next</PageLink></PageItem>
+      </Pagination>
+    </div>
+    <div xs="12">
+      <Pagination justify="end">
+        <PageItem><PageLink href="#">Previous</PageLink></PageItem>
+        <PageItem><PageLink href="#">1</PageLink></PageItem>
+        <PageItem><PageLink href="#">2</PageLink></PageItem>
+        <PageItem><PageLink href="#">3</PageLink></PageItem>
+        <PageItem><PageLink href="#">4</PageLink></PageItem>
+        <PageItem><PageLink href="#">Next</PageLink></PageItem>
+      </Pagination>
+    </div>
   </Fragment>
 , document.getElementById('root'))
 ````
