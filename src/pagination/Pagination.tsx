@@ -1,6 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import { PAGINATION, PAGINATION_LG, PAGINATION_SM } from 'src/common/classes'
+import { JUSTIFY_CONTENT_XS_CENTER, JUSTIFY_CONTENT_XS_END } from 'src/common/classes'
 import { IProps, PaginationJustify, PaginationSize } from 'src/common/props'
 
 export interface IPaginationProps extends IProps {
@@ -31,6 +32,8 @@ export const Pagination: React.StatelessComponent<IPaginationProps> = function (
     {
       [PAGINATION_LG]: size === 'large',
       [PAGINATION_SM]: size === 'small',
+      [JUSTIFY_CONTENT_XS_CENTER]: justify === 'center',
+      [JUSTIFY_CONTENT_XS_END]: justify === 'end',
     },
   )
   return <Tag {...others} className={className}/>
