@@ -1,0 +1,9 @@
+.xbrick-tab-content {
+  margin-top: 0.2rem;
+  padding: 10px;
+  display: none;
+}
+
+.xbrick-tab-content.active {
+  display: block;
+}
