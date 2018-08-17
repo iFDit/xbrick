@@ -3,7 +3,7 @@
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import 'xbrick/lib/style/index.css'
-import { Tooltip, Button } from 'xbrick'
+import { Tooltip, UncontrolledTooltip } from 'xbrick'
 
 class Examples extends React.Component {
   state = { open: false }
@@ -11,18 +11,18 @@ class Examples extends React.Component {
 
 ReactDOM.render(
   <Fragment>
-    <Tooltip content="tooltip" placement="top">
-      <Button bstype="secondary">Top</Button>
-    </Tooltip>
-    <Tooltip content="tooltip" placement="bottom">
-      <Button bstype="secondary">Bottom</Button>
-    </Tooltip>
-    <Tooltip content="tooltip" placement="left">
-      <Button bstype="secondary">Left</Button>
-    </Tooltip>
-    <Tooltip content="tooltip" placement="right">
-      <Button bstype="secondary">Right</Button>
-    </Tooltip>
+    <UncontrolledTooltip content="tooltip on top" placement="top">
+      <Button bstype="secondary">Tooltip on top</Button>
+    </UncontrolledTooltip>
+    <UncontrolledTooltip content="tooltip on bottom" placement="bottom">
+      <Button bstype="secondary">Tooltip on bottom</Button>
+    </UncontrolledTooltip>
+    <UncontrolledTooltip content="tooltip on left" placement="left">
+      <Button bstype="secondary">Tooltip on left</Button>
+    </UncontrolledTooltip>
+    <UncontrolledTooltip content="tooltip on right" placement="right">
+      <Button bstype="secondary">Tooltip on right</Button>
+    </UncontrolledTooltip>
   </Fragment>
 , document.getElementById('root'))
 ````

@@ -19,6 +19,9 @@ import { NavbarContent } from 'docs/document/content/components/navbar'
 import { NavsContent } from 'docs/document/content/components/navs'
 import { PaginationContent } from 'docs/document/content/components/pagination'
 import { PopoverContent } from 'docs/document/content/components/popover'
+import { TooltipContent } from 'docs/document/content/components/tooltip'
+import { ProgressContent } from 'docs/document/content/components/progress'
+import { TabsContent } from 'docs/document/content/components/tabs'
 
 // @ts-ignore
 // fixed typescript declaration.
@@ -49,6 +52,9 @@ export const Components = withRouter(props => {
       <Route path={`${path}/navs`} component={NavsContent} />
       <Route path={`${path}/pagination`} component={PaginationContent} />
       <Route path={`${path}/popovers`} component={PopoverContent} />
+      <Route path={`${path}/tooltips`} component={TooltipContent} />
+      <Route path={`${path}/progress`} component={ProgressContent} />
+      <Route path={`${path}/tab`} component={TabsContent} />
     </>
   )
 })

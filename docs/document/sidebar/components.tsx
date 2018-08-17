@@ -147,11 +147,6 @@ export class Components extends React.Component<any> {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink nowrap active={this.itemActive(`${path}/${SCROLLSPY}`)}>
-                  <Link to={`${path}/${SCROLLSPY}`}>Scrollspy</Link>
-                </NavLink>
-              </NavItem>
-              <NavItem>
                 <NavLink nowrap active={this.itemActive(`${path}/${TOOLTIPS}`)}>
                   <Link to={`${path}/${TOOLTIPS}`}>Tooltips</Link>
                 </NavLink>
@@ -198,7 +193,6 @@ const NAVS = `${ROOT}/navs`
 const PAGINATION = `${ROOT}/pagination`
 const POPOVERS = `${ROOT}/popovers`
 const PROGRESS = `${ROOT}/progress`
-const SCROLLSPY = `${ROOT}/scrollspy`
 const TOOLTIPS = `${ROOT}/tooltips`
 const TABLE = `${ROOT}/table`
 const TAB = `${ROOT}/tab`
