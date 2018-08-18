@@ -22,6 +22,7 @@ import { PopoverContent } from 'docs/document/content/components/popover'
 import { TooltipContent } from 'docs/document/content/components/tooltip'
 import { ProgressContent } from 'docs/document/content/components/progress'
 import { TabsContent } from 'docs/document/content/components/tabs'
+import { TablesContent } from 'docs/document/content/components/tables'
 
 // @ts-ignore
 // fixed typescript declaration.
@@ -55,6 +56,7 @@ export const Components = withRouter(props => {
       <Route path={`${path}/tooltips`} component={TooltipContent} />
       <Route path={`${path}/progress`} component={ProgressContent} />
       <Route path={`${path}/tab`} component={TabsContent} />
+      <Route path={`${path}/table`} component={TablesContent} />
     </>
   )
 })
