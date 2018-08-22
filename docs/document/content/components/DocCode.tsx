@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container, Row, Col, Button , Collapse } from 'xbrick'
 const sandbox = require('docs/document/asset/codesandbox.svg')
-import SyntaxHighlighter from 'react-syntax-highlighter'
-import { tomorrow } from 'react-syntax-highlighter/styles/hljs'
+import SyntaxHighlighter from 'react-syntax-highlighter/prism'
+import { coy } from 'react-syntax-highlighter/styles/prism'
 import { getcodesandboxParam } from 'docs/document/content/util'
 
 export class DocCode extends React.Component<any> {
@@ -50,7 +50,7 @@ export class DocCode extends React.Component<any> {
                   </Row>
                   <Row style={{marginTop: -25}}>
                     <Col xs="12">
-                      <SyntaxHighlighter language="jsx" style={tomorrow}>
+                      <SyntaxHighlighter language="jsx" style={coy} customStyle={{overflowX: 'auto'}}>
                         {codeText}
                       </SyntaxHighlighter>
                     </Col>

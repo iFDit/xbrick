@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container, Row, Col } from 'xbrick'
-import { Button, Badge } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
 import basic from 'docs/demo/layout/basic.md'

@@ -6,6 +6,101 @@ html {
 body {
   overflow-y: scroll;
 }
+.fix-header-nav-wrap {
+  position: relative;
+  padding: 0 30px;
+  .fix-header-nav-track-wrap {
+    overflow-x: hidden;
+  }
+  .prev-nav-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    line-height: 2.5;
+    width: 30px;
+    text-align: center;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+    transition: all 0.4s;
+    cursor: pointer;
+    user-select: none;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    &:hover {
+      color: rgba(0, 0, 0, 1);
+    }
+  }
+  .next-nav-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    line-height: 2.5;
+    width: 30px;
+    text-align: center;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+    transition: all 0.4s;
+    cursor: pointer;
+    user-select: none;
+    font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+    &:hover {
+      color: rgba(0, 0, 0, 1);
+    }
+  }
+  .next-nav-btn.disabled, .prev-nav-btn.disabled {
+    cursor: default;
+    color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.fix-header-nav {
+  white-space: nowrap;
+  flex-wrap: unset;
+  li.nav-item {
+    display: inline-block;
+  }
+}
+
+.doc-home {
+  .home-banner {
+    height: 500px;
+  }
+  .banner-btn {
+    transition: all 0.4s;
+    &:hover {
+      a.bsprimary {
+        color: #fff;
+      }
+    }
+    a.bsprimary {
+      color: #007bff;
+    }
+    a, a:hover {
+      color: #6c757d;
+      text-decoration: none;
+    }
+  }
+  .home-block {
+    flex-basis: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(250, 250, 250);
+    border: 2px solid #fff;
+    .block-title {
+      margin-bottom: 25px;
+    }
+    .block-btn {
+      a, a:hover {
+        font-weight: 500;
+        color: #000;
+        text-decoration: none;
+      }
+    }
+  }
+}
 
 .doc-sidebar {
   position: sticky;
@@ -21,6 +116,15 @@ body {
 @media (min-width: 576px) {
   .doc-sidebar {
     height: calc(100vh - 60px);
+  }
+}
+
+@media (max-width: 576px) {
+  .doc-content-text {
+    width: 100% !important;
+  }
+  .doc-search-input {
+    width: 40% !important;
   }
 }
 
@@ -46,7 +150,7 @@ body {
   background-color: #fff;
   border-bottom: 1px solid rgba(0,0,0,.05);
   z-index: 1010;
-  box-shadow: 0px 2px 10px rgba(0,0,0,.05);
+  box-shadow: 0px 0px 4px rgba(0,0,0,.05);
   .sticky-top-content {
     position: sticky;
     top: 4em;
@@ -61,7 +165,6 @@ body {
 
 .doc-content-text {
   width: 65%;
-  min-width: 500px;
   margin-left: 10px;
   font-size: 14px;
 }
@@ -81,8 +184,8 @@ body {
   a {
     color: rgba(0, 0, 0, .5);
     transition: all 0.4s;
+    font-weight: 500;
     &:hover {
-      font-weight: 500;
       color: rgba(0, 0, 0, 1);
     }
   }
@@ -141,7 +244,7 @@ body {
   }
 }
 
-.doc-api-table-container {
+.doc-api-table-container, .doc-style-table-container {
   margin-bottom: 20px;
   table {
     width: 100%;

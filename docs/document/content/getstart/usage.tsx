@@ -32,7 +32,7 @@ export const Usage = () => {
         <Row className="doc-content-text">
           <Col xs="12"><p>下面通过一个简单的例子你就能了解xbrick是如何使用的。</p></Col>
           <Col xs="12">
-            <SyntaxHighlighter language="javascript" style={xonokai}>
+            <SyntaxHighlighter language="jsx" style={xonokai}>
               {simpleExample}
             </SyntaxHighlighter>
           </Col>

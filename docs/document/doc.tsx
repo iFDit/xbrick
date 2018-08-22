@@ -19,6 +19,7 @@ export const Doc = withRouter((props: any = {}) => {
             </Col>
           </Row>
       </Container>
+      <Route render={() => <Redirect to="/404.html" />}/>
     </Fade>
   )
 })

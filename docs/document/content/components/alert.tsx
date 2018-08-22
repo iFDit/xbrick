@@ -1,13 +1,17 @@
 import React from 'react'
+import classNames from 'classnames'
 import { Col } from 'xbrick'
-import { AlertLink } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
-import { Alert } from 'xbrick/lib/index'
+import { Alert, AlertLink, AlertStyles, ALertLinkStyles } from 'xbrick'
 // code text
 import alertBase from 'docs/demo/alert/basic.md'
 import alertLink from 'docs/demo/alert/link.md'
 import additional from 'docs/demo/alert/additional-content.md'
 import closable from 'docs/demo/alert/closable.md'
+
+// Style
+import style from 'src/alert/alert-styles.md'
+import linkstyle from 'src/alert/alert-link-styles.md'
 
 // API
 import api from 'src/alert/alert.md'
@@ -18,6 +22,9 @@ import * as showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
+const { LINK } = ALertLinkStyles
+const { ALERT, PRIMARY, SECONDARY, SUCCESS, DANGER, WARNING, INFO, LIGHT, DARK, CLOSE } = AlertStyles
+const AlertClose = Alert.Close!
 export function AlertContent() {
   return new Content('Alert 警告')
     .addNav({ text: 'Overview', anchor: 'overview' })
@@ -25,6 +32,7 @@ export function AlertContent() {
     .addNav({ text: 'Link color', anchor: 'link-color' })
     .addNav({ text: 'Additional content', anchor: 'additional-content' })
     .addNav({ text: 'Dismissing', anchor: 'dismissing' })
+    .addNav({ text: 'Styles', anchor: 'styles' })
     .addNav({ text: 'API', anchor: 'api' })
     .addSection({
       title: 'Overview',
@@ -47,46 +55,46 @@ export function AlertContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>适用于任何长度的文本的警告。</p>,
       content: (
         <>
           <Col xs="12">
-            <Alert bstype="primary">
+            <Alert className={classNames(ALERT, PRIMARY)}>
               This is a primary alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="secondary">
+            <Alert className={classNames(ALERT, SECONDARY)}>
               This is a secondary alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="success">
+            <Alert className={classNames(ALERT, SUCCESS)}>
               This is a success alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="danger">
+            <Alert className={classNames(ALERT, DANGER)}>
               This is a danger alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="warning">
+            <Alert className={classNames(ALERT, WARNING)}>
               This is a warning alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="info">
+            <Alert className={classNames(ALERT, INFO)}>
               This is a info alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="light">
+            <Alert className={classNames(ALERT, LIGHT)}>
               This is a light alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="dark">
+            <Alert className={classNames(ALERT, DARK)}>
               This is a dark alert — check it out!
             </Alert>
           </Col>
@@ -96,47 +104,50 @@ export function AlertContent() {
     })
     .addSection({
       title: 'Link color',
-      describe: '',
+      describe: (
+        <p>使用<code>AlertLink</code>可以创建自动适应背景颜色的链接。</p>
+      ),
       content: (
         <>
           <Col xs="12">
-            <Alert bstype="primary">
-              This is a primary alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
+            <Alert className={classNames(ALERT, PRIMARY)}>
+              This is a primary alert with a{` `}
+              <AlertLink href="#" className={LINK}>an example link</AlertLink>. Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="secondary">
-              This is a secondary alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
+            <Alert className={classNames(ALERT, SECONDARY)}>
+              This is a secondary alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="success">
-              This is a success alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
+            <Alert className={classNames(ALERT, SUCCESS)}>
+              This is a success alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="danger">
-              This is a danger alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
+            <Alert className={classNames(ALERT, DANGER)}>
+              This is a danger alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="warning">
-              This is a warning alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
+            <Alert className={classNames(ALERT, WARNING)}>
+              This is a warning alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="info">
-              This is a info alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
+            <Alert className={classNames(ALERT, INFO)}>
+              This is a info alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="light">
-              This is a light alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
+            <Alert className={classNames(ALERT, LIGHT)}>
+              This is a light alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert bstype="dark">
-              This is a dark alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
+            <Alert className={classNames(ALERT, DARK)}>
+              This is a dark alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
         </>
@@ -145,10 +156,12 @@ export function AlertContent() {
     })
     .addSection({
       title: 'Additional content',
-      describe: '',
+      describe: (
+        <p><code>Alert</code>还可以包含其他元素，例如标题(<code>{`<h1>`}</code>)， 段落(<code>{`<p>`}</code>)或者分隔符(<code>{`<hr>`}</code>)。</p>
+      ),
       content: (
         <Col xs="12">
-          <Alert bstype="success">
+          <Alert className={classNames(ALERT, SUCCESS)}>
             <h4>Well done</h4>
             <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
             <hr />
@@ -160,15 +173,27 @@ export function AlertContent() {
     })
     .addSection({
       title: 'Dismissing',
-      describe: '',
+      describe: (
+        <p>可以关闭的<code>Alert</code>，点击右上角关闭警告提示。</p>
+      ),
       content: (
         <Col xs="12">
-          <Alert bstype="warning" closable onClose={() => console.log('click close-button.')} afterClose={() => console.log('I had been closed.')}>
+          <Alert className={classNames(ALERT, WARNING)} afterClose={() => console.log('I had been closed.')}>
             Warning Alert with dismiss button.
+            <AlertClose className={CLOSE}/>
           </Alert>
         </Col>
       ),
       codeText: getCodeFromString(converter.makeHtml(closable)),
+    })
+    .addStyles({
+      header: true,
+      title: 'Alert styles',
+      content: getTableFromString(converter.makeHtml(style)),
+    })
+    .addStyles({
+      title: 'AlertLink styles',
+      content: getTableFromString(converter.makeHtml(linkstyle)),
     })
     .addAPI({
       header: true,

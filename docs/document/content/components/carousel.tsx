@@ -109,7 +109,7 @@ export function CarouselContent() {
         <UncontrolledCarousel>
           {({getTrackProps, getControlProps, getIndicatorsProps}) => (
             <>
-              <CarouselIndicators {...getIndicatorsProps({items: [{key: 1}, {key: 2}, {key: 3}]})}/>
+              <CarouselIndicators {...getIndicatorsProps({items: [{key: '1'}, {key: '2'}, {key: '3'}]})}/>
               <CarouselTrack {...getTrackProps()}>
                 <CarouselItem>
                   <img src={img1.replace(/[\r\n]/g, '')}/>
@@ -136,7 +136,7 @@ export function CarouselContent() {
         <UncontrolledCarousel>
           {({getTrackProps, getControlProps, getIndicatorsProps}) => (
             <>
-              <CarouselIndicators {...getIndicatorsProps({items: [{key: 1}, {key: 2}, {key: 3}]})}/>
+              <CarouselIndicators {...getIndicatorsProps({items: [{key: '1'}, {key: '2'}, {key: '3'}]})}/>
               <CarouselTrack {...getTrackProps()}>
                 <CarouselItem>
                   <img src={img1.replace(/[\r\n]/g, '')}/>

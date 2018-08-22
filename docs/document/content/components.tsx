@@ -1,28 +1,28 @@
 import * as React from 'react'
 import { Route, withRouter, Redirect } from 'react-router-dom'
-import { AlertContent } from 'docs/document/content/components/alert'
-import { BadgeContent } from 'docs/document/content/components/badge'
-import { BreadcrumbContent } from 'docs/document/content/components/breadcrumb'
-import { ButtonsContent } from 'docs/document/content/components/buttons'
-import { CardContent } from 'docs/document/content/components/cards'
-import { CarouselContent } from 'docs/document/content/components/carousel'
-import { CollapseContent } from 'docs/document/content/components/collapse'
-import { DropdownContent } from 'docs/document/content/components/dropdown'
-import { FormContent } from 'docs/document/content/components/forms'
-import { InputGroupContent } from 'docs/document/content/components/inputGroup'
-import { JumbotronContent } from 'docs/document/content/components/jumbotron'
-import { LayoutContent } from 'docs/document/content/components/layout'
-import { ListGroupContent } from 'docs/document/content/components/listGroup'
-import { ModalsContent } from 'docs/document/content/components/modal'
-import { MediaContent } from 'docs/document/content/components/media'
-import { NavbarContent } from 'docs/document/content/components/navbar'
-import { NavsContent } from 'docs/document/content/components/navs'
-import { PaginationContent } from 'docs/document/content/components/pagination'
-import { PopoverContent } from 'docs/document/content/components/popover'
-import { TooltipContent } from 'docs/document/content/components/tooltip'
-import { ProgressContent } from 'docs/document/content/components/progress'
-import { TabsContent } from 'docs/document/content/components/tabs'
-import { TablesContent } from 'docs/document/content/components/tables'
+import { AsyncAlertContent } from 'docs/document/async/content/alert'
+import { AsyncBadgeContent } from 'docs/document/async/content/badge'
+import { AsyncBreadcrumbContent } from 'docs/document/async/content/breadcrumb'
+import { AsyncButtonsContent } from 'docs/document/async/content/buttons'
+import { AsyncCardContent } from 'docs/document/async/content/cards'
+import { AsyncCarouselContent } from 'docs/document/async/content/carousel'
+import { AsyncCollapseContent } from 'docs/document/async/content/collapse'
+import { AsyncDropdownContent } from 'docs/document/async/content/dropdown'
+import { AsyncFormContent } from 'docs/document/async/content/forms'
+import { AsyncInputGroupContent } from 'docs/document/async/content/inputGroup'
+import { AsyncJumbotronContent } from 'docs/document/async/content/jumbotron'
+import { AsyncLayoutContent } from 'docs/document/async/content/layout'
+import { AsyncListGroupContent } from 'docs/document/async/content/listGroup'
+import { AsyncMediaContent } from 'docs/document/async/content/media'
+import { AsyncModalsContent } from 'docs/document/async/content/modal'
+import { AsyncNavbarContent } from 'docs/document/async/content/navbar'
+import { AsyncNavsContent } from 'docs/document/async/content/navs'
+import { AsyncPaginationContent } from 'docs/document/async/content/pagination'
+import { AsyncPopoverContent } from 'docs/document/async/content/popover'
+import { AsyncTooltipContent } from 'docs/document/async/content/tooltip'
+import { AsyncProgressContent } from 'docs/document/async/content/progress'
+import { AsyncTabsContent } from 'docs/document/async/content/tabs'
+import { AsyncTablesContent } from 'docs/document/async/content/tables'
 
 // @ts-ignore
 // fixed typescript declaration.
@@ -34,29 +34,30 @@ export const Components = withRouter(props => {
   return (
     <>
       <Route exact path="/documents/components" render={() => <Redirect to={`${path}/alerts`}/>} />
-      <Route path={`${path}/alerts`} component={AlertContent} />
-      <Route path={`${path}/badge`} component={BadgeContent} />
-      <Route path={`${path}/breadcrumb`} component={BreadcrumbContent} />
-      <Route path={`${path}/buttons`} component={ButtonsContent} />
-      <Route path={`${path}/card`} component={CardContent} />
-      <Route path={`${path}/carousel`} component={CarouselContent} />
-      <Route path={`${path}/collapse`} component={CollapseContent} />
-      <Route path={`${path}/dropdowns`} component={DropdownContent} />
-      <Route path={`${path}/forms`} component={FormContent} />
-      <Route path={`${path}/input-group`} component={InputGroupContent} />
-      <Route path={`${path}/jumbotron`} component={JumbotronContent} />
-      <Route path={`${path}/layout`} component={LayoutContent} />
-      <Route path={`${path}/list-group`} component={ListGroupContent} />
-      <Route path={`${path}/modal`} component={ModalsContent} />
-      <Route path={`${path}/media`} component={MediaContent} />
-      <Route path={`${path}/navbar`} component={NavbarContent} />
-      <Route path={`${path}/navs`} component={NavsContent} />
-      <Route path={`${path}/pagination`} component={PaginationContent} />
-      <Route path={`${path}/popovers`} component={PopoverContent} />
-      <Route path={`${path}/tooltips`} component={TooltipContent} />
-      <Route path={`${path}/progress`} component={ProgressContent} />
-      <Route path={`${path}/tab`} component={TabsContent} />
-      <Route path={`${path}/table`} component={TablesContent} />
+      <Route path={`${path}/alerts`} component={AsyncAlertContent} />
+      <Route path={`${path}/badge`} component={AsyncBadgeContent} />
+      <Route path={`${path}/breadcrumb`} component={AsyncBreadcrumbContent} />
+      <Route path={`${path}/buttons`} component={AsyncButtonsContent} />
+      <Route path={`${path}/card`} component={AsyncCardContent} />
+      <Route path={`${path}/carousel`} component={AsyncCarouselContent} />
+      <Route path={`${path}/collapse`} component={AsyncCollapseContent} />
+      <Route path={`${path}/dropdowns`} component={AsyncDropdownContent} />
+      <Route path={`${path}/forms`} component={AsyncFormContent} />
+      <Route path={`${path}/input-group`} component={AsyncInputGroupContent} />
+      <Route path={`${path}/jumbotron`} component={AsyncJumbotronContent} />
+      <Route path={`${path}/layout`} component={AsyncLayoutContent} />
+      <Route path={`${path}/list-group`} component={AsyncListGroupContent} />
+      <Route path={`${path}/modal`} component={AsyncModalsContent} />
+      <Route path={`${path}/media`} component={AsyncMediaContent} />
+      <Route path={`${path}/navbar`} component={AsyncNavbarContent} />
+      <Route path={`${path}/navs`} component={AsyncNavsContent} />
+      <Route path={`${path}/pagination`} component={AsyncPaginationContent} />
+      <Route path={`${path}/popovers`} component={AsyncPopoverContent} />
+      <Route path={`${path}/tooltips`} component={AsyncTooltipContent} />
+      <Route path={`${path}/progress`} component={AsyncProgressContent} />
+      <Route path={`${path}/tab`} component={AsyncTabsContent} />
+      <Route path={`${path}/table`} component={AsyncTablesContent} />
+      <Route render={() => <Redirect to="/404.html" />}/>
     </>
   )
 })

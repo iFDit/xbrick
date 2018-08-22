@@ -13,6 +13,7 @@ export const AppRouter = () => {
           <Route exact path="/" render={() => <Redirect to="/home" />}/>
           <Route path="/home" component={Home}/>
           <Route path="/documents" component={Document}/>
+          <Route render={() => <Redirect to="/404.html" />}/>
         </Switch>
       </>
     </Router>

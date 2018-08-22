@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { Col } from 'xbrick'
 import { Button, UncontrolledTooltip, Tooltip } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'

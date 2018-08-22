@@ -34,8 +34,8 @@ export const Header = withRouter(props => {
           </NavItem>
         </Nav>
       </NavbarCollapse>
-      <Form inline>
-        <Input placeholder="Search" className="mr-sm-2" />
+      <Form inline className="doc-search-input">
+        <Input id="docsearch" placeholder="Search docs" className="mr-sm-2" />
       </Form>
     </Navbar>
   )

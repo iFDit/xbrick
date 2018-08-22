@@ -3,13 +3,10 @@
 ````jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Alert } from 'xbrick'
+import { Alert, AlertStyles } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
-const onClose = (e) => {
-  console.log('click close-button.')
-}
-
+const { ALERT, WARNING, CLOSE } = AlertStyles
 const afterClose = () => {
   console.log('I had been closed.')
 }
@@ -17,6 +14,10 @@ const afterClose = () => {
 ReactDOM.render(
   <Alert bstype="warning" closable onClose={onClose} afterClose={afterClose}>
     Warning Alert with dismiss button.
+  </Alert>
+  <Alert className={`${ALERT} ${WARNING}`} afterClose={() => console.log('I had been closed.')}>
+    Warning Alert with dismiss button.
+    <AlertClose className={CLOSE}/>
   </Alert>
 , document.getElementById('root'))
 ````

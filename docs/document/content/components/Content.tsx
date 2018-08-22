@@ -1,6 +1,7 @@
 import React from 'react'
 import { DocCode } from 'docs/document/content/components/DocCode'
-import { Container, Row, Nav, NavItem, NavLink, Fade, Col } from 'xbrick'
+import { Container, Row, NavItem, NavLink, Fade, Col } from 'xbrick'
+import { ResponseNav } from 'docs/document/content/components/ResponseNav'
 
 export interface INavOption {
   text: string
@@ -10,7 +11,7 @@ export interface INavOption {
 
 export interface ISectionOption {
   title: string
-  describe: string
+  describe: string | React.ReactNode
   content: React.ReactNode
   codeText?: string | null
   wrapProps?: any
@@ -23,10 +24,18 @@ export interface IApiOption {
   wrapProps?: any
 }
 
+export interface IStyleOption {
+  title: string
+  content: React.ReactNode
+  header?: boolean
+  wrapProps?: any
+}
+
 export class Content {
   private navs: any[] = []
   private sections: any[] = []
   private apis: any[] = []
+  private styles: any[] = []
   private title: string = ''
 
   constructor(title: string) {
@@ -48,13 +57,18 @@ export class Content {
     return this
   }
 
+  public addStyles(styleOption: IStyleOption) {
+    this.styles.push({ wrapProps: {}, ...styleOption })
+    return this
+  }
+
   public render() {
     return (
       <Fade from={0} to={1}>
         <header className="doc-content-header">
           <h1 style={{fontWeight: 300}}>{this.title}</h1>
-          <div className="sticky-top-content">
-            <Nav className="doc-nav">
+          <div className="sticky-top-content" id="doc-sticky-nav">
+            <ResponseNav className="doc-nav">
               {this.navs.map((nav, idx) => {
                 return (
                   <NavItem key={idx} {...nav.wrapProps}>
@@ -62,7 +76,7 @@ export class Content {
                   </NavItem>
                 )
               })}
-            </Nav>
+            </ResponseNav>
           </div>
         </header>
         <Container tag="main" fluid className="doc-content-container">
@@ -78,6 +92,9 @@ export class Content {
                       <h5>{section.title}</h5>
                     </Col>
                   </Row>
+                  {section.describe && <Row className="doc-content-text" {...section.wrapProps}>
+                    {section.describe}
+                  </Row>}
                   <Row className="doc-content-text" {...section.wrapProps}>
                     {section.content}
                   </Row>
@@ -87,6 +104,24 @@ export class Content {
             }
             return null
           })}
+          {this.styles.map((style, idx) => {
+            return (
+              <section key={`style${idx}`} style={{marginBottom: 20}}>
+                {style.header ? <Row className="doc-content-title">
+                  <Col>
+                    <a id="styles" className="doc-anchor" />
+                    <h5>STYLES</h5>
+                  </Col>
+                </Row> : null}
+                <Row className="doc-content-text" {...style.wrapProps}>
+                  <h6>{style.title}</h6>
+                  <Col xs="12">
+                    <div dangerouslySetInnerHTML={{__html: style.content}} className="doc-style-table-container"/>
+                  </Col>
+                </Row>
+              </section>
+            )
+          })}
           {this.apis.map((api, idx) => {
             return (
               <section key={`api${idx}`}>
@@ -95,7 +130,7 @@ export class Content {
                     <a id="api" className="doc-anchor" />
                     <h5>API</h5>
                   </Col>
-                </Row> : null }
+                </Row> : null}
                 {/* link color content */}
                 <Row className="doc-content-text" {...api.wrapProps}>
                   <h6>{api.title}</h6>

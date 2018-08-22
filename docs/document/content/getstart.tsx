@@ -14,6 +14,7 @@ export const Getstart = withRouter(props => {
       <Route exact path="/documents/getting-started" render={() => <Redirect to={`${path}/install`} />} />
       <Route path={`${path}/install`} component={AsyncInstall} />
       <Route path={`${path}/usage`} component={AsyncUsage} />
+      <Route render={() => <Redirect to="/404.html" />}/>
     </>
   )
 })

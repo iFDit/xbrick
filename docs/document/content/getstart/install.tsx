@@ -29,19 +29,19 @@ export const Install = () => {
         <Row className="doc-content-text">
           <Col xs="12"><p>1. 使用npm或者yarn安装xbrick。</p></Col>
           <Col xs="12">
-            <SyntaxHighlighter language="javascript" style={xonokai}>
+            <SyntaxHighlighter language="shell" style={xonokai}>
               {installText}
             </SyntaxHighlighter>
           </Col>
           <Col xs="12"><p>2. 安装完成后，通过import直接引入xbrick来使用。</p></Col>
           <Col xs="12">
-            <SyntaxHighlighter language="javascript" style={xonokai}>
+            <SyntaxHighlighter language="jsx" style={xonokai}>
               {afterInstall}
             </SyntaxHighlighter>
           </Col>
           <Col xs="12"><p>引入样式：</p></Col>
           <Col xs="12">
-            <SyntaxHighlighter language="javascript" style={xonokai}>
+            <SyntaxHighlighter language="css" style={xonokai}>
               {insertCSS}
             </SyntaxHighlighter>
           </Col>
