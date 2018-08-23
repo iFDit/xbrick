@@ -1,16 +1,11 @@
-import * as React from 'react'
-import { AlertType, IProps } from 'src/common/props'
-import { SlideUp } from 'src/animate/SlideUp'
-import * as classes from 'src/common/classes'
-import * as classNames from 'classnames'
+import React, { createContext } from 'react'
+import { IProps } from 'src/common/props'
+import { UncontrolledSlide } from 'src/animate/UncontrolledSlide'
+import { mergeCall } from 'src/common/util'
+import { Close, ICloseProps } from 'src/common/Close'
+import * as cls from 'src/common/classes'
 
 export interface IAlertProps extends IProps {
-  /**
-   * Set Alert component type. Different types show different styles.
-   * @default primary
-   */
-  bstype?: AlertType
-
   /**
    * Alert custom render tag.
    * @default div
@@ -18,83 +13,58 @@ export interface IAlertProps extends IProps {
   tag?: string | React.Factory<any>
 
   /**
-   * If props.open was set truly or falsy value then the Alert
-   * show/hide will be control by ths value.
-   */
-  open?: boolean
-
-  /**
-   * Determines whether the component can be closed.
-   * If this prop is enabled, then onClose and afterClose
-   * will be called when component was dismiss.
-   * @default false
-   */
-  closable?: boolean
-
-  /**
-   * The text use in close component.
-   */
-  closeText?: string | React.ReactNode
-
-  /**
    * Handler invoked after the Alert was dismissed.
    */
   afterClose?(): void
-
-  /**
-   * Handler invoked when the Alert is canceled.
-   * First argument is React.MouseEvent.
-   * @default noop
-   */
-  onClose?(e?: React.MouseEvent<any>): void
 }
 
-export const Alert: React.StatelessComponent<IAlertProps> = function (props: IAlertProps) {
-  const { onClose, afterClose, closable, closeText, ...others } = props
-  const nextProps = {
-    ...others,
-    afterStateChange: afterClose,
-    className: alertClasses(props),
-  }
+export interface IAlertComponent extends React.StatelessComponent<IAlertProps> {
+  Close?: React.StatelessComponent<any>
+}
+
+const AlertContext = createContext({
+  handleCloseProps: (props: ICloseProps) => props,
+})
+
+export const Alert: IAlertComponent = function (props: IAlertProps) {
+  const { afterClose, ...others } = props
 
   return (
-    <SlideUp {...nextProps}>
-      {(slideUp) => (
-        <>
+    <UncontrolledSlide {...others} afterStateChange={afterClose} defaultOpen={true}>
+      {({ slideup }) => (
+        <AlertContext.Provider value={{
+          handleCloseProps: (closeProps: ICloseProps = {}) => ({ ...closeProps, onClick: mergeCall(closeProps.onClick, slideup)}),
+        }}
+        >
           {props.children}
-          {closable ?
-            <button
-              className={classes.CLOSE}
-              onClick={(e) => slideUp(onClose!(e))}
-              aria-label="close"
-            >
-              {closeText || <span aria-hidden={true}>×</span>}
-            </button>
-            : null}
-        </>
+        </AlertContext.Provider>
       )}
-    </SlideUp>
+    </UncontrolledSlide>
   )
 }
+
+const AlertClose: React.StatelessComponent<any> = (props: ICloseProps) => (
+  <AlertContext.Consumer>
+    {({handleCloseProps}) => <Close {...handleCloseProps(props)}/>}
+  </AlertContext.Consumer>
+)
+AlertClose.displayName = 'xbrick.AlertClose'
 
 Alert.displayName = 'xbrick.Alert'
+Alert.defaultProps = { tag: 'div' }
+Alert.Close = AlertClose
 
-Alert.defaultProps = {
-  tag: 'div',
-  style: {},
-  onClose: noop,
-  bstype: 'primary',
-  closable: false,
-}
-
-function noop() { /**/ }
-
-function alertClasses(props: IAlertProps) {
-  const { bstype, closable, className } = props
-  return classNames(
-    className,
-    classes.ALERT,
-    closable && `${classes.ALERT_DISMISSIBLE}`,
-    `${classes.ALERT}-${classes[bstype!.toUpperCase()]}`,
-  )
+export const AlertStyles = {
+  ALERT: cls.ALERT,
+  PRIMARY: cls.A_PRIMARY,
+  SECONDARY: cls.A_SECONDARY,
+  SUCCESS: cls.A_SUCCESS,
+  DANGER: cls.A_DANGER,
+  WARNING: cls.A_WARNING,
+  INFO: cls.A_INFO,
+  LIGHT: cls.A_LIGHT,
+  DARK: cls.A_DARK,
+  CLOSE: cls.CLOSE,
+  HEADING: cls.A_HEADING,
+  DISMISSIBLE: cls.A_DISMISSIBLE,
 }
