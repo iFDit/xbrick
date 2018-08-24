@@ -26,7 +26,7 @@ const { LINK } = ALertLinkStyles
 const { ALERT, PRIMARY, SECONDARY, SUCCESS, DANGER, WARNING, INFO, LIGHT, DARK, CLOSE } = AlertStyles
 const AlertClose = Alert.Close!
 export function AlertContent() {
-  return new Content('Alert 警告')
+  return new Content('Alert')
     .addNav({ text: 'Overview', anchor: 'overview' })
     .addNav({ text: 'Examples', anchor: 'examples' })
     .addNav({ text: 'Link color', anchor: 'link-color' })

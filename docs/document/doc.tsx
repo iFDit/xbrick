@@ -11,15 +11,14 @@ export const Doc = withRouter((props: any = {}) => {
       <Route exact path="/documents" render={() => <Redirect to={`${path}/getting-started`} />}/>
       <Container fluid>
           <Row style={{margin: '0 -15px 0'}} noGutter>
-            <Col sm="3" md="3" lg="2" xl="2" className="pl-0 pr-0">
+            <Col sm="12" md="3" lg="2" xl="2" className="pl-0 pr-0">
               <Route path={`${path}`} component={Sidebar}/>
             </Col>
-            <Col sm="9" md="9" lg="10" xl="10">
+            <Col sm="12" md="9" lg="10" xl="10">
               <Route path={`${path}`} component={Content}/>
             </Col>
           </Row>
       </Container>
-      <Route render={() => <Redirect to="/404.html" />}/>
     </Fade>
   )
 })

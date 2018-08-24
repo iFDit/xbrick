@@ -3,23 +3,37 @@
 ````jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Breadcrumb, BreadcrumbItem } from 'xbrick'
 import 'xbrick/lib/style/index.css'
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbStyles,
+  BreadcrumbItemStyles } from 'xbrick'
+
+const { ITEM, ACTIVE } = BreadcrumbItemStyles
 
 ReactDOM.render(
   <div>
-    <Breadcrumb>
-      <BreadcrumbItem active>Home</BreadcrumbItem>
+    <Breadcrumb className={BreadcrumbStyles.BREADCRUMB}>
+      <BreadcrumbItem className={`${ITEM} ${ACTIVE}`}>Home</BreadcrumbItem>
     </Breadcrumb>
-    <Breadcrumb>
-      <BreadcrumbItem><a href="#">Home</a></BreadcrumbItem>
-      <BreadcrumbItem active>Library</BreadcrumbItem>
+    <Breadcrumb className={BreadcrumbStyles.BREADCRUMB}>
+      <BreadcrumbItem className={`${ITEM}`}>
+        <a href="#">Home</a>
+      </BreadcrumbItem>
+      <BreadcrumbItem className={`${ITEM} ${ACTIVE}`}>Library</BreadcrumbItem>
     </Breadcrumb>
-    <Breadcrumb>
-      <BreadcrumbItem><a href="#">Home</a></BreadcrumbItem>
-      <BreadcrumbItem><a href="#">Library</a></BreadcrumbItem>
-      <BreadcrumbItem><a href="#">Data</a></BreadcrumbItem>
-      <BreadcrumbItem active>Current</BreadcrumbItem>
+    <Breadcrumb className={BreadcrumbStyles.BREADCRUMB}>
+      <BreadcrumbItem className={`${ITEM}`}>
+        <a href="#">Home</a>
+      </BreadcrumbItem>
+      <BreadcrumbItem className={`${ITEM}`}>
+        <a href="#">Library</a>
+      </BreadcrumbItem>
+      <BreadcrumbItem className={`${ITEM}`}>
+        <a href="#">Data</a>
+      </BreadcrumbItem>
+      <BreadcrumbItem className={`${ITEM} ${ACTIVE}`}>Current</BreadcrumbItem>
     </Breadcrumb>
   </div>
 , document.getElementById('root'))

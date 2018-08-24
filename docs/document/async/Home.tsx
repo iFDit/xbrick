@@ -7,6 +7,5 @@ import * as React from 'react'
 import * as l from 'docs/document/async/Loading'
 
 export const Home = asyncComponent(() => {
-  return import('docs/document/home/home')
-    .then(modules => modules.Home)
+  return import('docs/document/home/home').then(modules => modules.Home)
 })

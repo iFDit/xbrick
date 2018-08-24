@@ -57,7 +57,6 @@ export const Components = withRouter(props => {
       <Route path={`${path}/progress`} component={AsyncProgressContent} />
       <Route path={`${path}/tab`} component={AsyncTabsContent} />
       <Route path={`${path}/table`} component={AsyncTablesContent} />
-      <Route render={() => <Redirect to="/404.html" />}/>
     </>
   )
 })

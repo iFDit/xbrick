@@ -12,9 +12,6 @@ const afterClose = () => {
 }
 
 ReactDOM.render(
-  <Alert bstype="warning" closable onClose={onClose} afterClose={afterClose}>
-    Warning Alert with dismiss button.
-  </Alert>
   <Alert className={`${ALERT} ${WARNING}`} afterClose={() => console.log('I had been closed.')}>
     Warning Alert with dismiss button.
     <AlertClose className={CLOSE}/>
