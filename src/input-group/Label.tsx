@@ -1,5 +1,5 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { IProps, InputSize } from 'src/common/props'
 
@@ -44,6 +44,7 @@ export const Label: React.StatelessComponent<ILabelProps> = function (props: ILa
   const { size, hiddren, checkbox, radio, col, ...others } = props
   const className = classNames(
     props.className,
+    'xbrick-lable',
     {
       [classes.SR_ONLY]: !!hiddren,
       [classes.COL_FORM_LABEL]: !!col,

@@ -1,6 +1,7 @@
 export type AlertType = 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'light' | 'dark'
 export type BadgeType = AlertType
 export type ButtonType = AlertType | 'link'
+export type ProgressType = AlertType
 export type ListGroupItemType = ButtonType
 export type ButtonSize = 'small' | 'large' | 'middle'
 export type CardType = AlertType
@@ -12,12 +13,15 @@ export type InputType = 'text' | 'textarea' | 'select' | 'checkbox' | 'radio' | 
 /* tslint:enable */
 export type Direction = 'left' | 'right' | 'up'
 
+export type PageDirection = 'prev' | 'next'
 export interface IProps {
   [prop: string]: any
 }
 
 export type LayoutDirec = 'start' | 'center' | 'end'
 export type NavJustify = LayoutDirec | JustifyDirec
+export type PaginationJustify = LayoutDirec
+export type PaginationSize = ButtonSize
 export type MediaObjectAlign = LayoutDirec
 export type ModalDialogAlign = 'start' | 'center'
 export type Auto = 'auto'
@@ -52,3 +56,10 @@ export interface INavbarChildrenProps<T> {
   getTogglerProps: (props?: T) => T
   getCollapseProps: (props?: T) => T
 }
+
+export type PopoverPlacement = 'top' | 'top-start' | 'top-end' | 'right' | 'right-start' | 'right-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end'
+export type tooltipPlacement = 'top' | 'bottom' | 'left' | 'right'
+export type TableBoder = 'normal' | 'none' | 'full'
+export type TableSize = 'small' | 'middle'
+export type TableType = AlertType
+export type TableCellType = 'td' | 'th'

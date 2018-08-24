@@ -1,5 +1,5 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
 
@@ -20,5 +20,5 @@ export const CardGroup: React.StatelessComponent<ICardGroupProps> = function (pr
 
 CardGroup.displayName = 'xbrick.CardGroup'
 CardGroup.defaultProps = {
-  tag: 'div'
+  tag: 'div',
 }

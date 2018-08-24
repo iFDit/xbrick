@@ -1,35 +1,28 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
-import { IProps } from 'src/common/props'
-import { Collapse } from 'src/collapse/Collapse'
+import { Collapse, ICollapseProps } from 'src/collapse/Collapse'
+import { NavbarContext } from 'src/navbar/Navbar'
 
-export interface INavbarCollapseProps extends IProps {
+export interface INavbarCollapseProps extends ICollapseProps {
   /**
    * custom render component.
    * @default div
    */
   tag?: string | React.Factory<any>
-
-  /**
-   * set collapse is open or close.
-   * @default false
-   */
-  expand?: boolean
 }
 
-export const NavbarCollapse: React.StatelessComponent<INavbarCollapseProps> = function (props: INavbarCollapseProps) {
-  const { expand, children, ...others } = props
-  const className = classNames(props.className, classes.NAVBAR_COLLAPSE)
-  return (
-    <Collapse {...others} className={className} open={expand}>
-      {() => children}
-    </Collapse>
-  )
+function getNavbarCollapseClass(props: INavbarCollapseProps) {
+  return classNames(props.className, classes.NAVBAR_COLLAPSE)
 }
+
+export const NavbarCollapse: React.StatelessComponent<INavbarCollapseProps> = (props: INavbarCollapseProps) => (
+  <NavbarContext.Consumer>
+    {({getCollapseProps}) => <Collapse {...getCollapseProps(props)} className={getNavbarCollapseClass(props)}/>}
+  </NavbarContext.Consumer>
+)
 
 NavbarCollapse.displayName = 'xbrick.NavbarCollapse'
 NavbarCollapse.defaultProps = {
   tag: 'div',
-  expand: false,
 }

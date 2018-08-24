@@ -1,0 +1,9 @@
+## API
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| size | 设置Input大小，可选：`small` 和 `large` | string | - |
+| hiddren | 显示/隐藏 | boolean | `false` |
+| checkbox | 用于checkbox | boolean | `false` |
+| radio | 用于radio | boolean | `false` |
+| col | 用于网格布局居中对齐 | boolean | `false` |

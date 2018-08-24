@@ -1,5 +1,5 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
 
@@ -12,7 +12,7 @@ export interface ICarouselIndicatorProps extends IProps {
   /**
    * set which item is current active.
    */
-  activeIndex: number
+  activeIndex?: number
 
   /**
    * custom render component.

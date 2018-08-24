@@ -21,3 +21,9 @@
     <Button>Submit</Button>
   </Form>
 ````
+
+## API
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| inline | 是否使用inline布局 | boolean | `false` |

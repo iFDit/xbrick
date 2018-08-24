@@ -72,7 +72,7 @@ export class Tooltip extends React.Component<ITooltipProps> {
   }
 
   render () {
-    const { tag, noarrow, content, placement, children, ...others } = this.props
+    const { tag, open, noarrow, content, placement, children, ...others } = this.props
     const { currentPlacement, active } = this.state
     const Tag = tag!
     const from = open ? 0 : 1

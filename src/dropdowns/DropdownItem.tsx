@@ -1,8 +1,9 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
 import { omit } from 'lodash'
+import { DropdownContext } from 'src/dropdowns/Dropdown'
 
 export interface IDropdownItemProps extends IProps {
   /**
@@ -37,7 +38,7 @@ export interface IDropdownItemProps extends IProps {
 }
 
 const omitProps = ['active', 'disabled']
-export const DropdownItem: React.StatelessComponent<IDropdownItemProps> = function (props: IDropdownItemProps) {
+const Item: React.StatelessComponent<IDropdownItemProps> = function (props: IDropdownItemProps) {
   const { tag, header, divider, ...others } = props
   const Tag = header ? 'h6' : divider ? 'div' : tag!
   const nextProps = {
@@ -63,6 +64,12 @@ function getDropdownClassName(props: IDropdownItemProps) {
     },
   )
 }
+
+export const DropdownItem: React.StatelessComponent<IDropdownItemProps> = (props: IDropdownItemProps) => (
+  <DropdownContext.Consumer>
+    {({getItemProps}) => <Item {...getItemProps(props)}/>}
+  </DropdownContext.Consumer>
+)
 
 DropdownItem.displayName = 'xbrick.DropdownItem'
 DropdownItem.defaultProps = {

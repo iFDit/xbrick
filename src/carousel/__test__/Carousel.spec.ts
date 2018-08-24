@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import * as sinon from 'sinon'
 import { mount } from 'enzyme'
 import { Carousel } from 'src/carousel/Carousel'
@@ -45,27 +45,7 @@ describe('Carousel', () => {
     const render = mount(F())
 
     expect(render.prop('tag')).toBe('div')
-    expect(render.prop('autoplay')).toBe(false)
   })
-
-  // it('should autoplay when this props is true', (next) => {
-  //   mount(F({
-  //     autoplay: true,
-  //     beforeChange: () => next(),
-  //   }))
-  // })
-
-  // it('should invoke afterChange callbacks after item changed', (next) => {
-  //   const props = {
-  //     autoplay: true,
-  //     beforeChange: sinon.spy(),
-  //     afterChange: () => {
-  //       expect(props.beforeChange.called).toBe(true)
-  //       next()
-  //     },
-  //   }
-  //   mount(F(props))
-  // })
 
   it('should render correct className', () => {
     const render = mount(F())

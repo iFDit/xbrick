@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { mount } from 'enzyme'
 import * as sinon from 'sinon'
 import { Button } from 'src/buttons/Button'

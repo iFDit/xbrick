@@ -1,11 +1,11 @@
 import React from 'react'
 import * as sinon from 'sinon'
 import { mount } from 'enzyme'
-import { PaginationItem } from 'src/pagination/PaginationItem'
+import { PageItem } from 'src/pagination/PageItem'
 
 describe('PaginationItem', () => {
   const p = React.createFactory('p')
-  const F = React.createFactory<any>(PaginationItem)
+  const F = React.createFactory<any>(PageItem)
 
   it('should render without crash', () => {
     mount(F())

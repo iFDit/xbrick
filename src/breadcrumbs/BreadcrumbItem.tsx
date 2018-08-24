@@ -1,9 +1,6 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
-import * as classes from 'src/common/classes'
-import { omit } from 'lodash'
+import React from 'react'
 import { IProps } from 'src/common/props'
-
+import { ACTIVE, BREADCRUMB_ITEM } from 'src/common/classes'
 
 export interface IBreadcrumbItemProps extends IProps {
   /**
@@ -11,35 +8,18 @@ export interface IBreadcrumbItemProps extends IProps {
    * @default li
    */
   tag?: string | React.Factory<any>
-
-  /**
-   * Sets whether the current item is active.
-   * @default false
-   */
-  active?: boolean
 }
 
 export const BreadcrumbItem: React.StatelessComponent<IBreadcrumbItemProps> = function (props: IBreadcrumbItemProps) {
-  const { tag, children, ...others } = props
-  const nextProps = { ...others, className: breadcrumbItemClasses(props) }
+  const { tag, ...others } = props
   const Tag = tag!
-  return (
-    <Tag {...omit(nextProps, 'active')}>
-      {children}
-    </Tag>
-  )
+  return <Tag {...others} />
 }
 
 BreadcrumbItem.displayName = 'xbrick.BreadcrumbItem'
-BreadcrumbItem.defaultProps = {
-  tag: 'li',
-  active: false,
-}
+BreadcrumbItem.defaultProps = { tag: 'li' }
 
-function breadcrumbItemClasses(props: IBreadcrumbItemProps) {
-  return classNames(
-    props.className,
-    classes.BREADCRUMB_ITEM,
-    { [classes.ACTIVE]: !!props.active },
-  )
+export const BreadcrumbItemStyles = {
+  ACTIVE: ACTIVE,
+  ITEM: BREADCRUMB_ITEM,
 }

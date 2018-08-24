@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { IProps } from 'src/common/props'
 import { get, omit, isObject } from 'lodash'
 import { spring, Motion, presets, PlainStyle } from 'react-motion'
@@ -8,7 +8,7 @@ export interface IAnimateProps extends IProps {
   /**
    * Set transition style start props.
    */
-  from?: { [prop: string]: number | { value: number, config: {[props: string]: number} } }
+  from?: { [prop: string]: number | { value: number, transition?: boolean, config?: {[props: string]: number} } }
 
   /**
    * Set transition style end props.
@@ -67,9 +67,9 @@ export class Animate extends React.Component<IAnimateProps, any> {
     const defaultStyle = this.createDefaultStyle()
     const style = this.createStyle()
     const motionProps = { defaultStyle, style, onRest }
-    
+
     return (
-      <Motion {...motionProps} key={JSON.stringify(defaultStyle)}>
+      <Motion {...motionProps} key={`${JSON.stringify({...defaultStyle, ...style})}`}>
         {(interpolatingStyle: PlainStyle) => (
           // custom render component
           <Tag
@@ -105,8 +105,10 @@ export class Animate extends React.Component<IAnimateProps, any> {
     const show = this.state[trigger!]
     const fromVal = isObject(from![key]) ? (from![key] as any).value : from![key]
     const config =  isObject(from![key]) ? (from![key] as any).config : presets.noWobble
+    const propTransition = isObject(from![key]) ? (from![key] as any).transition : true
     const finalValue = show ? get(to, key, fromVal) : fromVal
+    const tr = propTransition == null ? transition : propTransition
 
-    return { [key]: transition ? spring(finalValue, config) : finalValue }
+    return { [key]: tr ? spring(finalValue, config) : finalValue }
   }
 }

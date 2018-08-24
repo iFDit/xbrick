@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { IProps, MediaObjectAlign } from 'src/common/props'
 import { Col } from 'src/layout/Col'
 

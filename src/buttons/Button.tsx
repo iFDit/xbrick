@@ -1,5 +1,5 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { omit } from 'lodash'
 import { IProps, ButtonType, ButtonSize } from 'src/common/props'
@@ -52,7 +52,7 @@ const noop = () => {/**/}
 const omitName = ['bstype', 'size', 'block', 'active', 'outline']
 
 export const Button: React.StatelessComponent<IButtonProps> = function (props: IButtonProps) {
-  const { tag, onClick, disabled, children, ...others } = props
+  const { tag, onClick, disabled, children, getRef, ...others } = props
   const Tag = tag!
   const nextProps = {
     ...others,
@@ -60,7 +60,7 @@ export const Button: React.StatelessComponent<IButtonProps> = function (props: I
     className: buttonClasses(props),
   }
   return (
-    <Tag {...omit(nextProps, omitName)}>
+    <Tag {...omit(nextProps, omitName)} ref={getRef}>
       {children}
     </Tag>
   )

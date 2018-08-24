@@ -1,7 +1,8 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { cloneWithClassName } from 'src/common/util'
 
 export interface INavLinkProps extends IProps {
   /**
@@ -21,10 +22,16 @@ export interface INavLinkProps extends IProps {
    * @default false
    */
   disabled?: boolean
+
+  /**
+   * not render wrap tag.
+   * @default false
+   */
+  nowrap?: boolean
 }
 
 export const NavLink: React.StatelessComponent<INavLinkProps> = function (props: INavLinkProps) {
-  const { tag, active, disabled, ...others } = props
+  const { tag, active, nowrap, disabled, ...others } = props
   const Tag = tag!
   const className = classNames(
     props.className,
@@ -34,12 +41,13 @@ export const NavLink: React.StatelessComponent<INavLinkProps> = function (props:
       [classes.DISABLED]: !!disabled,
     },
   )
-  return <Tag {...others} className={className} />
+  return nowrap ? cloneWithClassName(props.children, className) : <Tag {...others} className={className} />
 }
 
 NavLink.displayName = 'xbrick.NavLink'
 NavLink.defaultProps = {
   tag: 'a',
+  nowrap: false,
   active: false,
   disabled: false,
 }

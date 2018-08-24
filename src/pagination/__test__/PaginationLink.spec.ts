@@ -1,11 +1,11 @@
 import React from 'react'
 import * as sinon from 'sinon'
 import { mount } from 'enzyme'
-import { PaginationLink } from 'src/pagination/PaginationLink'
+import { PageLink } from 'src/pagination/PageLink'
 
 describe('PaginationLink', () => {
   const p = React.createFactory('p')
-  const F = React.createFactory<any>(PaginationLink)
+  const F = React.createFactory<any>(PageLink)
 
   it('should render without crash', () => {
     mount(F())

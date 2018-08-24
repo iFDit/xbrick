@@ -1,5 +1,5 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
 
@@ -16,5 +16,5 @@ export const CardFooter: React.StatelessComponent<ICardHeaderProps> = function (
 
 CardFooter.displayName = 'xbrick.CardFooter'
 CardFooter.defaultProps = {
-  tag: 'div'
+  tag: 'div',
 }

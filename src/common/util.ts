@@ -1,3 +1,7 @@
+import React from 'react'
+import classNames from 'classnames'
+import { get } from 'lodash'
+
 /**
  * Get HTMLElement css value.
  * @param dom HTMLElement
@@ -24,9 +28,9 @@ export function uniqId() {
 }
 
 export function mergeCall(fn1: any, fn2: any) {
-  return () => {
-    fn1 && fn1()
-    fn2 && fn2()
+  return (...args: any[]) => {
+    fn1 && fn1(...args)
+    fn2 && fn2(...args)
   }
 }
 
@@ -112,4 +116,14 @@ export function formatTransformProps(props: any) {
     result.transform = transform.join(' ')
   }
   return result
+}
+
+export function cloneWithClassName(children: React.ReactElement<any>, className: string = '') {
+  if (typeof children !== 'object') {
+    return children
+  }
+
+  const originalClassName = get(children, 'props.className', '')
+
+  return React.cloneElement(children, { className: classNames(originalClassName, className) })
 }

@@ -14,8 +14,8 @@
 | --- | --- | --- | --- |
 | tag | 自定义标签 | string\|ReactNode | `ul` |
 | expand | 响应式导航最小宽度 | string | `xs` |
-| justify | 对齐方式, 有 `start`, `center`, `end`, `around` 和 `between` | string | 无 |
+| justify | 对齐方式, 有 `start`, `center`, `end`, `around` 和 `between` | string | - |
 | bgColor | navbar背景颜色 | string | `light` |
 | reverse | navbar字体颜色, 用于bgColor为深色时候 | boolean | `false` |
-| fixed | navbar定位, 可选 `top` \| `bottom` | string | 无 |
+| fixed | navbar定位, 可选 `top` \| `bottom` | string | - |
 | sticky | navbar粘贴在顶部 | boolean | `false` |

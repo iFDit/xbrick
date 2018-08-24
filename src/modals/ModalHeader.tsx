@@ -1,8 +1,8 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
-import { Close } from 'src/modals/Close'
+import { Close } from 'src/common/Close'
 
 export interface IModalHeaderProps extends IProps {
   /**

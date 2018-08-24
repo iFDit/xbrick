@@ -5,7 +5,7 @@ import { A_LINK } from 'src/common/classes'
 export interface IAlertLinkProps extends IProps {
   /**
    * Alert custom render tag.
-   * @default div
+   * @default a
    */
   tag?: string | React.Factory<any>
 }

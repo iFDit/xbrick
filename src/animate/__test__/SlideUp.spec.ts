@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { mount } from 'enzyme'
 import { SlideUp } from 'src/animate/SlideUp'
 
@@ -7,19 +7,7 @@ describe('SlideUp', () => {
   const p = React.createFactory<any>('p')
   const SlideupFactory = React.createFactory<any>(SlideUp)
   const defaultProps = {
-    defaultActive: false,
     tag: 'div',
-    trigger: 'active',
-    from: {},
-    style: {},
-    to: {
-      height: 0,
-      opacity: 0,
-      marginTop: 0,
-      paddingTop: 0,
-      marginBottom: 0,
-      paddingBottom: 0,
-    },
   }
 
   it('should have correct default props', () => {
@@ -45,30 +33,11 @@ describe('SlideUp', () => {
     const otherTo = { to: 'to' }
     const otherFrom = { from: 'from' }
     const slideup = mount(SlideupFactory({
-      trigger: 'other',
       to: otherTo,
       from: otherFrom,
     }))
     const props: any = slideup.find('Animate').props()
-    expect(props.trigger === 'other').toBe(false)
     expect(props.to === otherTo).toBe(false)
     expect(props.form === otherFrom).toBe(false)
-  })
-
-  it('should pass down slideup method to children', () => {
-    const child = (slideup: any) => {
-      expect(!!slideup).toBe(true)
-      expect(!!slideup.call).toBe(true)
-      return div(null, 'test')
-    }
-    mount(SlideupFactory(null, child))
-  })
-
-  it('should be slide up when children call slideup', (next) => {
-    const child = (slideup: any) => {
-      return p({ onClick: () => slideup() }, 'text')
-    }
-    const slide = mount(SlideupFactory({afterStateChange: () => next()}, child))
-    slide.find('p').simulate('click')
   })
 })

@@ -1,29 +1,29 @@
-import * as React from 'react'
+import React from 'react'
 import * as ReactDOM from 'react-dom'
-import * as classNames from 'classnames'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
 import { Fade } from 'src/animate/Fade'
+import { ModalContext } from 'src/modals/Modal'
 
 export interface IModalBackdropProps extends IProps {
-  /**
-   * toggle backdrop show/hide.
-   */
-  show?: boolean
-
   /**
    * render to.
    */
   el?: HTMLElement
 }
 
-export const ModalBackdrop: any = function (props: IModalBackdropProps) {
-  const { el = document.body, show = false, ...others } = props
+export const Backdrop: any = function (props: IModalBackdropProps) {
+  const { el = document.body, ...others } = props
   const className = classNames(props.className, classes.MODAL_BACKDROP)
-  const from = show ? 0 : 0.5
-  const to = show ? 0.5 : 0
   return ReactDOM.createPortal(
-    <Fade {...others} className={className} from={from} to={to} show={true} />,
+    <Fade {...others} className={className} show={true} />,
     el!,
   )
 }
+
+export const ModalBackdrop: React.StatelessComponent<IModalBackdropProps> = (props: IModalBackdropProps) => (
+  <ModalContext.Consumer>
+    {({getBackdropProps}) => <Backdrop {...getBackdropProps(props)}/>}
+  </ModalContext.Consumer>
+)

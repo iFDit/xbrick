@@ -1,7 +1,9 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React, { createContext } from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { mergeCall } from 'src/common/util'
+import { INavbarTogglerProps } from 'src/navbar/NavbarToggler'
+import { INavbarCollapseProps } from 'src/navbar/NavbarCollapse'
 import { IProps, NavbarExpand, NavbarJustify, NavbarBgColor, NavbarFixed, INavbarChildrenProps } from 'src/common/props'
 
 export interface INavbarProps extends IProps {
@@ -44,16 +46,14 @@ export interface INavbarProps extends IProps {
    * @default false
    */
   sticky?: boolean
-
-  /**
-   * render props.
-   * @param props 
-   */
-  children? <T>(props: INavbarChildrenProps<T>): React.ReactNode
 }
 
-export class Navbar extends React.Component<INavbarProps> {
+export const NavbarContext = createContext({
+  getTogglerProps: (props: INavbarTogglerProps) => props,
+  getCollapseProps: (props: INavbarCollapseProps) => props,
+})
 
+export class Navbar extends React.Component<INavbarProps> {
   static displayName = 'xbrick.Navbar'
   static defaultProps = {
     tag: 'nav',
@@ -74,7 +74,7 @@ export class Navbar extends React.Component<INavbarProps> {
 
   public getCollapseProps = (props: any = {}) => {
     const { expand } = this.state
-    return { ...props, expand }
+    return { ...props, open: expand }
   }
 
   private handleToggleExpand = () => {
@@ -83,7 +83,7 @@ export class Navbar extends React.Component<INavbarProps> {
   }
 
   render () {
-    const { tag, expand, fixed, sticky, justify, bgColor, reverse, children, ...others } = this.props
+    const { tag, expand, fixed, sticky, justify, bgColor, reverse, ...others } = this.props
     const Tag = tag!
     const className = classNames(
       this.props.className,
@@ -99,12 +99,12 @@ export class Navbar extends React.Component<INavbarProps> {
     )
 
     return (
-      <Tag {...others} className={className}>
-        {children && children({
-          getTogglerProps: this.getTogglerProps,
-          getCollapseProps: this.getCollapseProps,
-        })}
-      </Tag>
+      <NavbarContext.Provider value={{
+        getTogglerProps: this.getTogglerProps,
+        getCollapseProps: this.getCollapseProps,
+      }}>
+        <Tag {...others} className={className} />
+      </NavbarContext.Provider>
     )
   }
 }

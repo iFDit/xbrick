@@ -35,6 +35,7 @@ export const CONTAINER_FLUID = 'container-fluid'
 export const FIXED_TOP = 'fixed-top'
 export const FIXED_BOTTOM = 'fixed-bottom'
 export const STICKY = 'sticky-top'
+export const SHOW = 'show'
 
 // background
 export const BG_LIGHT = 'bg-light'
@@ -48,14 +49,28 @@ export const BG_DARK = 'bg-dark'
 
 // components
 export const ALERT = 'alert'
-export const ALERT_LINK = 'alert-link'
-export const ALERT_HEADING = 'alert-heading'
-export const ALERT_DISMISSIBLE = 'alert-dismissible'
+export const A_LINK = 'alert-link'
+export const A_HEADING = 'alert-heading'
+export const A_DISMISSIBLE = 'alert-dismissible'
+export const A_PRIMARY = `${ALERT}-${PRIMARY}`
+export const A_SECONDARY = `${ALERT}-${SECONDARY}`
+export const A_SUCCESS = `${ALERT}-${SUCCESS}`
+export const A_DANGER = `${ALERT}-${DANGER}`
+export const A_WARNING = `${ALERT}-${WARNING}`
+export const A_INFO = `${ALERT}-${INFO}`
+export const A_LIGHT = `${ALERT}-${LIGHT}`
+export const A_DARK = `${ALERT}-${DARK}`
 
 export const BADGE = 'badge'
-export const BADGE_TOP = 'badge-top'
-export const BADGE_WRAP = 'badge-wrap'
 export const BADGE_PILL = 'badge-pill'
+export const B_PRIMARY = `${BADGE}-${PRIMARY}`
+export const B_SECONDARY = `${BADGE}-${SECONDARY}`
+export const B_SUCCESS = `${BADGE}-${SUCCESS}`
+export const B_DANGER = `${BADGE}-${DANGER}`
+export const B_WARNING = `${BADGE}-${WARNING}`
+export const B_INFO = `${BADGE}-${INFO}`
+export const B_LIGHT = `${BADGE}-${LIGHT}`
+export const B_DARK = `${BADGE}-${DARK}`
 
 export const BREADCRUMB = 'breadcrumb'
 export const BREADCRUMB_ITEM = 'breadcrumb-item'
@@ -95,6 +110,7 @@ export const CAROUSEL_CONTROL_NEXT = 'carousel-control-next'
 export const COLLAPSE = 'collapse'
 export const DROPDOWN = 'dropdown'
 export const DROPDOWN_TOGGLE = 'dropdown-toggle'
+export const DROPDOWN_TOGGLE_SPLIT = 'dropdown-toggle-split'
 export const DROPDOWN_MENU = 'dropdown-menu'
 export const DROPDOWN_ITEM = 'dropdown-item'
 export const DROPDOWN_DIVIDER = 'dropdown-divider'
@@ -227,7 +243,6 @@ export const ALIGN_SELF_XL_START = 'align-self-xl-start'
 export const ALIGN_SELF_XL_CENTER = 'align-self-xl-center'
 export const ALIGN_SELF_XL_END = 'align-self-xl-end'
 
-
 export const NO_GUTTERS = 'no-gutters'
 
 
@@ -254,6 +269,7 @@ export const MODAL_DIALOG_LG = 'modal-lg'
 export const MODAL_DIALOG_SM = 'modal-sm'
 
 export const NAV = 'nav'
+export const NAV_TAB = 'nav-tabs'
 export const NAV_ITEM = 'nav-item'
 export const NAV_LINK = 'nav-link'
 export const FLEX_COLUMN = 'flex-column'
@@ -271,3 +287,46 @@ export const NAVBAR_TOGGLER = 'navbar-toggler'
 export const NAVBAR_TOGGLER_ICON = 'navbar-toggler-icon'
 export const NAVBAR_COLLAPSE = 'navbar-collapse'
 export const NAVBAR_NAV = 'navbar-nav'
+
+export const ANIMATE_INIT = 'animate-slidedown-init'
+export const SLIDE_ACTIVE = 'slide-active'
+
+export const PAGINATION = 'pagination'
+export const PAGE_ITEM = 'page-item'
+export const PAGE_LINK = 'page-link'
+export const PAGINATION_LG = 'pagination-lg'
+export const PAGINATION_SM = 'pagination-sm'
+
+export const POPOVER = 'popover'
+export const POPOVER_LEFT = 'bs-popover-left'
+export const POPOVER_RIGHT = 'bs-popover-right'
+export const POPOVER_TOP = 'bs-popover-top'
+export const POPOVER_BOTTOM = 'bs-popover-bottom'
+export const POPOVER_HEADER = 'popover-header'
+export const POPOVER_BODY = 'popover-body'
+export const XPOPOVER = 'xbrick-popover'
+export const XPOPOVER_CLOSE = 'xbrick-popover-close'
+export const XPOPOVER_BODY = 'xbrick-popover-body'
+export const ARROW = 'arrow'
+
+export const TOOLTIP = 'tooltip'
+export const TOOLTIP_LEFT = 'bs-tooltip-left'
+export const TOOLTIP_RIGHT = 'bs-tooltip-right'
+export const TOOLTIP_TOP = 'bs-tooltip-top'
+export const TOOLTIP_BOTTOM = 'bs-tooltip-bottom'
+export const TOOLTIP_INNER = 'tooltip-inner'
+export const ARROW_WRAP = 'xbrick-arrow-wrap'
+
+export const PROGRESS = 'progress'
+export const PROGRESS_BAR = 'progress-bar'
+export const PROGRESS_STRIPED = 'progress-bar-striped'
+export const PROGRESS_ANIMATE = 'progress-bar-animated'
+
+export const TAB_CONTENT = 'xbrick-tab-content'
+
+export const TABLE = 'table'
+export const TABLE_STRIPED = 'table-striped'
+export const TABLE_BORDER = 'table-bordered'
+export const TABLE_BORDERLESS = 'table-borderless'
+export const TABLE_HOVER = 'table-hover'
+export const TABLE_SMALL = 'table-sm'

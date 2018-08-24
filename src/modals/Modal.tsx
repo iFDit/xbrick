@@ -1,11 +1,11 @@
-import * as React from 'react'
+import React, { createContext } from 'react'
 import * as ReactDOM from 'react-dom'
-import * as classNames from 'classnames'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
-import { get, omit } from 'lodash'
+import { omit } from 'lodash'
 import { IProps } from 'src/common/props'
 import { Animate } from 'src/animate/Animate'
-import { ModalBackdrop } from 'src/modals/ModalBackdrop'
+import { IModalBackdropProps } from 'src/modals/ModalBackdrop'
 import { IModalDialogProps } from 'src/modals/ModalDialog'
 import { mergeCall, setScrollbarWidth, getOriginalBodyPadding, conditionallyUpdateScrollbar } from 'src/common/util'
 
@@ -17,27 +17,17 @@ export interface IModalProps extends IProps {
   tag?: string | React.Factory<any>
 
   /**
-   * modal component default state.
-   * @default false
-   */
-  defaultOpen?: boolean
-
-  /**
    * control the modal component open/close.
    * If this props was set, the Modal will become control component.
+   * @default false
    */
-  isOpen?: boolean
+  open?: boolean
 
   /**
    * set Modal state change has transition or not.
    * @default true
    */
   transition?: boolean
-
-  /**
-   * render children.
-   */
-  children? (props?: any): React.ReactNode
 
   /**
    * invoking when Modal is close.
@@ -55,75 +45,56 @@ export interface IModalProps extends IProps {
    * If transition is false, afterClose will be trigger immediately.
    */
   afterOpen? (): void
-
-  /**
-   * show/hide Modal backdrop.
-   * @default true
-   */
-  mask?: boolean
 }
 
-const omitProps = ['isOpen', 'transition', 'onOpen', 'onClose', 'defaultOpen', 'afterClose', 'afterOpen']
+const omitProps = ['open', 'transition', 'onOpen', 'onClose', 'afterClose', 'afterOpen']
+
+export const ModalContext = createContext({
+  getModalDialogProps: (props: any = {}) => props,
+  getBackdropProps: (props: any = {}) => props,
+})
 
 export class Modal extends React.Component<IModalProps> {
   static displayName = 'xbrick.Modal'
   static defaultProps = {
     tag: 'div',
     mask: true,
+    open: false,
     transition: true,
-    defaultOpen: false,
     children: () => null,
   }
 
   static getDerivedStateFromProps(props: IModalProps, state: any) {
-    const isOpen = get(props, 'isOpen', props.defaultOpen)
-    if (isOpen !== state.isOpen) {
-      const nextState = { ...state, isOpen }
-      if (isOpen) {
-        nextState.display = 'block'
-      }
-      return nextState
-    } else {
-      return state
+    if (state.lastOpen !== props.open) {
+      return { ...state, lastOpen: props.open, active: true }
     }
+    return null
   }
 
   public state = {
-    display: !!get(this.props, 'defaultOpen', false) ? 'block' : 'none',
-    isOpen: !!get(this.props, 'defaultOpen', false),
+    active: false,
+    lastOpen: this.props.open,
   }
 
   private _el: any
-  private _bodyPadding: number
+  private _bodyPadding: any
 
   constructor(props: IModalProps) {
     super(props)
     this._el = document.createElement('div')
     this._el.style.position = 'relative'
     this._el.style.zIndex = '1050'
-    this._el.addEventListener('click', (e: MouseEvent) => {
-      if (get(e, 'target.classList') && get(e, 'target.classList').contains(classes.MODAL)) {
-        this.hide()
-      }
-    })
-  }
-
-  public hide = () => {
-    const {onClose, isOpen} = this.props
-    if (isOpen == null) {
-      this.setState({ isOpen: false })
-      onClose && onClose
-    }
   }
 
   public afterAnimate = () => {
     const {afterOpen, afterClose} = this.props
-    const { isOpen } = this.state
-    if (!isOpen) {
-      this.setState({ display: 'none' }, () => { afterClose && afterClose()})
+    const { open } = this.props
+    if (!open) {
+      afterClose && afterClose()
     } else {
       afterOpen && afterOpen()
     }
+    this.setState({ active: false })
   }
 
   public componentDidMount() {
@@ -135,8 +106,8 @@ export class Modal extends React.Component<IModalProps> {
   }
 
   private init = () => {
-    const { isOpen } = this.state
-    if (isOpen) {
+    const { open } = this.props
+    if (open && this._bodyPadding == null) {
       this._bodyPadding = getOriginalBodyPadding()
       conditionallyUpdateScrollbar()
       document.body.classList.add(classes.MODAL_OPEN)
@@ -144,50 +115,71 @@ export class Modal extends React.Component<IModalProps> {
   }
 
   private handleHide = () => {
-    const { isOpen } = this.state
-    if (!isOpen) {
+    const { open } = this.props
+    if (!open) {
       document.body.classList.remove(classes.MODAL_OPEN)
       setScrollbarWidth(this._bodyPadding)
+      this._bodyPadding = null
     }
   }
 
   private getModalDialogProps = (props: IModalDialogProps = {}) => {
-    const { transition } = this.props
-    const { isOpen } = this.state
+    const { transition, open } = this.props
+    const { active } = this.state
     if (typeof props !== 'object') {
-      return { transition, show: isOpen }
+      return { transition, show: open, active }
     }
-    const nextProps = { ...props, transition, show: isOpen }
+    const nextProps = { ...props, transition, show: open, active }
     return nextProps
   }
 
+  private getBackdropProps = (props: IModalBackdropProps = {}) => {
+    const { transition, open } = this.props
+    const { active } = this.state
+    const nextFrom = open ? 0 : 0.5
+    const nextTo = open ? 0.5 : 0
+    return {
+      ...props,
+      transition: active ? transition : false,
+      from: active ? nextFrom : 0.5,
+      to: active ? nextTo : 0.5,
+      el: this._el,
+      style: {display: !active && !open ? 'none' : 'block'},
+    }
+  }
+
   render() {
-    const { mask, transition, children, ...others } = this.props
-    const { isOpen, display } = this.state
+    const { mask, style, open, transition, ...others } = this.props
+    const { active } = this.state
+    const Tag = this.props.tag!
     const className = classNames(this.props.className, classes.MODAL)
     const afterStateChange = mergeCall(this.afterAnimate, this.handleHide)
+    const nextStyle = { ...style }
     this.init()
+    nextStyle.display = !active && !open ? 'none' : 'block'
 
     return ReactDOM.createPortal(
-      <Animate {...omit(others, omitProps)}
-        afterStateChange={afterStateChange}
-        from={getAnimateFrom(isOpen)}
-        to={getAnimateTo(isOpen)}
-        transition={transition}
-        className={className}
-        style={{display}}
-        show={true}
+      <ModalContext.Provider
+        value={{
+          getModalDialogProps: this.getModalDialogProps,
+          getBackdropProps: this.getBackdropProps,
+        }}
       >
-        {children!({ hide: this.hide, getModalDialogProps: this.getModalDialogProps })}
-        {mask && (
-          <ModalBackdrop
-            show={isOpen}
+        {active ?     
+          <Animate {...omit(others, omitProps)}
+            afterStateChange={afterStateChange}
+            from={getAnimateFrom(open!)}
+            to={getAnimateTo(open!)}
             transition={transition}
-            el={this._el}
-            style={{display}}
+            className={className}
+            style={nextStyle}
+            show={true}
           />
-        )}
-      </Animate>,
+          : 
+          <Tag {...omit(others, omitProps)} className={className} style={nextStyle} />
+        }
+
+      </ModalContext.Provider>,
       this._el,
     )
   }

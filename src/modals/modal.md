@@ -26,10 +26,8 @@
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | tag | 自定义标签 | string\|ReactNode | `div` |
-| defaultOpen | 默认是否显示Modal | boolean | `false` |
-| isOpen | 控制Modal的显示 | boolean | 无 |
+| open | 控制Modal的显示 | boolean | `false` |
 | transition | 是否使用动画 | boolean | `true` |
-| onClose | 在Modal关闭时触发 | function | 无 |
-| afterClose | 在Modal关闭后触发 | function | 无 |
-| afterOpen | 在Modal打开后触发 | function | 无 |
-| mask | 是否展示遮罩层 | boolean | `true` |
+| onClose | 在Modal关闭时触发 | function | - |
+| afterClose | 在Modal关闭后触发 | function | - |
+| afterOpen | 在Modal打开后触发 | function | - |

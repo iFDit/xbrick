@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import * as sinon from 'sinon'
 import { mount } from 'enzyme'
 import { Dropdown } from 'src/dropdowns/Dropdown'
@@ -45,7 +45,6 @@ describe('Dropdown', () => {
     const render = mount(F())
 
     expect(render.find('div').hasClass('dropdown')).toBe(true)
-    expect(render.find('div').hasClass('btn-group')).toBe(true)
 
     render.setProps({ direction: 'up' })
     expect(render.find('div').hasClass('dropup')).toBe(true)

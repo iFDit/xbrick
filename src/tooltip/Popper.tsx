@@ -1,6 +1,6 @@
 import React from 'react'
 import { Reference, Manager, Popper as ReactPopper, PopperChildrenProps } from 'react-popper'
-import { get } from 'lodash'
+import { get, isFunction } from 'lodash'
 import { mergeCall } from 'src/common/util'
 import { IProps } from 'src/common/props'
 
@@ -26,6 +26,8 @@ export class Popper extends React.Component<IPopperProps> {
   public renderPopper = () => {
     const { reference, el, ...others } = this.props
     const originalRef = get(reference, 'props.getRef')
+    const type = get(reference, 'type')
+    const stateLess = isFunction(type)
     let refCall: any = null
 
     return (
@@ -35,7 +37,8 @@ export class Popper extends React.Component<IPopperProps> {
             if (!refCall) {
               refCall = mergeCall(originalRef, ref)
             }
-            return React.cloneElement(reference, {getRef: refCall})
+            const props = stateLess ? {getRef: refCall} : {ref}
+            return React.cloneElement(reference, props)
           }}
         </Reference>
         {this.props.open && <ReactPopper {...others}/>}

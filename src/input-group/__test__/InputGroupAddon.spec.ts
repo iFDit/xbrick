@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import * as sinon from 'sinon'
 import { mount } from 'enzyme'
 import { InputGroupAddon } from 'src/input-group/InputGroupAddon'

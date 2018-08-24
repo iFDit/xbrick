@@ -1,6 +1,10 @@
 .animate-slidedown-init {
-  position: absolute;
+  // position: absolute;
   overflow: hidden;
   visibility: hidden;
   display: block !important;
+}
+
+.slide-active {
+  overflow: hidden !important;
 }

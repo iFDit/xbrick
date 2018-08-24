@@ -19,10 +19,10 @@ export interface IAlertProps extends IProps {
 }
 
 export interface IAlertComponent extends React.StatelessComponent<IAlertProps> {
-  Close?: React.StatelessComponent<any>
+  Close: React.StatelessComponent<any>
 }
 
-const AlertContext = createContext({
+export const AlertContext = createContext({
   handleCloseProps: (props: ICloseProps) => props,
 })
 
@@ -41,7 +41,7 @@ export const Alert: IAlertComponent = function (props: IAlertProps) {
       )}
     </UncontrolledSlide>
   )
-}
+} as any
 
 const AlertClose: React.StatelessComponent<any> = (props: ICloseProps) => (
   <AlertContext.Consumer>

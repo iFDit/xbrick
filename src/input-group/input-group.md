@@ -11,3 +11,10 @@
     <Input placehold="Username" />
   </InputGroup>
 ````
+
+## API
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| tag | 自定义标签 | string\|ReactNode | `div` |
+| size | 设置大小，可选：`small` 和 `large` | string | - |

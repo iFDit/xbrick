@@ -1,8 +1,9 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import React from 'react'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { omit, isObject, isString, isNumber, isBoolean } from 'lodash'
 import { IProps, IColumn } from 'src/common/props'
+import { cloneWithClassName } from 'src/common/util'
 
 export interface IColProps extends IProps, IColumn {
   /**
@@ -24,7 +25,7 @@ export const Col: React.StatelessComponent<IColProps> = function (props: IColPro
   const Tag = tag!
   const className = classNames(props.className, getColClass(props))
   return nowrap ?
-    React.cloneElement(props.children, {className})
+    cloneWithClassName(props.children, className)
     : <Tag {...omit(others, omitProps)} className={className}/>
 }
 

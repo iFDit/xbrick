@@ -14,3 +14,10 @@ Jumbotron
     </p>
   </Jumbotron>
 ````
+
+## API
+
+| 参数 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| tag | 自定义标签 | string\|ReactNode | `div` |
+| fluid | 占据整个屏幕宽度 | boolean | `false` |

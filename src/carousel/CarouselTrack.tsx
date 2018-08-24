@@ -1,6 +1,6 @@
-import * as React from 'react'
+import React from 'react'
 import * as ReactDOM from 'react-dom'
-import * as classNames from 'classnames'
+import classNames from 'classnames'
 import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
 import { get, omit, first, last, toArray } from 'lodash'
@@ -26,16 +26,23 @@ export interface ICarouselTrackProps extends IProps {
   to?: number
 
   /**
+   * Animate opacity only.
+   * @default false
+   */
+  crossfade?: boolean
+
+  /**
    * trigger after animate done.
    */
-  after? (): void
+  afterChange? (): void
 }
 
-const omitProps = ['from', 'to', 'after']
+const omitProps = ['from', 'to']
+const defaultConfig = {precision: 0.01, stiffness: 100, damping: 64}
 
 export class CarouselTrack extends React.Component<ICarouselTrackProps> {
   static displayName = 'xbrick.CarouselTrack'
-  static defaultProps = { tag: 'div', from: 0, to: 0 }
+  static defaultProps = { tag: 'div', from: 0, to: 0, crossfade: false }
 
   public state = {
     items: [],
@@ -46,10 +53,12 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
 
   public componentDidMount() {
     const trackDOM: Element = ReactDOM.findDOMNode(this) as Element
-    const items = toArray(trackDOM.querySelector('.carousel-track')!.childNodes).filter(Boolean)
-    this.lastHandle = window.onresize
+    const items = this.getBound(toArray(trackDOM.querySelector('.carousel-track')!.childNodes).filter(Boolean) as HTMLElement[])
+    if (!this.lastHandle) {
+      this.lastHandle = window.onresize
+    }
     window.onresize = () => {
-      this.handleResize()
+      this.handleResize(this.getBound(toArray(trackDOM.querySelector('.carousel-track')!.childNodes).filter(Boolean) as HTMLElement[]))
       this.lastHandle && this.lastHandle()
     }
     this.setState({ items: items })
@@ -60,7 +69,7 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
   }
 
   render() {
-    const { tag, children, className, ...others } = this.props
+    const { tag, children, className, crossfade, afterChange, ...others } = this.props
     const Tag = tag!
     const childs = React.Children.map(
       children,
@@ -68,24 +77,31 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
     ) || []
     const renderChild = childs.length > 1 ? [last(childs), ...childs, first(childs)] : childs
     const { start, end } = this.calculateStyle()
-    const from = { left: -start }
-    const to = { left: -end }
+    const from = {
+      left: {value: -start, transition: !crossfade},
+      opacity: {value: 0.5, transition: !!crossfade, config: defaultConfig},
+    }
+    const to = {left: -end, opacity: 1 }
 
     return (
       <Tag {...omit(others, omitProps)} className={classNames(className, classes.CAROUSEL_VIEW)}>
-        <Animate from={from} to={to} show={true} className={classes.CAROUSEL_TRACK}>
+        <Animate from={from} to={to} show={true} className={classes.CAROUSEL_TRACK} afterStateChange={afterChange}>
           {renderChild.map((child, idx) => React.cloneElement(child as React.ReactElement<any>, {key: idx}))}
         </Animate>
       </Tag>
     )
   }
 
-  private handleResize = () => {
+  private getBound(elems: HTMLElement[]) {
+    return elems.map(item => ({ width: get(item, 'offsetWidth', 0), height: get(item, 'offsetHeight', 0) }))
+  }
+
+  private handleResize = (newItems: any[]) => {
     if (this.timer) {
       clearTimeout(this.timer!)
       this.timer = null
     }
-    this.timer = setTimeout(() => this.setState({}), 50)
+    this.timer = setTimeout(() => this.setState({ items: newItems }), 50)
   }
 
   private calculateStyle = () => {
@@ -97,6 +113,6 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
   }
 
   private getWidthFromArray(items: any[]) {
-    return items.reduce((prev, next) => prev + get(next, 'offsetWidth', 0), 0)
+    return items.reduce((prev, next) => prev + get(next, 'width', 0), 0)
   }
 }
