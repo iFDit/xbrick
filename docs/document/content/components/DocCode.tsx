@@ -1,10 +1,12 @@
 import React from 'react'
-import { Container, Row, Col, Button , Collapse } from 'xbrick'
+import classNames from 'classnames'
+import { Container, Row, Col, Button, ButtonStyles, Collapse } from 'xbrick'
 const sandbox = require('docs/document/asset/codesandbox.svg')
 import SyntaxHighlighter from 'react-syntax-highlighter/prism'
 import { coy } from 'react-syntax-highlighter/styles/prism'
 import { getcodesandboxParam } from 'docs/document/content/util'
 
+const { BUTTON, SMALL, LIGHT, BLOCK } = ButtonStyles
 export class DocCode extends React.Component<any> {
   public state = { open: false, copied: false }
 
@@ -43,7 +45,7 @@ export class DocCode extends React.Component<any> {
                         <input type="hidden" name="parameters" value={`${getcodesandboxParam(codeText)}`} />
                         <input type="submit" value="" style={{backgroundImage: `url(${sandbox})`}} className="doc-codesandbox-submit"/>
                       </form>
-                      <Button size="small" bstype="light" title="copy the code" className="btn-copy" onClick={() => this.copy(codeText)}>
+                      <Button className={classNames(LIGHT, BUTTON, SMALL, 'btn-copy')} title="copy the code" onClick={() => this.copy(codeText)}>
                         {copied ? 'copied' : 'copy'}
                       </Button>
                     </Col>
@@ -63,11 +65,8 @@ export class DocCode extends React.Component<any> {
         <Row className="doc-content-text" style={{marginBottom: 15}}>
           <Col xs="12"  style={{textAlign: 'end'}}>
             <Button
-              block
-              size="small"
-              bstype="light"
               onClick={() => this.toggle()}
-              className="doc-view-code-text"
+              className={classNames(LIGHT, BUTTON, SMALL, BLOCK, 'doc-view-code-text')}
             >
               <span>{`</> ${open ? 'hide' : 'view'} code`}</span>
             </Button>

@@ -5,6 +5,7 @@ declare module "*.md" {
 
 declare module "react-syntax-highlighter/*" {
   const e: any
+  export const coy: any
   export default e
 }
 

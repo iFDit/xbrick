@@ -1,6 +1,7 @@
 import React from 'react'
+import classNames from 'classnames'
 import { Col } from 'xbrick'
-import { Button } from 'xbrick'
+import { Button, ButtonStyles } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
 import base from 'docs/demo/button/basic.md'
@@ -11,6 +12,9 @@ import block from 'docs/demo/button/block.md'
 import active from 'docs/demo/button/active.md'
 import disabled from 'docs/demo/button/disabled.md'
 
+// Styles
+import style from 'src/buttons/button-styles.md'
+
 // API
 import api from 'src/buttons/button.md'
 
@@ -19,8 +23,10 @@ import * as showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
+const { BUTTON, PRIMARY, SECONDARY, SUCCESS, DANGER, WARNING } = ButtonStyles
+
 export function ButtonsContent() {
-  return new Content('Buttons 按钮')
+  return new Content('Buttons')
     .addNav({ text: 'Overview', anchor: 'overview' })
     .addNav({ text: 'Examples', anchor: 'examples' })
     .addNav({ text: 'Button tags', anchor: 'button-tags' })
@@ -53,33 +59,15 @@ export function ButtonsContent() {
       describe: '',
       content: (
         <>
-          <Col xs="auto">
-            <Button>primary</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="secondary">secondary</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="success">success</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="danger">danger</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="warning">warning</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="info">info</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="light">light</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="dark">dark</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="link">link</Button>
-          </Col>
+          <Button className={`${BUTTON} ${PRIMARY} mr-2`}>primary</Button>
+          <Button className={`${BUTTON} ${SECONDARY} mr-2`}>secondary</Button>
+          <Button className={`${BUTTON} ${SUCCESS} mr-2`}>success</Button>
+          <Button className={`${BUTTON} ${DANGER} mr-2`}>danger</Button>
+          <Button className={`${BUTTON} ${WARNING} mr-2`}>warning</Button>
+          <Button className={`${BUTTON} ${WARNING} mr-2`}>info</Button>
+          <Button bstype="light">light</Button>
+          <Button bstype="dark">dark</Button>
+          <Button bstype="link">link</Button>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(base)),
@@ -203,6 +191,11 @@ export function ButtonsContent() {
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(disabled)),
+    })
+    .addStyles({
+      header: true,
+      title: 'Button',
+      content: getTableFromString(converter.makeHtml(style)),
     })
     .addAPI({
       header: true,
