@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "outDir": "build/dist",
+    "outDir": "./lib",
     "module": "esnext",
     "target": "es5",
     "lib": ["es6", "dom"],
@@ -17,10 +17,18 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "noEmitOnError": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "jest",
+      "node"
+    ]
   },
   "include": [
     "src/**/*",
+    "test/**/*",
     "docs/**/*"
   ],
   "exclude": [
