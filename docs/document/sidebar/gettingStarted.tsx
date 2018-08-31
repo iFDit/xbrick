@@ -45,19 +45,19 @@ export class GettingStarted extends React.Component<any> {
     
     return (
       <>
-        <NavLink href="#" active={inRoot} onClick={() => this.toggle()} nowrap={!inRoot}>
+        <NavLink href="#" active={inRoot} onClick={() => this.toggle()} render={inRoot}>
           {inRoot ? 'Getting Started' : <Link to={`${path}/${ROOT}`} onClick={() => this.toggle()}>Getting Started</Link>}
         </NavLink>
         <Collapse open={open}>
           {() => (
             <Nav vertical>
               <NavItem>
-                <NavLink nowrap active={this.itemActive(`${path}/${INSTALL}`)}>
+                <NavLink render={false} active={this.itemActive(`${path}/${INSTALL}`)}>
                   <Link to={`${path}/${INSTALL}`}>Install</Link>
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink nowrap active={this.itemActive(`${path}/${USAGE}`)}>
+                <NavLink render={false} active={this.itemActive(`${path}/${USAGE}`)}>
                   <Link to={`${path}/${USAGE}`}>Usage</Link>
                 </NavLink>
               </NavItem>

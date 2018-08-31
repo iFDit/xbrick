@@ -6,8 +6,8 @@ import { ButtonGroup, Button } from 'xbrick'
 ReactDOM.render(
   <ButtonGroup>
     <Button>Primary</Button>
-    <Button bstype="secondary">Secondary</Button>
-    <Button bstype="success">Success</Button>
+    <Button color="secondary">Secondary</Button>
+    <Button color="success">Success</Button>
   </ButtonGroup>
 , rootNode)
 ````

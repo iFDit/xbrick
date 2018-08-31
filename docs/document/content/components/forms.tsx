@@ -19,7 +19,7 @@ import inputapi from 'src/input-group/input.md'
 import labelapi from 'src/input-group/label.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
@@ -30,6 +30,7 @@ export function FormContent() {
     .addNav({ text: 'Sizing', anchor: 'sizing' })
     .addNav({ text: 'Readonly', anchor: 'readonly' })
     .addNav({ text: 'Readonly plain text', anchor: 'readonly-plain-text' })
+    .addNav({ text: 'Range Inputs', anchor: 'range-nputs' })
     .addNav({ text: 'Horizontal', anchor: 'horizontal' })
     .addNav({ text: 'Inline', anchor: 'inline' })
     .addNav({ text: 'Custom', anchor: 'custom' })
@@ -53,7 +54,7 @@ export function FormContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>常用的表单，包括input, select, textarea, radio和checkbox。</p>,
       content: (
         <Form>
           <FormGroup>
@@ -110,13 +111,13 @@ export function FormContent() {
               <Input type="radio" name="rd1" label="Option one is this and that—be sure to include why it's great"/>
             </FormGroup>
             <FormGroup check>
-              <Input type="radio" name="rd2" label="Option two can be something else and selecting it will deselect option one"/>
+              <Input type="radio" name="rd1" label="Option two can be something else and selecting it will deselect option one"/>
             </FormGroup>
             <FormGroup check>
-              <Input type="radio" name="rd3" label="Option three is disabled" disabled/>
+              <Input type="radio" name="rd1" label="Option three is disabled" disabled/>
             </FormGroup>
             <FormGroup check>
-              <Input type="radio" name="rd4" label="Option one is this and that—be sure to include why it's great"/>
+              <Input type="radio" name="rd1" label="Option one is this and that—be sure to include why it's great"/>
             </FormGroup>
           </FormGroup>
           <FormGroup check>
@@ -129,7 +130,7 @@ export function FormContent() {
     })
     .addSection({
       title: 'Sizing',
-      describe: '',
+      describe: <p>设置Input组件的size来改变表单的大小。</p>,
       content: (
         <Form>
           <FormGroup>
@@ -162,7 +163,7 @@ export function FormContent() {
     })
     .addSection({
       title: 'Readonly',
-      describe: '',
+      describe: <p>readOnly只读。</p>,
       content: (
         <Form>
           <FormGroup>
@@ -174,7 +175,7 @@ export function FormContent() {
     })
     .addSection({
       title: 'Readonly plain text',
-      describe: '',
+      describe: <p>plainText属性改变只读表单的显示样式。</p>,
       content: (
         <Form>
           <FormGroup>
@@ -185,21 +186,33 @@ export function FormContent() {
       codeText: getCodeFromString(converter.makeHtml(readonlyplain)),
     })
     .addSection({
+      title: 'Range Inputs',
+      describe: <p>Range表单。</p>,
+      content: (
+        <Form style={{width: '100%'}}>
+          <FormGroup>
+            <Input type="range" label="Range input" />
+          </FormGroup>
+        </Form>
+      ),
+      codeText: getCodeFromString(converter.makeHtml(readonly)),
+    })
+    .addSection({
       title: 'Horizontal',
-      describe: '',
+      describe: <p>使用Col组件和FormGroup的row属性布局，具体可参考Layout组件。</p>,
       content: (
         <Form>
           <FormGroup row>
-            <Col nowrap sm="3"><Label htmlFor="email" col>Email</Label></Col>
+            <Col render={false} sm="3"><Label htmlFor="email" col>Email</Label></Col>
             <Col sm="9"><Input id="email" placehold="Email" /></Col>
           </FormGroup>
           <FormGroup row>
-            <Col nowrap sm="3"><Label htmlFor="password" col>Password</Label></Col>
+            <Col render={false} sm="3"><Label htmlFor="password" col>Password</Label></Col>
             <Col sm="9"><Input id="password" placehold="Password" type="password" /></Col>
           </FormGroup>
           <FormGroup tag="fieldset">
             <Row>
-              <Col nowrap xs="3"><legend style={{fontSize: 14}}>Radios</legend></Col>
+              <Col render={false} xs="3"><legend style={{fontSize: 14}}>Radios</legend></Col>
               <Col xs="9">
                 <FormGroup check>
                   <Input type="radio" label="First radio" name="rd" />
@@ -220,7 +233,7 @@ export function FormContent() {
     })
     .addSection({
       title: 'Inline',
-      describe: '',
+      describe: <p>在Form中设置inline属性，可以在同一水平线中显示表单元素。</p>,
       content: (
         <Form inline>
           <FormGroup>
@@ -236,7 +249,7 @@ export function FormContent() {
     })
     .addSection({
       title: 'Custom',
-      describe: '',
+      describe: <p>使用CustomInput组件显示统一的select, radio和checkbox样式。</p>,
       content: (
         <Form>
           <FormGroup>

@@ -1,8 +1,7 @@
 import React from 'react'
-import classNames from 'classnames'
 import { Col } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
-import { Alert, AlertLink, AlertStyles, ALertLinkStyles } from 'xbrick'
+import { Alert, AlertLink, AlertStyles } from 'xbrick'
 // code text
 import alertBase from 'docs/demo/alert/basic.md'
 import alertLink from 'docs/demo/alert/link.md'
@@ -11,19 +10,16 @@ import closable from 'docs/demo/alert/closable.md'
 
 // Style
 import style from 'src/alert/alert-styles.md'
-import linkstyle from 'src/alert/alert-link-styles.md'
 
 // API
 import api from 'src/alert/alert.md'
 import apiLink from 'src/alert/alert-link.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
-const { LINK } = ALertLinkStyles
-const { ALERT, PRIMARY, SECONDARY, SUCCESS, DANGER, WARNING, INFO, LIGHT, DARK, CLOSE } = AlertStyles
 const AlertClose = Alert.Close!
 export function AlertContent() {
   return new Content('Alert')
@@ -59,42 +55,42 @@ export function AlertContent() {
       content: (
         <>
           <Col xs="12">
-            <Alert className={classNames(ALERT, PRIMARY)}>
+            <Alert color="primary">
               This is a primary alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, SECONDARY)}>
+            <Alert color="secondary">
               This is a secondary alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, SUCCESS)}>
+            <Alert color="success">
               This is a success alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, DANGER)}>
+            <Alert color="danger">
               This is a danger alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, WARNING)}>
+            <Alert color="warning">
               This is a warning alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, INFO)}>
+            <Alert color="info">
               This is a info alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, LIGHT)}>
+            <Alert color="light">
               This is a light alert — check it out!
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, DARK)}>
+            <Alert color="dark">
               This is a dark alert — check it out!
             </Alert>
           </Col>
@@ -110,44 +106,44 @@ export function AlertContent() {
       content: (
         <>
           <Col xs="12">
-            <Alert className={classNames(ALERT, PRIMARY)}>
+            <Alert>
               This is a primary alert with a{` `}
-              <AlertLink href="#" className={LINK}>an example link</AlertLink>. Give it a click if you like.
+              <AlertLink href="#">an example link</AlertLink>. Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, SECONDARY)}>
-              This is a secondary alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
+            <Alert color="secondary">
+              This is a secondary alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, SUCCESS)}>
-              This is a success alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
+            <Alert color="success">
+              This is a success alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, DANGER)}>
-              This is a danger alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
+            <Alert color="danger">
+              This is a danger alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, WARNING)}>
-              This is a warning alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
+            <Alert color="warning">
+              This is a warning alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, INFO)}>
-              This is a info alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
+            <Alert color="info">
+              This is a info alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, LIGHT)}>
-              This is a light alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
+            <Alert color="light">
+              This is a light alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
           <Col xs="12">
-            <Alert className={classNames(ALERT, DARK)}>
-              This is a dark alert with a <AlertLink href="#" className={LINK}>an example link</AlertLink>.Give it a click if you like.
+            <Alert color="dark">
+              This is a dark alert with a <AlertLink href="#">an example link</AlertLink>.Give it a click if you like.
             </Alert>
           </Col>
         </>
@@ -161,7 +157,7 @@ export function AlertContent() {
       ),
       content: (
         <Col xs="12">
-          <Alert className={classNames(ALERT, SUCCESS)}>
+          <Alert color="success">
             <h4>Well done</h4>
             <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
             <hr />
@@ -178,9 +174,9 @@ export function AlertContent() {
       ),
       content: (
         <Col xs="12">
-          <Alert className={classNames(ALERT, WARNING)} afterClose={() => console.log('I had been closed.')}>
+          <Alert color="warning" afterClose={() => console.log('I had been closed.')} className={AlertStyles.DISMISSIBLE}>
             Warning Alert with dismiss button.
-            <AlertClose className={CLOSE}/>
+            <AlertClose/>
           </Alert>
         </Col>
       ),
@@ -190,10 +186,6 @@ export function AlertContent() {
       header: true,
       title: 'Alert styles',
       content: getTableFromString(converter.makeHtml(style)),
-    })
-    .addStyles({
-      title: 'AlertLink styles',
-      content: getTableFromString(converter.makeHtml(linkstyle)),
     })
     .addAPI({
       header: true,

@@ -3,31 +3,19 @@
 ````jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Badge, BadgeStyles } from 'xbrick'
+import { Badge } from 'xbrick'
 import 'xbrick/lib/style/index.css'
-
-const {
-  BADGE,
-  PRIMARY,
-  SECONDARY,
-  SUCCESS,
-  DANGER,
-  WARNING,
-  INFO,
-  LIGHT,
-  DARK,
-} = BadgeStyles
 
 ReactDOM.render(
   <div>
-    <Badge className={`${BADGE} ${PRIMARY}`} tag="a" href="#">primary</Badge>
-    <Badge className={`${BADGE} ${SECONDARY}`} tag="a" href="#">Secondary</Badge>
-    <Badge className={`${BADGE} ${WARNING}`} tag="a" href="#">Warning</Badge>
-    <Badge className={`${BADGE} ${SUCCESS}`} tag="a" href="#">Success</Badge>
-    <Badge className={`${BADGE} ${DANGER}`} tag="a" href="#">Danger</Badge>
-    <Badge className={`${BADGE} ${INFO}`} tag="a" href="#">Info</Badge>
-    <Badge className={`${BADGE} ${LIGHT}`} tag="a" href="#">Light</Badge>
-    <Badge className={`${BADGE} ${DARK}`} tag="a" href="#">Dark</Badge>
+    <Badge className="mr-2" tag="a" href="#">primary</Badge>
+    <Badge color="secondary" className="mr-2" tag="a" href="#">Secondary</Badge>
+    <Badge color="warning" className="mr-2" tag="a" href="#">Warning</Badge>
+    <Badge color="success" className="mr-2" tag="a" href="#">Success</Badge>
+    <Badge color="danger" className="mr-2" tag="a" href="#">Danger</Badge>
+    <Badge color="info" className="mr-2" tag="a" href="#">Info</Badge>
+    <Badge color="light" className="mr-2" tag="a" href="#">Light</Badge>
+    <Badge color="dark" className="mr-2" tag="a" href="#">Dark</Badge>
   </div>
 , document.getElementById('root'))
 ````

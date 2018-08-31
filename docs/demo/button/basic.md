@@ -9,15 +9,15 @@ import 'xbrick/lib/style/index.css'
 ReactDOM.render(
   <div>
     <Button>primary</Button>
-    <Button bstype="secondary">secondary</Button>
-    <Button bstype="secondary">secondary</Button>
-    <Button bstype="success">success</Button>
-    <Button bstype="danger">danger</Button>
-    <Button bstype="warning">warning</Button>
-    <Button bstype="info">info</Button>
-    <Button bstype="light">light</Button>
-    <Button bstype="dark">dark</Button>
-    <Button bstype="link">link</Button>
+    <Button color="secondary">secondary</Button>
+    <Button color="secondary">secondary</Button>
+    <Button color="success">success</Button>
+    <Button color="danger">danger</Button>
+    <Button color="warning">warning</Button>
+    <Button color="info">info</Button>
+    <Button color="light">light</Button>
+    <Button color="dark">dark</Button>
+    <Button color="link">link</Button>
   </div>
 , document.getElementById('root'))
 ````

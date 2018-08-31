@@ -10,7 +10,7 @@ import fluid from 'docs/demo/jumbotron/fluid.md'
 import api from 'src/jumbotron/jumbotron.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 

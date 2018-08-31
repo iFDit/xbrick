@@ -15,7 +15,7 @@ import bodyapi from 'src/popover/popover-body.md'
 import headerapi from 'src/popover/popover-header.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 

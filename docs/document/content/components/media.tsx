@@ -13,7 +13,7 @@ import bodyapi from 'src/media/media-body.md'
 import objectapi from 'src/media/media-object.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 

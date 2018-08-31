@@ -11,14 +11,14 @@ import 'xbrick/lib/style/index.css'
 ReactDOM.render(
   <div>
     <Button outline>Primary</Button>
-    <Button bstype="secondary" outline>secondary</Button>
-    <Button bstype="success" outline>success</Button>
-    <Button bstype="danger" outline>danger</Button>
-    <Button bstype="warning" outline>warning</Button>
-    <Button bstype="info" outline>info</Button>
-    <Button bstype="light" outline>light</Button>
-    <Button bstype="dark" outline>dark</Button>
-    <Button bstype="link" outline>link</Button>
+    <Button color="secondary" outline>secondary</Button>
+    <Button color="success" outline>success</Button>
+    <Button color="danger" outline>danger</Button>
+    <Button color="warning" outline>warning</Button>
+    <Button color="info" outline>info</Button>
+    <Button color="light" outline>light</Button>
+    <Button color="dark" outline>dark</Button>
+    <Button color="link" outline>link</Button>
   </div>
 , document.getElementById('root'))
 ````

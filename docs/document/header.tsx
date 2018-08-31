@@ -1,6 +1,6 @@
 import * as React from 'react'
 const logo = require('src/logo.svg')
-import { Form, Input } from 'xbrick'
+import { Form, Input, NavbarStyles } from 'xbrick'
 import { Navbar, NavbarBrand, NavbarCollapse, NavbarToggler, Nav, NavItem, NavLink } from 'xbrick'
 import { Link, withRouter } from 'react-router-dom'
 // @ts-ignore
@@ -18,14 +18,14 @@ export const Header = withRouter(props => {
       <NavbarBrand href="/"><img src={logo} width="32" height="32" /><span className="h5">xbrick</span></NavbarBrand>
       <NavbarToggler/>
       <NavbarCollapse>
-        <Nav navbar>
+        <Nav className={NavbarStyles.nav}>
           <NavItem>
-            <NavLink nowrap={!homeActive} active={homeActive} href="#">
+            <NavLink render={homeActive} active={homeActive} href="#">
               {homeActive ? 'Home' : <Link to="/home">Home</Link>}
             </NavLink>
           </NavItem>
           <NavItem>
-            <NavLink nowrap={!componentsActive} active={componentsActive} href="#">
+            <NavLink render={componentsActive} active={componentsActive} href="#">
               {componentsActive ? 'Documentation' : <Link to="/documents">Documentation</Link>}
             </NavLink>
           </NavItem>

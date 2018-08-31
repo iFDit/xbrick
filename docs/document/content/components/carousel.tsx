@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col } from 'xbrick'
-import { UncontrolledCarousel, CarouselTrack, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'xbrick'
+import { UncontrolledCarousel, CarouselItem, CarouselCaption } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
 import basic from 'docs/demo/carousel/basic.md'
@@ -19,7 +19,7 @@ import controlApi from 'src/carousel/carousel-control.md'
 import captionApi from 'src/carousel/carousel-caption.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
@@ -49,147 +49,144 @@ export function CarouselContent() {
             <li>2.简洁的内容，展示的内容应该清晰和简明。</li>
             <li>2.不要自动播放，轮播的内容应该在用户的控制下进行转换。</li>
           </ul>
+          <p>说明：</p>
+          <div>
+            <p>
+              Carousel组件分为控制组件和非控制组件，非控制组件UncontrolledCarousel有CarouselTrack， CarouselIndicators
+              和CarouselControl三个静态属性，分别对应CarouselTrack，CarouselIndicators和CarouselControl三个组件。
+              通过React context方式自动注入对应的事件和属性使得用户不需要进行任何设置即可使用一下功能：
+            </p>
+            <ol>
+              <li>点击CarouselControl组件能够向前/向后滑动图片</li>
+              <li>点击CarouselIndicators能够切换对应的图片</li>
+              <li>CarouselIndicators能够高亮当前选择的图片位置</li>
+            </ol>
+            <p>
+              同时模块也导出CarouselContext，提供了getTrackProps， getControlProps和getIndicatorsProps三个方法可以生成对应
+              组件功能的props，用户可以根据自身需求定制。
+            </p>
+          </div>
         </Col>
       ),
     })
     .addSection({
       title: 'Slides only',
-      describe: '',
+      describe: <p>简单的用法，自动轮播</p>,
       content: (
-        <UncontrolledCarousel>
-          {({getTrackProps, getControlProps}) => (
-            <>
-              <CarouselTrack {...getTrackProps()}>
-                <CarouselItem>
-                  <img src={img1.replace(/[\r\n]/g, '')} />
-                </CarouselItem>
-                <CarouselItem>
-                  <img src={img2.replace(/[\r\n]/g, '')} />
-                </CarouselItem>
-                <CarouselItem>
-                <img src={img3.replace(/[\r\n]/g, '')} />
-                </CarouselItem>
-              </CarouselTrack>
-            </>
-          )}
+        <UncontrolledCarousel autoplay>
+          <UncontrolledCarousel.Track>
+            <CarouselItem>
+              <img src={img1.replace(/[\r\n]/g, '')} />
+            </CarouselItem>
+            <CarouselItem>
+              <img src={img2.replace(/[\r\n]/g, '')} />
+            </CarouselItem>
+            <CarouselItem>
+            <img src={img3.replace(/[\r\n]/g, '')} />
+            </CarouselItem>
+          </UncontrolledCarousel.Track>
         </UncontrolledCarousel>
       ),
       codeText: getCodeFromString(converter.makeHtml(basic)),
     })
     .addSection({
       title: 'With controls',
-      describe: '',
+      describe: <p>可以使用CarouselControl组件为轮播添加控制按钮。</p>,
       content: (
         <UncontrolledCarousel>
-          {({getTrackProps, getControlProps}) => (
-            <>
-              <CarouselTrack {...getTrackProps()}>
-                <CarouselItem>
-                  <img src={img1.replace(/[\r\n]/g, '')}/>
-                </CarouselItem>
-                <CarouselItem>
-                  <img src={img2.replace(/[\r\n]/g, '')}/>
-                </CarouselItem>
-                <CarouselItem>
-                <img src={img3.replace(/[\r\n]/g, '')}/>
-                </CarouselItem>
-              </CarouselTrack>
-              <CarouselControl {...getControlProps({direction: 'prev'})}/>
-              <CarouselControl {...getControlProps({direction: 'next'})}/>
-            </>
-          )}
+          <UncontrolledCarousel.Track>
+            <CarouselItem>
+              <img src={img1.replace(/[\r\n]/g, '')}/>
+            </CarouselItem>
+            <CarouselItem>
+              <img src={img2.replace(/[\r\n]/g, '')}/>
+            </CarouselItem>
+            <CarouselItem>
+            <img src={img3.replace(/[\r\n]/g, '')}/>
+            </CarouselItem>
+          </UncontrolledCarousel.Track>
+          <UncontrolledCarousel.Control direction="prev"/>
+          <UncontrolledCarousel.Control direction="next"/>
         </UncontrolledCarousel>
       ),
       codeText: getCodeFromString(converter.makeHtml(control)),
     })
     .addSection({
       title: 'With indicators',
-      describe: '',
+      describe: <p>使用CarouselIndicators组件为轮播下方添加指示</p>,
       content: (
         <UncontrolledCarousel>
-          {({getTrackProps, getControlProps, getIndicatorsProps}) => (
-            <>
-              <CarouselIndicators {...getIndicatorsProps({items: [{key: '1'}, {key: '2'}, {key: '3'}]})}/>
-              <CarouselTrack {...getTrackProps()}>
-                <CarouselItem>
-                  <img src={img1.replace(/[\r\n]/g, '')}/>
-                </CarouselItem>
-                <CarouselItem>
-                  <img src={img2.replace(/[\r\n]/g, '')}/>
-                </CarouselItem>
-                <CarouselItem>
-                <img src={img3.replace(/[\r\n]/g, '')}/>
-                </CarouselItem>
-              </CarouselTrack>
-              <CarouselControl {...getControlProps({direction: 'prev'})}/>
-              <CarouselControl {...getControlProps({direction: 'next'})}/>
-            </>
-          )}
+          <UncontrolledCarousel.Indicators amount="3"/>
+          <UncontrolledCarousel.Track>
+            <CarouselItem>
+              <img src={img1.replace(/[\r\n]/g, '')}/>
+            </CarouselItem>
+            <CarouselItem>
+              <img src={img2.replace(/[\r\n]/g, '')}/>
+            </CarouselItem>
+            <CarouselItem>
+            <img src={img3.replace(/[\r\n]/g, '')}/>
+            </CarouselItem>
+          </UncontrolledCarousel.Track>
+          <UncontrolledCarousel.Control direction="prev"/>
+          <UncontrolledCarousel.Control direction="next"/>
         </UncontrolledCarousel>
       ),
       codeText: getCodeFromString(converter.makeHtml(indicators)),
     })
     .addSection({
       title: 'With captions',
-      describe: '',
+      describe: <p>可以使用CarouselCaption组件为轮播添加文字说明</p>,
       content: (
         <UncontrolledCarousel>
-          {({getTrackProps, getControlProps, getIndicatorsProps}) => (
-            <>
-              <CarouselIndicators {...getIndicatorsProps({items: [{key: '1'}, {key: '2'}, {key: '3'}]})}/>
-              <CarouselTrack {...getTrackProps()}>
-                <CarouselItem>
-                  <img src={img1.replace(/[\r\n]/g, '')}/>
-                  <CarouselCaption>
-                    <h5>first slide</h5>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                  </CarouselCaption>
-                </CarouselItem>
-                <CarouselItem>
-                  <img src={img2.replace(/[\r\n]/g, '')}/>
-                  <CarouselCaption>
-                    <h5>second slide</h5>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                  </CarouselCaption>
-                </CarouselItem>
-                <CarouselItem>
-                  <img src={img3.replace(/[\r\n]/g, '')}/>
-                  <CarouselCaption>
-                    <h5>last slide</h5>
-                    <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                  </CarouselCaption>
-                </CarouselItem>
-              </CarouselTrack>
-              <CarouselControl {...getControlProps({direction: 'prev'})}/>
-              <CarouselControl {...getControlProps({direction: 'next'})}/>
-            </>
-          )}
+          <UncontrolledCarousel.Indicators amount="3"/>
+          <UncontrolledCarousel.Track>
+            <CarouselItem>
+              <img src={img1.replace(/[\r\n]/g, '')}/>
+              <CarouselCaption>
+                <h5>first slide</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </CarouselCaption>
+            </CarouselItem>
+            <CarouselItem>
+              <img src={img2.replace(/[\r\n]/g, '')}/>
+              <CarouselCaption>
+                <h5>second slide</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </CarouselCaption>
+            </CarouselItem>
+            <CarouselItem>
+              <img src={img3.replace(/[\r\n]/g, '')}/>
+              <CarouselCaption>
+                <h5>last slide</h5>
+                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+              </CarouselCaption>
+            </CarouselItem>
+          </UncontrolledCarousel.Track>
+          <UncontrolledCarousel.Control direction="prev"/>
+          <UncontrolledCarousel.Control direction="next"/>
         </UncontrolledCarousel>
       ),
       codeText: getCodeFromString(converter.makeHtml(captions)),
     })
     .addSection({
       title: 'Crossfade',
-      describe: '',
+      describe: <p>设置crossfade属性，用渐进渐出动画替代滑动。</p>,
       content: (
         <UncontrolledCarousel>
-          {({getTrackProps, getControlProps, getIndicatorsProps}) => (
-            <>
-              <CarouselTrack {...getTrackProps({crossfade: true})}>
-                <CarouselItem>
-                  <img src={img1.replace(/[\r\n]/g, '')}/>
-                </CarouselItem>
-                <CarouselItem>
-                  <img src={img2.replace(/[\r\n]/g, '')}/>
-                </CarouselItem>
-                <CarouselItem>
-                  <img src={img3.replace(/[\r\n]/g, '')}/>
-                </CarouselItem>
-              </CarouselTrack>
-              <CarouselControl {...getControlProps({direction: 'prev'})}/>
-              <CarouselControl {...getControlProps({direction: 'next'})}/>
-            </>
-          )}
+          <UncontrolledCarousel.Track crossfade={true}>
+            <CarouselItem>
+              <img src={img1.replace(/[\r\n]/g, '')}/>
+            </CarouselItem>
+            <CarouselItem>
+              <img src={img2.replace(/[\r\n]/g, '')}/>
+            </CarouselItem>
+            <CarouselItem>
+              <img src={img3.replace(/[\r\n]/g, '')}/>
+            </CarouselItem>
+          </UncontrolledCarousel.Track>
+          <UncontrolledCarousel.Control direction="prev"/>
+          <UncontrolledCarousel.Control direction="next"/>
         </UncontrolledCarousel>
       ),
       codeText: getCodeFromString(converter.makeHtml(crossfade)),

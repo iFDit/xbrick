@@ -4,22 +4,17 @@
 ````jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Badge, BadgeStyles } from 'xbrick'
+import { Badge } from 'xbrick'
 import 'xbrick/lib/style/index.css'
-
-const {
-  BADGE,
-  SECONDARY,
-} = BadgeStyles
 
 ReactDOM.render(
   <div>
-    <h1>Example heading <Badge className={`${BADGE} ${SECONDARY}`}>New</Badge></h1>
-    <h2>Example heading <Badge className={`${BADGE} ${SECONDARY}`}>New</Badge></h2>
-    <h3>Example heading <Badge className={`${BADGE} ${SECONDARY}`}>New</Badge></h3>
-    <h4>Example heading <Badge className={`${BADGE} ${SECONDARY}`}>New</Badge></h4>
-    <h5>Example heading <Badge className={`${BADGE} ${SECONDARY}`}>New</Badge></h5>
-    <h6>Example heading <Badge className={`${BADGE} ${SECONDARY}`}>New</Badge></h6>
+    <h1>Example heading <Badge color="secondary">New</Badge></h1>
+    <h2>Example heading <Badge color="secondary">New</Badge></h2>
+    <h3>Example heading <Badge color="secondary">New</Badge></h3>
+    <h4>Example heading <Badge color="secondary">New</Badge></h4>
+    <h5>Example heading <Badge color="secondary">New</Badge></h5>
+    <h6>Example heading <Badge color="secondary">New</Badge></h6>
   </div>
 , document.getElementById('root'))
 ````

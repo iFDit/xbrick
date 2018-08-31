@@ -1,6 +1,6 @@
 边框
 
-通过 `bstype` 和 `outline` 属性修改卡片边框颜色。
+通过 `color` 和 `outline` 属性修改卡片边框颜色。
 
 ````jsx
 import React from 'react'
@@ -10,7 +10,7 @@ import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <>
-    <Card bstype="primary" outline>
+    <Card color="primary" outline>
       <CardBody>
         <CardTitle>Primary card title</CardTitle>
         <CardText>
@@ -18,7 +18,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="secondary" outline>
+    <Card color="secondary" outline>
       <CardBody>
         <CardTitle>Secondary card title</CardTitle>
         <CardText>
@@ -26,7 +26,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="success" outline>
+    <Card color="success" outline>
       <CardBody>
         <CardTitle>Success card title</CardTitle>
         <CardText>
@@ -34,7 +34,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="danger" outline>
+    <Card color="danger" outline>
       <CardBody>
         <CardTitle>Danger card title</CardTitle>
         <CardText>
@@ -42,7 +42,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="warning" outline>
+    <Card color="warning" outline>
       <CardBody>
         <CardTitle>Warning card title</CardTitle>
         <CardText>
@@ -50,7 +50,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="info" outline>
+    <Card color="info" outline>
       <CardBody>
         <CardTitle>Info card title</CardTitle>
         <CardText>
@@ -58,7 +58,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="light" outline>
+    <Card color="light" outline>
       <CardBody>
         <CardTitle>Light card title</CardTitle>
         <CardText>
@@ -66,7 +66,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="dark" outline>
+    <Card color="dark" outline>
       <CardBody>
         <CardTitle>Dark card title</CardTitle>
         <CardText>

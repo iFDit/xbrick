@@ -13,14 +13,14 @@ ReactDOM.render(
       <Button>Primary</Button>
     </ButtonGroup>
     <ButtonGroup size="middle">
-      <Button bstype="secondary">Active</Button>
-      <Button bstype="secondary">Like</Button>
-      <Button bstype="secondary">Primary</Button>
+      <Button color="secondary">Active</Button>
+      <Button color="secondary">Like</Button>
+      <Button color="secondary">Primary</Button>
     </ButtonGroup>
     <ButtonGroup size="small">
-      <Button bstype="info">Active</Button>
-      <Button bstype="info">Like</Button>
-      <Button bstype="info">Primary</Button>
+      <Button color="info">Active</Button>
+      <Button color="info">Like</Button>
+      <Button color="info">Primary</Button>
     </ButtonGroup>
   </>
 , rootNode)

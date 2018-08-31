@@ -12,7 +12,7 @@ import api from 'src/collapse/collapse.md'
 import uncontrolledApi from 'src/collapse/uncontrolled-collapse.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
@@ -154,7 +154,7 @@ export function CollapseContent() {
     })
     .addSection({
       title: 'Example',
-      describe: '',
+      describe: <p>通过open控制Collapse组件的展开和折叠。</p>,
       content: (
         <Col>
           <Example/>
@@ -164,7 +164,7 @@ export function CollapseContent() {
     })
     .addSection({
       title: 'Accordion',
-      describe: '',
+      describe: <p>手风琴，每次只展开一个Collapse。</p>,
       content: (
         <Col>
           <Accordion/>
@@ -174,7 +174,7 @@ export function CollapseContent() {
     })
     .addSection({
       title: 'Uncontrolled',
-      describe: '',
+      describe: <p>非受控组件，通过toggle函数切换展开/折叠状态。</p>,
       content: (
         <Col>
           <UncontrolledCollapse defaultOpen={true}>

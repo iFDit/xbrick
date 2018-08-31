@@ -1,7 +1,6 @@
 import React from 'react'
-import classNames from 'classnames'
 import { Col } from 'xbrick'
-import { Button, ButtonStyles } from 'xbrick'
+import { Button } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
 import base from 'docs/demo/button/basic.md'
@@ -12,18 +11,13 @@ import block from 'docs/demo/button/block.md'
 import active from 'docs/demo/button/active.md'
 import disabled from 'docs/demo/button/disabled.md'
 
-// Styles
-import style from 'src/buttons/button-styles.md'
-
 // API
 import api from 'src/buttons/button.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
-
-const { BUTTON, PRIMARY, SECONDARY, SUCCESS, DANGER, WARNING } = ButtonStyles
 
 export function ButtonsContent() {
   return new Content('Buttons')
@@ -56,107 +50,75 @@ export function ButtonsContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>通过color属性可以方便的设置不同样式的按钮。</p>,
       content: (
         <>
-          <Button className={`${BUTTON} ${PRIMARY} mr-2`}>primary</Button>
-          <Button className={`${BUTTON} ${SECONDARY} mr-2`}>secondary</Button>
-          <Button className={`${BUTTON} ${SUCCESS} mr-2`}>success</Button>
-          <Button className={`${BUTTON} ${DANGER} mr-2`}>danger</Button>
-          <Button className={`${BUTTON} ${WARNING} mr-2`}>warning</Button>
-          <Button className={`${BUTTON} ${WARNING} mr-2`}>info</Button>
-          <Button bstype="light">light</Button>
-          <Button bstype="dark">dark</Button>
-          <Button bstype="link">link</Button>
+          <Button className="mr-2">primary</Button>
+          <Button color="secondary" className="mr-2">secondary</Button>
+          <Button color="success" className="mr-2">success</Button>
+          <Button color="danger" className="mr-2">danger</Button>
+          <Button color="warning" className="mr-2">warning</Button>
+          <Button color="info" className="mr-2">info</Button>
+          <Button color="light" className="mr-2">light</Button>
+          <Button color="dark" className="mr-2">dark</Button>
+          <Button color="link" className="mr-2">link</Button>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(base)),
     })
     .addSection({
       title: 'Button tags',
-      describe: '',
+      describe: <p>tag属性可以改变Button渲染的元素。</p>,
       content: (
         <>
-          <Col xs="auto">
-            <Button tag="a" href="">Link</Button>
-          </Col>
-          <Col xs="auto">
-            <Button tag="input" type="button" value="Input" />
-          </Col>
-          <Col xs="auto">
-            <Button tag="input" type="reset" value="Reset" />
-          </Col>
-          <Col xs="auto">
-            <Button tag="input" type="submit" value="Submit" />
-          </Col>
+          <Button tag="a" href="#" className="mr-2">Link</Button>
+          <Button tag="input" type="button" value="Input" className="mr-2"/>
+          <Button tag="input" type="reset" value="Reset" className="mr-2"/>
+          <Button tag="input" type="submit" value="Submit" className="mr-2"/>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(tag)),
     })
     .addSection({
       title: 'Outline buttons',
-      describe: '',
+      describe: <p>无背景颜色的按钮</p>,
       content: (
         <>
-          <Col xs="auto">
-            <Button outline>primary</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="secondary" outline>secondary</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="success" outline>success</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="danger" outline>danger</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="warning" outline>warning</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="info" outline>info</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="light" outline>light</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="dark" outline>dark</Button>
-          </Col>
-          <Col xs="auto">
-            <Button bstype="link" outline>link</Button>
-          </Col>
+          <Button outline className="mr-2">primary</Button>
+          <Button color="secondary" outline className="mr-2">secondary</Button>
+          <Button color="success" outline className="mr-2">success</Button>
+          <Button color="danger" outline className="mr-2">danger</Button>
+          <Button color="warning" outline className="mr-2">warning</Button>
+          <Button color="info" outline className="mr-2">info</Button>
+          <Button color="light" outline className="mr-2">light</Button>
+          <Button color="dark" outline className="mr-2">dark</Button>
+          <Button color="link" outline className="mr-2">link</Button>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(outline)),
     })
     .addSection({
       title: 'Sizes',
-      describe: '',
+      describe: <p>通过size设置Button组件的大小，有large和small。</p>,
       content: (
         <>
-          <Col xs="auto">
-            <Button size="large">Primary</Button>
-          </Col>
-          <Col xs="auto">
-            <Button size="middle">Primary</Button>
-          </Col>
-          <Col xs="auto">
-            <Button size="small">Primary</Button>
-          </Col>
+          <Button size="large" className="mr-2">Primary</Button>
+          <Button size="middle" className="mr-2">Primary</Button>
+          <Button size="small" className="mr-2">Primary</Button>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(size)),
     })
     .addSection({
       title: 'Block',
-      describe: '',
+      describe: <p>设置block属性为<code>true</code>可以展示块级按钮。</p>,
       content: (
         <>
           <Col xs="12" style={{marginBottom: 10}}>
             <Button block>Block level button</Button>
           </Col>
           <Col xs="12">
-            <Button bstype="secondary" block>Block level button</Button>
+            <Button color="secondary" block>Block level button</Button>
           </Col>
         </>
       ),
@@ -164,14 +126,14 @@ export function ButtonsContent() {
     })
     .addSection({
       title: 'Active state',
-      describe: '',
+      describe: <p>active=<code>true</code>将按钮设置为激活状态。</p>,
       content: (
         <>
           <Col xs="auto">
             <Button active>Primary button</Button>
           </Col>
           <Col xs="auto"> 
-            <Button bstype="secondary" active>Button</Button>
+            <Button color="secondary" active>Button</Button>
           </Col>
         </>
       ),
@@ -179,23 +141,18 @@ export function ButtonsContent() {
     })
     .addSection({
       title: 'Disabled state',
-      describe: '',
+      describe: <p>disabled=<code>true</code>设置Button为禁用状态。</p>,
       content: (
         <>
           <Col xs="auto">
             <Button disabled>Primary button</Button>
           </Col>
           <Col xs="auto"> 
-            <Button bstype="secondary" disabled>Secondary button</Button>
+            <Button color="secondary" disabled>Secondary button</Button>
           </Col>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(disabled)),
-    })
-    .addStyles({
-      header: true,
-      title: 'Button',
-      content: getTableFromString(converter.makeHtml(style)),
     })
     .addAPI({
       header: true,

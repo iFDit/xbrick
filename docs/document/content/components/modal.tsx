@@ -17,7 +17,7 @@ import bodyapi from 'src/modals/modal-body.md'
 import titleapi from 'src/modals/modal-title.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
@@ -131,7 +131,7 @@ class Examples extends React.Component {
       <>
         <Button onClick={() => this.open()}>Launch demo modal</Button>
         <Modal open={open}>
-          <ModalDialog>
+          <Modal.Dialog>
             <ModalContent>
               <ModalHeader onIconClick={() => this.close()}>
                 <ModalTitle>title</ModalTitle>
@@ -148,8 +148,8 @@ class Examples extends React.Component {
                 <Button>Save changes</Button>
               </ModalFooter>
             </ModalContent>
-          </ModalDialog>
-          <ModalBackdrop />
+          </Modal.Dialog>
+          <Modal.Backdrop />
         </Modal>
       </>
     )
@@ -163,7 +163,7 @@ class Scrolling extends Examples {
       <>
         <Button onClick={() => this.open()}>Launch demo modal</Button>
         <Modal open={open}>
-          <ModalDialog>
+          <Modal.Dialog>
             <ModalContent>
               <ModalHeader onIconClick={() => this.close()}>
                 <ModalTitle>title</ModalTitle>
@@ -193,8 +193,8 @@ class Scrolling extends Examples {
                 <Button>Save changes</Button>
               </ModalFooter>
             </ModalContent>
-          </ModalDialog>
-          <ModalBackdrop />
+          </Modal.Dialog>
+          <Modal.Backdrop />
         </Modal>
       </>
     )
@@ -208,7 +208,7 @@ class Vertically extends Examples {
       <>
         <Button onClick={() => this.open()}>Launch demo modal</Button>
         <Modal open={open} >
-          <ModalDialog align="center">
+          <Modal.Dialog align="center">
             <ModalContent>
               <ModalHeader onIconClick={() => this.close()}>
                 <ModalTitle>title</ModalTitle>
@@ -219,8 +219,8 @@ class Vertically extends Examples {
                 <Button>Save changes</Button>
               </ModalFooter>
             </ModalContent>
-          </ModalDialog>
-          <ModalBackdrop />
+          </Modal.Dialog>
+          <Modal.Backdrop />
         </Modal>
       </>
     )
@@ -239,7 +239,7 @@ class Sizing extends Examples {
         <Button onClick={() => this.openWith('large')} className="mr-2">Large modal</Button>
         <Button onClick={() => this.openWith('small')}>Small modal</Button>
         <Modal open={open}>
-          <ModalDialog size={size}>
+          <Modal.Dialog size={size}>
             <ModalContent>
               <ModalHeader onIconClick={() => this.close()}>
                 <ModalTitle>title</ModalTitle>
@@ -256,8 +256,8 @@ class Sizing extends Examples {
                 <Button>Save changes</Button>
               </ModalFooter>
             </ModalContent>
-          </ModalDialog>
-          <ModalBackdrop />
+          </Modal.Dialog>
+          <Modal.Backdrop />
         </Modal>
       </>
     )

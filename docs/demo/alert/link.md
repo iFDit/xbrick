@@ -23,51 +23,51 @@ const {
 
 ReactDOM.render(
   <div className="app">
-    <Alert className={`${ALERT} ${PRIMARY}`}>
+    <Alert>
       This is a primary alert with a{` `}
-      <AlertLink href="#" className={LINK}>
+      <AlertLink href="#">
         an example link
       </AlertLink>. Give it a click if you like.
     </Alert>
-    <Alert className={`${ALERT} ${SECONDARY}`}>
+    <Alert color="secondary">
       This is a secondary alert with a{` `}
-      <AlertLink href="#" className={LINK}>
+      <AlertLink href="#">
         an example link
       </AlertLink>. Give it a click if you like.
     </Alert>
-    <Alert className={`${ALERT} ${SUCCESS}`}>
+    <Alert color="success">
       This is a success alert with a{` `}
-      <AlertLink href="#" className={LINK}>
+      <AlertLink href="#">
         an example link
       </AlertLink>. Give it a click if you like.
     </Alert>
-    <Alert className={`${ALERT} ${DANGER}`}>
+    <Alert color="danger">
       This is a danger alert with a{` `}
-      <AlertLink href="#" className={LINK}>
+      <AlertLink href="#">
         an example link
       </AlertLink>. Give it a click if you like.
     </Alert>
-    <Alert className={`${ALERT} ${WARNING}`}>
+    <Alert color="warning">
       This is a warning alert with a{` `}
-      <AlertLink href="#" className={LINK}>
+      <AlertLink href="#">
         an example link
       </AlertLink>. Give it a click if you like.
     </Alert>
-    <Alert className={`${ALERT} ${INFO}`}>
+    <Alert color="info">
       This is a info alert with a{` `}
-      <AlertLink href="#" className={LINK}>
+      <AlertLink href="#">
         an example link
       </AlertLink>. Give it a click if you like.
     </Alert>
-    <Alert className={`${ALERT} ${LIGHT}`}>
+    <Alert color="light">
       This is a light alert with a{` `}
-      <AlertLink href="#" className={LINK}>
+      <AlertLink href="#">
         an example link
       </AlertLink>. Give it a click if you like.
     </Alert>
-    <Alert className={`${ALERT} ${DARK}`}>
+    <Alert color="dark">
       This is a dark alert with a{` `}
-      <AlertLink href="#" className={LINK}>
+      <AlertLink href="#">
         an example link
       </AlertLink>. Give it a click if you like.
     </Alert>

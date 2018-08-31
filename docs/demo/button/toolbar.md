@@ -12,8 +12,8 @@ ReactDOM.render(
       <Button>Other</Button>
     </ButtonGroup>
     <ButtonGroup>
-      <Button bstype="info">Info</Button>
-      <Button bstype="warning">Warning</Button>
+      <Button color="info">Info</Button>
+      <Button color="warning">Warning</Button>
     </ButtonGroup>
   </ButtonToolbar>
 , rootNode)

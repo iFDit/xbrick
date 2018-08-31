@@ -18,7 +18,7 @@ import api from 'src/list-group/list-group.md'
 import itemapi from 'src/list-group/list-group-item.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 

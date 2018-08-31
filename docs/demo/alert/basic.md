@@ -4,45 +4,33 @@
 ````jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Alert, AlertStyles } from 'xbrick'
+import { Alert } from 'xbrick'
 import 'xbrick/lib/style/index.css'
-
-const {
-  ALERT,
-  PRIMARY,
-  SECONDARY,
-  SUCCESS,
-  DANGER,
-  WARNING,
-  INFO,
-  LIGHT,
-  DARK,
-} = AlertStyles
 
 ReactDOM.render(
   <div>
-    <Alert className={`${ALERT} ${PRIMARY}`}>
+    <Alert>
       This is a primary alert — check it out!
     </Alert>
-    <Alert className={`${ALERT} ${SECONDARY}`}>
+    <Alert color="secondary">
       This is a secondary alert — check it out!
     </Alert>
-    <Alert className={`${ALERT} ${SUCCESS}`}>
+    <Alert color="success">
       This is a success alert — check it out!
     </Alert>
-    <Alert className={`${ALERT} ${DANGER}`}>
+    <Alert color="danger">
       This is a danger alert — check it out!
     </Alert>
-    <Alert className={`${ALERT} ${WARNING}`}>
+    <Alert color="warning">
       This is a warning alert — check it out!
     </Alert>
-    <Alert className={`${ALERT} ${INFO}`}>
+    <Alert color="info">
       This is a info alert — check it out!
     </Alert>
-    <Alert className={`${ALERT} ${LIGHT}`}>
+    <Alert color="light">
       This is a light alert — check it out!
     </Alert>
-    <Alert className={`${ALERT} ${DARK}`}>
+    <Alert color="dark">
       This is a dark alert — check it out!
     </Alert>
   </div>

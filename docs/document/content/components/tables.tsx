@@ -17,7 +17,7 @@ import rowapi from 'src/table/table-row.md'
 import cellapi from 'src/table/table-cell.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 

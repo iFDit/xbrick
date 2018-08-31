@@ -11,7 +11,7 @@ import api from 'src/tooltip/tooltip.md'
 import popperapi from 'src/tooltip/popper.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 

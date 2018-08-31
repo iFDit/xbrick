@@ -3,18 +3,17 @@
 ````jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Alert, AlertStyles } from 'xbrick'
+import { Alert } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
-const { ALERT, WARNING, CLOSE } = AlertStyles
 const afterClose = () => {
   console.log('I had been closed.')
 }
 
 ReactDOM.render(
-  <Alert className={`${ALERT} ${WARNING}`} afterClose={() => console.log('I had been closed.')}>
+  <Alert color="warning" afterClose={() => console.log('I had been closed.')}>
     Warning Alert with dismiss button.
-    <AlertClose className={CLOSE}/>
+    <AlertClose/>
   </Alert>
 , document.getElementById('root'))
 ````

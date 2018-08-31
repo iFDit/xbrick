@@ -10,7 +10,7 @@ import api from 'src/tabs/tab.md'
 import contentapi from 'src/tabs/tab-content.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 

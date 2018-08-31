@@ -8,6 +8,9 @@ import brand from 'docs/demo/navbar/brand.md'
 import color from 'docs/demo/navbar/color.md'
 import expand from 'docs/demo/navbar/expand.md'
 
+// STYLES
+import style from 'src/navbar/navbar-styles.md'
+
 // API
 import api from 'src/navbar/navbar.md'
 import brandapi from 'src/navbar/navbar-brand.md'
@@ -15,7 +18,7 @@ import collapseapi from 'src/navbar/navbar-collapse.md'
 import togglerapi from 'src/navbar/navbar-toggler.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
@@ -191,6 +194,11 @@ export function NavbarContent() {
       </Navbar>
     ),
     codeText: getCodeFromString(converter.makeHtml(expand)),
+  })
+  .addStyles({
+    header: true,
+    title: 'NavbarStyles',
+    content: getTableFromString(converter.makeHtml(style)),
   })
   .addAPI({
     header: true,

@@ -1,24 +1,19 @@
 import React from 'react'
 import { Col } from 'xbrick'
-import { Breadcrumb, BreadcrumbItem, BreadcrumbStyles, BreadcrumbItemStyles } from 'xbrick'
+import { Breadcrumb, BreadcrumbItem } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
 import badgeBase from 'docs/demo/breadcrumb/basic.md'
-
-// Style
-import style from 'src/breadcrumbs/breadcrumb-styles.md'
-import itemstyle from 'src/breadcrumbs/breadcrumb-item-styles.md'
 
 // API
 import api from 'src/breadcrumbs/breadcrumb.md'
 import itemApi from 'src/breadcrumbs/breadcrumb-item.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
-const { ITEM, ACTIVE } = BreadcrumbItemStyles
 const prevent = (e: any) => e.preventDefault()
 export function BreadcrumbContent() {
   return new Content('Breadcrumb')
@@ -47,31 +42,22 @@ export function BreadcrumbContent() {
       describe: '',
       content: (
         <Col xs="12">
-          <Breadcrumb className={BreadcrumbStyles.BREADCRUMB}>
-            <BreadcrumbItem className={`${ITEM} ${ACTIVE}`}>Home</BreadcrumbItem>
+          <Breadcrumb>
+            <BreadcrumbItem active>Home</BreadcrumbItem>
           </Breadcrumb>
-          <Breadcrumb className={BreadcrumbStyles.BREADCRUMB}>
-            <BreadcrumbItem className={`${ITEM}`}><a href="#" onClick={prevent}>Home</a></BreadcrumbItem>
-            <BreadcrumbItem className={`${ITEM} ${ACTIVE}`}>Library</BreadcrumbItem>
+          <Breadcrumb>
+            <BreadcrumbItem><a href="#" onClick={prevent}>Home</a></BreadcrumbItem>
+            <BreadcrumbItem active>Library</BreadcrumbItem>
           </Breadcrumb>
-          <Breadcrumb className={BreadcrumbStyles.BREADCRUMB}>
-            <BreadcrumbItem className={`${ITEM}`}><a href="#" onClick={prevent}>Home</a></BreadcrumbItem>
-            <BreadcrumbItem className={`${ITEM}`}><a href="#" onClick={prevent}>Library</a></BreadcrumbItem>
-            <BreadcrumbItem className={`${ITEM}`}><a href="#" onClick={prevent}>Data</a></BreadcrumbItem>
-            <BreadcrumbItem className={`${ITEM} ${ACTIVE}`}>Current</BreadcrumbItem>
+          <Breadcrumb>
+            <BreadcrumbItem><a href="#" onClick={prevent}>Home</a></BreadcrumbItem>
+            <BreadcrumbItem><a href="#" onClick={prevent}>Library</a></BreadcrumbItem>
+            <BreadcrumbItem><a href="#" onClick={prevent}>Data</a></BreadcrumbItem>
+            <BreadcrumbItem active>Current</BreadcrumbItem>
           </Breadcrumb>
         </Col>
       ),
       codeText: getCodeFromString(converter.makeHtml(badgeBase)),
-    })
-    .addStyles({
-      header: true,
-      title: 'Breadcrumb',
-      content: getTableFromString(converter.makeHtml(style)),
-    })
-    .addStyles({
-      title: 'BreadcrumbItem',
-      content: getTableFromString(converter.makeHtml(itemstyle)),
     })
     .addAPI({
       header: true,

@@ -16,7 +16,7 @@ import row from 'src/layout/row.md'
 import col from 'src/layout/col.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Col, Button, DropdownToggle, DropdownItem, DropdownMenu } from 'xbrick'
-import { Input, InputGroup, InputGroupAddon, InputGroupText } from 'xbrick'
+import { Col, Button, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'xbrick'
+import { Input, InputGroup, InputGroupAddon, InputGroupText, InputGroupAddonStyles } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
 import basic from 'docs/demo/input-group/basic.md'
@@ -9,16 +9,20 @@ import multipleinput from 'docs/demo/input-group/multiple-input.md'
 import multipleaddons from 'docs/demo/input-group/multiple-addons.md'
 import button from 'docs/demo/input-group/button.md'
 
+// STYLE
+import style from 'src/input-group/input-group-addons-styles.md'
+
 // API
 import api from 'src/input-group/input-group.md'
 import addonsapi from 'src/input-group/input-group-addons.md'
 import textapi from 'src/input-group/input-group-text.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
+const { prepend, append } = InputGroupAddonStyles
 export function InputGroupContent() {
   return new Content('Input Group')
     .addNav({ text: 'Overview', anchor: 'overview' })
@@ -40,7 +44,7 @@ export function InputGroupContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>可以组合多个Input和文本或者按钮等组件。</p>,
       content: (
         <InputGroup>
           <InputGroupAddon>
@@ -53,7 +57,7 @@ export function InputGroupContent() {
     })
     .addSection({
       title: 'Sizing',
-      describe: '',
+      describe: <p>通过size属性设置不同的大小。</p>,
       content: (
         <>
           <InputGroup size="small" className="mb-3">
@@ -80,7 +84,7 @@ export function InputGroupContent() {
     })
     .addSection({
       title: 'Multiple inputs',
-      describe: '',
+      describe: <p>可以组合多个Input组件。</p>,
       content: (
         <InputGroup>
           <InputGroupAddon>
@@ -96,7 +100,7 @@ export function InputGroupContent() {
     })
     .addSection({
       title: 'Multiple addons',
-      describe: '',
+      describe: <p>可以添加多个Addons。</p>,
       content: (
         <InputGroup>
           <InputGroupAddon>
@@ -114,11 +118,11 @@ export function InputGroupContent() {
     })
     .addSection({
       title: 'Button addons',
-      describe: '',
+      describe: <p>与Button组件一起使用</p>,
       content: (
         <InputGroup>
           <InputGroupAddon>
-            <Button bstype="secondary">Button</Button>
+            <Button color="secondary">Button</Button>
           </InputGroupAddon>
           <Input />
         </InputGroup>
@@ -127,23 +131,28 @@ export function InputGroupContent() {
     })
     .addSection({
       title: 'Dropdowns addons',
-      describe: '',
+      describe: <p>结合Dropdown组件，使用Dropdown而不是InputGroupAddon，是因为Dropdown组件封装了内部逻辑，为适配InputGroupAddon样式，应该引入InputGroupAddonStyles。</p>,
       content: (
         <InputGroup>
-          <InputGroupAddon>
-            <DropdownToggle bstype="secondary" button>Dropdown</DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another action</DropdownItem>
-              <DropdownItem>Something else here</DropdownItem>
-              <DropdownItem divider/>
-              <DropdownItem>Separated link</DropdownItem>
-            </DropdownMenu>
-          </InputGroupAddon>
+          <Dropdown className={prepend}>
+            <Dropdown.Toggle color="secondary" button>Dropdown</Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item>Action</Dropdown.Item>
+              <Dropdown.Item>Another action</Dropdown.Item>
+              <Dropdown.Item>Something else here</Dropdown.Item>
+              <Dropdown.Item divider/>
+              <Dropdown.Item>Separated link</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
           <Input />
         </InputGroup>
       ),
       codeText: getCodeFromString(converter.makeHtml(button)),
+    })
+    .addStyles({
+      header: true,
+      title: 'InputGropAddonStyle',
+      content: getTableFromString(converter.makeHtml(style)),
     })
     .addAPI({
       header: true,

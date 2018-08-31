@@ -15,7 +15,7 @@ import indicatorapi from 'src/pagination/page-indicator.md'
 import itemapi from 'src/pagination/page-item.md'
 
 import { Content } from 'docs/document/content/components/Content'
-import * as showdown from 'showdown'
+import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 

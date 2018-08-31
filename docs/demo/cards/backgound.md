@@ -1,6 +1,6 @@
 背景
 
-通过 `bstype` 属性设置卡片的背景。
+通过 `color` 属性设置卡片的背景。
 
 ````jsx
 import React from 'react'
@@ -11,7 +11,7 @@ import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <>
-    <Card bstype="primary" inverse>
+    <Card color="primary" inverse>
       <CardBody>
         <CardTitle>Primary card title</CardTitle>
         <CardText>
@@ -19,7 +19,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="secondary" inverse>
+    <Card color="secondary" inverse>
       <CardBody>
         <CardTitle>Secondary card title</CardTitle>
         <CardText>
@@ -27,7 +27,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="success" inverse>
+    <Card color="success" inverse>
       <CardBody>
         <CardTitle>Success card title</CardTitle>
         <CardText>
@@ -35,7 +35,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="danger" inverse>
+    <Card color="danger" inverse>
       <CardBody>
         <CardTitle>Danger card title</CardTitle>
         <CardText>
@@ -43,7 +43,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="warning" inverse>
+    <Card color="warning" inverse>
       <CardBody>
         <CardTitle>Warning card title</CardTitle>
         <CardText>
@@ -51,7 +51,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="info" inverse>
+    <Card color="info" inverse>
       <CardBody>
         <CardTitle>Info card title</CardTitle>
         <CardText>
@@ -59,7 +59,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="light">
+    <Card color="light">
       <CardBody>
         <CardTitle>Light card title</CardTitle>
         <CardText>
@@ -67,7 +67,7 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-    <Card bstype="dark" inverse>
+    <Card color="dark" inverse>
       <CardBody>
         <CardTitle>Dark card title</CardTitle>
         <CardText>
