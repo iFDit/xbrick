@@ -48,7 +48,7 @@ export function LayoutContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>使用相同的宽度。</p>,
       content: (
         <Container className="doc-layout-example-container">
           <Row>
@@ -66,7 +66,7 @@ export function LayoutContent() {
     })
     .addSection({
       title: 'Setting one column width',
-      describe: '',
+      describe: <p>可以只设置某一列的宽度。</p>,
       content: (
         <Container className="doc-layout-example-container">
           <Row>
@@ -123,7 +123,7 @@ export function LayoutContent() {
     })
     .addSection({
       title: 'Vertical alignment',
-      describe: '',
+      describe: <p>通过Row组件的align属性来设置内部Col组件的垂直对齐方式。</p>,
       content: (
         <Container className="doc-layout-example-container">
           <Row xs={{ align: 'start' }} style={{height: '10rem', backgroundColor: '#eee'}}>
@@ -152,7 +152,7 @@ export function LayoutContent() {
     })
     .addSection({
       title: 'Horizontal alignment',
-      describe: '',
+      describe: <p>通过Row组件的justify属性来设置内部Col组件的水平对齐方式。</p>,
       content: (
         <Container className="doc-layout-example-container">
           <Row xs={{ justify: 'start' }}>
@@ -181,7 +181,7 @@ export function LayoutContent() {
     })
     .addSection({
       title: 'No gutters',
-      describe: '',
+      describe: <p>要消除列直接的间隙，可以在Row组件中设置noGutter属性。</p>,
       content: (
         <Container className="doc-layout-example-container">
           <Row noGutter>
@@ -194,7 +194,7 @@ export function LayoutContent() {
     })
     .addSection({
       title: 'Order',
-      describe: '',
+      describe: <p>Col组件中设置order属性来改变Col的展示顺序。</p>,
       content: (
         <Container className="doc-layout-example-container">
           <Row>
@@ -208,7 +208,7 @@ export function LayoutContent() {
     })
     .addSection({
       title: 'Offset',
-      describe: '',
+      describe: <p>网格布局将一行分为12列等宽大小，通过breakpoint属性来设置Col占据的列大小。</p>,
       content: (
         <Container className="doc-layout-example-container">
           <Row>

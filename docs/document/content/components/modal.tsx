@@ -49,7 +49,7 @@ export function ModalsContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>简单的Modal组件，包括了Dialog， Content, Header, Title, Body, Footer和Backdrop组件</p>,
       content: (
         <Examples/>
       ),
@@ -57,7 +57,7 @@ export function ModalsContent() {
     })
     .addSection({
       title: 'Scrolling long content',
-      describe: '',
+      describe: <p>当Modal显示的内容长度超过视口高度的时候，会自动显示滚动条</p>,
       content: (
         <Scrolling/>
       ),
@@ -65,7 +65,7 @@ export function ModalsContent() {
     })
     .addSection({
       title: 'Vertically centered',
-      describe: '',
+      describe: <p>align属性可以改变ModalDialog显示的位置。</p>,
       content: (
         <Vertically/>
       ),
@@ -73,7 +73,7 @@ export function ModalsContent() {
     })
     .addSection({
       title: 'Sizing',
-      describe: '',
+      describe: <p>size属性修改ModalDialog的大小，也可以通过style来修改。</p>,
       content: (
         <Sizing />
       ),

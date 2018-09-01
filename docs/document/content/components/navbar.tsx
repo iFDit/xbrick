@@ -1,6 +1,7 @@
 import React from 'react'
-import { Col, Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'xbrick'
-import { Navbar, NavbarBrand, NavbarToggler, NavbarCollapse } from 'xbrick'
+import { NavbarStyles, NavItemStyles, NavLinkStyles } from 'xbrick'
+import { Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'xbrick'
+import { Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarToggler, NavbarCollapse } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
 import basic from 'docs/demo/navbar/basic.md'
@@ -21,6 +22,8 @@ import { Content } from 'docs/document/content/components/Content'
 import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
+
+const noop = (e: MouseEvent) => e.preventDefault()
 
 export function NavbarContent() {
   return new Content('Navbar')
@@ -49,26 +52,26 @@ export function NavbarContent() {
   })
   .addSection({
     title: 'Examples',
-    describe: '',
+    describe: <p>包含了Nav和Dropdown的导航栏，可以自适应屏幕宽度。</p>,
     content: (
       <Navbar style={{width: '100%'}}>
-        <NavbarBrand href="/">Navbar</NavbarBrand>
+        <NavbarBrand href="#">Navbar</NavbarBrand>
         <NavbarToggler/>
         <NavbarCollapse>
-          <Nav navbar>
+          <Nav className={NavbarStyles.nav}>
             <NavItem>
-              <NavLink href="#" active>Home</NavLink>
+              <NavLink href="#" active onClick={noop}>Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">Link</NavLink>
+              <NavLink href="#" onClick={noop}>Link</NavLink>
             </NavItem>
-            <Dropdown navItem>
-              <DropdownToggle navLink>Dropdown</DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem>Action</DropdownItem>
-                <DropdownItem>Another action</DropdownItem>
-                <DropdownItem>Something else here</DropdownItem>
-              </DropdownMenu>
+            <Dropdown className={NavItemStyles.item}>
+              <Dropdown.Toggle tag="a" href="#" className={NavLinkStyles.link} onClick={noop}>Dropdown</Dropdown.Toggle>
+              <Dropdown.Menu>
+                <DropdownItem href="#" onClick={noop}>Action</DropdownItem>
+                <DropdownItem href="#" onClick={noop}>Another action</DropdownItem>
+                <DropdownItem href="#" onClick={noop}>Something else here</DropdownItem>
+              </Dropdown.Menu>
             </Dropdown>
             <NavItem>
               <NavLink disabled>Disabled</NavLink>
@@ -81,45 +84,29 @@ export function NavbarContent() {
   })
   .addSection({
     title: 'Brand',
-    describe: '',
+    describe: <p>NavbarBrand创建导航栏图标。</p>,
     content: (
       <Navbar style={{width: '100%'}}>
-        <NavbarBrand href="/">Navbar</NavbarBrand>
+        <NavbarBrand href="#">Navbar</NavbarBrand>
       </Navbar>
     ),
     codeText: getCodeFromString(converter.makeHtml(brand)),
   })
   .addSection({
     title: 'Color',
-    describe: '',
+    describe: <p>通过Navbar的color属性来改变不同的背景颜色。</p>,
     content: (
       <>
-        <Navbar style={{width: '100%'}} bgColor="primary" className="mb-2" reverse>
-          <NavbarBrand href="/">Navbar</NavbarBrand>
+        <Navbar style={{width: '100%'}} color="primary" className="mb-2" reverse>
+          <NavbarBrand href="#">Navbar</NavbarBrand>
           <NavbarToggler/>
           <NavbarCollapse>
-            <Nav navbar>
+            <Nav className={NavbarStyles.nav}>
               <NavItem>
-                <NavLink href="#" active>Home</NavLink>
+                <NavLink href="#" active onClick={noop}>Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Link</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink disabled>Disabled</NavLink>
-              </NavItem>
-            </Nav>
-          </NavbarCollapse>
-        </Navbar>
-        <Navbar style={{width: '100%'}} bgColor="success" className="mb-2" reverse>
-          <NavbarBrand href="/">Navbar</NavbarBrand>
-          <NavbarCollapse>
-            <Nav navbar>
-              <NavItem>
-                <NavLink href="#" active>Home</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="#">Link</NavLink>
+                <NavLink href="#" onClick={noop}>Link</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink disabled>Disabled</NavLink>
@@ -127,15 +114,15 @@ export function NavbarContent() {
             </Nav>
           </NavbarCollapse>
         </Navbar>
-        <Navbar style={{width: '100%'}} bgColor="dark" className="mb-2" reverse>
-          <NavbarBrand href="/">Navbar</NavbarBrand>
+        <Navbar style={{width: '100%'}} color="success" className="mb-2" reverse>
+          <NavbarBrand href="#">Navbar</NavbarBrand>
           <NavbarCollapse>
-            <Nav navbar>
+            <Nav className={NavbarStyles.nav}>
               <NavItem>
-                <NavLink href="#" active>Home</NavLink>
+                <NavLink href="#" active onClick={noop}>Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Link</NavLink>
+                <NavLink href="#" onClick={noop}>Link</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink disabled>Disabled</NavLink>
@@ -143,15 +130,31 @@ export function NavbarContent() {
             </Nav>
           </NavbarCollapse>
         </Navbar>
-        <Navbar style={{width: '100%'}} bgColor="light" className="mb-2">
-          <NavbarBrand href="/">Navbar</NavbarBrand>
+        <Navbar style={{width: '100%'}} color="dark" className="mb-2" reverse>
+          <NavbarBrand href="#">Navbar</NavbarBrand>
           <NavbarCollapse>
-            <Nav navbar>
+            <Nav className={NavbarStyles.nav}>
               <NavItem>
-                <NavLink href="#" active>Home</NavLink>
+                <NavLink href="#" active onClick={noop}>Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="#">Link</NavLink>
+                <NavLink href="#" onClick={noop}>Link</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink disabled>Disabled</NavLink>
+              </NavItem>
+            </Nav>
+          </NavbarCollapse>
+        </Navbar>
+        <Navbar style={{width: '100%'}} color="light" className="mb-2">
+          <NavbarBrand href="#">Navbar</NavbarBrand>
+          <NavbarCollapse>
+            <Nav className={NavbarStyles.nav}>
+              <NavItem>
+                <NavLink href="#" active onClick={noop}>Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="#" onClick={noop}>Link</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink disabled>Disabled</NavLink>
@@ -165,32 +168,32 @@ export function NavbarContent() {
   })
   .addSection({
     title: 'External content',
-    describe: '',
+    describe: <p>通过expand属性，可以自适应屏幕宽度，在宽度不够的时候隐藏导航内容。</p>,
     content: (
       <Navbar style={{width: '100%'}} expand="xl">
-        <NavbarBrand href="/">Navbar</NavbarBrand>
-        <NavbarToggler/>
-        <NavbarCollapse>
-          <Nav navbar>
+        <NavbarBrand href="#">Navbar</NavbarBrand>
+        <Navbar.Toggler/>
+        <Navbar.Collapse>
+          <Nav className={NavbarStyles.nav}>
             <NavItem>
-              <NavLink href="#" active>Home</NavLink>
+              <NavLink href="#" active onClick={noop}>Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#">Link</NavLink>
+              <NavLink href="#" onClick={noop}>Link</NavLink>
             </NavItem>
-            <Dropdown navItem>
-              <DropdownToggle navLink>Dropdown</DropdownToggle>
-              <DropdownMenu transition={false}>
-                <DropdownItem>Action</DropdownItem>
-                <DropdownItem>Another action</DropdownItem>
-                <DropdownItem>Something else here</DropdownItem>
-              </DropdownMenu>
+            <Dropdown className={NavItemStyles.item}>
+              <Dropdown.Toggle tag="a" href="#" className={NavLinkStyles.link} onClick={noop}>Dropdown</Dropdown.Toggle>
+              <Dropdown.Menu transition={false}>
+                <DropdownItem href="#" onClick={noop}>Action</DropdownItem>
+                <DropdownItem href="#" onClick={noop}>Another action</DropdownItem>
+                <DropdownItem href="#" onClick={noop}>Something else here</DropdownItem>
+              </Dropdown.Menu>
             </Dropdown>
             <NavItem>
               <NavLink disabled>Disabled</NavLink>
             </NavItem>
           </Nav>
-        </NavbarCollapse>
+        </Navbar.Collapse>
       </Navbar>
     ),
     codeText: getCodeFromString(converter.makeHtml(expand)),

@@ -40,7 +40,7 @@ export function ProgressContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>通过width属性可以设置不同的进度</p>,
       content: (
         <>
           <Col xs="12" className="mb-2">
@@ -74,7 +74,7 @@ export function ProgressContent() {
     })
     .addSection({
       title: 'Labels',
-      describe: '',
+      describe: <p>可以在ProgressBar中显示文字。</p>,
       content: (
         <Col xs="12">
           <Progress>
@@ -86,7 +86,7 @@ export function ProgressContent() {
     })
     .addSection({
       title: 'Height',
-      describe: '',
+      describe: <p>可以通过style来修改Progress的样式，例如高度。</p>,
       content: (
         <>
           <Col xs="12" className="mb-2">
@@ -105,27 +105,27 @@ export function ProgressContent() {
     })
     .addSection({
       title: 'Backgrounds',
-      describe: '',
+      describe: <p>使用color属性来设置不同的颜色。</p>,
       content: (
         <>
           <Col xs="12" className="mb-2">
             <Progress>
-              <ProgressBar width={25} bgColor="success"/>
+              <ProgressBar width={25} color="success"/>
             </Progress>
           </Col>
           <Col xs="12" className="mb-2">
             <Progress>
-              <ProgressBar width={50} bgColor="info"/>
+              <ProgressBar width={50} color="info"/>
             </Progress>
           </Col>
           <Col xs="12" className="mb-2">
             <Progress>
-              <ProgressBar width={70} bgColor="warning"/>
+              <ProgressBar width={70} color="warning"/>
             </Progress>
           </Col>
           <Col xs="12" className="mb-2">
             <Progress>
-              <ProgressBar width={100} bgColor="danger"/>
+              <ProgressBar width={100} color="danger"/>
             </Progress>
           </Col>
         </>
@@ -134,13 +134,13 @@ export function ProgressContent() {
     })
     .addSection({
       title: 'Multiple bars',
-      describe: '',
+      describe: <p>可以将多个ProgressBar组合在一行，每个ProgressBar可以设置不同的样式。</p>,
       content: (
         <Col xs="12">
           <Progress>
             <ProgressBar width={15}/>
-            <ProgressBar width={30} bgColor="success"/>
-            <ProgressBar width={40} bgColor="info"/>
+            <ProgressBar width={30} color="success"/>
+            <ProgressBar width={40} color="info"/>
           </Progress>
         </Col>
       ),
@@ -148,7 +148,7 @@ export function ProgressContent() {
     })
     .addSection({
       title: 'Animated and stripes',
-      describe: '',
+      describe: <p>通过stripes和animate来开启动画效果。</p>,
       content: (
         <Col xs="12">
           <Progress>

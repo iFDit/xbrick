@@ -35,12 +35,12 @@ export function NavsContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>导航项包含激活和禁用，Nav可以基于{`<ul>`}或者{`<nav>`}元素显示。</p>,
       content: (
         <>
-          <Nav style={{width: '100%'}}>
+          <Nav style={{width: '100%', fontSize: '1rem'}}>
             <NavItem>
-              <NavLink href="#">Active</NavLink>
+              <NavLink href="#" active>Active</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#">Link</NavLink>
@@ -52,7 +52,7 @@ export function NavsContent() {
               <NavLink disabled href="#">Disabled</NavLink>
             </NavItem>
           </Nav>
-          <Nav tag="nav" style={{width: '100%'}}>
+          <Nav tag="nav" style={{width: '100%', fontSize: '1rem'}}>
             <NavLink href="#">Active</NavLink>
             <NavLink href="#">Link</NavLink>
             <NavLink href="#">Link</NavLink>
@@ -64,22 +64,22 @@ export function NavsContent() {
     })
     .addSection({
       title: 'Horizontal alignment',
-      describe: '',
+      describe: <p>通过justify属性修改Nav的水平布局。</p>,
       content: (
         <>
-          <Nav tag="nav" justify="center" style={{width: '100%'}}>
+          <Nav tag="nav" justify="center" style={{width: '100%', fontSize: '1rem'}}>
             <NavLink href="#">Active</NavLink>
             <NavLink href="#">Link</NavLink>
             <NavLink href="#">Link</NavLink>
             <NavLink disabled href="#">Disabled</NavLink>
           </Nav>
-          <Nav tag="nav" justify="end" style={{width: '100%'}}>
+          <Nav tag="nav" justify="end" style={{width: '100%', fontSize: '1rem'}}>
             <NavLink href="#">Active</NavLink>
             <NavLink href="#">Link</NavLink>
             <NavLink href="#">Link</NavLink>
             <NavLink disabled href="#">Disabled</NavLink>
           </Nav>
-          <Nav tag="nav" justify="around" style={{width: '100%'}}>
+          <Nav tag="nav" justify="around" style={{width: '100%', fontSize: '1rem'}}>
             <NavLink href="#">Active</NavLink>
             <NavLink href="#">Link</NavLink>
             <NavLink href="#">Link</NavLink>
@@ -91,9 +91,9 @@ export function NavsContent() {
     })
     .addSection({
       title: 'Vertical',
-      describe: '',
+      describe: <p>可以显示垂直导航，可用于自定义侧边栏导航。</p>,
       content: (
-        <Nav vertical>
+        <Nav vertical style={{fontSize: '1rem'}}>
           <NavItem>
             <NavLink href="#">Active</NavLink>
           </NavItem>

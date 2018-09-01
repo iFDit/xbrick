@@ -38,7 +38,7 @@ export function PaginationContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>简单可扩展的分页组件。</p>,
       content: (
         <Pagination>
           <PageItem><PageLink href="#">Previous</PageLink></PageItem>
@@ -53,47 +53,51 @@ export function PaginationContent() {
     })
     .addSection({
       title: 'Indicator',
-      describe: '',
+      describe: <p>可以使用PageIndicator来展示不同的翻页标识。</p>,
       content: (
         <Pagination>
-          <PageItem><PageLink href="#"><PageIndicator direction="prev"/></PageLink></PageItem>
+          <PageIndicator direction="prev"/>
           <PageItem><PageLink href="#">1</PageLink></PageItem>
           <PageItem><PageLink href="#">2</PageLink></PageItem>
           <PageItem><PageLink href="#">3</PageLink></PageItem>
           <PageItem><PageLink href="#">4</PageLink></PageItem>
-          <PageItem><PageLink href="#"><PageIndicator direction="next"/></PageLink></PageItem>
+          <PageIndicator direction="next"/>
         </Pagination>
       ),
       codeText: getCodeFromString(converter.makeHtml(indicator)),
     })
     .addSection({
       title: 'Sizing',
-      describe: '',
+      describe: <p>通过size属性来修改Pagination组件的大小。</p>,
       content: (
         <>
-          <Pagination size="large">
-            <PageItem><PageLink href="#">Previous</PageLink></PageItem>
-            <PageItem><PageLink href="#">1</PageLink></PageItem>
-            <PageItem><PageLink href="#">2</PageLink></PageItem>
-            <PageItem><PageLink href="#">3</PageLink></PageItem>
-            <PageItem><PageLink href="#">4</PageLink></PageItem>
-            <PageItem><PageLink href="#">Next</PageLink></PageItem>
-          </Pagination>
-          <Pagination size="small">
-            <PageItem><PageLink href="#">Previous</PageLink></PageItem>
-            <PageItem><PageLink href="#">1</PageLink></PageItem>
-            <PageItem><PageLink href="#">2</PageLink></PageItem>
-            <PageItem><PageLink href="#">3</PageLink></PageItem>
-            <PageItem><PageLink href="#">4</PageLink></PageItem>
-            <PageItem><PageLink href="#">Next</PageLink></PageItem>
-          </Pagination>
+          <Col xs="12">
+            <Pagination size="large">
+              <PageItem><PageLink href="#">Previous</PageLink></PageItem>
+              <PageItem><PageLink href="#">1</PageLink></PageItem>
+              <PageItem><PageLink href="#">2</PageLink></PageItem>
+              <PageItem><PageLink href="#">3</PageLink></PageItem>
+              <PageItem><PageLink href="#">4</PageLink></PageItem>
+              <PageItem><PageLink href="#">Next</PageLink></PageItem>
+            </Pagination>
+          </Col>
+          <Col xs="12">
+            <Pagination size="small">
+              <PageItem><PageLink href="#">Previous</PageLink></PageItem>
+              <PageItem><PageLink href="#">1</PageLink></PageItem>
+              <PageItem><PageLink href="#">2</PageLink></PageItem>
+              <PageItem><PageLink href="#">3</PageLink></PageItem>
+              <PageItem><PageLink href="#">4</PageLink></PageItem>
+              <PageItem><PageLink href="#">Next</PageLink></PageItem>
+            </Pagination>
+          </Col>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(size)),
     })
     .addSection({
       title: 'Alignment',
-      describe: '',
+      describe: <p>通过justify属性修改Pagenation组件的水平布局。</p>,
       content: (
         <>
           <Col xs="12">

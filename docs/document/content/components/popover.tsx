@@ -42,7 +42,7 @@ export function PopoverContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>简单的用法，通过open属性控制Popover的显示和隐藏。</p>,
       content: (
         <Examples />
       ),
@@ -50,7 +50,7 @@ export function PopoverContent() {
     })
     .addSection({
       title: 'Directions',
-      describe: '',
+      describe: <p>通过direction属性设置Popover弹出不同的方向。</p>,
       content: (
         <Directions/>
       ),
@@ -58,7 +58,7 @@ export function PopoverContent() {
     })
     .addSection({
       title: 'Dismiss on next click',
-      describe: '',
+      describe: <p>可以通过监听click事件来实现切换Popover显示/隐藏。</p>,
       content: (
         <Dismiss/>
       ),
@@ -66,7 +66,7 @@ export function PopoverContent() {
     })
     .addSection({
       title: 'Different triggers',
-      describe: '',
+      describe: <p>自定义监听事件来实现不同的触发方式，如hover, focus和click。</p>,
       content: (
         <Triggers/>
       ),
@@ -93,12 +93,12 @@ class Examples extends React.Component {
   public renderPopoverContent = () => {
     return (
       <>
-        <PopoverHeader>
+        <Popover.Header>
           Popover Header
-        </PopoverHeader>
-        <PopoverBody>
+        </Popover.Header>
+        <Popover.Body>
           And here's some amazing content. It's very engaging. Right?
-        </PopoverBody>
+        </Popover.Body>
       </>
     )
   }
@@ -109,7 +109,7 @@ class Examples extends React.Component {
   render () {
     return (
       <Popover open={this.state.open} content={this.renderPopoverContent()}>
-        <Button bstype="secondary" onClick={this.toggle}>Toggle Popover</Button>
+        <Button color="primary" onClick={this.toggle}>Toggle Popover</Button>
       </Popover>
     )
   }
@@ -125,12 +125,12 @@ class Directions extends React.Component {
   public renderPopoverContent = () => {
     return (
       <>
-        <PopoverHeader>
+        <Popover.Header>
           Popover Header
-        </PopoverHeader>
-        <PopoverBody>
+        </Popover.Header>
+        <Popover.Body>
           And here's some amazing content. It's very engaging. Right?
-        </PopoverBody>
+        </Popover.Body>
       </>
     )
   }
@@ -142,28 +142,20 @@ class Directions extends React.Component {
 
   render () {
     return (
-      <>
-        <Col xs="auto">
-          <Popover open={this.state.top} content={this.renderPopoverContent()} placement="top">
-            <Button bstype="secondary" onClick={this.toggle('top')}>Popover on top</Button>
-          </Popover>
-        </Col>
-        <Col xs="auto">
-          <Popover open={this.state.bottom} content={this.renderPopoverContent()} placement="bottom">
-            <Button bstype="secondary" onClick={this.toggle('bottom')}>Popover on bottom</Button>
-          </Popover>
-        </Col>
-        <Col xs="auto">
-          <Popover open={this.state.left} content={this.renderPopoverContent()} placement="left">
-            <Button bstype="secondary" onClick={this.toggle('left')}>Popover on left</Button>
-          </Popover>
-        </Col>
-        <Col xs="auto">
-          <Popover open={this.state.right} content={this.renderPopoverContent()} placement="right">
-            <Button bstype="secondary" onClick={this.toggle('right')}>Popover on right</Button>
-          </Popover>
-        </Col>
-      </>
+      <div style={{marginTop: '-0.5rem'}}>
+        <Popover open={this.state.top} content={this.renderPopoverContent()} placement="top">
+          <Button color="secondary" onClick={this.toggle('top')} className="mr-2 mt-2">Popover on top</Button>
+        </Popover>
+        <Popover open={this.state.bottom} content={this.renderPopoverContent()} placement="bottom">
+          <Button color="warning" onClick={this.toggle('bottom')} className="mr-2 mt-2">Popover on bottom</Button>
+        </Popover>
+        <Popover open={this.state.left} content={this.renderPopoverContent()} placement="left">
+          <Button color="info" onClick={this.toggle('left')} className="mr-2 mt-2">Popover on left</Button>
+        </Popover>
+        <Popover open={this.state.right} content={this.renderPopoverContent()} placement="right">
+          <Button color="success" onClick={this.toggle('right')} className="mr-2 mt-2">Popover on right</Button>
+        </Popover>
+      </div>
     )
   }
 }
@@ -185,7 +177,7 @@ class Dismiss extends Examples {
   render () {
     return (
       <Popover open={this.state.open} content={this.renderPopoverContent()}>
-        <Button bstype="secondary" onClick={this.toggle}>Dismissible popover</Button>
+        <Button color="danger" onClick={this.toggle}>Dismissible popover</Button>
       </Popover>
     )
   }
@@ -232,12 +224,12 @@ class Triggers extends React.Component {
   public renderPopoverContent = () => {
     return (
       <>
-        <PopoverHeader>
+        <Popover.Header>
           Popover Header
-        </PopoverHeader>
-        <PopoverBody>
+        </Popover.Header>
+        <Popover.Body>
           And here's some amazing content. It's very engaging. Right?
-        </PopoverBody>
+        </Popover.Body>
       </>
     )
   }

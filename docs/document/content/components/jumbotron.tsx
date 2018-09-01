@@ -47,7 +47,7 @@ export function JumbotronContent() {
     })
     .addSection({
       title: 'Fluid',
-      describe: '',
+      describe: <p>通过fluid属性可以设置Jumbotron组件占据整个容器的宽度。</p>,
       content: (
         <Jumbotron fluid>
           <Container>

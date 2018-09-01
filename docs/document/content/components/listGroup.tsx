@@ -55,7 +55,7 @@ export function ListGroupContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>简单的无序列表，可以根据不同的需求进行扩展。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
           <ListGroupItem>Cras justo odio</ListGroupItem>
@@ -69,7 +69,7 @@ export function ListGroupContent() {
     })
     .addSection({
       title: 'Active items',
-      describe: '',
+      describe: <p>ListGroupItem组件有active属性，设置为true时会高亮ListGroupItem。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
           <ListGroupItem active>Cras justo odio</ListGroupItem>
@@ -83,7 +83,7 @@ export function ListGroupContent() {
     })
     .addSection({
       title: 'Disabled items',
-      describe: '',
+      describe: <p>设置disabled属性，可以展示禁用效果的ListGroupItem。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
           <ListGroupItem disabled>Cras justo odio</ListGroupItem>
@@ -97,7 +97,7 @@ export function ListGroupContent() {
     })
     .addSection({
       title: 'Links',
-      describe: '',
+      describe: <p>渲染为{`<a>`}元素的ListGroupItem。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
           <ListGroupItem tag="a" href="#" action>Cras justo odio</ListGroupItem>
@@ -111,7 +111,7 @@ export function ListGroupContent() {
     })
     .addSection({
       title: 'Buttons',
-      describe: '',
+      describe: <p>渲染为{`<button>`}元素的ListGroupItem。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
           <ListGroupItem tag="button" action>Cras justo odio</ListGroupItem>
@@ -125,7 +125,7 @@ export function ListGroupContent() {
     })
     .addSection({
       title: 'Flush',
-      describe: '',
+      describe: <p>显示无边框的Listgroup。</p>,
       content: (
         <ListGroup flush style={{width: '100%'}}>
           <ListGroupItem>Cras justo odio</ListGroupItem>
@@ -139,24 +139,24 @@ export function ListGroupContent() {
     })
     .addSection({
       title: 'Contextual classes',
-      describe: '',
+      describe: <p>通过color属性可以快捷的设置ListGroupItem背景颜色。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
-          <ListGroupItem tag="a" href="#" bstype="primary">Cras justo odio</ListGroupItem>
-          <ListGroupItem tag="a" href="#" bstype="secondary">Dapibus ac facilisis in</ListGroupItem>
-          <ListGroupItem tag="a" href="#" bstype="warning">Morbi leo risus</ListGroupItem>
-          <ListGroupItem tag="a" href="#" bstype="success">Porta ac consectetur ac</ListGroupItem>
-          <ListGroupItem tag="a" href="#" bstype="danger">Vestibulum at eros</ListGroupItem>
-          <ListGroupItem tag="a" href="#" bstype="info">Vestibulum at eros</ListGroupItem>
-          <ListGroupItem tag="a" href="#" bstype="light">Vestibulum at eros</ListGroupItem>
-          <ListGroupItem tag="a" href="#" bstype="dark">Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="primary">Cras justo odio</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="secondary">Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="warning">Morbi leo risus</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="success">Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="danger">Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="info">Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="light">Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="dark">Vestibulum at eros</ListGroupItem>
         </ListGroup>
       ),
       codeText: getCodeFromString(converter.makeHtml(bstype)),
     })
     .addSection({
       title: 'With badges',
-      describe: '',
+      describe: <p>结合Layout组件和Badge组件显示徽标。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
           <ListGroupItem>
@@ -183,7 +183,7 @@ export function ListGroupContent() {
     })
     .addSection({
       title: 'Custom content',
-      describe: '',
+      describe: <p>ListGroupItem中可以展示自定义的组件和内容。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
           <ListGroupItem tag="a" href="#" action active>

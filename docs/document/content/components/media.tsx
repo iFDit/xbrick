@@ -54,7 +54,7 @@ export function MediaContent() {
     })
     .addSection({
       title: 'Nesting',
-      describe: '',
+      describe: <p>嵌套的Media组件。</p>,
       content: (
         <Media>
         <MediaObject>
@@ -84,7 +84,7 @@ export function MediaContent() {
     })
     .addSection({
       title: 'Alignment',
-      describe: '',
+      describe: <p>MediaObject组件可以通过align属性来设置垂直对齐方式。</p>,
       content: (
         <Media>
         <MediaObject align="center">
