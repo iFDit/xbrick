@@ -37,13 +37,13 @@ export function TablesContent() {
       describe: '',
       content: (
         <Col>
-          <p>Table组件可以展示数据集，用户可以对其中的数据进行操作</p>
+          <p>Table组件可以展示数据集，用户可以对其中的数据进行操作。</p>
         </Col>
       ),
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>简单的表格，通过<code>TableHeader</code>, <code>TableBody</code>, <code>TableRow</code>和<code>TableCell</code>来创建表格。</p>,
       content: (
         <Table>
           <TableHeader>
@@ -80,7 +80,7 @@ export function TablesContent() {
     })
     .addSection({
       title: 'Striped rows',
-      describe: '',
+      describe: <p>在Table组件中设置striped属性，可以生成条纹样式的行。</p>,
       content: (
         <Table striped>
           <TableHeader>
@@ -117,7 +117,7 @@ export function TablesContent() {
     })
     .addSection({
       title: 'Full bordered table',
-      describe: '',
+      describe: <p>设置border="full"使得表格拥有所有边框。</p>,
       content: (
         <Table border="full">
           <TableHeader>
@@ -154,7 +154,7 @@ export function TablesContent() {
     })
     .addSection({
       title: 'Borderless table',
-      describe: '',
+      describe: <p>设置border="none"来清除表格所有边框。</p>,
       content: (
         <Table border="none">
           <TableHeader>
@@ -191,7 +191,7 @@ export function TablesContent() {
     })
     .addSection({
       title: 'Hoverable rows',
-      describe: '',
+      describe: <p>设置hover属性开启交互式的表格行。</p>,
       content: (
         <Table hover>
           <TableHeader>
@@ -228,7 +228,7 @@ export function TablesContent() {
     })
     .addSection({
       title: 'Small table',
-      describe: '',
+      describe: <p>通过size属性来改变表格的大小，有<code>small</code>和<code>large</code>两个选项。</p>,
       content: (
         <Table size="small">
           <TableHeader>
@@ -264,8 +264,8 @@ export function TablesContent() {
       codeText: getCodeFromString(converter.makeHtml(size)),
     })
     .addSection({
-      title: 'Bootstrap type',
-      describe: '',
+      title: 'Colors',
+      describe: <p>在TableRow组件中设置color属性可以改变行的背景颜色。</p>,
       content: (
         <Table>
           <TableHeader>
@@ -277,19 +277,19 @@ export function TablesContent() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow bstype="primary">
+            <TableRow color="primary">
               <TableCell>1</TableCell>
               <TableCell>Mark</TableCell>
               <TableCell>Otto</TableCell>
               <TableCell>@mdo</TableCell>
             </TableRow>
-            <TableRow bstype="success">
+            <TableRow color="success">
               <TableCell>2</TableCell>
               <TableCell>Jacob</TableCell>
               <TableCell>Thornton</TableCell>
               <TableCell>@fat</TableCell>
             </TableRow>
-            <TableRow bstype="warning">
+            <TableRow color="warning">
               <TableCell>3</TableCell>
               <TableCell>Larry</TableCell>
               <TableCell>Thornton</TableCell>

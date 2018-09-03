@@ -38,36 +38,28 @@ export function TooltipContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: '',
+      describe: <p>Tooltip组件可以设置四个方向，<code>top</code>, <code>right</code>, <code>bottom</code>和<code>left</code>。</p>,
       content: (
         <>
-          <Col xs="auto">
-            <UncontrolledTooltip content="tooltip on top" placement="top">
-              <Button bstype="secondary">Tooltip on top</Button>
-            </UncontrolledTooltip>
-          </Col>
-          <Col xs="auto">
-            <UncontrolledTooltip content="tooltip on bottom" placement="bottom">
-              <Button bstype="secondary">Tooltip on bottom</Button>
-            </UncontrolledTooltip>
-          </Col>
-          <Col xs="auto">
-            <UncontrolledTooltip content="tooltip on left" placement="left">
-              <Button bstype="secondary">Tooltip on left</Button>
-            </UncontrolledTooltip>
-          </Col>
-          <Col xs="auto">
-            <UncontrolledTooltip content="tooltip on right" placement="right">
-              <Button bstype="secondary">Tooltip on right</Button>
-            </UncontrolledTooltip>
-          </Col>
+          <UncontrolledTooltip content="tooltip on top" placement="top">
+            <Button color="secondary" className="mr-2 mb-2">Tooltip on top</Button>
+          </UncontrolledTooltip>
+          <UncontrolledTooltip content="tooltip on bottom" placement="bottom">
+            <Button color="warning" className="mr-2 mb-2">Tooltip on bottom</Button>
+          </UncontrolledTooltip>
+          <UncontrolledTooltip content="tooltip on left" placement="left">
+            <Button color="info" className="mr-2 mb-2">Tooltip on left</Button>
+          </UncontrolledTooltip>
+          <UncontrolledTooltip content="tooltip on right" placement="right">
+            <Button color="danger" className="mr-2 mb-2">Tooltip on right</Button>
+          </UncontrolledTooltip>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(basic)),
     })
     .addSection({
       title: 'Controlled tooltip',
-      describe: '',
+      describe: <p>受控的组件，展开和隐藏可以通过open属性来设置。</p>,
       content: (
         <Examples />
       ),
