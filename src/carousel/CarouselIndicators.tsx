@@ -1,13 +1,14 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { ACTIVE, CAROUSEL_INDICATORS } from 'src/common/classes'
 
 export interface ICarouselIndicatorProps extends IProps {
   /**
    * render how many of indicators.
+   * @default 0
    */
-  items: {key: string}[]
+  amount?: number | string
 
   /**
    * set which item is current active.
@@ -28,24 +29,24 @@ export interface ICarouselIndicatorProps extends IProps {
 }
 
 export const CarouselIndicators: React.StatelessComponent<ICarouselIndicatorProps> = function (props: ICarouselIndicatorProps) {
-  const { tag, items, onItemClick, activeIndex, ...others } = props
+  const { tag, amount, onItemClick, activeIndex, ...others } = props
   const Tag = tag!
-  const itemNodes = items.map((item, idx) => (
+  const itemNodes = [...Array(+amount!).fill(1)].map((_, idx) => (
     <li
-      key={item.key || idx}
-      className={classNames({[classes.ACTIVE]: activeIndex === idx})}
+      key={idx}
+      className={classNames({[ACTIVE]: activeIndex === idx})}
       onClick={(e) => {
         e.preventDefault()
         onItemClick!(idx)
       }}
     />
   ))
-  return <Tag {...others} className={classNames(props.className, classes.CAROUSEL_INDICATORS)}>{itemNodes}</Tag>
+  return <Tag {...others} className={classNames(props.className, CAROUSEL_INDICATORS)}>{itemNodes}</Tag>
 }
 
 CarouselIndicators.displayName = 'xbrick.CarouselIndicator'
 CarouselIndicators.defaultProps = {
   tag: 'ol',
-  items: [],
+  amount: 0,
   onItemClick: () => {/* */},
 }

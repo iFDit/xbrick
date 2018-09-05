@@ -1,9 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
-import { omit } from 'lodash'
-import { DropdownContext } from 'src/dropdowns/Dropdown'
+import { ACTIVE, DISABLED, DROPDOWN_ITEM, DROPDOWN_HEADER, DROPDOWN_DIVIDER } from 'src/common/classes'
 
 export interface IDropdownItemProps extends IProps {
   /**
@@ -37,18 +35,12 @@ export interface IDropdownItemProps extends IProps {
   disabled?: boolean
 }
 
-const omitProps = ['active', 'disabled']
-const Item: React.StatelessComponent<IDropdownItemProps> = function (props: IDropdownItemProps) {
-  const { tag, header, divider, ...others } = props
+export const DropdownItem: React.StatelessComponent<IDropdownItemProps> = function (props: IDropdownItemProps) {
+  // shortcut of ignore active and disabled props.
+  // @ts-ignore
+  const { tag, header, divider, active, disabled, ...others } = props
   const Tag = header ? 'h6' : divider ? 'div' : tag!
-  const nextProps = {
-    ...omit(others, omitProps),
-    className: getDropdownClassName(props),
-  }
-  if (Tag === 'a') {
-    (nextProps as any).href = '#'
-  }
-  return <Tag {...nextProps} />
+  return <Tag {...others} className={getDropdownClassName(props)}/>
 }
 
 function getDropdownClassName(props: IDropdownItemProps) {
@@ -56,20 +48,14 @@ function getDropdownClassName(props: IDropdownItemProps) {
   return classNames(
     props.className,
     {
-      [classes.DROPDOWN_ITEM]: !header && !divider,
-      [classes.DROPDOWN_HEADER]: !!header,
-      [classes.DROPDOWN_DIVIDER]: !!divider,
-      [classes.DISABLED]: !!disabled,
-      [classes.ACTIVE]: !!active,
+      [DROPDOWN_ITEM]: !header && !divider,
+      [DROPDOWN_HEADER]: !!header,
+      [DROPDOWN_DIVIDER]: !!divider,
+      [DISABLED]: !!disabled,
+      [ACTIVE]: !!active,
     },
   )
 }
-
-export const DropdownItem: React.StatelessComponent<IDropdownItemProps> = (props: IDropdownItemProps) => (
-  <DropdownContext.Consumer>
-    {({getItemProps}) => <Item {...getItemProps(props)}/>}
-  </DropdownContext.Consumer>
-)
 
 DropdownItem.displayName = 'xbrick.DropdownItem'
 DropdownItem.defaultProps = {

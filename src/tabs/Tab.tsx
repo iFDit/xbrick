@@ -16,6 +16,4 @@ export const Tab: React.StatelessComponent<ITabProps> = function (props: ITabPro
 }
 
 Tab.displayName = 'xbrick.Tab'
-Tab.defaultProps = {
-  tag: 'div',
-}
+Tab.defaultProps = { tag: 'div' }

@@ -1,8 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
-import { Collapse, ICollapseProps } from 'src/collapse/Collapse'
-import { NavbarContext } from 'src/navbar/Navbar'
+import { NAVBAR_COLLAPSE } from 'src/common/classes'
+import { ICollapseProps, Collapse } from 'src/collapse/Collapse'
 
 export interface INavbarCollapseProps extends ICollapseProps {
   /**
@@ -12,17 +11,10 @@ export interface INavbarCollapseProps extends ICollapseProps {
   tag?: string | React.Factory<any>
 }
 
-function getNavbarCollapseClass(props: INavbarCollapseProps) {
-  return classNames(props.className, classes.NAVBAR_COLLAPSE)
+export const NavbarCollapse: React.StatelessComponent<INavbarCollapseProps> = (props: INavbarCollapseProps) => {
+  const className = classNames(props.className, NAVBAR_COLLAPSE)
+  return <Collapse {...props} className={className} />
 }
-
-export const NavbarCollapse: React.StatelessComponent<INavbarCollapseProps> = (props: INavbarCollapseProps) => (
-  <NavbarContext.Consumer>
-    {({getCollapseProps}) => <Collapse {...getCollapseProps(props)} className={getNavbarCollapseClass(props)}/>}
-  </NavbarContext.Consumer>
-)
 
 NavbarCollapse.displayName = 'xbrick.NavbarCollapse'
-NavbarCollapse.defaultProps = {
-  tag: 'div',
-}
+NavbarCollapse.defaultProps = { tag: 'div' }

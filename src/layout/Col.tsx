@@ -1,9 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
 import * as classes from 'src/common/classes'
-import { omit, isObject, isString, isNumber, isBoolean } from 'lodash'
 import { IProps, IColumn } from 'src/common/props'
 import { cloneWithClassName } from 'src/common/util'
+import { omit, isObject, isString, isNumber, isBoolean } from 'lodash'
 
 export interface IColProps extends IProps, IColumn {
   /**
@@ -13,27 +13,27 @@ export interface IColProps extends IProps, IColumn {
   tag?: string | React.Factory<any>
 
   /**
-   * if true, then will not render container component and pass down layout className to children.
-   * @default false
+   * if false, then will not render container component and pass down layout className to children.
+   * @default true
    */
-  nowrap?: boolean
+  render?: boolean
 }
 
 const omitProps = ['xs', 'sm', 'md', 'lg', 'xl']
 export const Col: React.StatelessComponent<IColProps> = function (props: IColProps) {
-  const { tag, nowrap, ...others } = props
+  const { tag, render, ...others } = props
   const Tag = tag!
   const className = classNames(props.className, getColClass(props))
-  return nowrap ?
-    cloneWithClassName(props.children, className)
-    : <Tag {...omit(others, omitProps)} className={className}/>
+  return render ?
+    <Tag {...omit(others, omitProps)} className={className}/>
+    : cloneWithClassName(props.children, className)
 }
 
 Col.displayName = 'xbrick.Col'
 Col.defaultProps = {
   tag: 'div',
   xs: 0,
-  nowrap: false,
+  render: true,
 }
 
 function getColClass(props: IColProps) {

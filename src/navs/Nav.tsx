@@ -1,7 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
+import * as cls from 'src/common/classes'
 import { IProps, NavJustify } from 'src/common/props'
+import { NAV, NAV_TAB, FLEX_COLUMN } from 'src/common/classes'
 
 export interface INavProps extends IProps {
   /**
@@ -23,12 +24,6 @@ export interface INavProps extends IProps {
   vertical?: boolean
 
   /**
-   * use in narbar components.
-   * @default false
-   */
-  navbar?: boolean
-
-  /**
    * toggle tabs styles.
    * @default false
    */
@@ -43,15 +38,15 @@ const justifyMap = {
 }
 
 export const Nav: React.StatelessComponent<INavProps> = function (props: INavProps) {
-  const { tag, tab, navbar, justify, vertical, ...others } = props
+  const { tag, tab, justify, vertical, ...others } = props
   const Tag = tag!
   const className = classNames(
     props.className,
-    navbar ? classes.NAVBAR_NAV : classes.NAV,
+    NAV,
     {
-      [classes.NAV_TAB]: !!tab,
-      [classes.FLEX_COLUMN]: !!vertical,
-      [classes[`JUSTIFY_CONTENT_XS_${justifyMap[justify!]}`]]: !!justifyMap[justify!],
+      [NAV_TAB]: !!tab,
+      [FLEX_COLUMN]: !!vertical,
+      [cls[`JUSTIFY_CONTENT_XS_${justifyMap[justify!]}`]]: !!justifyMap[justify!],
     },
   )
   return <Tag {...others} className={className} />
@@ -63,5 +58,4 @@ Nav.defaultProps = {
   tab: false,
   justify: 'start',
   vertical: false,
-  navbar: false,
 }

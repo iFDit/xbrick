@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
 import { cloneWithClassName } from 'src/common/util'
+import { ACTIVE, DISABLED, NAV_LINK } from 'src/common/classes'
 
 export interface INavLinkProps extends IProps {
   /**
@@ -24,30 +24,36 @@ export interface INavLinkProps extends IProps {
   disabled?: boolean
 
   /**
-   * not render wrap tag.
-   * @default false
+   * render or not render wrap node, helpful in react-router.
+   * @default true
    */
-  nowrap?: boolean
+  render?: boolean
 }
 
 export const NavLink: React.StatelessComponent<INavLinkProps> = function (props: INavLinkProps) {
-  const { tag, active, nowrap, disabled, ...others } = props
+  const { tag, active, render, disabled, ...others } = props
   const Tag = tag!
   const className = classNames(
     props.className,
-    classes.NAV_LINK,
+    NAV_LINK,
     {
-      [classes.ACTIVE]: !!active,
-      [classes.DISABLED]: !!disabled,
+      [ACTIVE]: !!active,
+      [DISABLED]: !!disabled,
     },
   )
-  return nowrap ? cloneWithClassName(props.children, className) : <Tag {...others} className={className} />
+  return render ? <Tag {...others} className={className} /> : cloneWithClassName(props.children, className)
+}
+
+export const NavLinkStyles = {
+  link: NAV_LINK,
+  active: ACTIVE,
+  disabled: DISABLED,
 }
 
 NavLink.displayName = 'xbrick.NavLink'
 NavLink.defaultProps = {
   tag: 'a',
-  nowrap: false,
+  render: true,
   active: false,
   disabled: false,
 }

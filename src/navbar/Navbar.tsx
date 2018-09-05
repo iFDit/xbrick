@@ -1,10 +1,12 @@
 import React, { createContext } from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
+import * as cls from 'src/common/classes'
 import { mergeCall } from 'src/common/util'
-import { INavbarTogglerProps } from 'src/navbar/NavbarToggler'
-import { INavbarCollapseProps } from 'src/navbar/NavbarCollapse'
-import { IProps, NavbarExpand, NavbarJustify, NavbarBgColor, NavbarFixed, INavbarChildrenProps } from 'src/common/props'
+import { NavbarToggler, INavbarTogglerProps } from 'src/navbar/NavbarToggler'
+import { NAVBAR, STICKY, NAVBAR_DARK, NAVBAR_LIGHT } from 'src/common/classes'
+import { NavbarCollapse, INavbarCollapseProps } from 'src/navbar/NavbarCollapse'
+import { IProps, NavbarExpand, NavbarJustify, NavbarBgColor, NavbarFixed } from 'src/common/props'
+
 
 export interface INavbarProps extends IProps {
   /**
@@ -28,7 +30,7 @@ export interface INavbarProps extends IProps {
    * set navbar background color.
    * @default light
    */
-  bgColor?: NavbarBgColor
+  color?: NavbarBgColor
 
   /**
    * reverse font color.
@@ -49,8 +51,8 @@ export interface INavbarProps extends IProps {
 }
 
 export const NavbarContext = createContext({
-  getTogglerProps: (props: INavbarTogglerProps) => props,
-  getCollapseProps: (props: INavbarCollapseProps) => props,
+  getTogglerProps: (props: INavbarTogglerProps = {}) => props,
+  getCollapseProps: (props: INavbarCollapseProps = {}) => props,
 })
 
 export class Navbar extends React.Component<INavbarProps> {
@@ -58,10 +60,20 @@ export class Navbar extends React.Component<INavbarProps> {
   static defaultProps = {
     tag: 'nav',
     expand: 'xs',
-    bgColor: 'light',
+    color: 'light',
     reverse: false,
     sticky: false,
   }
+  static Collapse = (props: INavbarCollapseProps) => (
+    <NavbarContext.Consumer>
+      {({getCollapseProps}) => <NavbarCollapse {...getCollapseProps(props)}/>}
+    </NavbarContext.Consumer>
+  )
+  static Toggler = (props: INavbarTogglerProps) => (
+    <NavbarContext.Consumer>
+      {({getTogglerProps}) => <NavbarToggler {...getTogglerProps(props)}/>}
+    </NavbarContext.Consumer>
+  )
 
   public state = {
     expand: true,
@@ -78,23 +90,23 @@ export class Navbar extends React.Component<INavbarProps> {
   }
 
   private handleToggleExpand = () => {
-    const {expand} = this.state 
+    const {expand} = this.state
     this.setState({ expand: !expand })
   }
 
   render () {
-    const { tag, expand, fixed, sticky, justify, bgColor, reverse, ...others } = this.props
+    const { tag, expand, fixed, sticky, justify, color, reverse, ...others } = this.props
     const Tag = tag!
     const className = classNames(
       this.props.className,
-      classes.NAVBAR,
-      classes[`BG_${bgColor!.toUpperCase()}`],
-      classes[`NAVBAR_EXPAND_${expand!.toUpperCase()}`],
-      reverse ? classes.NAVBAR_DARK : classes.NAVBAR_LIGHT,
+      NAVBAR,
+      cls[`BG_${color!.toUpperCase()}`],
+      cls[`NAVBAR_EXPAND_${expand!.toUpperCase()}`],
+      reverse ? NAVBAR_DARK : NAVBAR_LIGHT,
       {
-        [classes.STICKY]: !!sticky,
-        [classes[`FIXED_${String(fixed).toUpperCase()}`]]: !!fixed,
-        [classes[`JUSTIFY_CONTENT_XS_${String(justify).toUpperCase()}`]]: !!justify,
+        [STICKY]: !!sticky,
+        [cls[`FIXED_${String(fixed).toUpperCase()}`]]: !!fixed,
+        [cls[`JUSTIFY_CONTENT_XS_${String(justify).toUpperCase()}`]]: !!justify,
       },
     )
 
@@ -107,4 +119,8 @@ export class Navbar extends React.Component<INavbarProps> {
       </NavbarContext.Provider>
     )
   }
+}
+
+export const NavbarStyles = {
+  nav: 'navbar-nav',
 }

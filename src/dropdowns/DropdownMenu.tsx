@@ -1,10 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { get } from 'lodash'
-import { IProps, Direction } from 'src/common/props'
 import { Animate } from 'src/animate/Animate'
-import { DropdownContext } from 'src/dropdowns/Dropdown'
+import { IProps, Direction } from 'src/common/props'
+import { MENU, MENU_UP, MENU_LEFT, ACTIVE, DROPDOWN_MENU } from 'src/common/classes'
 
 export interface IDropdownMenuProps extends IProps {
   /**
@@ -43,8 +42,8 @@ export interface IDropdownMenuProps extends IProps {
   direction?: Direction
 }
 
-class Menu extends React.Component<IDropdownMenuProps> {
-  static displayName = 'xbrick.Menu'
+export class DropdownMenu extends React.Component<IDropdownMenuProps> {
+  static displayName = 'xbrick.DropdownMenu'
   static defaultProps = {
     tag: 'div',
     right: false,
@@ -70,10 +69,10 @@ class Menu extends React.Component<IDropdownMenuProps> {
   }
 
   private getFromStyle = () => {
-    const { open } = this.props
+    // const { open } = this.props
     const propName = this.createTranslateName()
     return {
-      opacity: { value: open ? 0.3 : 0.4, config: { precision: 0.4 } },
+      // opacity: { value: open ? 0.6 : 0.5, config: { precision: 0.4 } },
       [propName]: this.createTranslateFromValue(),
     }
   }
@@ -83,37 +82,42 @@ class Menu extends React.Component<IDropdownMenuProps> {
     const propName = this.createTranslateName()
     return {
       opacity: open ? 0.9 : 0,
-      [propName]: 0,
+      [propName]: open ? 1 : 0,
     }
   }
 
   private createTranslateName = () => {
     const { direction } = this.props
-    return direction === 'right' || direction === 'left' ? 'translateX' : 'translateY'
+    return direction === 'right' || direction === 'left' ? 'scaleX' : 'scaleY'
   }
 
   private createTranslateFromValue = () => {
-    const { open, direction } = this.props
-    const offset = direction === 'up' || direction === 'left' ? 8 : -8
+    const { direction } = this.props
+    const noAnimate = direction === 'left' || direction === 'right'
     return {
-      value: open ? offset : 0,
-      config: { precision: 6 },
-      transition: get(this.props, 'transition', open),
+      value: open ?  0.8 : 0.1,
+      config: { precision: 0.5, stiffness: 350 },
+      transition: !!get(this.props, 'transition', !noAnimate && open),
     }
   }
 
   render () {
     // @ts-ignore
     // shortcut of ignore some props.
-    const { right, open, afterAnimate, transition, ...others } = this.props
+    const { right, open, afterAnimate, direction, transition, ...others } = this.props
     const { active } = this.state
     const Tag = this.props.tag!
     const styles = { ...(this.props.style || {}) }
     const className = classNames(
       this.props.className,
-      classes.MENU,
-      classes.DROPDOWN_MENU,
-      {[`${classes.DROPDOWN_MENU}-right`]: right},
+      MENU,
+      DROPDOWN_MENU,
+      {
+        [`${DROPDOWN_MENU}-right`]: right,
+        [MENU_LEFT]: direction === 'left',
+        [MENU_UP]: direction === 'up',
+        [ACTIVE]: active && !open,
+      },
     )
     if (!open) {
       styles.display = 'none'
@@ -133,11 +137,3 @@ class Menu extends React.Component<IDropdownMenuProps> {
       ) : <Tag {...others} className={className} style={styles}/>
   }
 }
-
-export const DropdownMenu: React.StatelessComponent<IDropdownMenuProps> = (props: IDropdownMenuProps) => (
-  <DropdownContext.Consumer>
-    {({getMenuProps}) => <Menu {...getMenuProps(props)}/>}
-  </DropdownContext.Consumer>
-)
-
-DropdownMenu.displayName = 'xbrick.DropdownMenu'

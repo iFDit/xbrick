@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { OVERLAY, CARD_IMG, CARD_BODY } from 'src/common/classes'
 
 export interface ICardBodyProps extends IProps {
   /**
@@ -23,9 +23,9 @@ export const CardBody: React.StatelessComponent<ICardBodyProps> = function (prop
   const className = classNames(
     props.className,
     {
-      [classes.CARD_BODY]: !overlay,
-      [`${classes.CARD_IMG}-${classes.OVERLAY}`]: !!overlay,
-    }
+      [CARD_BODY]: !overlay,
+      [`${CARD_IMG}-${OVERLAY}`]: !!overlay,
+    },
   )
   return <Tag {...others} className={className} />
 }

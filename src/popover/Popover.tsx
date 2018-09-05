@@ -4,9 +4,10 @@ import { Fade } from 'src/animate/Fade'
 import { Popper } from 'src/tooltip/Popper'
 import { PopoverPlacement } from 'src/common/props'
 import { ITooltipProps, Tooltip } from 'src/tooltip/Tooltip'
-import { IPopoverHeaderProps } from 'src/popover/PopoverHeader'
-import { POPOVER, SHOW, ARROW, ARROW_WRAP, XPOPOVER, XPOPOVER_CLOSE } from 'src/common/classes'
+import { PopoverBody, IPopoverBody } from 'src/popover/PopoverBody'
+import { PopoverHeader, IPopoverHeaderProps } from 'src/popover/PopoverHeader'
 import { POPOVER_LEFT, POPOVER_RIGHT, POPOVER_TOP, POPOVER_BOTTOM } from 'src/common/classes'
+import { POPOVER, SHOW, ARROW, ARROW_WRAP, XPOPOVER, XPOPOVER_CLOSE } from 'src/common/classes'
 
 export interface IPopoverProps extends Pick<ITooltipProps, Exclude<keyof ITooltipProps, 'placement' | 'noarrow'>> {
   /**
@@ -17,8 +18,8 @@ export interface IPopoverProps extends Pick<ITooltipProps, Exclude<keyof IToolti
 }
 
 export const PopoverContext = createContext({
-  getHeaderProps: (props: IPopoverHeaderProps) => props,
-  getBodyProps: (props: IPopoverHeaderProps) => props,
+  getHeaderProps: (props: IPopoverHeaderProps = {}) => props,
+  getBodyProps: (props: IPopoverBody = {}) => props,
 })
 
 const placementMap = {
@@ -34,7 +35,18 @@ export class Popover extends Tooltip {
     tag: 'div',
     placement: 'top',
     open: false,
+    noarrow: false,
   }
+  static Body = (props: IPopoverBody) => (
+    <PopoverContext.Consumer>
+      {({ getBodyProps }) => <PopoverBody {...getBodyProps(props)}/>}
+    </PopoverContext.Consumer>
+  )
+  static Header: React.StatelessComponent<IPopoverHeaderProps> = (props: IPopoverHeaderProps) => (
+    <PopoverContext.Consumer>
+      {({getHeaderProps}) => <PopoverHeader {...getHeaderProps(props)}/>}
+    </PopoverContext.Consumer>
+  )
 
   static getDerivedStateFromProps(props: IPopoverProps, state: any) {
     if (props.open !== state.lastOpen) {
@@ -57,7 +69,8 @@ export class Popover extends Tooltip {
   }
 
   render () {
-    const { tag, open, content, placement, children, ...others } = this.props
+    // noarrow props no use but use for extends Tooltip.
+    const { tag, open, noarrow, content, placement, children, ...others } = this.props
     const { currentPlacement, active } = this.state
     const Tag = tag!
     const from = open ? 0 : 1

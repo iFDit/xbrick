@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { CARD_TITLE, CARD_SUBTITLE } from 'src/common/classes'
 
 export interface ICardTitleProps extends IProps {
   /**
@@ -18,9 +18,8 @@ export interface ICardTitleProps extends IProps {
 
 export const CardTitle: React.StatelessComponent<ICardTitleProps> = function (props: ICardTitleProps) {
   const { tag, subtitle, ...others } = props
-  const { CARD_SUBTITLE, CARD_TITLE } = classes
   const Tag = subtitle && tag === 'h5' ? 'h6' : tag!
-  const className = classNames(props.className, subtitle ? CARD_SUBTITLE: CARD_TITLE)
+  const className = classNames(props.className, subtitle ? CARD_SUBTITLE : CARD_TITLE)
   return <Tag {...others} className={className} />
 }
 

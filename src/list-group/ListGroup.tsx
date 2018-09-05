@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { LIST_GROUP, LIST_GROUP_FLUSH } from 'src/common/classes'
 
 export interface IListGroupProps extends IProps {
   /**
@@ -22,8 +22,8 @@ export const ListGroup: React.StatelessComponent<IListGroupProps> = function (pr
   const Tag = tag!
   const className = classNames(
     props.className,
-    classes.LIST_GROUP,
-    {[classes.LIST_GROUP_FLUSH]: !!flush},
+    LIST_GROUP,
+    {[LIST_GROUP_FLUSH]: !!flush},
   )
   return <Tag {...others} className={className} />
 }

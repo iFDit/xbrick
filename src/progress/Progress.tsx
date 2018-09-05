@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import { PROGRESS } from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { PROGRESS } from 'src/common/classes'
 
 export interface IProgressProps extends IProps {
   /**
@@ -19,6 +19,4 @@ export const Progress: React.StatelessComponent<IProgressProps> = function (prop
 }
 
 Progress.displayName = 'xbrick.Progress'
-Progress.defaultProps = {
-  tag: 'div',
-}
+Progress.defaultProps = { tag: 'div' }

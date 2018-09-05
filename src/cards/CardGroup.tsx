@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { CARD_GROUP } from 'src/common/classes'
 
 export interface ICardGroupProps extends IProps {
   /**
@@ -14,7 +14,7 @@ export interface ICardGroupProps extends IProps {
 export const CardGroup: React.StatelessComponent<ICardGroupProps> = function (props: ICardGroupProps) {
   const { tag, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, classes.CARD_GROUP)
+  const className = classNames(props.className, CARD_GROUP)
   return <Tag {...others} className={className} />
 }
 

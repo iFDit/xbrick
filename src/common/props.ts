@@ -12,7 +12,7 @@ export type ModalSize = ButtonSize
 export type InputType = 'text' | 'textarea' | 'select' | 'checkbox' | 'radio' | 'button' | 'color' | 'date' | 'datetime-local' | 'email' | 'file' | 'hidden' | 'image' | 'month' | 'number' | 'password' | 'range' | 'reset' | 'search' | 'submit' | 'tel' | 'time' | 'url' | 'week'
 /* tslint:enable */
 export type Direction = 'left' | 'right' | 'up'
-
+export type InputGroupPosition = 'prepend' | 'append'
 export type PageDirection = 'prev' | 'next'
 export interface IProps {
   [prop: string]: any

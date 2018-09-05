@@ -21,3 +21,5 @@
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | tag | 自定义标签 | string\|ReactNode | `span` |
+| color | 设置背景颜色 | string | `primary` |
+| pill | 是否显示圆角 | boolean | `false` |

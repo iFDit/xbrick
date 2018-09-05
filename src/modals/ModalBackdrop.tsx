@@ -1,10 +1,9 @@
 import React from 'react'
-import * as ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
-import { IProps } from 'src/common/props'
 import { Fade } from 'src/animate/Fade'
-import { ModalContext } from 'src/modals/Modal'
+import { IProps } from 'src/common/props'
+import { MODAL_BACKDROP } from 'src/common/classes'
 
 export interface IModalBackdropProps extends IProps {
   /**
@@ -13,17 +12,13 @@ export interface IModalBackdropProps extends IProps {
   el?: HTMLElement
 }
 
-export const Backdrop: any = function (props: IModalBackdropProps) {
+export const ModalBackdrop: React.StatelessComponent<IModalBackdropProps> = function (props: IModalBackdropProps) {
   const { el = document.body, ...others } = props
-  const className = classNames(props.className, classes.MODAL_BACKDROP)
+  const className = classNames(props.className, MODAL_BACKDROP)
   return ReactDOM.createPortal(
     <Fade {...others} className={className} show={true} />,
     el!,
-  )
+  ) as any
 }
 
-export const ModalBackdrop: React.StatelessComponent<IModalBackdropProps> = (props: IModalBackdropProps) => (
-  <ModalContext.Consumer>
-    {({getBackdropProps}) => <Backdrop {...getBackdropProps(props)}/>}
-  </ModalContext.Consumer>
-)
+ModalBackdrop.displayName = 'xbrick.ModalBackdrop'

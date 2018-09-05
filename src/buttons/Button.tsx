@@ -1,6 +1,8 @@
 import React from 'react'
+import classNames from 'classnames'
 import * as cls from 'src/common/classes'
-import { IProps } from 'src/common/props'
+import { SMALL, LARGE, ACTIVE, DISABLED, BUTTON, BUTTON_BLOCK } from 'src/common/classes'
+import { IProps, ButtonSize, ButtonType } from 'src/common/props'
 
 export interface IButtonProps extends IProps {
   /**
@@ -8,42 +10,65 @@ export interface IButtonProps extends IProps {
    * @default button
    */
   tag?: string | React.Factory<any>
+
+  /**
+   * shortcut of setting button color.
+   * @default primary
+   */
+  color?: ButtonType
+
+  /**
+   * block style button.
+   * @default false
+   */
+  block?: boolean
+
+  /**
+   * outline style button.
+   * @default false
+   */
+  outline?: boolean
+
+  /**
+   * button size.
+   */
+  size?: ButtonSize
+
+  /**
+   * toggle button disabled.
+   * @default false
+   */
+  disabled?: boolean
+
+  /**
+   * toggle button active.
+   * @default false
+   */
+  active?: boolean
 }
 
 export const Button: React.StatelessComponent<IButtonProps> = function (props: IButtonProps) {
-  const { tag, getRef, ...others } = props
+  const { tag, size, color, block, getRef, active, outline, disabled, ...others } = props
   const Tag = tag!
+  const className = classNames(props.className, BUTTON, {
+    [cls[`BTN${outline ? '_O' : ''}_${color!.toUpperCase()}`]]: !!color,
+    [BUTTON_BLOCK]: !!block,
+    [SMALL]: size === 'small',
+    [LARGE]: size === 'large',
+    [DISABLED]: !!disabled,
+    [ACTIVE]: !!active,
+  })
   return (
-    <Tag {...others} ref={getRef}/>
+    <Tag {...others} ref={getRef} className={className}/>
   )
 }
 
 Button.displayName = 'xbrick.Button'
 Button.defaultProps = {
+  color: 'primary',
+  disabled: false,
+  outline: false,
+  active: false,
   tag: 'button',
-}
-
-export const ButtonStyles = {
-  BUTTON: cls.BUTTON,
-  PRIMARY: cls.BTN_PRIMARY,
-  SECONDARY: cls.BTN_SECONDARY,
-  SUCCESS: cls.BTN_SUCCESS,
-  DANGER: cls.BTN_DANGER,
-  WARNING: cls.BTN_WARNING,
-  INFO: cls.BTN_INFO,
-  LIGHT: cls.BTN_LIGHT,
-  DARK: cls.BTN_DARK,
-  BLOCK: cls.BUTTON_BLOCK,
-  ACTIVE: cls.ACTIVE,
-  DISABLED: cls.DISABLED,
-  SMALL: cls.SMALL,
-  LARGE: cls.LARGE,
-  O_PRIMARY: cls.BTN_PRIMARY,
-  O_SECONDARY: cls.BTN_SECONDARY,
-  O_SUCCESS: cls.BTN_SUCCESS,
-  O_DANGER: cls.BTN_DANGER,
-  O_WARNING: cls.BTN_WARNING,
-  O_INFO: cls.BTN_INFO,
-  O_LIGHT: cls.BTN_LIGHT,
-  O_DARK: cls.BTN_DARK,
+  block: false,
 }

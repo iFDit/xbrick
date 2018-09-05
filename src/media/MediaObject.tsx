@@ -10,10 +10,10 @@ export interface IMediaObjectProps extends IProps {
   tag?: string | React.Factory<any>
 
   /**
-   * set not wrap.
-   * @default false
+   * render wrap node or not.
+   * @default true
    */
-  nowrap?: boolean
+  render?: boolean
 
   /**
    * set MediaObject align.There are 3 options: 'start', 'center' and 'end'.
@@ -23,13 +23,13 @@ export interface IMediaObjectProps extends IProps {
 }
 
 export const MediaObject: React.StatelessComponent<IMediaObjectProps> = function (props: IMediaObjectProps) {
-  const { nowrap, align, ...others } = props
-  return <Col nowrap={nowrap} xs={{align}} {...others} />
+  const { render, align, ...others } = props
+  return <Col render={render} xs={{align}} {...others} />
 }
 
 MediaObject.displayName = 'xbrick.MediaObject'
 MediaObject.defaultProps = {
   tag: 'div',
-  nowrap: false,
+  render: true,
   align: 'start',
 }

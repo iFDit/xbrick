@@ -1,10 +1,10 @@
 import React from 'react'
-import * as ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
-import { get, omit, first, last, toArray } from 'lodash'
 import { Animate } from 'src/animate/Animate'
+import { get, omit, first, last, toArray } from 'lodash'
+import { CAROUSEL_VIEW, CAROUSEL_TRACK } from 'src/common/classes'
 
 export interface ICarouselTrackProps extends IProps {
   /**
@@ -84,8 +84,8 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
     const to = {left: -end, opacity: 1 }
 
     return (
-      <Tag {...omit(others, omitProps)} className={classNames(className, classes.CAROUSEL_VIEW)}>
-        <Animate from={from} to={to} show={true} className={classes.CAROUSEL_TRACK} afterStateChange={afterChange}>
+      <Tag {...omit(others, omitProps)} className={classNames(className, CAROUSEL_VIEW)}>
+        <Animate from={from} to={to} show={true} className={CAROUSEL_TRACK} afterStateChange={afterChange}>
           {renderChild.map((child, idx) => React.cloneElement(child as React.ReactElement<any>, {key: idx}))}
         </Animate>
       </Tag>

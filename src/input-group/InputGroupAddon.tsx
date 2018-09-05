@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
-import { IProps } from 'src/common/props'
+import { IProps, InputGroupPosition } from 'src/common/props'
+import { INPUT_GROUP_APPEND, INPUT_GROUP_PREPEND } from 'src/common/classes'
 
 export interface IInputGroupAddonProps extends IProps {
   /**
@@ -12,24 +12,29 @@ export interface IInputGroupAddonProps extends IProps {
 
   /**
    * addon at prepend(false) or append(true).
-   * @default false
+   * @default prepend
    */
-  append?: boolean
+  position?: InputGroupPosition
 }
 
 export const InputGroupAddon: React.StatelessComponent<IInputGroupAddonProps> = function (props: IInputGroupAddonProps) {
-  const { tag, append, ...others } = props
+  const { tag, position, ...others } = props
   const Tag = tag!
-  const className = classNames(
-    props.className,
-    append ? classes.INPUT_GROUP_APPEND : classes.INPUT_GROUP_PREPEND,
-  )
+  const className = classNames(props.className, {
+    [INPUT_GROUP_PREPEND]: position === 'prepend',
+    [INPUT_GROUP_APPEND]: position === 'append',
+  })
   
   return <Tag {...others} className={className} />
+}
+
+export const InputGroupAddonStyles = {
+  prepend: INPUT_GROUP_PREPEND,
+  append: INPUT_GROUP_APPEND,
 }
 
 InputGroupAddon.displayName = 'xbrick.InputGroupAddon'
 InputGroupAddon.defaultProps = {
   tag: 'div',
-  append: false,
+  position: 'prepend',
 }

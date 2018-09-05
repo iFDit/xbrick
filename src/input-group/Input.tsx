@@ -1,10 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
-import { omit } from 'lodash'
 import { uniqId } from 'src/common/util'
 import { Label } from 'src/input-group/Label'
 import { IProps, InputType, InputSize } from 'src/common/props'
+import { FORM_CONTROL, FORM_CHECK_INPUT, FORM_CONTROL_FILE, FORM_CONTROL_RANGE, FORM_CONTROL_PLAINTEXT } from 'src/common/classes'
 
 export interface IInputProps extends IProps {
   /**
@@ -37,27 +36,29 @@ const sizeMap = {
   small: 'sm',
 }
 
-const omitProps = ['inline']
 export const Input: React.StatelessComponent<IInputProps> = function (props: IInputProps) {
-  const { id = uniqId(),  type, size, label, plainText, ...others } = props
+  const { id = uniqId(),  type, size, label, inline, plainText, ...others } = props
   const file = type === 'file'
+  const range = type === 'range'
   const checkOrRadio = type === 'radio' || type === 'checkbox'
   const Tag = type === 'select' ? 'select' : type === 'textarea' ? 'textarea' : 'input'
   const className = classNames(
     props.className,
     checkOrRadio ?
-      classes.FORM_CHECK_INPUT
+      FORM_CHECK_INPUT
       : file ?
-        classes.FORM_CONTROL_FILE
+        FORM_CONTROL_FILE
         : plainText ?
-          classes.FORM_CONTROL_PLAINTEXT
-          : classes.FORM_CONTROL,
+          FORM_CONTROL_PLAINTEXT
+          : range ?
+            FORM_CONTROL_RANGE
+            : FORM_CONTROL,
     getInputSize(props),
   )
   return (
     <>
       {!checkOrRadio && !!label && <Label htmlFor={id}>{label}</Label>}
-      <Tag {...omit(others, omitProps)} id={id} type={type} className={className} />
+      <Tag {...others} id={id} type={type} className={className} />
       {checkOrRadio && !!label && <Label htmlFor={id}>{label}</Label>}
     </>
   )
@@ -71,5 +72,5 @@ Input.defaultProps = {
 export function getInputSize(props: IInputProps) {
   const { type, size } = props
   const checkOrRadio = type === 'radio' || type === 'checkbox'
-  return !!sizeMap[size!] && !checkOrRadio ? `${classes.FORM_CONTROL}-${sizeMap[size!]}` : false
+  return !!sizeMap[size!] && !checkOrRadio ? `${FORM_CONTROL}-${sizeMap[size!]}` : false
 }

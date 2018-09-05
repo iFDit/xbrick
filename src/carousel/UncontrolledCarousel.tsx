@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { createContext } from 'react'
 import ReactDOM from 'react-dom'
-import * as classes from 'src/common/classes'
 import { get } from 'lodash'
 import { IProps } from 'src/common/props'
 import { mergeCall } from 'src/common/util'
 import { Carousel } from 'src/carousel/Carousel'
-import { ICarouselTrackProps } from 'src/carousel/CarouselTrack'
-import { ICarouselControlProps } from 'src/carousel/CarouselControl'
-import { ICarouselIndicatorProps } from 'src/carousel/CarouselIndicators'
+import { CAROUSEL_ITEM } from 'src/common/classes'
+import { CarouselTrack, ICarouselTrackProps } from 'src/carousel/CarouselTrack'
+import { CarouselControl, ICarouselControlProps } from 'src/carousel/CarouselControl'
+import { CarouselIndicators, ICarouselIndicatorProps } from 'src/carousel/CarouselIndicators'
 
 export interface IUncontrolledCarouselProps extends IProps {
   /**
@@ -33,17 +33,13 @@ export interface IUncontrolledCarouselProps extends IProps {
    * @param {number} current 
    */
   afterChange? (): void
-
-  /**
-   * render props
-   * @param props 
-   */
-  children? (props: {
-    getTrackProps: (props?: ICarouselTrackProps) => ICarouselTrackProps,
-    getControlProps: (props?: ICarouselControlProps) => ICarouselControlProps,
-    getIndicatorsProps: (props?: ICarouselIndicatorProps) => ICarouselIndicatorProps,
-  }): React.ReactNode
 }
+
+export const CarouselContext = createContext({
+  getTrackProps: (props: ICarouselTrackProps = {}) => props,
+  getControlProps: (props: ICarouselControlProps = {}) => props,
+  getIndicatorsProps: (props: ICarouselIndicatorProps = {}) => props,
+})
 
 export class UncontrolledCarousel extends React.Component<IUncontrolledCarouselProps> {
   static displayName = 'xbrick.UncontrolledCarousel'
@@ -52,6 +48,21 @@ export class UncontrolledCarousel extends React.Component<IUncontrolledCarouselP
     startIndex: 0,
     autoplay: false,
   }
+  static Track = (props: ICarouselTrackProps) => (
+    <CarouselContext.Consumer>
+      {({getTrackProps}) => <CarouselTrack {...getTrackProps(props)}/>}
+    </CarouselContext.Consumer>
+  )
+  static Control = (props: ICarouselControlProps) => (
+    <CarouselContext.Consumer>
+      {({getControlProps}) => <CarouselControl {...getControlProps(props)}/>}
+    </CarouselContext.Consumer>
+  )
+  static Indicators = (props: ICarouselIndicatorProps) => (
+    <CarouselContext.Consumer>
+      {({getIndicatorsProps}) => <CarouselIndicators {...getIndicatorsProps(props)}/>}
+    </CarouselContext.Consumer>
+  )
 
   public player: any = null
 
@@ -102,7 +113,7 @@ export class UncontrolledCarousel extends React.Component<IUncontrolledCarouselP
   private getMaxCount = () => {
     const { rootDOM } = this.state
     if (rootDOM) {
-      return get(rootDOM.querySelectorAll(`.${classes.CAROUSEL_ITEM}`), 'length', 0) - 2
+      return get(rootDOM.querySelectorAll(`.${CAROUSEL_ITEM}`), 'length', 0) - 2
     } else {
       return 0
     }
@@ -160,9 +171,9 @@ export class UncontrolledCarousel extends React.Component<IUncontrolledCarouselP
   }
 
   private getIndicatorsProps = (props: ICarouselIndicatorProps) => {
-    const { onItemClick, items } = props
+    const { onItemClick, amount } = props
     const { to } = this.state
-    const activeIndex = to === -1 ? items.length - 1 : to === items.length ? 0 : to
+    const activeIndex = to === -1 ? +amount! - 1 : to === amount ? 0 : to
     const handleItemClick = (index: number) => {
       this.setState({ from: to, to: index })
     }
@@ -176,11 +187,13 @@ export class UncontrolledCarousel extends React.Component<IUncontrolledCarouselP
 
     return (
       <Carousel {...others}>
-        {children && children({
+        <CarouselContext.Provider value={{
           getTrackProps: this.getTrackProps,
           getControlProps: this.getControlProps,
           getIndicatorsProps: this.getIndicatorsProps,
-        })}
+        }}>
+          {children}
+        </CarouselContext.Provider>
       </Carousel>
     )
   }

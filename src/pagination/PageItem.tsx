@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import { DISABLED, ACTIVE, PAGE_ITEM } from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { DISABLED, ACTIVE, PAGE_ITEM } from 'src/common/classes'
 
 export interface IPageItemProps extends IProps {
   /**

@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
-import { omit } from 'lodash'
+import * as cls from 'src/common/classes'
 import { IProps, CardType, CardAlign } from 'src/common/props'
+import { CARD, CARD_BG, CARD_BORDER, CARD_INVERSE } from 'src/common/classes'
 
 export interface ICardProps extends IProps {
   /**
@@ -20,7 +20,7 @@ export interface ICardProps extends IProps {
   /**
    * set card type.
    */
-  bstype?: CardType
+  color?: CardType
 
   /**
    * change the card content aligin.
@@ -34,11 +34,12 @@ export interface ICardProps extends IProps {
   outline?: boolean
 }
 
-const omitProps = ['inverse', 'bstype', 'align', 'outline']
 export const Card: React.StatelessComponent<ICardProps> = function (props: ICardProps) {
-  const { tag, ...others } = props
+  // shortcut of ignore others props.
+  // @ts-ignore
+  const { tag, align, color, inverse, outline, ...others } = props
   const Tag = tag!
-  return <Tag {...omit(others, omitProps)} className={cardClasses(props)} />
+  return <Tag {...others} className={cardClasses(props)} />
 }
 
 Card.displayName = 'xbrick.Card'
@@ -49,18 +50,18 @@ Card.defaultProps = {
 }
 
 function cardClasses(props: ICardProps) {
-  const { align, bstype, inverse, outline } = props
-  const color = outline ?
-    `${classes.CARD_BORDER}-${bstype}`
-    : `${classes.CARD_BG}-${bstype}`
+  const { align, color, inverse, outline } = props
+  const cardColor = outline ?
+    `${CARD_BORDER}-${color}`
+    : `${CARD_BG}-${color}`
   
   return classNames(
     props.className,
-    classes.CARD,
+    CARD,
     {
-      [color]: !!bstype,
-      [classes.CARD_INVERSE]: inverse,
-      [`${classes['CARD_ALIGN_' + String(align).toUpperCase()]}`]: !!align,
-    }
+      [cardColor]: !!color,
+      [CARD_INVERSE]: inverse,
+      [`${cls['CARD_ALIGN_' + String(align).toUpperCase()]}`]: !!align,
+    },
   )
 }

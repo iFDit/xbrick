@@ -1,4 +1,5 @@
 import React from 'react'
+import classNames from 'classnames'
 import { IProps } from 'src/common/props'
 import { A_LINK } from 'src/common/classes'
 
@@ -13,12 +14,9 @@ export interface IAlertLinkProps extends IProps {
 export const AlertLink: React.StatelessComponent<IAlertLinkProps> = function (props: IAlertLinkProps) {
   const { tag, ...others } = props
   const Tag = tag!
-  return <Tag {...others} />
+  const className = classNames(props.className, A_LINK)
+  return <Tag {...others} className={className}/>
 }
 
 AlertLink.displayName = 'xbrick.AlertLink'
 AlertLink.defaultProps = { tag: 'a' }
-
-export const ALertLinkStyles = {
-  LINK: A_LINK,
-}

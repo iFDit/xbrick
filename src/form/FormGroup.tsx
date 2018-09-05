@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { ROW, FORM_GROUP, FORM_CHECK, FORM_CHECK_INLINE } from 'src/common/classes'
 
 export interface IFormGroupProps extends IProps {
   /**
@@ -33,10 +33,10 @@ export const FormGroup: React.StatelessComponent<IFormGroupProps> = function (pr
   const { tag, row, check, inline, ...others } = props
   const Tag = tag!
   const className = classNames(props.className, {
-    [classes.ROW]: !!row,
-    [classes.FORM_GROUP]: !check,
-    [classes.FORM_CHECK]: !!check,
-    [classes.FORM_CHECK_INLINE]: !!check && !!inline,
+    [ROW]: !!row,
+    [FORM_GROUP]: !check,
+    [FORM_CHECK]: !!check,
+    [FORM_CHECK_INLINE]: !!check && !!inline,
   })
   return <Tag {...others} className={className} />
 }
@@ -44,7 +44,7 @@ export const FormGroup: React.StatelessComponent<IFormGroupProps> = function (pr
 FormGroup.displayName = 'xbrick.FormGroup'
 FormGroup.defaultProps = {
   tag: 'div',
-  check: false,
   row: false,
+  check: false,
   inline: false,
 }

@@ -8,7 +8,7 @@ export interface IAnimateProps extends IProps {
   /**
    * Set transition style start props.
    */
-  from?: { [prop: string]: number | { value: number, transition?: boolean, config?: {[props: string]: number} } }
+  from?: { [prop: string]: number | { value: number, transition?: boolean, config?: {[props: string]: any} } }
 
   /**
    * Set transition style end props.

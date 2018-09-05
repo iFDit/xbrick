@@ -1,3 +1,18 @@
 .xbrick-menu {
   display: block;
+  transform-origin: 0 0;
+}
+
+.xbrick-menu.active {
+  .dropdown-item {
+    opacity: 0.1;
+  }
+}
+
+.xbrick-menu-up {
+  transform-origin: 0 100% !important;
+}
+
+.xbrick-menu-left {
+  transform-origin: 100% 0 !important;
 }

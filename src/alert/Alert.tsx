@@ -1,8 +1,10 @@
 import React, { createContext } from 'react'
-import { IProps } from 'src/common/props'
+import classNames from 'classnames'
+import { IProps, AlertType } from 'src/common/props'
 import { UncontrolledSlide } from 'src/animate/UncontrolledSlide'
 import { mergeCall } from 'src/common/util'
 import { Close, ICloseProps } from 'src/common/Close'
+import { ALERT } from 'src/common/classes'
 import * as cls from 'src/common/classes'
 
 export interface IAlertProps extends IProps {
@@ -11,6 +13,12 @@ export interface IAlertProps extends IProps {
    * @default div
    */
   tag?: string | React.Factory<any>
+
+  /**
+   * shortcut of color styles.
+   * @default primary
+   */
+  color?: AlertType
 
   /**
    * Handler invoked after the Alert was dismissed.
@@ -27,10 +35,12 @@ export const AlertContext = createContext({
 })
 
 export const Alert: IAlertComponent = function (props: IAlertProps) {
-  const { afterClose, ...others } = props
-
+  const { color, afterClose, ...others } = props
+  const className = classNames(props.className, ALERT, {
+    [cls[`A_${color!.toUpperCase()}`]]: !!color,
+  })
   return (
-    <UncontrolledSlide {...others} afterStateChange={afterClose} defaultOpen={true}>
+    <UncontrolledSlide {...others} afterStateChange={afterClose} defaultOpen={true} className={className}>
       {({ slideup }) => (
         <AlertContext.Provider value={{
           handleCloseProps: (closeProps: ICloseProps = {}) => ({ ...closeProps, onClick: mergeCall(closeProps.onClick, slideup)}),
@@ -51,20 +61,11 @@ const AlertClose: React.StatelessComponent<any> = (props: ICloseProps) => (
 AlertClose.displayName = 'xbrick.AlertClose'
 
 Alert.displayName = 'xbrick.Alert'
-Alert.defaultProps = { tag: 'div' }
+Alert.defaultProps = { tag: 'div', color: 'primary' }
 Alert.Close = AlertClose
 
+
 export const AlertStyles = {
-  ALERT: cls.ALERT,
-  PRIMARY: cls.A_PRIMARY,
-  SECONDARY: cls.A_SECONDARY,
-  SUCCESS: cls.A_SUCCESS,
-  DANGER: cls.A_DANGER,
-  WARNING: cls.A_WARNING,
-  INFO: cls.A_INFO,
-  LIGHT: cls.A_LIGHT,
-  DARK: cls.A_DARK,
-  CLOSE: cls.CLOSE,
-  HEADING: cls.A_HEADING,
-  DISMISSIBLE: cls.A_DISMISSIBLE,
+  header: cls.A_HEADING,
+  dismissible: cls.A_DISMISSIBLE,
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
+import { INPUT_GROUP } from 'src/common/classes'
 import { IProps, InputSize } from 'src/common/props'
 
 export interface IInputGroupProps extends IProps {
@@ -26,9 +26,9 @@ export const InputGroup: React.StatelessComponent<IInputGroupProps> = function (
   const Tag = tag!
   const className = classNames(
     props.className,
-    classes.INPUT_GROUP,
+    INPUT_GROUP,
     {
-      [`${classes.INPUT_GROUP}-${sizeMap[size!]}`]: !!sizeMap[size!],
+      [`${INPUT_GROUP}-${sizeMap[size!]}`]: !!sizeMap[size!],
     },
   )
   return <Tag {...others} className={className} />

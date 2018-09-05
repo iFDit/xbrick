@@ -18,4 +18,3 @@
 | tab | tab样式 | boolean | `false` |
 | justify | 对齐方式, 有 `start`, `center`, `end`, `around` 和 `between` | string | `start` |
 | vertical | 是否展示垂直堆叠的导航 | boolean | `false` |
-| navbar | 在navbar中使用 | boolean | `false` |

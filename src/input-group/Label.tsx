@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps, InputSize } from 'src/common/props'
+import { SR_ONLY, COL_FORM_LABEL, FORM_CHECK_LABEL } from 'src/common/classes'
 
 export interface ILabelProps extends IProps {
   /**
@@ -17,16 +17,10 @@ export interface ILabelProps extends IProps {
   hiddren?: boolean
 
   /**
-   * if it is Checkbox label, set this props true.
+   * if it is Checkbox or Radio label, set this props true.
    * @default false
    */
-  checkbox?: boolean
- 
-  /**
-   * use with the Radio.
-   * @default false
-   */
-  radio?: boolean
+  check?: boolean
 
   /**
    * use with the FormGroup row.
@@ -41,15 +35,15 @@ const sizeMap = {
 }
 
 export const Label: React.StatelessComponent<ILabelProps> = function (props: ILabelProps) {
-  const { size, hiddren, checkbox, radio, col, ...others } = props
+  const { col, size, check, hiddren, ...others } = props
   const className = classNames(
     props.className,
     'xbrick-lable',
     {
-      [classes.SR_ONLY]: !!hiddren,
-      [classes.COL_FORM_LABEL]: !!col,
-      [classes.FORM_CHECK_LABEL]: !!checkbox || radio,
-      [`${classes.COL_FORM_LABEL}-${sizeMap[size!]}`]: !!size && !!col,
+      [SR_ONLY]: !!hiddren,
+      [COL_FORM_LABEL]: !!col,
+      [FORM_CHECK_LABEL]: !!check,
+      [`${COL_FORM_LABEL}-${sizeMap[size!]}`]: !!sizeMap[size!] && !!col,
     },
   )
   return <label {...others} className={className} />
@@ -57,9 +51,8 @@ export const Label: React.StatelessComponent<ILabelProps> = function (props: ILa
 
 Label.displayName = 'xbrick.Label'
 Label.defaultProps = {
+  col: false,
+  check: false,
   size: 'middle',
   hiddren: false,
-  checkbox: false,
-  radio: false,
-  col: false,
 }

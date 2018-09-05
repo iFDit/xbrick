@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { CARD_COLUMNS } from 'src/common/classes'
 
 export interface ICardColumnsProps extends IProps {
   /**
@@ -14,11 +14,9 @@ export interface ICardColumnsProps extends IProps {
 export const CardColumns: React.StatelessComponent<ICardColumnsProps> = function (props: ICardColumnsProps) {
   const { tag, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, classes.CARD_COLUMNS)
+  const className = classNames(props.className, CARD_COLUMNS)
   return <Tag {...others} className={className} />
 }
 
 CardColumns.displayName = 'xbrick.CardDeck'
-CardColumns.defaultProps = {
-  tag: 'div'
-}
+CardColumns.defaultProps = { tag: 'div' }

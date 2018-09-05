@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
-import { IProps } from 'src/common/props'
 import { Close } from 'src/common/Close'
+import { IProps } from 'src/common/props'
+import { MODAL_HEADER } from 'src/common/classes'
 
 export interface IModalHeaderProps extends IProps {
   /**
@@ -26,7 +26,7 @@ export interface IModalHeaderProps extends IProps {
 export const ModalHeader: React.StatelessComponent<IModalHeaderProps> = function (props: IModalHeaderProps) {
   const { tag, closeIcon, children, onIconClick, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, classes.MODAL_HEADER)
+  const className = classNames(props.className, MODAL_HEADER)
   return (
     <Tag {...others} className={className}>
       {children}

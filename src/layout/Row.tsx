@@ -12,10 +12,10 @@ export interface IRowProps extends IProps, IRowLayout {
   tag?: string | React.Factory<any>
 
   /**
-   * if true, then will not render container component and pass down layout className to children.
-   * @default false
+   * if false, then will not render container component and pass down layout className to children.
+   * @default true
    */
-  nowrap?: boolean
+  render?: boolean
 
   /**
    * set no gutter between columns.
@@ -26,19 +26,19 @@ export interface IRowProps extends IProps, IRowLayout {
 
 const omitProps = ['xs', 'sm', 'md', 'lg', 'xl', 'noGutter']
 export const Row: React.StatelessComponent<IRowProps> = function (props: IRowProps) {
-  const { tag, nowrap, ...others } = props
+  const { tag, render, ...others } = props
   const Tag = tag!
   const className = classNames(props.className, classes.ROW, getRowClass(props))
 
-  return nowrap ?
-    React.cloneElement(props.children, {className})
-    : <Tag {...omit(others, omitProps)} className={className} />
+  return render ?
+    <Tag {...omit(others, omitProps)} className={className} />
+    : React.cloneElement(props.children, {className})
 }
 
 Row.displayName = 'xbrick.Row'
 Row.defaultProps = {
   tag: 'div',
-  nowrap: false,
+  render: true,
   noGutter: false,
 }
 

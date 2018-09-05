@@ -1,9 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
-import { Button } from 'src/buttons/Button'
-import { NavbarContext } from 'src/navbar/Navbar'
+// import { Button } from 'src/buttons/Button'
+import { NAVBAR_TOGGLER, NAVBAR_TOGGLER_ICON } from 'src/common/classes'
 
 export interface INavbarTogglerProps extends IProps {
   /**
@@ -13,24 +12,14 @@ export interface INavbarTogglerProps extends IProps {
   tag?: string | React.Factory<any>
 }
 
-export const Toggler: React.StatelessComponent<INavbarTogglerProps> = function (props: INavbarTogglerProps) {
-  const className = classNames(props.className, classes.NAVBAR_TOGGLER)
+export const NavbarToggler: React.StatelessComponent<INavbarTogglerProps> = function (props: INavbarTogglerProps) {
+  const className = classNames(props.className, NAVBAR_TOGGLER)
   return (
-    <Button {...props} bstype="light" className={className}>
-      <span className={classes.NAVBAR_TOGGLER_ICON} />
-    </Button>
+    <button {...props} className={className}>
+      <span className={NAVBAR_TOGGLER_ICON} />
+    </button>
   )
 }
 
-Toggler.displayName = 'xbrick.Toggler'
-
-export const NavbarToggler: React.StatelessComponent<INavbarTogglerProps> = (props: INavbarTogglerProps) => (
-  <NavbarContext.Consumer>
-    {({getTogglerProps}) => <Toggler {...getTogglerProps(props)}/>}
-  </NavbarContext.Consumer>
-)
-
 NavbarToggler.displayName = 'xbrick.NavbarToggler'
-NavbarToggler.defaultProps = {
-  tag: 'button',
-}
+NavbarToggler.defaultProps = { tag: 'button' }

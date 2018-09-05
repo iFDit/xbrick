@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import { PAGE_LINK } from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { PAGE_LINK } from 'src/common/classes'
 
 export interface IPageLinkProps extends IProps {
   /**
@@ -19,6 +19,4 @@ export const PageLink: React.StatelessComponent<IPageLinkProps> = function (prop
 }
 
 PageLink.displayName = 'xbrick.PaginationLink'
-PageLink.defaultProps = {
-  tag: 'a',
-}
+PageLink.defaultProps = { tag: 'a' }

@@ -1,8 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { isFunction } from 'lodash'
 import { IProps } from 'src/common/props'
+import { ICON } from 'src/common/classes'
+import * as cls from 'src/common/classes'
 
 export interface ICarouselControlProps extends IProps {
   /**
@@ -27,14 +28,14 @@ export interface ICarouselControlProps extends IProps {
 export const CarouselControl: React.StatelessComponent<ICarouselControlProps> = function (props: ICarouselControlProps) {
   const { tag, text, direction, ...others } = props
   const Tag = tag!
-  const defaultClass = classes[`CAROUSEL_CONTROL_${direction!.toUpperCase()}`]
+  const defaultClass = cls[`CAROUSEL_CONTROL_${direction!.toUpperCase()}`]
   const className = classNames(
     props.className,
     defaultClass,
   )
   return (
     <Tag {...others} className={className}>
-      {isFunction(text) ? text({className: classNames(`${defaultClass}-${classes.ICON}`)}) : text}
+      {isFunction(text) ? text({className: classNames(`${defaultClass}-${ICON}`)}) : text}
     </Tag>
   )
 }

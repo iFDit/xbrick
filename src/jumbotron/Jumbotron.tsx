@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { JUMBOTRON, JUMBOTRON_FLUID } from 'src/common/classes'
 
 export interface IJumbotronProps extends IProps {
   /**
@@ -22,8 +22,8 @@ export const Jumbotron: React.StatelessComponent<IJumbotronProps> = function (pr
   const Tag = tag!
   const className = classNames(
     props.className,
-    classes.JUMBOTRON,
-    {[classes.JUMBOTRON_FLUID]: !!fluid},
+    JUMBOTRON,
+    {[JUMBOTRON_FLUID]: !!fluid},
   )
   return <Tag {...others} className={className} />
 }

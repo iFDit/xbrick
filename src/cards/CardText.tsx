@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { CARD_TEXT } from 'src/common/classes'
 
 export interface ICardTextProps extends IProps {
   /**
@@ -14,7 +14,7 @@ export interface ICardTextProps extends IProps {
 export const CardText: React.StatelessComponent<ICardTextProps> = function (props: ICardTextProps) {
   const { tag, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, classes.CARD_TEXT)
+  const className = classNames(props.className, CARD_TEXT)
   return <Tag {...others} className={className} />
 }
 

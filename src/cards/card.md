@@ -20,6 +20,6 @@
 | --- | --- | --- | --- |
 | tag | 自定义标签 | string\|ReactNode | `div` |
 | inverse | 反转字体颜色 | boolean | `false` |
-| bstype | 卡片类型 | string | - |
+| color | 卡片类型 | string | - |
 | align | 卡片内容布局 | string | - |
 | outline | 是否只改变边框颜色 | boolean | `false` |

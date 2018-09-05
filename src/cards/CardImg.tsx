@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { TOP, BOTTOM, CARD_IMG } from 'src/common/classes'
 
 export interface ICardImgProps extends IProps {
   /**
@@ -14,7 +14,6 @@ export interface ICardImgProps extends IProps {
 
 export const CardImg: React.StatelessComponent<ICardImgProps> = function (props: ICardImgProps) {
   const { top, ...others } = props
-  const { CARD_IMG, TOP, BOTTOM } = classes
   const className = classNames(
     props.className,
     `${CARD_IMG}-${top ? TOP : BOTTOM}`,

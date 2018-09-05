@@ -22,5 +22,3 @@
 | --- | --- | --- | --- |
 | tag | 自定义标签 | string\|ReactNode | `div` |
 | direction | 下拉方向， 可选的值有：`up`, `right` 和 `left` | string | - |
-| navItem | 在NavItem组件中设置为 `true` | boolean | `false` |
-| btnGroup | 在Navbar中设置为 `true` | boolean | `false` |

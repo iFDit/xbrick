@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
+import * as cls from 'src/common/classes'
 import { mergeCall } from 'src/common/util'
+import { DROPDOWN } from 'src/common/classes'
 import { IProps, Direction } from 'src/common/props'
-import { IDropdownMenuProps } from 'src/dropdowns/DropdownMenu'
-import { IDropdownItemProps } from 'src/dropdowns/DropdownItem'
-import { IDropdownToggleProps } from 'src/dropdowns/DropdownToggle'
+import { DropdownMenu, IDropdownMenuProps } from 'src/dropdowns/DropdownMenu'
+import { DropdownItem, IDropdownItemProps } from 'src/dropdowns/DropdownItem'
+import { DropdownToggle, IDropdownToggleProps } from 'src/dropdowns/DropdownToggle'
 
 export interface IDropdownProps extends IProps {
   /**
@@ -20,34 +21,32 @@ export interface IDropdownProps extends IProps {
    * 'up', 'left', 'right'.
    */
   direction?: Direction
-
-  /**
-   * use in nav-item components.
-   * @default fasle
-   */
-  navItem?: boolean
-
-  /**
-   * use btn-group as className.
-   * @default false
-   */
-  btnGroup?: boolean
 }
 
-const noop = (props: any) => props
 export const DropdownContext = React.createContext({
-  getToggleProps: noop,
-  getMenuProps: noop,
-  getItemProps: noop,
+  getToggleProps: (props: IDropdownToggleProps = {}) => props,
+  getMenuProps: (props: IDropdownMenuProps = {}) => props,
+  getItemProps: (props: IDropdownItemProps = {}) => props,
 })
 
 export class Dropdown extends React.Component<IDropdownProps> {
   static displayName = 'xbrick.Dropdown'
-  static defaultProps = {
-    tag: 'div',
-    navItem: false,
-    btnGroup: false,
-  }
+  static defaultProps = { tag: 'div' }
+  static Item = (props: IDropdownItemProps) => (
+    <DropdownContext.Consumer>
+      {({getItemProps}) => <DropdownItem {...getItemProps(props)}/>}
+    </DropdownContext.Consumer>
+  )
+  static Menu = (props: IDropdownMenuProps) => (
+    <DropdownContext.Consumer>
+      {({getMenuProps}) => <DropdownMenu {...getMenuProps(props)}/>}
+    </DropdownContext.Consumer>
+  )
+  static Toggle = (props: IDropdownToggleProps) => (
+    <DropdownContext.Consumer>
+      {({getToggleProps}) => <DropdownToggle {...getToggleProps(props)}/>}
+    </DropdownContext.Consumer>
+  )
 
   public state = { open: false }
 
@@ -59,7 +58,7 @@ export class Dropdown extends React.Component<IDropdownProps> {
     window.removeEventListener('click', this.handleGlobalClick)
   }
 
-  private handleGlobalClick = (e: MouseEvent) => {
+  public handleGlobalClick = (e: MouseEvent) => {
     const target = e.target as HTMLElement
     const dom = ReactDOM.findDOMNode(this) as HTMLElement
     try {
@@ -69,39 +68,38 @@ export class Dropdown extends React.Component<IDropdownProps> {
     } catch (e) {/**/}
   }
 
-  private toggle = () => {
+  public toggle = () => {
     const { open } = this.state
     this.setState({ open: !open })
   }
 
-  private close = () => {
+  public close = () => {
     const { open } = this.state
     open && this.setState({ open: false })
   }
 
-  private getToggleProps = (props: IDropdownToggleProps) => {
+  public getToggleProps = (props: IDropdownToggleProps) => {
     const { onClick } = props
     return { ...props, onClick: mergeCall(this.toggle, onClick) }
   }
 
-  private getMenuProps = (props: IDropdownMenuProps) => {
+  public getMenuProps = (props: IDropdownMenuProps) => {
     return { ...props, open: this.state.open, direction: this.props.direction }
   }
 
-  private getItemProps = (props: IDropdownItemProps) => {
+  public getItemProps = (props: IDropdownItemProps) => {
     const { header, disabled, onClick } = props
     return { ...props, onClick: mergeCall(!header && !disabled && this.close, onClick) }
   }
 
   render () {
-    const { tag, navItem, btnGroup, direction = '', ...others } = this.props
-    const Tag = tag === 'div' && navItem ? 'li' : tag!
+    const { tag, direction = '', ...others } = this.props
+    const Tag = tag!
     const className = classNames(
       this.props.className,
-      btnGroup ? classes.BUTTON_GROUP : classes.DROPDOWN,
+      DROPDOWN,
       {
-        [classes[`DROP${direction.toUpperCase()}`]]: !!direction,
-        [classes.NAV_ITEM]: !!navItem,
+        [cls[`DROP${direction.toUpperCase()}`]]: !!direction,
       },
     )
 

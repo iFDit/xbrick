@@ -1,9 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 import { Fade } from 'src/animate/Fade'
-import { PopoverContext } from 'src/popover/Popover'
-import { POPOVER_HEADER } from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { POPOVER_HEADER } from 'src/common/classes'
 
 export interface IPopoverHeaderProps extends IProps {
   /**
@@ -19,7 +18,7 @@ export interface IPopoverHeaderProps extends IProps {
   open?: boolean
 }
 
-const Header: React.StatelessComponent<IPopoverHeaderProps> = function (props: IPopoverHeaderProps) {
+export const PopoverHeader: React.StatelessComponent<IPopoverHeaderProps> = function (props: IPopoverHeaderProps) {
   const { open, ...others } = props
   const from = open ? 0 : 1
   const to = open ? 1 : 0
@@ -29,13 +28,5 @@ const Header: React.StatelessComponent<IPopoverHeaderProps> = function (props: I
   )
 }
 
-export const PopoverHeader: React.StatelessComponent<IPopoverHeaderProps> = (props: IPopoverHeaderProps) => (
-  <PopoverContext.Consumer>
-    {({getHeaderProps}) => <Header {...getHeaderProps(props)}/>}
-  </PopoverContext.Consumer>
-)
-
 PopoverHeader.displayName = 'xbrick.PopoverHeader'
-PopoverHeader.defaultProps = {
-  tag: 'h3',
-}
+PopoverHeader.defaultProps = { tag: 'h3' }

@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { NAV_ITEM } from 'src/common/classes'
 
 export interface INavItem extends IProps {
   /**
@@ -14,11 +14,13 @@ export interface INavItem extends IProps {
 export const NavItem: React.StatelessComponent<INavItem> = function (props: INavItem) {
   const { tag, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, classes.NAV_ITEM)
+  const className = classNames(props.className, NAV_ITEM)
   return <Tag {...others} className={className} />
 }
 
-NavItem.displayName = 'xbrick.NavItem'
-NavItem.defaultProps = {
-  tag: 'li',
+export const NavItemStyles = {
+  item: NAV_ITEM,
 }
+
+NavItem.displayName = 'xbrick.NavItem'
+NavItem.defaultProps = { tag: 'li' }

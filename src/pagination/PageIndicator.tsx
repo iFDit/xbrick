@@ -1,4 +1,6 @@
 import React from 'react'
+import { PageItem } from 'src/pagination/PageItem'
+import { PageLink } from 'src/pagination/PageLink'
 import { IProps, PageDirection } from 'src/common/props'
 
 export interface IPageIndicatorProps extends IProps {
@@ -16,21 +18,22 @@ export interface IPageIndicatorProps extends IProps {
 }
 
 export const PageIndicator: React.StatelessComponent<IPageIndicatorProps> = function (props: IPageIndicatorProps) {
-  const { tag, symbol, direction, ...others } = props
+  const { tag, direction, ...others } = props
   const Tag = tag!
   return (
-    <>
-      <Tag {...others}>
-        {direction === 'prev' ? <>&laquo;</> : <>&raquo;</>}
-      </Tag>
-      <span className="sr-only">{direction === 'prev' ? 'Previous' : 'Next'}</span>
-    </>
+    <PageItem>
+      <PageLink href="#"  {...others}>
+        <Tag>
+          {direction === 'prev' ? <>&laquo;</> : <>&raquo;</>}
+        </Tag>
+        <span className="sr-only">{direction === 'prev' ? 'Previous' : 'Next'}</span>
+      </PageLink>
+    </PageItem>
   )
 }
 
 PageIndicator.displayName = 'xbrick.PageIndicator'
 PageIndicator.defaultProps = {
   tag: 'span',
-  symbol: false,
   direction: 'prev',
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import { PROGRESS_BAR, PROGRESS_STRIPED, PROGRESS_ANIMATE } from 'src/common/classes'
+import * as cls from 'src/common/classes'
 import { IProps, ProgressType } from 'src/common/props'
-import * as classes from 'src/common/classes'
+import { PROGRESS_BAR, PROGRESS_STRIPED, PROGRESS_ANIMATE } from 'src/common/classes'
 
 export interface IProgressBarProps extends IProps {
   /**
@@ -31,11 +31,11 @@ export interface IProgressBarProps extends IProps {
   /**
    * set background color.
    */
-  bgColor?: ProgressType
+  color?: ProgressType
 }
 
 export const ProgressBar: React.StatelessComponent<IProgressBarProps> = function (props: IProgressBarProps) {
-  const { tag, width, style = {}, striped, animate, bgColor = '', ...others } = props
+  const { tag, width, style = {}, striped, animate, color = '', ...others } = props
   const Tag = tag!
   const styles = { ...style, width: `${width}%` }
   const className = classNames(
@@ -44,7 +44,7 @@ export const ProgressBar: React.StatelessComponent<IProgressBarProps> = function
     {
       [PROGRESS_STRIPED]: striped,
       [PROGRESS_ANIMATE]: animate,
-      [classes[`BG_${String(bgColor).toUpperCase()}`]]: !!bgColor,
+      [cls[`BG_${String(color).toUpperCase()}`]]: !!color,
     },
   )
   return <Tag {...others} className={className} style={styles}/>

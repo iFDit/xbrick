@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import { IProps, TableType } from 'src/common/props'
 import { TABLE } from 'src/common/classes'
 import * as classes from 'src/common/classes'
+import { IProps, TableType } from 'src/common/props'
 
 export interface ITableRow extends IProps {
   /**

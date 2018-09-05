@@ -1,9 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
-import { ModalContext } from 'src/modals/Modal'
-import { IProps, ModalSize, ModalDialogAlign } from 'src/common/props'
+import * as cls from 'src/common/classes'
+import { MODAL_DIALOG } from 'src/common/classes'
 import { Animate, IAnimateProps } from 'src/animate/Animate'
+import { IProps, ModalSize, ModalDialogAlign } from 'src/common/props'
 
 export interface IModalDialogProps extends IProps, Pick<IAnimateProps, 'transition' | 'afterStateChange'> {
   /**
@@ -33,15 +33,15 @@ export interface IModalDialogProps extends IProps, Pick<IAnimateProps, 'transiti
 
 const sizeMap = { large: 'LG', small: 'SM' }
 const alignMap = { center: true }
-export const Dialog: React.StatelessComponent<IModalDialogProps> = function (props: IModalDialogProps) {
+export const ModalDialog: React.StatelessComponent<IModalDialogProps> = function (props: IModalDialogProps) {
   const { align, size, show, active, transition, ...others } = props
   const Tag = props.tag!
   const className = classNames(
     props.className,
-    classes.MODAL_DIALOG,
+    MODAL_DIALOG,
     {
-      [classes[`MODAL_DIALOG_${align!.toUpperCase()}`]]: !!alignMap[align!],
-      [classes[`MODAL_DIALOG_${sizeMap[size!]}`]]: !!sizeMap[size!],
+      [cls[`MODAL_DIALOG_${align!.toUpperCase()}`]]: !!alignMap[align!],
+      [cls[`MODAL_DIALOG_${sizeMap[size!]}`]]: !!sizeMap[size!],
     },
   )
   return (active ?
@@ -49,8 +49,6 @@ export const Dialog: React.StatelessComponent<IModalDialogProps> = function (pro
     : <Tag {...others} className={className} />
   )
 }
-
-Dialog.displayName = 'xbrick.Dialog'
 
 function getAnimateFrom(props: IModalDialogProps) {
   const { show } = props
@@ -65,12 +63,6 @@ function getAnimateTo(props: IModalDialogProps) {
     'translateY-%': show ? 0 : -25,
   }
 }
-
-export const ModalDialog: React.StatelessComponent<IModalDialogProps> = (props: IModalDialogProps) => (
-  <ModalContext.Consumer>
-    {({getModalDialogProps}) => <Dialog {...getModalDialogProps(props)}/>}
-  </ModalContext.Consumer>
-)
 
 ModalDialog.displayName = 'xbrick.ModalDialog'
 ModalDialog.defaultProps = {

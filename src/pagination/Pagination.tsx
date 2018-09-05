@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
+import { IProps, PaginationJustify, PaginationSize } from 'src/common/props'
 import { PAGINATION, PAGINATION_LG, PAGINATION_SM } from 'src/common/classes'
 import { JUSTIFY_CONTENT_XS_CENTER, JUSTIFY_CONTENT_XS_END } from 'src/common/classes'
-import { IProps, PaginationJustify, PaginationSize } from 'src/common/props'
 
 export interface IPaginationProps extends IProps {
   /**

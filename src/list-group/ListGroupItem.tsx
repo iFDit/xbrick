@@ -1,7 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
+import * as cls from 'src/common/classes'
 import { IProps, ListGroupItemType } from 'src/common/props'
+import { ACTIVE, DISABLED, LIST_GROUP_ITEM, LIST_GROUP_ITEM_ACTION } from 'src/common/classes'
 
 export interface IListGroupItemProps extends IProps {
   /**
@@ -13,7 +14,7 @@ export interface IListGroupItemProps extends IProps {
   /**
    * set item bootstrap type.
    */
-  bstype?: ListGroupItemType
+  color?: ListGroupItemType
 
   /**
    * set list item disabeld.
@@ -35,16 +36,16 @@ export interface IListGroupItemProps extends IProps {
 }
 
 export const ListGroupItem: React.StatelessComponent<IListGroupItemProps> = function (props: IListGroupItemProps) {
-  const { tag, disabled, active, action, bstype = '', ...other } = props
+  const { tag, disabled, active, action, color = '', ...other } = props
   const Tag = tag!
   const className = classNames(
     props.className,
-    classes.LIST_GROUP_ITEM,
+    LIST_GROUP_ITEM,
     {
-      [classes.DISABLED]: !!disabled,
-      [classes.ACTIVE]: !!active,
-      [classes.LIST_GROUP_ITEM_ACTION]: !!action,
-      [`${classes.LIST_GROUP_ITEM}-${classes[bstype!.toUpperCase()]}`]: !!bstype,
+      [DISABLED]: !!disabled,
+      [ACTIVE]: !!active,
+      [LIST_GROUP_ITEM_ACTION]: !!action,
+      [`${LIST_GROUP_ITEM}-${cls[color!.toUpperCase()]}`]: !!color,
     },
   )
   return <Tag {...other} className={className} />

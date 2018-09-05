@@ -1,12 +1,12 @@
 import React, { createContext } from 'react'
-import * as ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { omit } from 'lodash'
 import { IProps } from 'src/common/props'
 import { Animate } from 'src/animate/Animate'
-import { IModalBackdropProps } from 'src/modals/ModalBackdrop'
-import { IModalDialogProps } from 'src/modals/ModalDialog'
+import { MODAL, MODAL_OPEN } from 'src/common/classes'
+import { ModalDialog, IModalDialogProps } from 'src/modals/ModalDialog'
+import { ModalBackdrop, IModalBackdropProps } from 'src/modals/ModalBackdrop'
 import { mergeCall, setScrollbarWidth, getOriginalBodyPadding, conditionallyUpdateScrollbar } from 'src/common/util'
 
 export interface IModalProps extends IProps {
@@ -50,8 +50,8 @@ export interface IModalProps extends IProps {
 const omitProps = ['open', 'transition', 'onOpen', 'onClose', 'afterClose', 'afterOpen']
 
 export const ModalContext = createContext({
-  getModalDialogProps: (props: any = {}) => props,
-  getBackdropProps: (props: any = {}) => props,
+  getModalDialogProps: (props: IModalDialogProps = {}) => props,
+  getBackdropProps: (props: IModalBackdropProps = {}) => props,
 })
 
 export class Modal extends React.Component<IModalProps> {
@@ -63,7 +63,16 @@ export class Modal extends React.Component<IModalProps> {
     transition: true,
     children: () => null,
   }
-
+  static Dialog = (props: IModalDialogProps) => (
+    <ModalContext.Consumer>
+      {({getModalDialogProps}) => <ModalDialog {...getModalDialogProps(props)}/>}
+    </ModalContext.Consumer>
+  )
+  static Backdrop = (props: IModalBackdropProps) => (
+    <ModalContext.Consumer>
+      {({getBackdropProps}) => <ModalBackdrop {...getBackdropProps(props)}/>}
+    </ModalContext.Consumer>
+  )
   static getDerivedStateFromProps(props: IModalProps, state: any) {
     if (state.lastOpen !== props.open) {
       return { ...state, lastOpen: props.open, active: true }
@@ -110,14 +119,14 @@ export class Modal extends React.Component<IModalProps> {
     if (open && this._bodyPadding == null) {
       this._bodyPadding = getOriginalBodyPadding()
       conditionallyUpdateScrollbar()
-      document.body.classList.add(classes.MODAL_OPEN)
+      document.body.classList.add(MODAL_OPEN)
     }
   }
 
   private handleHide = () => {
     const { open } = this.props
     if (!open) {
-      document.body.classList.remove(classes.MODAL_OPEN)
+      document.body.classList.remove(MODAL_OPEN)
       setScrollbarWidth(this._bodyPadding)
       this._bodyPadding = null
     }
@@ -152,7 +161,7 @@ export class Modal extends React.Component<IModalProps> {
     const { mask, style, open, transition, ...others } = this.props
     const { active } = this.state
     const Tag = this.props.tag!
-    const className = classNames(this.props.className, classes.MODAL)
+    const className = classNames(this.props.className, MODAL)
     const afterStateChange = mergeCall(this.afterAnimate, this.handleHide)
     const nextStyle = { ...style }
     this.init()
