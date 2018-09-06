@@ -4,22 +4,8 @@
 ````jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Alert, AlertLink, AlertStyles, ALertLinkStyles } from 'xbrick'
+import { Alert, AlertLink } from 'xbrick'
 import 'xbrick/lib/style/index.css'
-
-const { LINK } = ALertLinkStyles
-const {
-  ALERT,
-  PRIMARY,
-  SECONDARY,
-  SUCCESS,
-  DANGER,
-  WARNING,
-  INFO,
-  LIGHT,
-  DARK,
-} = AlertStyles
-
 
 ReactDOM.render(
   <div className="app">

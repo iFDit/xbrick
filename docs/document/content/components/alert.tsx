@@ -51,7 +51,7 @@ export function AlertContent() {
     })
     .addSection({
       title: 'Examples',
-      describe: <p>适用于任何长度的文本的警告。</p>,
+      describe: <p>Alert组件可以展示任意长度的内容。</p>,
       content: (
         <>
           <Col xs="12">
@@ -174,7 +174,7 @@ export function AlertContent() {
       ),
       content: (
         <Col xs="12">
-          <Alert color="warning" afterClose={() => console.log('I had been closed.')} className={AlertStyles.DISMISSIBLE}>
+          <Alert color="warning" afterClose={() => console.log('I had been closed.')} className={AlertStyles.dismissible}>
             Warning Alert with dismiss button.
             <AlertClose/>
           </Alert>
