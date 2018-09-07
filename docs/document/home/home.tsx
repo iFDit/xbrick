@@ -35,7 +35,7 @@ export const Home = () => {
                 <Button outline style={{marginRight: 25}} className="banner-btn">
                   <Link to="documents" className="bsprimary">GET STARTED</Link>
                 </Button>
-                <Button bstype="light" className="banner-btn">
+                <Button color="light" className="banner-btn">
                   <a href="https://github.com/iFDit/xbrick" target="_blank">GitHub</a>
                 </Button>
               </Col>
@@ -48,7 +48,7 @@ export const Home = () => {
               <SyntaxHighlighter language="shell" style={coy}>
                 $ npm install xbrick
               </SyntaxHighlighter>
-              <Button bstype="light" className="block-btn">
+              <Button color="light" className="block-btn">
                 <Link to="documents/getting-started/install">查看安装文档</Link>
               </Button>
             </Col>
@@ -58,7 +58,7 @@ export const Home = () => {
               <SyntaxHighlighter language="jsx" style={coy}>
                 {usageText}
               </SyntaxHighlighter>
-              <Button bstype="light" className="block-btn">
+              <Button color="light" className="block-btn">
                 <Link to="documents/components">查看组件文档</Link>
               </Button>
             </Col>

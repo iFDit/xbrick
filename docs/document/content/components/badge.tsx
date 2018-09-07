@@ -81,14 +81,14 @@ export function BadgeContent() {
       describe: <p>可以通过color设置不同的背景颜色。</p>,
       content: (
         <>
-          <Badge className="mr-2">primary</Badge>
-          <Badge color="secondary" className="mr-2">Secondary</Badge>
-          <Badge color="warning" className="mr-2">Warning</Badge>
-          <Badge color="success" className="mr-2">Success</Badge>
-          <Badge color="danger" className="mr-2">Danger</Badge>
-          <Badge color="info" className="mr-2">Info</Badge>
-          <Badge color="light" className="mr-2">Light</Badge>
-          <Badge color="dark" className="mr-2">Dark</Badge>
+          <Badge className="mr-2 mb-2">primary</Badge>
+          <Badge color="secondary" className="mr-2 mb-2">Secondary</Badge>
+          <Badge color="warning" className="mr-2 mb-2">Warning</Badge>
+          <Badge color="success" className="mr-2 mb-2">Success</Badge>
+          <Badge color="danger" className="mr-2 mb-2">Danger</Badge>
+          <Badge color="info" className="mr-2 mb-2">Info</Badge>
+          <Badge color="light" className="mr-2 mb-2">Light</Badge>
+          <Badge color="dark" className="mr-2 mb-2">Dark</Badge>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(contextualVariations)),
@@ -98,14 +98,14 @@ export function BadgeContent() {
       describe: <p>Badge显示圆角效果。</p>,
       content: (
         <>
-          <Badge className="mr-2" pill>primary</Badge>
-          <Badge color="secondary" className="mr-2" pill>Secondary</Badge>
-          <Badge color="warning" className="mr-2">Warning</Badge>
-          <Badge color="success" className="mr-2">Success</Badge>
-          <Badge color="danger" className="mr-2">Danger</Badge>
-          <Badge color="info" className="mr-2">Info</Badge>
-          <Badge color="light" className="mr-2">Light</Badge>
-          <Badge color="dark" className="mr-2">Dark</Badge>
+          <Badge className="mr-2 mb-2" pill>primary</Badge>
+          <Badge color="secondary" className="mr-2 mb-2" pill>Secondary</Badge>
+          <Badge color="warning" className="mr-2 mb-2">Warning</Badge>
+          <Badge color="success" className="mr-2 mb-2">Success</Badge>
+          <Badge color="danger" className="mr-2 mb-2">Danger</Badge>
+          <Badge color="info" className="mr-2 mb-2">Info</Badge>
+          <Badge color="light" className="mr-2 mb-2">Light</Badge>
+          <Badge color="dark" className="mr-2 mb-2">Dark</Badge>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(pill)),
@@ -115,14 +115,14 @@ export function BadgeContent() {
       describe: <p>Badge使用tag="a"，能够生成hover效果的徽标。</p>,
       content: (
         <>
-          <Badge className="mr-2" tag="a" href="#" onClick={prevent}>primary</Badge>
-          <Badge color="secondary" className="mr-2" tag="a" href="#" onClick={prevent}>Secondary</Badge>
-          <Badge color="warning" className="mr-2" tag="a" href="#" onClick={prevent}>Warning</Badge>
-          <Badge color="success" className="mr-2" tag="a" href="#" onClick={prevent}>Success</Badge>
-          <Badge color="danger" className="mr-2" tag="a" href="#" onClick={prevent}>Danger</Badge>
-          <Badge color="info" className="mr-2" tag="a" href="#" onClick={prevent}>Info</Badge>
-          <Badge color="light" className="mr-2" tag="a" href="#" onClick={prevent}>Light</Badge>
-          <Badge color="dark" className="mr-2" tag="a" href="#" onClick={prevent}>Dark</Badge>
+          <Badge className="mr-2 mb-2" tag="a" href="#" onClick={prevent}>primary</Badge>
+          <Badge color="secondary" className="mr-2 mb-2" tag="a" href="#" onClick={prevent}>Secondary</Badge>
+          <Badge color="warning" className="mr-2 mb-2" tag="a" href="#" onClick={prevent}>Warning</Badge>
+          <Badge color="success" className="mr-2 mb-2" tag="a" href="#" onClick={prevent}>Success</Badge>
+          <Badge color="danger" className="mr-2 mb-2" tag="a" href="#" onClick={prevent}>Danger</Badge>
+          <Badge color="info" className="mr-2 mb-2" tag="a" href="#" onClick={prevent}>Info</Badge>
+          <Badge color="light" className="mr-2 mb-2" tag="a" href="#" onClick={prevent}>Light</Badge>
+          <Badge color="dark" className="mr-2 mb-2" tag="a" href="#" onClick={prevent}>Dark</Badge>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(link)),

@@ -53,15 +53,15 @@ export function ButtonsContent() {
       describe: <p>通过color属性可以方便的设置不同样式的按钮。</p>,
       content: (
         <>
-          <Button className="mr-2">primary</Button>
-          <Button color="secondary" className="mr-2">secondary</Button>
-          <Button color="success" className="mr-2">success</Button>
-          <Button color="danger" className="mr-2">danger</Button>
-          <Button color="warning" className="mr-2">warning</Button>
-          <Button color="info" className="mr-2">info</Button>
-          <Button color="light" className="mr-2">light</Button>
-          <Button color="dark" className="mr-2">dark</Button>
-          <Button color="link" className="mr-2">link</Button>
+          <Button className="mr-2 mb-2">primary</Button>
+          <Button color="secondary" className="mr-2 mb-2">secondary</Button>
+          <Button color="success" className="mr-2 mb-2">success</Button>
+          <Button color="danger" className="mr-2 mb-2">danger</Button>
+          <Button color="warning" className="mr-2 mb-2">warning</Button>
+          <Button color="info" className="mr-2 mb-2">info</Button>
+          <Button color="light" className="mr-2 mb-2">light</Button>
+          <Button color="dark" className="mr-2 mb-2">dark</Button>
+          <Button color="link" className="mr-2 mb-2">link</Button>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(base)),
@@ -71,10 +71,10 @@ export function ButtonsContent() {
       describe: <p>tag属性可以改变Button渲染的元素。</p>,
       content: (
         <>
-          <Button tag="a" href="#" className="mr-2">Link</Button>
-          <Button tag="input" type="button" value="Input" className="mr-2"/>
-          <Button tag="input" type="reset" value="Reset" className="mr-2"/>
-          <Button tag="input" type="submit" value="Submit" className="mr-2"/>
+          <Button tag="a" href="#" className="mr-2 mb-2">Link</Button>
+          <Button tag="input" type="button" value="Input" className="mr-2 mb-2"/>
+          <Button tag="input" type="reset" value="Reset" className="mr-2 mb-2"/>
+          <Button tag="input" type="submit" value="Submit" className="mr-2 mb-2"/>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(tag)),
@@ -84,15 +84,15 @@ export function ButtonsContent() {
       describe: <p>无背景颜色的按钮</p>,
       content: (
         <>
-          <Button outline className="mr-2">primary</Button>
-          <Button color="secondary" outline className="mr-2">secondary</Button>
-          <Button color="success" outline className="mr-2">success</Button>
-          <Button color="danger" outline className="mr-2">danger</Button>
-          <Button color="warning" outline className="mr-2">warning</Button>
-          <Button color="info" outline className="mr-2">info</Button>
-          <Button color="light" outline className="mr-2">light</Button>
-          <Button color="dark" outline className="mr-2">dark</Button>
-          <Button color="link" outline className="mr-2">link</Button>
+          <Button outline className="mr-2 mb-2">primary</Button>
+          <Button color="secondary" outline className="mr-2 mb-2">secondary</Button>
+          <Button color="success" outline className="mr-2 mb-2">success</Button>
+          <Button color="danger" outline className="mr-2 mb-2">danger</Button>
+          <Button color="warning" outline className="mr-2 mb-2">warning</Button>
+          <Button color="info" outline className="mr-2 mb-2">info</Button>
+          <Button color="light" outline className="mr-2 mb-2">light</Button>
+          <Button color="dark" outline className="mr-2 mb-2">dark</Button>
+          <Button color="link" outline className="mr-2 mb-2">link</Button>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(outline)),
@@ -102,9 +102,15 @@ export function ButtonsContent() {
       describe: <p>通过size设置Button组件的大小，有large和small。</p>,
       content: (
         <>
-          <Button size="large" className="mr-2">Primary</Button>
-          <Button size="middle" className="mr-2">Primary</Button>
-          <Button size="small" className="mr-2">Primary</Button>
+          <div>
+            <Button size="large" className="mr-2 mb-2">Primary</Button>
+          </div>
+          <div>
+            <Button size="middle" className="mr-2 mb-2">Primary</Button>
+          </div>
+          <div>
+            <Button size="small" className="mr-2 mb-2">Primary</Button>
+          </div>
         </>
       ),
       codeText: getCodeFromString(converter.makeHtml(size)),
