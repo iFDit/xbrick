@@ -17,7 +17,7 @@ describe('Badge', () => {
   customTag(Badge, 'div', 'div')
   displayName(Badge, 'xbrick.Badge')
 
-  it ('should change color by using color props', () => {
+  it('should change color by using color props', () => {
     const node = mount(<Badge>1</Badge>)
     colors.forEach(color => {
       node.setProps({ color })
@@ -25,7 +25,7 @@ describe('Badge', () => {
     })
   })
 
-  it ('should render pill badge if pill props is true', () => {
+  it('should render pill badge if pill props is true', () => {
     const node = mount(<Badge pill>1</Badge>)
     expect(node.find('span').hasClass('badge-pill')).toBe(true)
   })
