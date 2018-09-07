@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
 import * as cls from 'src/common/classes'
-import { SMALL, LARGE, ACTIVE, DISABLED, BUTTON, BUTTON_BLOCK } from 'src/common/classes'
 import { IProps, ButtonSize, ButtonType } from 'src/common/props'
+import { BTN_SMALL, BTN_LARGE, ACTIVE, DISABLED, BUTTON, BUTTON_BLOCK } from 'src/common/classes'
 
 export interface IButtonProps extends IProps {
   /**
@@ -53,8 +53,8 @@ export const Button: React.StatelessComponent<IButtonProps> = function (props: I
   const className = classNames(props.className, BUTTON, {
     [cls[`BTN${outline ? '_O' : ''}_${color!.toUpperCase()}`]]: !!color,
     [BUTTON_BLOCK]: !!block,
-    [SMALL]: size === 'small',
-    [LARGE]: size === 'large',
+    [BTN_SMALL]: size === 'small',
+    [BTN_LARGE]: size === 'large',
     [DISABLED]: !!disabled,
     [ACTIVE]: !!active,
   })
