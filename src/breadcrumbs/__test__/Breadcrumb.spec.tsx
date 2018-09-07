@@ -6,7 +6,7 @@ import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe('Badge', () => {
+describe('Breadcrumb', () => {
   const child = <p>111</p>
   notCrash(Breadcrumb)
   defaultTag(Breadcrumb, 'ol')

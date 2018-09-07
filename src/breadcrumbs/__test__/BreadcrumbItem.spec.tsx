@@ -6,7 +6,7 @@ import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe('Badge', () => {
+describe('BreadcrumbItem', () => {
   const child = <p>111</p>
   notCrash(BreadcrumbItem)
   defaultTag(BreadcrumbItem, 'li')
@@ -15,7 +15,7 @@ describe('Badge', () => {
   customTag(BreadcrumbItem, 'div', 'div')
   displayName(BreadcrumbItem, 'xbrick.BreadcrumbItem')
 
-  it ('should be active when active props is true', () => {
+  it('should be active when active props is true', () => {
     const node = mount(<BreadcrumbItem active>active</BreadcrumbItem>)
     expect(node.find('li').hasClass('active')).toBe(true)
   })
