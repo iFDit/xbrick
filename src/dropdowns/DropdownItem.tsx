@@ -6,7 +6,7 @@ import { ACTIVE, DISABLED, DROPDOWN_ITEM, DROPDOWN_HEADER, DROPDOWN_DIVIDER } fr
 export interface IDropdownItemProps extends IProps {
   /**
    * custom render component.
-   * @default div
+   * @default a
    */
   tag?: string | React.Factory<any>
 

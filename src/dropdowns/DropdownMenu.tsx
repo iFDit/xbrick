@@ -27,7 +27,7 @@ export interface IDropdownMenuProps extends IProps {
   /**
    * Handler invoked after the Collapse was hidden/showed.
    */
-  afterAnimate?(): void
+  afterChange?(): void
 
   /**
    * without animation.
@@ -63,9 +63,9 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps> {
   }
 
   private handleAnimateEnd = () => {
-    const { afterAnimate } = this.props
+    const { afterChange } = this.props
     this.setState({ active: false })
-    afterAnimate && afterAnimate()
+    afterChange && afterChange()
   }
 
   private getFromStyle = () => {
@@ -104,7 +104,7 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps> {
   render () {
     // @ts-ignore
     // shortcut of ignore some props.
-    const { right, open, afterAnimate, direction, transition, ...others } = this.props
+    const { right, open, afterChange, direction, transition, ...others } = this.props
     const { active } = this.state
     const Tag = this.props.tag!
     const styles = { ...(this.props.style || {}) }
