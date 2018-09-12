@@ -19,7 +19,7 @@ export interface ICollapseProps extends IProps {
   /**
    * Handler invoked after the Collapse was hidden/showed.
    */
-  afterAnimate?(): void
+  afterChange?(): void
 }
 
 export class Collapse extends React.Component<ICollapseProps> {
@@ -44,13 +44,13 @@ export class Collapse extends React.Component<ICollapseProps> {
   }
 
   public handleAnimateEnd = () => {
-    const { afterAnimate } = this.props
+    const { afterChange } = this.props
     this.setState({ active: false })
-    afterAnimate && afterAnimate()
+    afterChange && afterChange()
   }
 
   render () {
-    const { afterAnimate, open, children, ...others } = this.props
+    const { afterChange, open, children, ...others } = this.props
     const child = isFunction(children) ? children : () => children
     return (
       this.state.active

@@ -15,4 +15,4 @@
 | --- | --- | --- | --- |
 | tag | 自定义标签 | string\|ReactNode | `div` |
 | open | 是否展开 | boolean | `false` |
-| afterAnimate | 动画结束后回调 | function | - |
+| afterChange | 动画结束后回调 | function | - |

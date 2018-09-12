@@ -12,7 +12,7 @@ export interface IUncontrolledCollapseProps extends IProps {
   /**
    * Handler invoked after the Collapse was hidden/showed.
    */
-  afterAnimate?(): void
+  afterChange?(): void
 
   /**
    * the Collapse default open.
@@ -38,7 +38,7 @@ export class UncontrolledCollapse extends React.Component<IUncontrolledCollapseP
   }
 
   render () {
-    const { afterAnimate, ...others } = this.props
-    return <UncontrolledSlide {...others} afterStateChange={afterAnimate}/>
+    const { afterChange, ...others } = this.props
+    return <UncontrolledSlide {...others} afterStateChange={afterChange}/>
   }
 }
