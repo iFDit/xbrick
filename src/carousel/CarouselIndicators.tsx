@@ -17,7 +17,7 @@ export interface ICarouselIndicatorProps extends IProps {
 
   /**
    * custom render component.
-   * @default div
+   * @default ol
    */
   tag?: string | React.Factory<any>
 

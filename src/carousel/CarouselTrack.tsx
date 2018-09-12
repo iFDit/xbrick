@@ -81,7 +81,7 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
       left: {value: -start, transition: !crossfade},
       opacity: {value: 0.5, transition: !!crossfade, config: defaultConfig},
     }
-    const to = {left: -end, opacity: 1 }
+    const to = {left: -end, opacity: 1}
 
     return (
       <Tag {...omit(others, omitProps)} className={classNames(className, CAROUSEL_VIEW)}>
@@ -93,7 +93,10 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
   }
 
   private getBound(elems: HTMLElement[]) {
-    return elems.map(item => ({ width: get(item, 'offsetWidth', 0), height: get(item, 'offsetHeight', 0) }))
+    return elems.map(item => ({
+      width: get(item, 'offsetWidth', 0),
+      height: get(item, 'offsetHeight', 0),
+    }))
   }
 
   private handleResize = (newItems: any[]) => {
