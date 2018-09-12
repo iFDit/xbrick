@@ -7,11 +7,11 @@ import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('CardText', () => {
-  const child = <p>111</p>
+  const child = <span>111</span>
   notCrash(CardText)
   defaultTag(CardText, 'p')
   defaultProps(CardText, { tag: 'p' })
-  renderChild(CardText, child, 'p')
-  customTag(CardText, 'a', 'a')
+  renderChild(CardText, child, 'span')
+  customTag(CardText, 'div', 'div')
   displayName(CardText, 'xbrick.CardText')
 })

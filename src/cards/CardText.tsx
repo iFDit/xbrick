@@ -19,6 +19,4 @@ export const CardText: React.StatelessComponent<ICardTextProps> = function (prop
 }
 
 CardText.displayName = 'xbrick.CardText'
-CardText.defaultProps = {
-  tag: 'p'
-}
+CardText.defaultProps = { tag: 'p' }

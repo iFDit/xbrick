@@ -18,5 +18,5 @@ export const CardColumns: React.StatelessComponent<ICardColumnsProps> = function
   return <Tag {...others} className={className} />
 }
 
-CardColumns.displayName = 'xbrick.CardDeck'
+CardColumns.displayName = 'xbrick.CardColumns'
 CardColumns.defaultProps = { tag: 'div' }

@@ -17,6 +17,6 @@ describe('CardTitle', () => {
 
   it('should render sub title when subtitle is true', () => {
     const node = mount(<CardTitle subtitle>title</CardTitle>)
-    expect(node.find('h5').hasClass('card-subtitle')).toBe(true)
+    expect(node.find('h6').hasClass('card-subtitle')).toBe(true)
   })
 })
