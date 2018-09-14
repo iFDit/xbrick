@@ -4,7 +4,7 @@ import Adapter from 'enzyme-adapter-react-16'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-export function notCrash(Component: React.SFC<any>) {
+export function notCrash(Component: React.SFC<any> | React.ComponentClass) {
   describe(' - TEST - not crash', () => {
     it('should be rendered without crash', () => {
       mount(<Component />)
@@ -12,7 +12,7 @@ export function notCrash(Component: React.SFC<any>) {
   })
 }
 
-export function defaultTag(Component: React.SFC<any>, selector: string) {
+export function defaultTag(Component: React.SFC<any> | React.ComponentClass, selector: string) {
   describe(' - TEST - default tag', () => {
     it(`should be rendered default tag with ${selector}`, () => {
       const node = mount(<Component />)
@@ -21,7 +21,7 @@ export function defaultTag(Component: React.SFC<any>, selector: string) {
   })
 }
 
-export function defaultProps(Component: React.SFC<any>, props: any = {}) {
+export function defaultProps(Component: React.SFC<any> | React.ComponentClass, props: any = {}) {
   describe(' - TEST - default props', () => {
     it('should be rendered with default props', () => {
       const node = mount(<Component {...props}/>)
@@ -33,7 +33,7 @@ export function defaultProps(Component: React.SFC<any>, props: any = {}) {
   })
 }
 
-export function renderChild(Component: React.SFC<any>, children: any, selector: any) {
+export function renderChild(Component: React.SFC<any> | React.ComponentClass, children: any, selector: any) {
   describe('- TEST - render children', () => {
     it('should be rendered children', () => {
       const node = mount(<Component>{children}</Component>)
@@ -42,7 +42,7 @@ export function renderChild(Component: React.SFC<any>, children: any, selector: 
   })
 }
 
-export function customTag(Component: React.SFC<any>, tag: string | React.Factory<any>, selector: string) {
+export function customTag(Component: React.SFC<any> | React.ComponentClass, tag: string | React.Factory<any>, selector: string) {
   describe(' - TEST - custom tags', () => {
     it(`should be rendered with custom tag with ${selector}`, () => {
       const node = mount(<Component tag={tag} />)
@@ -51,7 +51,7 @@ export function customTag(Component: React.SFC<any>, tag: string | React.Factory
   })
 }
 
-export function displayName(Component: React.SFC<any>, name: string) {
+export function displayName(Component: React.SFC<any> | React.ComponentClass, name: string) {
   describe(' - TEST - display name', () => {
     it(`should be rendered with ${name} name`, () => {
       expect(Component.displayName).toBe(name)
