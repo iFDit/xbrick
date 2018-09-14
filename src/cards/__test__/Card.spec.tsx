@@ -13,7 +13,7 @@ describe('Card', () => {
   const child = <p>111</p>
   notCrash(Card)
   defaultTag(Card, 'div')
-  defaultProps(Card, { tag: 'div' })
+  defaultProps(Card, { tag: 'div', inverse: false, outline: false })
   renderChild(Card, child, 'p')
   customTag(Card, 'section', 'section')
   displayName(Card, 'xbrick.Card')

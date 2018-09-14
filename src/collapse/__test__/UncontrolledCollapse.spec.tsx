@@ -10,7 +10,7 @@ describe('Collapse', () => {
   const child = () => <p>111</p>
   notCrash(UncontrolledCollapse)
   defaultTag(UncontrolledCollapse, 'div')
-  defaultProps(UncontrolledCollapse, { tag: 'div' })
+  defaultProps(UncontrolledCollapse, { tag: 'div', defaultOpen: false })
   renderChild(UncontrolledCollapse, child, 'p')
   customTag(UncontrolledCollapse, 'section', 'section')
   displayName(UncontrolledCollapse, 'xbrick.UncontrolledCollapse')

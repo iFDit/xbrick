@@ -10,7 +10,7 @@ describe('Collapse', () => {
   const child = <p>111</p>
   notCrash(Collapse)
   defaultTag(Collapse, 'div')
-  defaultProps(Collapse, { tag: 'div' })
+  defaultProps(Collapse, { tag: 'div', open: false })
   renderChild(Collapse, child, 'p')
   customTag(Collapse, 'section', 'section')
   displayName(Collapse, 'xbrick.Collapse')

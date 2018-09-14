@@ -23,4 +23,21 @@ describe('Dropdown', () => {
     node.setProps({ direction: 'left' })
     expect(node.find('div').hasClass('dropleft')).toBe(true)
   })
+
+  it('should toggle menu when click DropdownToggle components', () => {
+    const node = mount(
+      <Dropdown>
+        <Dropdown.Toggle>toggle</Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item>1</Dropdown.Item>
+          <Dropdown.Item>2</Dropdown.Item>
+          <Dropdown.Item>3</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>,
+    )
+
+    const Toggle = node.find('.dropdown-toggle')
+    Toggle.simulate('click')
+    expect(node.find('.dropdown-menu').first().render().css('display')).not.toBe('none')
+  })
 })

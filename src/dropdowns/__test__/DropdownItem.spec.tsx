@@ -10,7 +10,7 @@ describe('DropdownItem', () => {
   const child = <p>111</p>
   notCrash(DropdownItem)
   defaultTag(DropdownItem, 'a')
-  defaultProps(DropdownItem, { tag: 'a' })
+  defaultProps(DropdownItem, { tag: 'a', header: false, divider: false, active: false, disabled: false })
   renderChild(DropdownItem, child, 'p')
   customTag(DropdownItem, 'section', 'section')
   displayName(DropdownItem, 'xbrick.DropdownItem')

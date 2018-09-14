@@ -15,7 +15,7 @@ describe('ButtonGroup', () => {
   const child = <p>111</p>
   notCrash(ButtonGroup)
   defaultTag(ButtonGroup, 'div')
-  defaultProps(ButtonGroup, { tag: 'div' })
+  defaultProps(ButtonGroup, { tag: 'div', size: 'middle', vertical: false })
   renderChild(ButtonGroup, child, 'p')
   customTag(ButtonGroup, 'span', 'span')
   displayName(ButtonGroup, 'xbrick.ButtonGroup')

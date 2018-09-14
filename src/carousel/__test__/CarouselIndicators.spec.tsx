@@ -10,7 +10,7 @@ Enzyme.configure({ adapter: new Adapter() })
 describe('CarouselIndicators', () => {
   notCrash(CarouselIndicators)
   defaultTag(CarouselIndicators, 'ol')
-  defaultProps(CarouselIndicators, { tag: 'ol' })
+  defaultProps(CarouselIndicators, { tag: 'ol', amount: 0 })
   customTag(CarouselIndicators, 'ul', 'ul')
   displayName(CarouselIndicators, 'xbrick.CarouselIndicator')
 

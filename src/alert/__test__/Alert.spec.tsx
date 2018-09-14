@@ -11,7 +11,7 @@ describe('Alert', () => {
   const child = <p>111</p>
   notCrash(Alert)
   defaultTag(Alert, 'div')
-  defaultProps(Alert, { tag: 'div' })
+  defaultProps(Alert, { tag: 'div', color: 'primary' })
   renderChild(Alert, child, 'p')
   customTag(Alert, 'a', 'a')
   displayName(Alert, 'xbrick.Alert')

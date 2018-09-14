@@ -10,7 +10,7 @@ describe('DropdownMenu', () => {
   const child = <p>111</p>
   notCrash(DropdownMenu)
   defaultTag(DropdownMenu, 'div')
-  defaultProps(DropdownMenu, { tag: 'div' })
+  defaultProps(DropdownMenu, { tag: 'div', right: false, open: false })
   renderChild(DropdownMenu, child, 'p')
   customTag(DropdownMenu, 'section', 'section')
   displayName(DropdownMenu, 'xbrick.DropdownMenu')

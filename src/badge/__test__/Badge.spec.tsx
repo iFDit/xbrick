@@ -12,7 +12,7 @@ describe('Badge', () => {
   const child = <p>111</p>
   notCrash(Badge)
   defaultTag(Badge, 'span')
-  defaultProps(Badge, { tag: 'span' })
+  defaultProps(Badge, { tag: 'span', pill: false, color: 'primary' })
   renderChild(Badge, child, 'p')
   customTag(Badge, 'div', 'div')
   displayName(Badge, 'xbrick.Badge')

@@ -10,7 +10,7 @@ describe('DropdownToggle', () => {
   const child = <p>111</p>
   notCrash(DropdownToggle)
   defaultTag(DropdownToggle, 'button')
-  defaultProps(DropdownToggle, { tag: 'button' })
+  defaultProps(DropdownToggle, { tag: 'button', split: false, button: false })
   renderChild(DropdownToggle, child, 'p')
   customTag(DropdownToggle, 'section', 'section')
   displayName(DropdownToggle, 'xbrick.DropdownToggle')

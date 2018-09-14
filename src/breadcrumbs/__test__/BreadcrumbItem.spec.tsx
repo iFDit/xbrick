@@ -10,7 +10,7 @@ describe('BreadcrumbItem', () => {
   const child = <p>111</p>
   notCrash(BreadcrumbItem)
   defaultTag(BreadcrumbItem, 'li')
-  defaultProps(BreadcrumbItem, { tag: 'li' })
+  defaultProps(BreadcrumbItem, { tag: 'li', active: false })
   renderChild(BreadcrumbItem, child, 'p')
   customTag(BreadcrumbItem, 'div', 'div')
   displayName(BreadcrumbItem, 'xbrick.BreadcrumbItem')

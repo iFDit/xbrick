@@ -10,7 +10,7 @@ describe('CardBody', () => {
   const child = <p>111</p>
   notCrash(CardBody)
   defaultTag(CardBody, 'div')
-  defaultProps(CardBody, { tag: 'div' })
+  defaultProps(CardBody, { tag: 'div', overlay: false })
   renderChild(CardBody, child, 'p')
   customTag(CardBody, 'section', 'section')
   displayName(CardBody, 'xbrick.CardBody')

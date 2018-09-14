@@ -10,7 +10,7 @@ describe('CarouselControl', () => {
   const child = <span>111</span>
   notCrash(CarouselControl)
   defaultTag(CarouselControl, 'a')
-  defaultProps(CarouselControl, { tag: 'a' })
+  defaultProps(CarouselControl, { tag: 'a', direction: 'prev' })
   renderChild(CarouselControl, child, 'span')
   customTag(CarouselControl, 'section', 'section')
   displayName(CarouselControl, 'xbrick.CarouselControl')

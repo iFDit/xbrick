@@ -15,7 +15,7 @@ describe('Button', () => {
   const child = <p>111</p>
   notCrash(Button)
   defaultTag(Button, 'button')
-  defaultProps(Button, { tag: 'button' })
+  defaultProps(Button, { tag: 'button', color: 'primary', disabled: false, outline: false, active: false, block: false })
   renderChild(Button, child, 'p')
   customTag(Button, 'div', 'div')
   displayName(Button, 'xbrick.Button')

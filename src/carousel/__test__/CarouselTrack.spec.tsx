@@ -10,7 +10,7 @@ describe('CarouselTrack', () => {
   const child = <p>111</p>
   notCrash(CarouselTrack)
   defaultTag(CarouselTrack, 'div')
-  defaultProps(CarouselTrack, { tag: 'div' })
+  defaultProps(CarouselTrack, { tag: 'div', from: 0, to: 0, crossfade: false })
   renderChild(CarouselTrack, child, 'p')
   customTag(CarouselTrack, 'ul', 'ul')
   displayName(CarouselTrack, 'xbrick.CarouselTrack')

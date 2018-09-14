@@ -10,7 +10,7 @@ describe('CarouselTrack', () => {
   const child = <p>111</p>
   notCrash(UncontrolledCarousel)
   defaultTag(UncontrolledCarousel, 'div')
-  defaultProps(UncontrolledCarousel, { tag: 'div' })
+  defaultProps(UncontrolledCarousel, { tag: 'div', startIndex: 0, autoplay: false })
   renderChild(UncontrolledCarousel, child, 'p')
   customTag(UncontrolledCarousel, 'ul', 'ul')
   displayName(UncontrolledCarousel, 'xbrick.UncontrolledCarousel')
