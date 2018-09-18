@@ -8,13 +8,13 @@ export interface ITableRow extends IProps {
   /**
    * set the row background-color.
    */
-  bstype?: TableType
+  color?: TableType
 }
 
 export const TableRow: React.StatelessComponent<ITableRow> = function (props: ITableRow) {
-  const { bstype = '', ...others } = props
+  const { color = '', ...others } = props
   const className = classNames(props.className, {
-    [`${TABLE}-${classes[String(bstype!).toUpperCase()]}`]: !!bstype,
+    [`${TABLE}-${classes[String(color!).toUpperCase()]}`]: !!color,
   })
 
   return <tr {...others} className={className} />
