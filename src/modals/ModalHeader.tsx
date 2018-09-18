@@ -30,7 +30,7 @@ export const ModalHeader: React.StatelessComponent<IModalHeaderProps> = function
   return (
     <Tag {...others} className={className}>
       {children}
-      {React.cloneElement(closeIcon as React.ReactElement<any>, { onClick: onIconClick })}
+      {closeIcon && React.cloneElement(closeIcon as React.ReactElement<any>, { onClick: onIconClick })}
     </Tag>
   )
 }

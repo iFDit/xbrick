@@ -144,7 +144,7 @@ class Examples extends React.Component {
                 </p>
               </ModalBody>
               <ModalFooter>
-                <Button bstype="secondary">Close</Button>
+                <Button color="secondary">Close</Button>
                 <Button>Save changes</Button>
               </ModalFooter>
             </ModalContent>
@@ -189,7 +189,7 @@ class Scrolling extends Examples {
                 <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
               </ModalBody>
               <ModalFooter>
-                <Button bstype="secondary">Close</Button>
+                <Button color="secondary">Close</Button>
                 <Button>Save changes</Button>
               </ModalFooter>
             </ModalContent>
@@ -215,7 +215,7 @@ class Vertically extends Examples {
               </ModalHeader>
               <ModalBody><p>Modal body text goes here.</p></ModalBody>
               <ModalFooter>
-                <Button bstype="secondary">Close</Button>
+                <Button color="secondary">Close</Button>
                 <Button>Save changes</Button>
               </ModalFooter>
             </ModalContent>
@@ -252,7 +252,7 @@ class Sizing extends Examples {
                 </p>
               </ModalBody>
               <ModalFooter>
-                <Button bstype="secondary">Close</Button>
+                <Button color="secondary">Close</Button>
                 <Button>Save changes</Button>
               </ModalFooter>
             </ModalContent>
