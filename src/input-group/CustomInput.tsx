@@ -33,7 +33,7 @@ export const CustomInput: React.StatelessComponent<ICustomInput> = function (pro
   })
   return checkboxOrRadio ? (
     <div className={wrapClass}>
-      <input type={type} className={className} {...others} id={id} />
+      <input {...others} type={type} className={className} id={id} />
       <label className={classes.CUSTOM_CONTROL_LABEL} htmlFor={id} >{label}</label>
     </div>
   ) : type === 'select' ?
