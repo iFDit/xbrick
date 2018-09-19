@@ -25,7 +25,7 @@ export class Popper extends React.Component<IPopperProps> {
   static displayName = 'xbrick.Popper'
   public renderPopper = () => {
     const { reference, el, ...others } = this.props
-    const originalRef = get(reference, 'props.getRef')
+    const originalRef = get(reference, 'props.ref')
     const type = get(reference, 'type')
     const stateLess = isFunction(type)
     let refCall: any = null
@@ -37,7 +37,7 @@ export class Popper extends React.Component<IPopperProps> {
             if (!refCall) {
               refCall = mergeCall(originalRef, ref)
             }
-            const props = stateLess ? {getRef: refCall} : {ref}
+            const props = stateLess ? {ref: refCall} : {ref}
             return React.cloneElement(reference, props)
           }}
         </Reference>
