@@ -47,8 +47,8 @@ export interface IButtonProps extends IProps {
   active?: boolean
 }
 
-export const Button: React.StatelessComponent<IButtonProps> = function (props: IButtonProps) {
-  const { tag, size, color, block, getRef, active, outline, disabled, ...others } = props
+const ButtonInner: React.StatelessComponent<IButtonProps> = function (props: IButtonProps, ref: any) {
+  const { tag, size, color, block, active, outline, disabled, ...others } = props
   const Tag = tag!
   const className = classNames(props.className, BUTTON, {
     [cls[`BTN${outline ? '_O' : ''}_${color!.toUpperCase()}`]]: !!color,
@@ -59,11 +59,13 @@ export const Button: React.StatelessComponent<IButtonProps> = function (props: I
     [ACTIVE]: !!active,
   })
   return (
-    <Tag {...others} ref={getRef} className={className}/>
+    <Tag {...others} className={className} ref={ref}/>
   )
 }
 
-Button.displayName = 'xbrick.Button'
+export const Button =  React.forwardRef(ButtonInner)
+
+ButtonInner.displayName = 'xbrick.Button'
 Button.defaultProps = {
   color: 'primary',
   disabled: false,
