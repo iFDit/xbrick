@@ -100,15 +100,20 @@
     "webpack-dev-server": "^2.9.4"
   },
   "jest": {
+    "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}"
+      "src/input-group/*.{js,jsx,ts,tsx}",
+      "!**/node_modules/**",
+      "!**/vendor/**",
+      "!src/animate/**",
+      "!src/**/*.d.ts"
     ],
     "setupFiles": [
       "<rootDir>/config/polyfills.js"
     ],
     "testMatch": [
-      "<rootDir>/src/form/__test__/**/*.(j|t)s?(x)",
-      "<rootDir>/src/form/?(*.)(spec|test).(j|t)s?(x)"
+      "<rootDir>/src/input-group/__test__/**/*.(j|t)s?(x)",
+      "<rootDir>/src/input-group/?(*.)(spec|test).(j|t)s?(x)"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
