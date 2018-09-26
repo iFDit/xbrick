@@ -12,11 +12,14 @@ export interface IModalFooterProps extends IProps {
 }
 
 export const ModalFooter: React.StatelessComponent<IModalFooterProps> = function (props: IModalFooterProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, MODAL_FOOTER)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={modalFooterClass({className})} />
 }
 
 ModalFooter.displayName = 'xbrick.ModalFooter'
 ModalFooter.defaultProps = { tag: 'div' }
+
+export function modalFooterClass({className}: any) {
+  return classNames(className, MODAL_FOOTER)
+}

@@ -18,14 +18,9 @@ export interface IInputGroupAddonProps extends IProps {
 }
 
 export const InputGroupAddon: React.StatelessComponent<IInputGroupAddonProps> = function (props: IInputGroupAddonProps) {
-  const { tag, position, ...others } = props
+  const { tag, position, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, {
-    [INPUT_GROUP_PREPEND]: position === 'prepend',
-    [INPUT_GROUP_APPEND]: position === 'append',
-  })
-  
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={inputGroupAddonClass({className, position})} />
 }
 
 export const InputGroupAddonStyles = {
@@ -37,4 +32,11 @@ InputGroupAddon.displayName = 'xbrick.InputGroupAddon'
 InputGroupAddon.defaultProps = {
   tag: 'div',
   position: 'prepend',
+}
+
+export function inputGroupAddonClass({className, position}: any) {
+  return classNames(className, {
+    [INPUT_GROUP_PREPEND]: position === 'prepend',
+    [INPUT_GROUP_APPEND]: position === 'append',
+  })
 }

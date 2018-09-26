@@ -19,14 +19,17 @@ export interface IPopoverBody extends IProps {
 }
 
 export const PopoverBody: React.StatelessComponent<IPopoverBody> = function (props: IPopoverBody) {
-  const { open, ...others } = props
+  const { open, className, ...others } = props
   const from = open ? 0 : 1
   const to = open ? 1 : 0
-  const className = classNames(props.className, POPOVER_BODY, XPOPOVER_BODY)
   return (
-    <Fade {...others} from={from} to={to} className={className}/>
+    <Fade {...others} from={from} to={to} className={popoverBodyClass({className})}/>
   )
 }
 
 PopoverBody.displayName = 'xbrick.PopoverBody'
 PopoverBody.defaultProps = { tag: 'div' }
+
+export function popoverBodyClass({className}: any) {
+  return classNames(className, POPOVER_BODY, XPOPOVER_BODY)
+}

@@ -2,7 +2,6 @@ import React from 'react'
 import classNames from 'classnames'
 import * as cls from 'src/common/classes'
 import { IProps, CardType, CardAlign } from 'src/common/props'
-import { CARD, CARD_BG, CARD_BORDER, CARD_INVERSE } from 'src/common/classes'
 
 export interface ICardProps extends IProps {
   /**
@@ -35,11 +34,9 @@ export interface ICardProps extends IProps {
 }
 
 export const Card: React.StatelessComponent<ICardProps> = function (props: ICardProps) {
-  // shortcut of ignore others props.
-  // @ts-ignore
-  const { tag, align, color, inverse, outline, ...others } = props
+  const { tag, align, color, inverse, outline, className, ...others } = props
   const Tag = tag!
-  return <Tag {...others} className={cardClasses(props)} />
+  return <Tag {...others} className={cardClass({className, align, color, inverse, outline})} />
 }
 
 Card.displayName = 'xbrick.Card'
@@ -49,18 +46,14 @@ Card.defaultProps = {
   outline: false,
 }
 
-function cardClasses(props: ICardProps) {
-  const { align, color, inverse, outline } = props
-  const cardColor = outline ?
-    `${CARD_BORDER}-${color}`
-    : `${CARD_BG}-${color}`
-  
+export function cardClass({className, align, color, inverse, outline}: any) {
+  const cardColor = outline ? `${cls.CARD_BORDER}-${color}` : `${cls.CARD_BG}-${color}`
   return classNames(
-    props.className,
-    CARD,
+    className,
+    cls.CARD,
     {
       [cardColor]: !!color,
-      [CARD_INVERSE]: inverse,
+      [cls.CARD_INVERSE]: inverse,
       [`${cls['CARD_ALIGN_' + String(align).toUpperCase()]}`]: !!align,
     },
   )

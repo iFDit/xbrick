@@ -32,23 +32,13 @@ export interface IListGroupItemProps extends IProps {
    * set list item have hover action.
    * @default false
    */
-  action?: boolean
+  dynamic?: boolean
 }
 
 export const ListGroupItem: React.StatelessComponent<IListGroupItemProps> = function (props: IListGroupItemProps) {
-  const { tag, disabled, active, action, color = '', ...other } = props
+  const { tag, disabled, active, dynamic, color, className, ...other } = props
   const Tag = tag!
-  const className = classNames(
-    props.className,
-    LIST_GROUP_ITEM,
-    {
-      [DISABLED]: !!disabled,
-      [ACTIVE]: !!active,
-      [LIST_GROUP_ITEM_ACTION]: !!action,
-      [`${LIST_GROUP_ITEM}-${cls[color!.toUpperCase()]}`]: !!color,
-    },
-  )
-  return <Tag {...other} className={className} />
+  return <Tag {...other} className={listGroupItemClass({className, disabled, active, dynamic, color})} />
 }
 
 ListGroupItem.displayName = 'xbrick.ListGroupItem'
@@ -56,5 +46,18 @@ ListGroupItem.defaultProps = {
   tag: 'li',
   disabled: false,
   active: false,
-  action: false,
+  dynamic: false,
+}
+
+export function listGroupItemClass({className, disabled, active, dynamic, color}: any) {
+  return classNames(
+    className,
+    LIST_GROUP_ITEM,
+    {
+      [DISABLED]: !!disabled,
+      [ACTIVE]: !!active,
+      [LIST_GROUP_ITEM_ACTION]: !!dynamic,
+      [`${LIST_GROUP_ITEM}-${cls[color!.toUpperCase()]}`]: !!color,
+    },
+  )
 }

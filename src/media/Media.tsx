@@ -12,11 +12,14 @@ export interface IMediaProps extends IProps {
 }
 
 export const Media: React.StatelessComponent<IMediaProps> = function (props: IMediaProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, MEDIA)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={mediaClass({className})} />
 }
 
 Media.displayName = 'xbrick.Media'
 Media.defaultProps = { tag: 'div' }
+
+export function mediaClass({className}: any) {
+  return classNames(className, MEDIA)
+}

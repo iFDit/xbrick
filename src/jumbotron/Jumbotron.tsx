@@ -18,18 +18,21 @@ export interface IJumbotronProps extends IProps {
 }
 
 export const Jumbotron: React.StatelessComponent<IJumbotronProps> = function (props: IJumbotronProps) {
-  const { tag, fluid, ...others } = props
+  const { tag, fluid, className, ...others } = props
   const Tag = tag!
-  const className = classNames(
-    props.className,
-    JUMBOTRON,
-    {[JUMBOTRON_FLUID]: !!fluid},
-  )
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={jumbotronClass({className, fluid})} />
 }
 
 Jumbotron.displayName = 'xbrick.Jumbotron'
 Jumbotron.defaultProps = {
   tag: 'div',
   fluid: false,
+}
+
+export function jumbotronClass({className, fluid}: any) {
+  return classNames(
+    className,
+    JUMBOTRON,
+    {[JUMBOTRON_FLUID]: !!fluid},
+  )
 }

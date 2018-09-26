@@ -8,17 +8,19 @@ export interface ISplitDropdownProps extends IDropdownProps {}
 
 export class SplitDropdown extends Dropdown {
   static displayName = 'xbrick.SplitDropdown'
-  render () {
-    const { tag, direction = '', ...others } = this.props
-    const Tag = tag!
-    const className = classNames(
-      this.props.className,
+  static splitDropdownClass({className, direction}: any) {
+    return classNames(
+      className,
       BUTTON_GROUP,
       {
         [cls[`DROP${direction.toUpperCase()}`]]: !!direction,
       },
     )
+  }
 
+  render () {
+    const { tag, direction, className, ...others } = this.props
+    const Tag = tag!
     return (
       <DropdownContext.Provider
         value={{
@@ -27,7 +29,7 @@ export class SplitDropdown extends Dropdown {
           getToggleProps: this.getToggleProps,
         }}
       >
-        <Tag {...others} className={className} />
+        <Tag {...others} className={SplitDropdown.splitDropdownClass({className, direction})} />
       </DropdownContext.Provider>
     )
   }

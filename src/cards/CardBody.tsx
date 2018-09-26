@@ -18,20 +18,23 @@ export interface ICardBodyProps extends IProps {
 }
 
 export const CardBody: React.StatelessComponent<ICardBodyProps> = function (props: ICardBodyProps) {
-  const { tag, overlay, ...others } = props
+  const { tag, overlay, className, ...others } = props
   const Tag = tag!
-  const className = classNames(
-    props.className,
-    {
-      [CARD_BODY]: !overlay,
-      [`${CARD_IMG}-${OVERLAY}`]: !!overlay,
-    },
-  )
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={cardBodyClass({className, overlay})} />
 }
 
 CardBody.displayName = 'xbrick.CardBody'
 CardBody.defaultProps = {
   tag: 'div',
   overlay: false,
+}
+
+export function cardBodyClass({className, overlay}: any) {
+  return classNames(
+    className,
+    {
+      [CARD_BODY]: !overlay,
+      [`${CARD_IMG}-${OVERLAY}`]: !!overlay,
+    },
+  )
 }

@@ -12,11 +12,14 @@ export interface IPageLinkProps extends IProps {
 }
 
 export const PageLink: React.StatelessComponent<IPageLinkProps> = function (props: IPageLinkProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, PAGE_LINK)
-  return <Tag {...others} className={className}/>
+  return <Tag {...others} className={pageLinkClass({className})}/>
 }
 
 PageLink.displayName = 'xbrick.PaginationLink'
 PageLink.defaultProps = { tag: 'a' }
+
+export function pageLinkClass({className}: any) {
+  return classNames(className, PAGE_LINK)
+}

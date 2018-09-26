@@ -74,6 +74,20 @@ export class Navbar extends React.Component<INavbarProps> {
       {({getTogglerProps}) => <NavbarToggler {...getTogglerProps(props)}/>}
     </NavbarContext.Consumer>
   )
+  static navbarClass({className, fixed, justify, reverse, expand, sticky, color}: any) {
+    return classNames(
+      className,
+      NAVBAR,
+      cls[`BG_${color!.toUpperCase()}`],
+      cls[`NAVBAR_EXPAND_${expand!.toUpperCase()}`],
+      reverse ? NAVBAR_DARK : NAVBAR_LIGHT,
+      {
+        [STICKY]: !!sticky,
+        [cls[`FIXED_${String(fixed).toUpperCase()}`]]: !!fixed,
+        [cls[`JUSTIFY_CONTENT_XS_${String(justify).toUpperCase()}`]]: !!justify,
+      },
+    )
+  }
 
   public state = {
     expand: true,
@@ -95,27 +109,15 @@ export class Navbar extends React.Component<INavbarProps> {
   }
 
   render () {
-    const { tag, expand, fixed, sticky, justify, color, reverse, ...others } = this.props
+    const { tag, expand, fixed, sticky, justify, color, reverse, className, ...others } = this.props
     const Tag = tag!
-    const className = classNames(
-      this.props.className,
-      NAVBAR,
-      cls[`BG_${color!.toUpperCase()}`],
-      cls[`NAVBAR_EXPAND_${expand!.toUpperCase()}`],
-      reverse ? NAVBAR_DARK : NAVBAR_LIGHT,
-      {
-        [STICKY]: !!sticky,
-        [cls[`FIXED_${String(fixed).toUpperCase()}`]]: !!fixed,
-        [cls[`JUSTIFY_CONTENT_XS_${String(justify).toUpperCase()}`]]: !!justify,
-      },
-    )
-
+    const classes = Navbar.navbarClass({className, fixed, justify, reverse, expand, sticky, color})
     return (
       <NavbarContext.Provider value={{
         getTogglerProps: this.getTogglerProps,
         getCollapseProps: this.getCollapseProps,
       }}>
-        <Tag {...others} className={className} />
+        <Tag {...others} className={classes} />
       </NavbarContext.Provider>
     )
   }

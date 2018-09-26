@@ -30,26 +30,10 @@ export interface INavProps extends IProps {
   tab?: boolean
 }
 
-const justifyMap = {
-  center: 'CENTER',
-  end: 'END',
-  around: 'AROUND',
-  between: 'BETWEEN',
-}
-
 export const Nav: React.StatelessComponent<INavProps> = function (props: INavProps) {
-  const { tag, tab, justify, vertical, ...others } = props
+  const { tag, tab, justify, vertical, className, ...others } = props
   const Tag = tag!
-  const className = classNames(
-    props.className,
-    NAV,
-    {
-      [NAV_TAB]: !!tab,
-      [FLEX_COLUMN]: !!vertical,
-      [cls[`JUSTIFY_CONTENT_XS_${justifyMap[justify!]}`]]: !!justifyMap[justify!],
-    },
-  )
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={navClass({className, tab, vertical, justify})} />
 }
 
 Nav.displayName = 'xbrick.Nav'
@@ -58,4 +42,23 @@ Nav.defaultProps = {
   tab: false,
   justify: 'start',
   vertical: false,
+}
+
+export function navClass({className, tab, vertical, justify}: any) {
+  const justifyMap = {
+    center: 'CENTER',
+    end: 'END',
+    around: 'AROUND',
+    between: 'BETWEEN',
+  }
+
+  return classNames(
+    className,
+    NAV,
+    {
+      [NAV_TAB]: !!tab,
+      [FLEX_COLUMN]: !!vertical,
+      [cls[`JUSTIFY_CONTENT_XS_${justifyMap[justify!]}`]]: !!justifyMap[justify!],
+    },
+  )
 }

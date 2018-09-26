@@ -31,19 +31,30 @@ export interface IInputProps extends IProps {
   label?: string | React.ReactNode
 }
 
-const sizeMap = {
-  large: 'lg',
-  small: 'sm',
+export const Input: React.StatelessComponent<IInputProps> = function (props: IInputProps) {
+  const { id = uniqId(),  type, size, label, inline, plainText, className, ...others } = props
+  const checkOrRadio = type === 'radio' || type === 'checkbox'
+  const Tag = type === 'select' ? 'select' : type === 'textarea' ? 'textarea' : 'input'
+
+  return (
+    <>
+      {!checkOrRadio && !!label && <Label htmlFor={id}>{label}</Label>}
+      <Tag {...others} id={id} type={type} className={inputClass({className, type, size, plainText})} />
+      {checkOrRadio && !!label && <Label htmlFor={id}>{label}</Label>}
+    </>
+  )
 }
 
-export const Input: React.StatelessComponent<IInputProps> = function (props: IInputProps) {
-  const { id = uniqId(),  type, size, label, inline, plainText, ...others } = props
+Input.displayName = 'xbrick.Input'
+Input.defaultProps = { plainText: false }
+
+export function inputClass({className, type, size, plainText}: any) {
+  const sizeMap = { large: 'lg', small: 'sm' }
   const file = type === 'file'
   const range = type === 'range'
   const checkOrRadio = type === 'radio' || type === 'checkbox'
-  const Tag = type === 'select' ? 'select' : type === 'textarea' ? 'textarea' : 'input'
-  const className = classNames(
-    props.className,
+  return classNames(
+    className,
     checkOrRadio ?
       FORM_CHECK_INPUT
       : file ?
@@ -53,24 +64,6 @@ export const Input: React.StatelessComponent<IInputProps> = function (props: IIn
           : range ?
             FORM_CONTROL_RANGE
             : FORM_CONTROL,
-    getInputSize(props),
+    !!sizeMap[size!] && !checkOrRadio ? `${FORM_CONTROL}-${sizeMap[size!]}` : false,
   )
-  return (
-    <>
-      {!checkOrRadio && !!label && <Label htmlFor={id}>{label}</Label>}
-      <Tag {...others} id={id} type={type} className={className} />
-      {checkOrRadio && !!label && <Label htmlFor={id}>{label}</Label>}
-    </>
-  )
-}
-
-Input.displayName = 'xbrick.Input'
-Input.defaultProps = {
-  plainText: false,
-}
-
-export function getInputSize(props: IInputProps) {
-  const { type, size } = props
-  const checkOrRadio = type === 'radio' || type === 'checkbox'
-  return !!sizeMap[size!] && !checkOrRadio ? `${FORM_CONTROL}-${sizeMap[size!]}` : false
 }

@@ -13,15 +13,16 @@ export interface ICardImgProps extends IProps {
 }
 
 export const CardImg: React.StatelessComponent<ICardImgProps> = function (props: ICardImgProps) {
-  const { top, ...others } = props
-  const className = classNames(
-    props.className,
-    `${CARD_IMG}-${top ? TOP : BOTTOM}`,
-  )
-  return <img {...others} className={className} />
+  const { top, className, ...others } = props
+  return <img {...others} className={cardImgClass({className})} />
 }
 
 CardImg.displayName = 'xbrick.CardImg'
-CardImg.defaultProps = {
-  top: true,
+CardImg.defaultProps = { top: true }
+
+export function cardImgClass({className, top}: any) {
+  return classNames(
+    className,
+    `${CARD_IMG}-${top ? TOP : BOTTOM}`,
+  )
 }

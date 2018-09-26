@@ -12,11 +12,14 @@ export interface IModalTitleProps extends IProps {
 }
 
 export const ModalTitle: React.StatelessComponent<IModalTitleProps> = function (props: IModalTitleProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, MODAL_TITLE)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={modalTitleClass({className})} />
 }
 
 ModalTitle.displayName = 'xbrick.ModalTitle'
 ModalTitle.defaultProps = { tag: 'h5' }
+
+export function modalTitleClass({className}: any) {
+  return classNames(className, MODAL_TITLE)
+}

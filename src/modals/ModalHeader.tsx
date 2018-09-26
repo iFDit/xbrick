@@ -24,11 +24,10 @@ export interface IModalHeaderProps extends IProps {
 }
 
 export const ModalHeader: React.StatelessComponent<IModalHeaderProps> = function (props: IModalHeaderProps) {
-  const { tag, closeIcon, children, onIconClick, ...others } = props
+  const { tag, closeIcon, children, onIconClick, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, MODAL_HEADER)
   return (
-    <Tag {...others} className={className}>
+    <Tag {...others} className={modalHeaderClass({className})}>
       {children}
       {closeIcon && React.cloneElement(closeIcon as React.ReactElement<any>, { onClick: onIconClick })}
     </Tag>
@@ -40,4 +39,8 @@ ModalHeader.defaultProps = {
   tag: 'div',
   onIconClick: () => {/**/},
   closeIcon: <Close />,
+}
+
+export function modalHeaderClass({className}: any) {
+  return classNames(className, MODAL_HEADER)
 }

@@ -25,16 +25,9 @@ export interface IDropdownToggleProps extends IProps {
 }
 
 export const DropdownToggle: React.StatelessComponent<IDropdownToggleProps> = function (props: IDropdownToggleProps) {
-  const { tag, split, button, ...others } = props
+  const { tag, split, button, className, ...others } = props
   const Tag = (button ? Button : tag) as any
-  const className = classNames(
-    props.className,
-    DROPDOWN_TOGGLE,
-    {
-      [DROPDOWN_TOGGLE_SPLIT]: !!split,
-    },
-  )
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={dropdownToggleClass({className})} />
 }
 
 DropdownToggle.displayName = 'xbrick.DropdownToggle'
@@ -42,4 +35,14 @@ DropdownToggle.defaultProps = {
   tag: 'button',
   split: false,
   button: false,
+}
+
+export function dropdownToggleClass({className, split}: any) {
+  return classNames(
+    className,
+    DROPDOWN_TOGGLE,
+    {
+      [DROPDOWN_TOGGLE_SPLIT]: !!split,
+    },
+  )
 }

@@ -26,19 +26,12 @@ export interface ITableProps extends IProps {
    * enable a hover state on table rows.
    * @default false
    */
-  hover?: boolean
+  dynamic?: boolean
 }
 
 export const Table: React.StatelessComponent<ITableProps> = function (props: ITableProps) {
-  const { striped, border, size, hover, ...others } = props
-  const className = classNames(props.className, TABLE, {
-    [TABLE_SMALL]: size === 'small',
-    [TABLE_HOVER]: hover,
-    [TABLE_BORDERLESS]: border === 'none',
-    [TABLE_BORDER]: border === 'full',
-    [TABLE_STRIPED]: striped,
-  })
-  return <table {...others} className={className}/>
+  const { striped, border, size, dynamic, className, ...others } = props
+  return <table {...others} className={tableClass({className, size, dynamic, border, striped})}/>
 }
 
 Table.displayName = 'xbrick.Table'
@@ -46,5 +39,15 @@ Table.defaultProps = {
   striped: false,
   border: 'normal',
   size: 'middle',
-  hover: false,
+  dynamic: false,
+}
+
+export function tableClass({className, size, dynamic, border, striped}: any) {
+  return classNames(className, TABLE, {
+    [TABLE_SMALL]: size === 'small',
+    [TABLE_HOVER]: dynamic,
+    [TABLE_BORDERLESS]: border === 'none',
+    [TABLE_BORDER]: border === 'full',
+    [TABLE_STRIPED]: striped,
+  })
 }

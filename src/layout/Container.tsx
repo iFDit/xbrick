@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { IProps } from 'src/common/props'
+import { CONTAINER_FLUID, CONTAINER} from 'src/common/classes'
 
 export interface IContainerProps extends IProps {
   /**
@@ -17,14 +17,17 @@ export interface IContainerProps extends IProps {
 }
 
 export const Container: React.StatelessComponent<IContainerProps> = function (props: IContainerProps) {
-  const { tag, fluid, ...others } = props
+  const { tag, fluid, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, fluid ? classes.CONTAINER_FLUID : classes.CONTAINER)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={containerClass({className, fluid})} />
 }
 
 Container.displayName = 'xbrick.Container'
 Container.defaultProps = {
   tag: 'div',
   fluid: false,
+}
+
+export function containerClass({className, fluid}: any) {
+  return classNames(className, fluid ? CONTAINER_FLUID : CONTAINER)
 }

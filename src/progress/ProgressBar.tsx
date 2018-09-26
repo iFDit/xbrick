@@ -35,19 +35,10 @@ export interface IProgressBarProps extends IProps {
 }
 
 export const ProgressBar: React.StatelessComponent<IProgressBarProps> = function (props: IProgressBarProps) {
-  const { tag, width, style = {}, striped, animate, color = '', ...others } = props
+  const { tag, width, style = {}, striped, animate, color, className, ...others } = props
   const Tag = tag!
   const styles = { ...style, width: `${width}%` }
-  const className = classNames(
-    props.className, 
-    PROGRESS_BAR,
-    {
-      [PROGRESS_STRIPED]: striped,
-      [PROGRESS_ANIMATE]: animate,
-      [cls[`BG_${String(color).toUpperCase()}`]]: !!color,
-    },
-  )
-  return <Tag {...others} className={className} style={styles}/>
+  return <Tag {...others} className={progressBarClass({className, striped, animate, color})} style={styles}/>
 }
 
 ProgressBar.displayName = 'xbrick.ProgressBar'
@@ -55,4 +46,16 @@ ProgressBar.defaultProps = {
   tag: 'div',
   striped: false,
   animate: false,
+}
+
+export function progressBarClass({className, striped, animate, color}: any) {
+  return classNames(
+    className, 
+    PROGRESS_BAR,
+    {
+      [PROGRESS_STRIPED]: striped,
+      [PROGRESS_ANIMATE]: animate,
+      [cls[`BG_${String(color).toUpperCase()}`]]: !!color,
+    },
+  )
 }

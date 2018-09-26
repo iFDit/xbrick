@@ -29,7 +29,7 @@ export interface ICarouselIndicatorProps extends IProps {
 }
 
 export const CarouselIndicators: React.StatelessComponent<ICarouselIndicatorProps> = function (props: ICarouselIndicatorProps) {
-  const { tag, amount, onItemClick, activeIndex, ...others } = props
+  const { tag, amount, className, onItemClick, activeIndex, ...others } = props
   const Tag = tag!
   const itemNodes = [...Array(+amount!).fill(1)].map((_, idx) => (
     <li
@@ -41,7 +41,7 @@ export const CarouselIndicators: React.StatelessComponent<ICarouselIndicatorProp
       }}
     />
   ))
-  return <Tag {...others} className={classNames(props.className, CAROUSEL_INDICATORS)}>{itemNodes}</Tag>
+  return <Tag {...others} className={carouselIndicatorClass({className})}>{itemNodes}</Tag>
 }
 
 CarouselIndicators.displayName = 'xbrick.CarouselIndicator'
@@ -49,4 +49,8 @@ CarouselIndicators.defaultProps = {
   tag: 'ol',
   amount: 0,
   onItemClick: () => {/* */},
+}
+
+export function carouselIndicatorClass({className}: any) {
+  return classNames(className, CAROUSEL_INDICATORS)
 }

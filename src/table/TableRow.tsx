@@ -12,12 +12,14 @@ export interface ITableRow extends IProps {
 }
 
 export const TableRow: React.StatelessComponent<ITableRow> = function (props: ITableRow) {
-  const { color = '', ...others } = props
-  const className = classNames(props.className, {
-    [`${TABLE}-${classes[String(color!).toUpperCase()]}`]: !!color,
-  })
-
-  return <tr {...others} className={className} />
+  const { color, className, ...others } = props
+  return <tr {...others} className={tableRowClass({className})} />
 }
 
 TableRow.displayName = 'xbrick.TableRow'
+
+export function tableRowClass({className, color}: any) {
+  return classNames(className, {
+    [`${TABLE}-${classes[String(color!).toUpperCase()]}`]: !!color,
+  })
+}

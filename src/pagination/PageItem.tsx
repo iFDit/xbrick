@@ -24,15 +24,9 @@ export interface IPageItemProps extends IProps {
 }
 
 export const PageItem: React.StatelessComponent<IPageItemProps> = function (props: IPageItemProps) {
-  const { tag, disabled, active, ...others } = props
+  const { tag, disabled, active, className, ...others } = props
   const Tag = tag!
-  const className = classNames(
-    props.className,
-    PAGE_ITEM,
-    disabled && DISABLED,
-    active && ACTIVE,
-  )
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={pageItemClass({className, active, disabled})} />
 }
 
 PageItem.displayName = 'xbrick.PaginationItem'
@@ -40,4 +34,13 @@ PageItem.defaultProps = {
   tag: 'li',
   disabled: false,
   active: false,
+}
+
+export function pageItemClass({className, active, disabled}: any) {
+  return classNames(
+    className,
+    PAGE_ITEM,
+    disabled && DISABLED,
+    active && ACTIVE,
+  )
 }

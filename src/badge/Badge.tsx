@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
+import * as cls from 'src/common/classes'
 import { IProps, BadgeType } from 'src/common/props'
 import { BADGE, BADGE_PILL } from 'src/common/classes'
-import * as cls from 'src/common/classes'
 
 export interface IBadgeProps extends IProps {
   /**
@@ -25,14 +25,10 @@ export interface IBadgeProps extends IProps {
 }
 
 export const Badge: React.StatelessComponent<IBadgeProps> = function (props: IBadgeProps) {
-  const { tag, pill, color, ...others } = props
+  const { tag, pill, color, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, BADGE, {
-    [BADGE_PILL]: !!pill,
-    [cls[`B_${color!.toUpperCase()}`]]: !!color,
-  })
   return (
-    <Tag {...others} className={className}/>
+    <Tag {...others} className={badgeClass({className, pill, color})}/>
   )
 }
 
@@ -41,4 +37,17 @@ Badge.defaultProps = {
   tag: 'span',
   pill: false,
   color: 'primary',
+}
+
+export type BadgeClass = {
+  className?: string,
+  pill?: boolean,
+  color?: BadgeType,
+}
+
+export function badgeClass({ className, pill, color = '' }: BadgeClass = {}) {
+  return classNames(className, BADGE, {
+    [BADGE_PILL]: !!pill,
+    [cls[`B_${color!.toUpperCase()}`]]: !!color,
+  })
 }

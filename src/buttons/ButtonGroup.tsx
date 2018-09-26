@@ -1,7 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
-import { omit } from 'lodash'
+import * as cls from 'src/common/classes'
 import { IProps, ButtonSize } from 'src/common/props'
 
 export interface IButtonGroupProps extends IProps {
@@ -25,11 +24,10 @@ export interface IButtonGroupProps extends IProps {
   vertical?: boolean
 }
 
-const omitProps = ['size', 'vertical']
 export const ButtonGroup: React.StatelessComponent<IButtonGroupProps> = function (props: IButtonGroupProps) {
-  const { tag, ...others } = props
+  const { tag, size, vertical, className, ...others } = props
   const Tag = tag!
-  return <Tag {...omit(others, omitProps)} className={buttonGroupClasses(props)} />
+  return <Tag {...others} className={buttonGroupClass({size, vertical, className})} />
 }
 
 ButtonGroup.displayName = 'xbrick.ButtonGroup'
@@ -39,21 +37,22 @@ ButtonGroup.defaultProps = {
   vertical: false,
 }
 
-const sizeMap = {
-  large: 'lg',
-  small: 'sm',
+export type ButtonGroupClass = {
+  size?: ButtonSize,
+  vertical?: boolean,
+  className?: string,
 }
 
-function buttonGroupClasses(props: IButtonGroupProps) {
-  const { size, vertical, className } = props
+export function buttonGroupClass({size, vertical, className}: ButtonGroupClass = {}) {
+  const sizeMap = { large: 'lg', small: 'sm' }
   const groupclass = vertical ?
-    `${classes.BUTTON}-${classes.GROUP}-${classes.VERTICAL}`
-    : `${classes.BUTTON}-${classes.GROUP}`
+    `${cls.BUTTON}-${cls.GROUP}-${cls.VERTICAL}`
+    : `${cls.BUTTON}-${cls.GROUP}`
   return classNames(
     className,
     groupclass,
     {
-      [`${classes.BUTTON}-${classes.GROUP}-${sizeMap[size!]}`]: !!sizeMap[size!],
+      [`${cls.BUTTON}-${cls.GROUP}-${sizeMap[size!]}`]: !!sizeMap[size!],
     },
   )
 }

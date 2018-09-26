@@ -1,8 +1,8 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { Button } from 'src/buttons/Button'
-import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
+import { Button, buttonClass } from 'src/buttons/Button'
+import { notCrash, renderChild, customTag, defaultTag, defaultProps } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -18,7 +18,6 @@ describe('Button', () => {
   defaultProps(Button, { tag: 'button', color: 'primary', disabled: false, outline: false, active: false, block: false })
   renderChild(Button, child, 'p')
   customTag(Button, 'div', 'div')
-  displayName(Button, 'xbrick.Button')
 
   it('should change color by using color props', () => {
     const node = mount(<Button>1</Button>)
@@ -56,6 +55,46 @@ describe('Button', () => {
     colors.forEach(color => {
       node.setProps({ color })
       expect(node.find('button').hasClass(`btn-outline-${color}`)).toBe(true)
+    })
+  })
+
+  describe('buttonClass', () => {
+    it('should create default className', () => {
+      const classnameTest = (classnames: string[], testClass: string[]) => {
+        classnames.forEach(name => {
+          expect(testClass.includes(name)).toBe(true)
+        })
+      }
+      expect(buttonClass()).toBe('btn')
+      colors.forEach((color: any) => {
+        const baseClass = ['btn', color]
+        classnameTest(baseClass, buttonClass({className: color, color }).split(' '))
+        classnameTest(baseClass.concat([`btn-${color}`]), buttonClass({className: color, color }).split(' '))
+        classnameTest(
+          baseClass.concat(['btn-block']),
+          buttonClass({className: color, color, block: true }).split(' '),
+        )
+        classnameTest(
+          baseClass.concat([`btn-outline-${color}`]),
+          buttonClass({className: color, color, outline: true }).split(' '),
+        )
+        classnameTest(
+          baseClass.concat(['btn-sm']),
+          buttonClass({className: color, color, size: 'small' }).split(' '),
+        )
+        classnameTest(
+          baseClass.concat(['btn-lg']),
+          buttonClass({className: color, color, size: 'large' }).split(' '),
+        )
+        classnameTest(
+          baseClass.concat(['active']),
+          buttonClass({className: color, color, active: true }).split(' '),
+        )
+        classnameTest(
+          baseClass.concat(['disabled']),
+          buttonClass({className: color, color, disabled: true }).split(' '),
+        )
+      })
     })
   })
 })

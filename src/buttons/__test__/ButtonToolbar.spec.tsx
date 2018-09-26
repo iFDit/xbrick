@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { ButtonToolbar } from 'src/buttons/ButtonToolbar'
+import { ButtonToolbar, buttonToolbarClass } from 'src/buttons/ButtonToolbar'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -14,4 +14,11 @@ describe('ButtonToolbar', () => {
   renderChild(ButtonToolbar, child, 'p')
   customTag(ButtonToolbar, 'span', 'span')
   displayName(ButtonToolbar, 'xbrick.ButtonToolbar')
+
+  describe('buttonToolbarClass', () => {
+    it('should create default className', () => {
+      expect(buttonToolbarClass()).toBe('btn-toolbar')
+      expect(buttonToolbarClass({className: 'test'})).toBe('test btn-toolbar')
+    })
+  })
 })

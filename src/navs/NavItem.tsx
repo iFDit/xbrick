@@ -12,10 +12,9 @@ export interface INavItem extends IProps {
 }
 
 export const NavItem: React.StatelessComponent<INavItem> = function (props: INavItem) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, NAV_ITEM)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={navItemClass({className})} />
 }
 
 export const NavItemStyles = {
@@ -24,3 +23,7 @@ export const NavItemStyles = {
 
 NavItem.displayName = 'xbrick.NavItem'
 NavItem.defaultProps = { tag: 'li' }
+
+export function navItemClass({className}: any) {
+  return classNames(className, NAV_ITEM)
+}

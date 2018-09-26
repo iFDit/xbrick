@@ -12,13 +12,14 @@ export interface ICarouselCaptionProps extends IProps {
 }
 
 export const CarouselCaption: React.StatelessComponent<ICarouselCaptionProps> = function (props: ICarouselCaptionProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, CAROUSEL_CAPTION, NONE, MD_BLOCK)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={carouselCaptionClass({className})} />
 }
 
 CarouselCaption.displayName = 'xbrick.CarouselCaption'
-CarouselCaption.defaultProps = {
-  tag: 'div',
+CarouselCaption.defaultProps = { tag: 'div' }
+
+export function carouselCaptionClass({className}: any) {
+  return classNames(className, CAROUSEL_CAPTION, NONE, MD_BLOCK)
 }

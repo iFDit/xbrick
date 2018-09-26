@@ -26,16 +26,11 @@ export interface ICarouselControlProps extends IProps {
 }
 
 export const CarouselControl: React.StatelessComponent<ICarouselControlProps> = function (props: ICarouselControlProps) {
-  const { tag, text, direction, ...others } = props
+  const { tag, text, direction, className, ...others } = props
   const Tag = tag!
-  const defaultClass = cls[`CAROUSEL_CONTROL_${direction!.toUpperCase()}`]
-  const className = classNames(
-    props.className,
-    defaultClass,
-  )
   return (
     <Tag {...others} className={className}>
-      {isFunction(text) ? text({className: classNames(`${defaultClass}-${ICON}`)}) : text}
+      {isFunction(text) ? text({direction}) : text}
     </Tag>
   )
 }
@@ -44,5 +39,13 @@ CarouselControl.displayName = 'xbrick.CarouselControl'
 CarouselControl.defaultProps = {
   tag: 'a',
   direction: 'prev',
-  text: (props: any) => <span className={props.className}/>,
+  text: ({direction}: any) => <span className={`${cls[`CAROUSEL_CONTROL_${direction!.toUpperCase()}`]}-${ICON}`}/>,
+}
+
+export function carouselControlClass({className, direction}: any) {
+  const defaultClass = cls[`CAROUSEL_CONTROL_${direction!.toUpperCase()}`]
+  return classNames(
+    className,
+    defaultClass,
+  )
 }

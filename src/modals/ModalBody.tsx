@@ -12,11 +12,14 @@ export interface IModalBodyProps extends IProps {
 }
 
 export const ModalBody: React.StatelessComponent<IModalBodyProps> = function (props: IModalBodyProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, MODAL_BODY)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={modalBodyClass({className})} />
 }
 
 ModalBody.displayName = 'xbrick.ModalBody'
 ModalBody.defaultProps = { tag: 'div' }
+
+export function modalBodyClass({className}: any) {
+  return classNames(className, MODAL_BODY)
+}

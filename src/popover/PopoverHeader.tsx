@@ -19,14 +19,17 @@ export interface IPopoverHeaderProps extends IProps {
 }
 
 export const PopoverHeader: React.StatelessComponent<IPopoverHeaderProps> = function (props: IPopoverHeaderProps) {
-  const { open, ...others } = props
+  const { open, className, ...others } = props
   const from = open ? 0 : 1
   const to = open ? 1 : 0
-  const className = classNames(props.className, POPOVER_HEADER)
   return (
-    <Fade {...others} from={from} to={to} className={className}/>
+    <Fade {...others} from={from} to={to} className={popoverHeaderClass({className})}/>
   )
 }
 
 PopoverHeader.displayName = 'xbrick.PopoverHeader'
 PopoverHeader.defaultProps = { tag: 'h3' }
+
+export function popoverHeaderClass({className}: any) {
+  return classNames(className, POPOVER_HEADER)
+}

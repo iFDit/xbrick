@@ -12,11 +12,14 @@ export interface ICardColumnsProps extends IProps {
 }
 
 export const CardColumns: React.StatelessComponent<ICardColumnsProps> = function (props: ICardColumnsProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, CARD_COLUMNS)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={cardColumnsClass({className})} />
 }
 
 CardColumns.displayName = 'xbrick.CardColumns'
 CardColumns.defaultProps = { tag: 'div' }
+
+export function cardColumnsClass({className}: any) {
+  return classNames(className, CARD_COLUMNS)
+}

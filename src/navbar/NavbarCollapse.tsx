@@ -12,9 +12,13 @@ export interface INavbarCollapseProps extends ICollapseProps {
 }
 
 export const NavbarCollapse: React.StatelessComponent<INavbarCollapseProps> = (props: INavbarCollapseProps) => {
-  const className = classNames(props.className, NAVBAR_COLLAPSE)
-  return <Collapse {...props} className={className} />
+  const { className, ...others } = props
+  return <Collapse {...others} className={navbarCollapseClass({className})} />
 }
 
 NavbarCollapse.displayName = 'xbrick.NavbarCollapse'
 NavbarCollapse.defaultProps = { tag: 'div' }
+
+export function navbarCollapseClass({className}: any) {
+  return classNames(className, NAVBAR_COLLAPSE)
+}

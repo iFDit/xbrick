@@ -12,11 +12,14 @@ export interface INavbarBrandProps extends IProps {
 }
 
 export const NavbarBrand: React.StatelessComponent<INavbarBrandProps> = function (props: INavbarBrandProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, NAVBAR_BRAND)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={narbarBrandClass({className})} />
 }
 
 NavbarBrand.displayName = 'xbrick.NavbarBrand'
 NavbarBrand.defaultProps = { tag: 'a' }
+
+export function narbarBrandClass({className}: any) {
+  return classNames(className, NAVBAR_BRAND)
+}

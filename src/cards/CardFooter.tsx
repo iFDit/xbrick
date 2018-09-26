@@ -12,11 +12,14 @@ export interface ICardHeaderProps extends IProps {
 }
 
 export const CardFooter: React.StatelessComponent<ICardHeaderProps> = function (props: ICardHeaderProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, CARD_FOOTER)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={cardFooterClass({className})} />
 }
 
 CardFooter.displayName = 'xbrick.CardFooter'
 CardFooter.defaultProps = { tag: 'div' }
+
+export function cardFooterClass({className}: any) {
+  return classNames(className, CARD_FOOTER)
+}

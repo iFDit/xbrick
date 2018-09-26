@@ -29,24 +29,9 @@ export interface ILabelProps extends IProps {
   col?: boolean
 }
 
-const sizeMap = {
-  large: 'lg',
-  small: 'sm',
-}
-
 export const Label: React.StatelessComponent<ILabelProps> = function (props: ILabelProps) {
-  const { col, size, check, hiddren, ...others } = props
-  const className = classNames(
-    props.className,
-    'xbrick-lable',
-    {
-      [SR_ONLY]: !!hiddren,
-      [COL_FORM_LABEL]: !!col,
-      [FORM_CHECK_LABEL]: !!check,
-      [`${COL_FORM_LABEL}-${sizeMap[size!]}`]: !!sizeMap[size!] && !!col,
-    },
-  )
-  return <label {...others} className={className} />
+  const { col, size, check, hiddren, className, ...others } = props
+  return <label {...others} className={labelClass({className, hiddren, col, check, size})} />
 }
 
 Label.displayName = 'xbrick.Label'
@@ -55,4 +40,18 @@ Label.defaultProps = {
   check: false,
   size: 'middle',
   hiddren: false,
+}
+
+export function labelClass({className, hiddren, col, check, size}: any) {
+  const sizeMap = { large: 'lg', small: 'sm' }
+  return classNames(
+    className,
+    'xbrick-lable',
+    {
+      [SR_ONLY]: !!hiddren,
+      [COL_FORM_LABEL]: !!col,
+      [FORM_CHECK_LABEL]: !!check,
+      [`${COL_FORM_LABEL}-${sizeMap[size!]}`]: !!sizeMap[size!] && !!col,
+    },
+  )
 }

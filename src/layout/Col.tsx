@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
+import * as cls from 'src/common/classes'
 import { IProps, IColumn } from 'src/common/props'
 import { cloneWithClassName } from 'src/common/util'
 import { omit, isObject, isString, isNumber, isBoolean } from 'lodash'
@@ -21,12 +21,11 @@ export interface IColProps extends IProps, IColumn {
 
 const omitProps = ['xs', 'sm', 'md', 'lg', 'xl']
 export const Col: React.StatelessComponent<IColProps> = function (props: IColProps) {
-  const { tag, render, ...others } = props
+  const { tag, render, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, getColClass(props))
   return render ?
-    <Tag {...omit(others, omitProps)} className={className}/>
-    : cloneWithClassName(props.children, className)
+    <Tag {...omit(others, omitProps)} className={colClass({className, ...others})}/>
+    : cloneWithClassName(props.children, colClass({className, ...others}))
 }
 
 Col.displayName = 'xbrick.Col'
@@ -36,20 +35,20 @@ Col.defaultProps = {
   render: true,
 }
 
-function getColClass(props: IColProps) {
-  return omitProps.map(propName => {
+function colClass({className, ...others}: any) {
+  return classNames(className, omitProps.map(propName => {
     const result = {}
-    const size = props[propName]
+    const size = others[propName]
     if (isString(size)) {
-      result[`${classes[`COL_${propName.toUpperCase()}`]}-${size}`] = !!size
+      result[`${cls[`COL_${propName.toUpperCase()}`]}-${size}`] = !!size
       return result
     }
     if (isNumber(size)) {
-      result[`${classes[`COL_${propName.toUpperCase()}`]}${+size === 0 ? '' : `-${size}`}`] = true
+      result[`${cls[`COL_${propName.toUpperCase()}`]}${+size === 0 ? '' : `-${size}`}`] = true
       return result
     }
     if (isBoolean(size)) {
-      result[`${classes[`COL_${propName.toUpperCase()}`]}`] = true
+      result[`${cls[`COL_${propName.toUpperCase()}`]}`] = true
       return result
     }
     if (isObject(size)) {
@@ -57,11 +56,11 @@ function getColClass(props: IColProps) {
       const offset = size.offset || 0
       const order = size.order || 0
       const col = size.col
-      result[classes[`ALIGN_SELF_${propName.toUpperCase()}_${align.toUpperCase()}`]] = !!align
-      result[`${classes[`OFFSET_${propName.toUpperCase()}`]}-${offset}`] = !!offset
-      result[`${classes[`ORDER_${propName.toUpperCase()}`]}-${order}`] = !!order
-      result[`${classes[`COL_${propName.toUpperCase()}`]}${+col === 0 ? '' : `-${col}`}`] = !!col || col === 0
+      result[cls[`ALIGN_SELF_${propName.toUpperCase()}_${align.toUpperCase()}`]] = !!align
+      result[`${cls[`OFFSET_${propName.toUpperCase()}`]}-${offset}`] = !!offset
+      result[`${cls[`ORDER_${propName.toUpperCase()}`]}-${order}`] = !!order
+      result[`${cls[`COL_${propName.toUpperCase()}`]}${+col === 0 ? '' : `-${col}`}`] = !!col || col === 0
     }
     return result
-  }).reduce((o1, o2) => ({...o1, ...o2}), {})
+  }).reduce((o1, o2) => ({...o1, ...o2}), {}))
 }

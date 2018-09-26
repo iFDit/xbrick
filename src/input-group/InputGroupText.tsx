@@ -12,11 +12,14 @@ export interface IInputGroupTextProps extends IProps {
 }
 
 export const InputGroupText: React.StatelessComponent<IInputGroupTextProps> = function (props: IInputGroupTextProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, INPUT_GROUP_TEXT)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={inputGroupTextClass({className})} />
 }
 
 InputGroupText.displayName = 'xbrick.InputGroupText'
 InputGroupText.defaultProps = { tag: 'div' }
+
+export function inputGroupTextClass({className}: any) {
+  return classNames(className, INPUT_GROUP_TEXT)
+}

@@ -1,9 +1,9 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
+import * as cls from 'src/common/classes'
 import { IProps } from 'src/common/props'
 import { uniqId } from 'src/common/util'
-import { Input, IInputProps, getInputSize } from 'src/input-group/Input'
+import { Input, IInputProps } from 'src/input-group/Input'
 
 export interface ICustomInput extends IProps, IInputProps {
   /**
@@ -13,34 +13,20 @@ export interface ICustomInput extends IProps, IInputProps {
   inline?: boolean
 }
 
+
 export const CustomInput: React.StatelessComponent<ICustomInput> = function (props: ICustomInput) {
-  const { type, label, plainText, inline, size, id = uniqId(), ...others } = props
+  const { type, label, plainText, inline, size, id = uniqId(), className, ...others } = props
   const checkboxOrRadio = type === 'checkbox' || type === 'radio'
-  const className = classNames(
-    props.className,
-    classes.INPUT_CUSTOM,
-    {
-      [classes.CUSTOM_SELECT]: type === 'select',
-      [classes.CUSTOM_CONTROL_INPUT]: !!checkboxOrRadio,
-    },
-    getInputSize(props),
-  )
-  const wrapClass = classNames({
-    [classes.CUSTOM_CONTROL]: true,
-    [classes.CUSTOM_CONTROL_INLINE]: !!inline,
-    [classes.CUSTOM_RADIO]: type === 'radio',
-    [classes.CUSTOM_CHECKBOX]: type === 'checkbox',
-  })
   return checkboxOrRadio ? (
-    <div className={wrapClass}>
-      <input {...others} type={type} className={className} id={id} />
-      <label className={classes.CUSTOM_CONTROL_LABEL} htmlFor={id} >{label}</label>
+    <div className={containerClass({inline, type})}>
+      <input {...others} id={id} type={type} className={customInputClass({className, type, plainText, size})}/>
+      {!!label && <label className={cls.CUSTOM_CONTROL_LABEL} htmlFor={id} >{label}</label>}
     </div>
   ) : type === 'select' ?
     (
       <>
-        {!!label &&  <label htmlFor={id} >{label}</label>}
-        <select {...others} className={className} />
+        {!!label &&  <label className={cls.CUSTOM_CONTROL_LABEL} htmlFor={id} >{label}</label>}
+        <select {...others} className={customInputClass({className, type, plainText, size})} />
       </>
     )
     : <Input {...props} />
@@ -52,4 +38,28 @@ CustomInput.defaultProps = {
   type: 'text',
   inline: false,
   plainText: false,
+}
+
+export function customInputClass({className, type, plainText, size}: any) {
+  const sizeMap = { large: 'lg', small: 'sm' }
+  const checkboxOrRadio = type === 'checkbox' || type === 'radio'
+  return classNames(
+    className,
+    cls.INPUT_CUSTOM,
+    {
+      [cls.CUSTOM_SELECT]: type === 'select',
+      [cls.CUSTOM_CONTROL_INPUT]: !!checkboxOrRadio,
+      [cls.FORM_CONTROL_PLAINTEXT]: !!plainText,
+      [`${cls.FORM_CONTROL}-${sizeMap[size!]}`]: !!sizeMap[size!] && !checkboxOrRadio,
+    },
+  )
+}
+
+export function containerClass({inline, type}: any) {
+  return classNames({
+    [cls.CUSTOM_CONTROL]: true,
+    [cls.CUSTOM_CONTROL_INLINE]: !!inline,
+    [cls.CUSTOM_RADIO]: type === 'radio',
+    [cls.CUSTOM_CHECKBOX]: type === 'checkbox',
+  })
 }

@@ -30,15 +30,9 @@ export interface IFormGroupProps extends IProps {
 }
 
 export const FormGroup: React.StatelessComponent<IFormGroupProps> = function (props: IFormGroupProps) {
-  const { tag, row, check, inline, ...others } = props
+  const { tag, row, check, inline, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, {
-    [ROW]: !!row,
-    [FORM_GROUP]: !check,
-    [FORM_CHECK]: !!check,
-    [FORM_CHECK_INLINE]: !!check && !!inline,
-  })
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={formGroupClass({className})} />
 }
 
 FormGroup.displayName = 'xbrick.FormGroup'
@@ -47,4 +41,13 @@ FormGroup.defaultProps = {
   row: false,
   check: false,
   inline: false,
+}
+
+export function formGroupClass({className, row, check, inline}: any) {
+  return classNames(className, {
+    [ROW]: !!row,
+    [FORM_GROUP]: !check,
+    [FORM_CHECK]: !!check,
+    [FORM_CHECK_INLINE]: !!check && !!inline,
+  })
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import sinon from 'sinon'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { Alert, AlertContext } from 'src/alert/Alert'
+import { Alert, AlertContext, alertClass } from 'src/alert/Alert'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -16,6 +16,10 @@ describe('Alert', () => {
   customTag(Alert, 'a', 'a')
   displayName(Alert, 'xbrick.Alert')
   displayName(Alert.Close, 'xbrick.AlertClose')
+
+  it('should not collapse that rende Alert.Close', () => {
+    mount(<Alert.Close/>)
+  })
 
   it('should pass down custom properties', () => {
     let eventTrigged = false
@@ -87,5 +91,18 @@ describe('Alert', () => {
       </Alert>,
     )
     node.find('button').simulate('click')
+  })
+
+  describe('alertClass', () => {
+    it('should create default className', () => {
+      const colors = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']
+      const className = alertClass({className: 'test'})
+      colors.forEach((color: any) => {
+        expect(alertClass({className: color, color })).toBe(`${color} alert alert-${color}`)
+      })
+      expect(/test/.test(className)).toBe(true)
+      expect(/alert/.test(className)).toBe(true)
+      expect(alertClass({className: ''})).toBe('alert')
+    })
   })
 })

@@ -13,5 +13,5 @@
 | tag | 自定义标签 | string\|ReactNode | `div` |
 | color | Bootstrap type | string | 无 |
 | disabled | 是否禁用 | boolean | `false` |
-| action | 改变组件hover时鼠标的指针样式 | boolean | `false` |
+| dynamic | 改变组件hover时鼠标的指针样式 | boolean | `false` |
 | active | 是否激活状态 | boolean | `false` |

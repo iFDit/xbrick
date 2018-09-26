@@ -12,13 +12,14 @@ export interface ICarouselItemPorps extends IProps {
 }
 
 export const CarouselItem: React.StatelessComponent<ICarouselItemPorps> = function (props: ICarouselItemPorps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, CAROUSEL_ITEM)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={carouselItemClass({className})} />
 }
 
 CarouselItem.displayName = 'xbrick.CarouselItem'
-CarouselItem.defaultProps = {
-  tag: 'div',
+CarouselItem.defaultProps = { tag: 'div' }
+
+export function carouselItemClass({className}: any) {
+  return classNames(className, CAROUSEL_ITEM)
 }

@@ -79,6 +79,9 @@ export class Modal extends React.Component<IModalProps> {
     }
     return null
   }
+  static modalClass({className}: any) {
+    return classNames(className, MODAL)
+  }
 
   public state = {
     active: false,
@@ -158,10 +161,10 @@ export class Modal extends React.Component<IModalProps> {
   }
 
   render() {
-    const { mask, style, open, transition, ...others } = this.props
+    const { mask, style, open, transition, className, ...others } = this.props
     const { active } = this.state
     const Tag = this.props.tag!
-    const className = classNames(this.props.className, MODAL)
+    const classes = Modal.modalClass({className})
     const afterStateChange = mergeCall(this.afterAnimate, this.handleHide)
     const nextStyle = { ...style }
     this.init()
@@ -180,12 +183,12 @@ export class Modal extends React.Component<IModalProps> {
             from={getAnimateFrom(open!)}
             to={getAnimateTo(open!)}
             transition={transition}
-            className={className}
+            className={classes}
             style={nextStyle}
             show={true}
           />
           : 
-          <Tag {...omit(others, omitProps)} className={className} style={nextStyle} />
+          <Tag {...omit(others, omitProps)} className={classes} style={nextStyle} />
         }
 
       </ModalContext.Provider>,

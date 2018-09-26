@@ -12,17 +12,14 @@ export interface ICardLinkProps extends IProps {
 }
 
 export const CardLink: React.StatelessComponent<ICardLinkProps> = function (props: ICardLinkProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, CARD_LINK)
-  const nextProps = others
-  if (Tag === 'a') {
-    nextProps.href = '#'
-  }
-  return <Tag {...nextProps} className={className} />
+  return <Tag {...others} className={cardLinkClass({className})} />
 }
 
 CardLink.displayName = 'xbrick.CardLink'
-CardLink.defaultProps = {
-  tag: 'a',
+CardLink.defaultProps = { tag: 'a' }
+
+export function cardLinkClass({className}: any) {
+  return classNames(className, CARD_LINK)
 }

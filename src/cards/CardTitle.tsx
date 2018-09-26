@@ -17,14 +17,17 @@ export interface ICardTitleProps extends IProps {
 }
 
 export const CardTitle: React.StatelessComponent<ICardTitleProps> = function (props: ICardTitleProps) {
-  const { tag, subtitle, ...others } = props
+  const { tag, subtitle, className, ...others } = props
   const Tag = subtitle && tag === 'h5' ? 'h6' : tag!
-  const className = classNames(props.className, subtitle ? CARD_SUBTITLE : CARD_TITLE)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={cardTitleClass({className})} />
 }
 
 CardTitle.displayName = 'xbrick.CardTitle'
 CardTitle.defaultProps = {
   tag: 'h5',
   subtitle: false,
+}
+
+export function cardTitleClass({className, subtitle}: any) {
+  return classNames(className, subtitle ? CARD_SUBTITLE : CARD_TITLE)
 }

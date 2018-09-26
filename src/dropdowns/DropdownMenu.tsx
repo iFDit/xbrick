@@ -56,6 +56,19 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps> {
     }
     return null
   }
+  static dropdownMenuClass({className, right, open, direction, active}: any) {
+    return classNames(
+      className,
+      MENU,
+      DROPDOWN_MENU,
+      {
+        [`${DROPDOWN_MENU}-right`]: right,
+        [MENU_LEFT]: direction === 'left',
+        [MENU_UP]: direction === 'up',
+        [ACTIVE]: active && !open,
+      },
+    )
+  }
 
   public state = {
     lastOpen: this.props.open,
@@ -102,23 +115,11 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps> {
   }
 
   render () {
-    // @ts-ignore
-    // shortcut of ignore some props.
-    const { right, open, afterChange, direction, transition, ...others } = this.props
+    const { right, open, afterChange, direction, transition, className, ...others } = this.props
     const { active } = this.state
     const Tag = this.props.tag!
     const styles = { ...(this.props.style || {}) }
-    const className = classNames(
-      this.props.className,
-      MENU,
-      DROPDOWN_MENU,
-      {
-        [`${DROPDOWN_MENU}-right`]: right,
-        [MENU_LEFT]: direction === 'left',
-        [MENU_UP]: direction === 'up',
-        [ACTIVE]: active && !open,
-      },
-    )
+    const classes = DropdownMenu.dropdownMenuClass({className, right, open, direction, active})
     if (!open) {
       styles.display = 'none'
     }
@@ -131,9 +132,9 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps> {
           to={this.getToStyle()}
           show={true}
           transition={transition}
-          className={className}
+          className={classes}
           afterStateChange={this.handleAnimateEnd}
         />
-      ) : <Tag {...others} className={className} style={styles}/>
+      ) : <Tag {...others} className={classes} style={styles}/>
   }
 }

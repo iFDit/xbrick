@@ -13,12 +13,15 @@ export interface IModalBackdropProps extends IProps {
 }
 
 export const ModalBackdrop: React.StatelessComponent<IModalBackdropProps> = function (props: IModalBackdropProps) {
-  const { el = document.body, ...others } = props
-  const className = classNames(props.className, MODAL_BACKDROP)
+  const { el = document.body, className, ...others } = props
   return ReactDOM.createPortal(
-    <Fade {...others} className={className} show={true} />,
+    <Fade {...others} className={modalBackdropClass({className})} show={true} />,
     el!,
   ) as any
 }
 
 ModalBackdrop.displayName = 'xbrick.ModalBackdrop'
+
+export function modalBackdropClass({className}: any) {
+  return classNames(className, MODAL_BACKDROP)
+}

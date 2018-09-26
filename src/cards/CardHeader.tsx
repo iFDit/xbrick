@@ -12,10 +12,9 @@ export interface ICardHeaderProps extends IProps {
 }
 
 export const CardHeader: React.StatelessComponent<ICardHeaderProps> = function (props: ICardHeaderProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, CARD_HEADER)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={cardHeaderClass({className})} />
 }
 
 CardHeader.displayName = 'xbrick.CardHeader'
@@ -25,4 +24,8 @@ CardHeader.defaultProps = {
 
 export const CardHeaderStyle = {
   headerTab: CARD_HEADER_TAB,
+}
+
+export function cardHeaderClass({className}: any) {
+  return classNames(className, CARD_HEADER)
 }

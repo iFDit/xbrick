@@ -12,13 +12,16 @@ export interface ICardGroupProps extends IProps {
 }
 
 export const CardGroup: React.StatelessComponent<ICardGroupProps> = function (props: ICardGroupProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, CARD_GROUP)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={cardGroupClass({className})} />
 }
 
 CardGroup.displayName = 'xbrick.CardGroup'
 CardGroup.defaultProps = {
   tag: 'div',
+}
+
+export function cardGroupClass({className}: any) {
+  return classNames(className, CARD_GROUP)
 }

@@ -12,11 +12,14 @@ export interface IModalContentProps extends IProps {
 }
 
 export const ModalContent: React.StatelessComponent<IModalContentProps> = function (props: IModalContentProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, MODAL_CONTENT)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={modalContentClass({className})} />
 }
 
 ModalContent.displayName = 'xbrick.ModalContent'
 ModalContent.defaultProps = { tag: 'div' }
+
+export function modalContentClass({className}: any) {
+  return classNames(className, MODAL_CONTENT)
+}

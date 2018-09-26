@@ -12,11 +12,14 @@ export interface ICardDeckProps extends IProps {
 }
 
 export const CardDeck: React.StatelessComponent<ICardDeckProps> = function (props: ICardDeckProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, CARD_DECK)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={cardDeckClass({className})} />
 }
 
 CardDeck.displayName = 'xbrick.CardDeck'
 CardDeck.defaultProps = { tag: 'div' }
+
+export function cardDeckClass({className}: any) {
+  return classNames(className, CARD_DECK)
+}

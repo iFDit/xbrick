@@ -12,11 +12,14 @@ export interface IAlertLinkProps extends IProps {
 }
 
 export const AlertLink: React.StatelessComponent<IAlertLinkProps> = function (props: IAlertLinkProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, A_LINK)
-  return <Tag {...others} className={className}/>
+  return <Tag {...others} className={alertLinkClass({className})}/>
 }
 
 AlertLink.displayName = 'xbrick.AlertLink'
 AlertLink.defaultProps = { tag: 'a' }
+
+export function alertLinkClass({ className }: { className?: string } = {}) {
+  return classNames(className, A_LINK)
+}

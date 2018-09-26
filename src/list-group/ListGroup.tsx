@@ -18,18 +18,21 @@ export interface IListGroupProps extends IProps {
 }
 
 export const ListGroup: React.StatelessComponent<IListGroupProps> = function (props: IListGroupProps) {
-  const { tag, flush, ...others } = props
+  const { tag, flush, className, ...others } = props
   const Tag = tag!
-  const className = classNames(
-    props.className,
-    LIST_GROUP,
-    {[LIST_GROUP_FLUSH]: !!flush},
-  )
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={listGroupClass({className, flush})} />
 }
 
 ListGroup.displayName = 'xbrick.ListGroup'
 ListGroup.defaultProps = {
   tag: 'ul',
   flush: false,
+}
+
+export function listGroupClass({className, flush}: any) {
+  return classNames(
+    className,
+    LIST_GROUP,
+    {[LIST_GROUP_FLUSH]: !!flush},
+  )
 }

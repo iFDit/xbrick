@@ -1,7 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
 import { omit, isObject } from 'lodash'
+import * as cls from 'src/common/classes'
+import { cloneWithClassName } from 'src/common/util'
 import { IProps, IRowLayout } from 'src/common/props'
 
 export interface IRowProps extends IProps, IRowLayout {
@@ -26,13 +27,12 @@ export interface IRowProps extends IProps, IRowLayout {
 
 const omitProps = ['xs', 'sm', 'md', 'lg', 'xl', 'noGutter']
 export const Row: React.StatelessComponent<IRowProps> = function (props: IRowProps) {
-  const { tag, render, ...others } = props
+  const { tag, render, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, classes.ROW, getRowClass(props))
 
   return render ?
-    <Tag {...omit(others, omitProps)} className={className} />
-    : React.cloneElement(props.children, {className})
+    <Tag {...omit(others, omitProps)} className={rowClass({className, ...others})} />
+    : cloneWithClassName(props.children, rowClass({className, ...others}))
 }
 
 Row.displayName = 'xbrick.Row'
@@ -42,19 +42,19 @@ Row.defaultProps = {
   noGutter: false,
 }
 
-function getRowClass(props: IRowProps) {
-  return omitProps.map(propName => {
+function rowClass({className, ...others}: any) {
+  return classNames(className, omitProps.map(propName => {
     if (propName === 'noGutter') {
-      return {[classes.NO_GUTTERS]: !!props[propName]}
+      return {[cls.NO_GUTTERS]: !!others[propName]}
     }
     const result = {}
-    const size = props[propName]
+    const size = others[propName]
     if (isObject(size)) {
       const align = size.align || ''
       const justify = size.justify || ''
-      result[classes[`ALIGN_ITEMS_${propName.toUpperCase()}_${align.toUpperCase()}`]] = !!align
-      result[classes[`JUSTIFY_CONTENT_${propName.toUpperCase()}_${justify.toUpperCase()}`]] = !!justify
+      result[cls[`ALIGN_ITEMS_${propName.toUpperCase()}_${align.toUpperCase()}`]] = !!align
+      result[cls[`JUSTIFY_CONTENT_${propName.toUpperCase()}_${justify.toUpperCase()}`]] = !!justify
     }
     return result
-  }).reduce((o1, o2) => ({...o1, ...o2}), {})
+  }).reduce((o1, o2) => ({...o1, ...o2}), {}))
 }

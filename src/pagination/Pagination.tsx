@@ -24,10 +24,20 @@ export interface IPaginationProps extends IProps {
 }
 
 export const Pagination: React.StatelessComponent<IPaginationProps> = function (props: IPaginationProps) {
-  const { tag, size, justify, ...others } = props
+  const { tag, size, justify, className, ...others } = props
   const Tag = tag!
-  const className = classNames(
-    props.className,
+  return <Tag {...others} className={paginationClass({className, size, justify})}/>
+}
+
+Pagination.displayName = 'xbrick.Pagination'
+Pagination.defaultProps = {
+  tag: 'ul',
+  size: 'middle',
+}
+
+export function paginationClass({className, size, justify}: any) {
+  return classNames(
+    className,
     PAGINATION,
     {
       [PAGINATION_LG]: size === 'large',
@@ -36,11 +46,4 @@ export const Pagination: React.StatelessComponent<IPaginationProps> = function (
       [JUSTIFY_CONTENT_XS_END]: justify === 'end',
     },
   )
-  return <Tag {...others} className={className}/>
-}
-
-Pagination.displayName = 'xbrick.Pagination'
-Pagination.defaultProps = {
-  tag: 'ul',
-  size: 'middle',
 }

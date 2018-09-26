@@ -2,7 +2,6 @@ import React from 'react'
 import classNames from 'classnames'
 import * as cls from 'src/common/classes'
 import { IProps, ButtonSize, ButtonType } from 'src/common/props'
-import { BTN_SMALL, BTN_LARGE, ACTIVE, DISABLED, BUTTON, BUTTON_BLOCK } from 'src/common/classes'
 
 export interface IButtonProps extends IProps {
   /**
@@ -48,22 +47,18 @@ export interface IButtonProps extends IProps {
 }
 
 const ButtonInner: React.StatelessComponent<IButtonProps> = function (props: IButtonProps, ref: any) {
-  const { tag, size, color, block, active, outline, disabled, ...others } = props
+  const { tag, size, color, block, active, outline, disabled, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, BUTTON, {
-    [cls[`BTN${outline ? '_O' : ''}_${color!.toUpperCase()}`]]: !!color,
-    [BUTTON_BLOCK]: !!block,
-    [BTN_SMALL]: size === 'small',
-    [BTN_LARGE]: size === 'large',
-    [DISABLED]: !!disabled,
-    [ACTIVE]: !!active,
-  })
   return (
-    <Tag {...others} className={className} ref={ref}/>
+    <Tag
+      {...others}
+      ref={ref}
+      className={buttonClass({className, color, block, size, outline, disabled, active})}
+    />
   )
 }
 
-export const Button =  React.forwardRef(ButtonInner)
+export const Button = React.forwardRef(ButtonInner)
 
 ButtonInner.displayName = 'xbrick.Button'
 Button.defaultProps = {
@@ -73,4 +68,25 @@ Button.defaultProps = {
   active: false,
   tag: 'button',
   block: false,
+}
+
+export type ButtonClass = {
+  className?: string,
+  color?: ButtonType,
+  block?: boolean,
+  size?: ButtonSize,
+  outline?: boolean,
+  disabled?: boolean,
+  active?: boolean,
+}
+
+export function buttonClass({ className, color = '', block, size, outline, disabled, active }: ButtonClass = {}) {
+  return classNames(className, cls.BUTTON, {
+    [cls[`BTN${outline ? '_O' : ''}_${color!.toUpperCase()}`]]: !!color,
+    [cls.BUTTON_BLOCK]: !!block,
+    [cls.BTN_SMALL]: size === 'small',
+    [cls.BTN_LARGE]: size === 'large',
+    [cls.DISABLED]: !!disabled,
+    [cls.ACTIVE]: !!active,
+  })
 }

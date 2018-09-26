@@ -1,11 +1,10 @@
-import React, { createContext } from 'react'
 import classNames from 'classnames'
-import { IProps, AlertType } from 'src/common/props'
-import { UncontrolledSlide } from 'src/animate/UncontrolledSlide'
-import { mergeCall } from 'src/common/util'
-import { Close, ICloseProps } from 'src/common/Close'
-import { ALERT } from 'src/common/classes'
 import * as cls from 'src/common/classes'
+import { mergeCall } from 'src/common/util'
+import React, { createContext } from 'react'
+import { IProps, AlertType } from 'src/common/props'
+import { Close, ICloseProps } from 'src/common/Close'
+import { UncontrolledSlide } from 'src/animate/UncontrolledSlide'
 
 export interface IAlertProps extends IProps {
   /**
@@ -35,12 +34,14 @@ export const AlertContext = createContext({
 })
 
 export const Alert: IAlertComponent = function (props: IAlertProps) {
-  const { color, afterClose, ...others } = props
-  const className = classNames(props.className, ALERT, {
-    [cls[`A_${color!.toUpperCase()}`]]: !!color,
-  })
+  const { color, className, afterClose, ...others } = props
   return (
-    <UncontrolledSlide {...others} afterStateChange={afterClose} defaultOpen={true} className={className}>
+    <UncontrolledSlide
+      {...others}
+      afterStateChange={afterClose}
+      defaultOpen={true}
+      className={alertClass({className, color})}
+    >
       {({ slideup }) => (
         <AlertContext.Provider value={{
           handleCloseProps: (closeProps: ICloseProps = {}) => ({ ...closeProps, onClick: mergeCall(closeProps.onClick, slideup)}),
@@ -64,6 +65,11 @@ Alert.displayName = 'xbrick.Alert'
 Alert.defaultProps = { tag: 'div', color: 'primary' }
 Alert.Close = AlertClose
 
+export function alertClass({ className, color = '' }: { className?: string, color?: AlertType } = {}) {
+  return classNames(className, cls.ALERT, {
+    [cls[`A_${color!.toUpperCase()}`]]: !!color,
+  })
+}
 
 export const AlertStyles = {
   header: cls.A_HEADING,

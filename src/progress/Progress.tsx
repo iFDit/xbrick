@@ -12,11 +12,14 @@ export interface IProgressProps extends IProps {
 }
 
 export const Progress: React.StatelessComponent<IProgressProps> = function (props: IProgressProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, PROGRESS)
-  return <Tag {...others} className={className}/>
+  return <Tag {...others} className={progressClass({className})}/>
 }
 
 Progress.displayName = 'xbrick.Progress'
 Progress.defaultProps = { tag: 'div' }
+
+export function progressClass({className}: any) {
+  return classNames(className, PROGRESS)
+}

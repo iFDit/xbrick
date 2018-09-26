@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as classes from 'src/common/classes'
+import * as cls from 'src/common/classes'
 import { IProps } from 'src/common/props'
 
 export interface IButtonToolbarProps extends IProps {
@@ -12,16 +12,17 @@ export interface IButtonToolbarProps extends IProps {
 }
 
 export const ButtonToolbar: React.StatelessComponent<IButtonToolbarProps> = function (props: IButtonToolbarProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(
-    props.className,
-    classes.BUTTON_TOOLBAR,
-  )
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={buttonToolbarClass({className})} />
 }
 
 ButtonToolbar.displayName = 'xbrick.ButtonToolbar'
-ButtonToolbar.defaultProps = {
-  tag: 'div',
+ButtonToolbar.defaultProps = { tag: 'div' }
+
+export function buttonToolbarClass({ className }: { className?: string } = {}) {
+  return classNames(
+    className,
+    cls.BUTTON_TOOLBAR,
+  )
 }

@@ -12,11 +12,14 @@ export interface ICardTextProps extends IProps {
 }
 
 export const CardText: React.StatelessComponent<ICardTextProps> = function (props: ICardTextProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, CARD_TEXT)
-  return <Tag {...others} className={className} />
+  return <Tag {...others} className={cardTextClass({className})} />
 }
 
 CardText.displayName = 'xbrick.CardText'
 CardText.defaultProps = { tag: 'p' }
+
+export function cardTextClass({className}: any) {
+  return classNames(className, CARD_TEXT)
+}

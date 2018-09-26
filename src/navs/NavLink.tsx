@@ -31,17 +31,10 @@ export interface INavLinkProps extends IProps {
 }
 
 export const NavLink: React.StatelessComponent<INavLinkProps> = function (props: INavLinkProps) {
-  const { tag, active, render, disabled, ...others } = props
+  const { tag, active, render, disabled, className, ...others } = props
   const Tag = tag!
-  const className = classNames(
-    props.className,
-    NAV_LINK,
-    {
-      [ACTIVE]: !!active,
-      [DISABLED]: !!disabled,
-    },
-  )
-  return render ? <Tag {...others} className={className} /> : cloneWithClassName(props.children, className)
+  const classes = navLinkClass({className, active, disabled})
+  return render ? <Tag {...others} className={classes} /> : cloneWithClassName(props.children, classes)
 }
 
 export const NavLinkStyles = {
@@ -56,4 +49,15 @@ NavLink.defaultProps = {
   render: true,
   active: false,
   disabled: false,
+}
+
+export function navLinkClass({className, active, disabled}: any) {
+  return classNames(
+    className,
+    NAV_LINK,
+    {
+      [ACTIVE]: !!active,
+      [DISABLED]: !!disabled,
+    },
+  )
 }

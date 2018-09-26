@@ -12,15 +12,18 @@ export interface IBreadcrumbProps extends IProps {
 }
 
 export const Breadcrumb: React.StatelessComponent<IBreadcrumbProps> = function (props: IBreadcrumbProps) {
-  const { tag, ...others } = props
+  const { tag, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, BREADCRUMB)
   return (
-    <Tag {...others} aria-label="breadcrumb" className={className}/>
+    <Tag {...others} aria-label="breadcrumb" className={breadcrumbClass({className})}/>
   )
 }
 
 Breadcrumb.displayName = 'xbrick.Breadcrumb'
 Breadcrumb.defaultProps = {
   tag: 'ol',
+}
+
+export function breadcrumbClass({ className }: { className?: string} = {}) {
+  return classNames(className, BREADCRUMB)
 }

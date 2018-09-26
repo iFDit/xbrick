@@ -18,13 +18,14 @@ export interface IBreadcrumbItemProps extends IProps {
 }
 
 export const BreadcrumbItem: React.StatelessComponent<IBreadcrumbItemProps> = function (props: IBreadcrumbItemProps) {
-  const { tag, active, ...others } = props
+  const { tag, active, className, ...others } = props
   const Tag = tag!
-  const className = classNames(props.className, BREADCRUMB_ITEM, {
-    [ACTIVE]: !!active,
-  })
-  return <Tag {...others} className={className}/>
+  return <Tag {...others} className={breadcrumbItemClass({className, active})}/>
 }
 
 BreadcrumbItem.displayName = 'xbrick.BreadcrumbItem'
 BreadcrumbItem.defaultProps = { tag: 'li', active: false }
+
+export function breadcrumbItemClass({ className, active }: { className?: string, active?: boolean} = {}) {
+  return classNames(className, BREADCRUMB_ITEM, { [ACTIVE]: !!active })
+}
