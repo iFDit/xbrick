@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { DropdownItem } from 'src/dropdowns/DropdownItem'
+import { DropdownItem, dropdownItemClass } from 'src/dropdowns/DropdownItem'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -33,5 +33,16 @@ describe('DropdownItem', () => {
   it('should be disabled by using disabled props', () => {
     const node = mount(<DropdownItem disabled/>)
     expect(node.find('a').hasClass('disabled')).toBe(true)
+  })
+
+  describe('dropdownItemClass', () => {
+    it('should create default className', () => {
+      expect(dropdownItemClass()).toBe('dropdown-item')
+      expect(dropdownItemClass({className: 'custom'})).toBe('custom dropdown-item')
+      expect(dropdownItemClass({className: 'custom', header: true})).toBe('custom dropdown-header')
+      expect(dropdownItemClass({className: 'custom', divider: true})).toBe('custom dropdown-divider')
+      expect(dropdownItemClass({className: 'custom', active: true})).toBe('custom dropdown-item active')
+      expect(dropdownItemClass({className: 'custom', disabled: true})).toBe('custom dropdown-item disabled')
+    })
   })
 })

@@ -22,6 +22,6 @@ export const Carousel: React.StatelessComponent<ICarouselProps> = function (prop
 Carousel.displayName = 'xbrick.Carousel'
 Carousel.defaultProps = { tag: 'div' }
 
-export function carouselClass({className}: any) {
+export function carouselClass({className}: {className?: string} = {}) {
   return classNames(className, CAROUSEL)
 }

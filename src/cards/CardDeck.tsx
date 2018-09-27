@@ -20,6 +20,6 @@ export const CardDeck: React.StatelessComponent<ICardDeckProps> = function (prop
 CardDeck.displayName = 'xbrick.CardDeck'
 CardDeck.defaultProps = { tag: 'div' }
 
-export function cardDeckClass({className}: any) {
+export function cardDeckClass({className}: {className?: string} = {}) {
   return classNames(className, CARD_DECK)
 }

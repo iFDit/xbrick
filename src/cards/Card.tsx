@@ -46,7 +46,15 @@ Card.defaultProps = {
   outline: false,
 }
 
-export function cardClass({className, align, color, inverse, outline}: any) {
+export type CardClass = {
+  className?: string,
+  align?: CardAlign,
+  color?: CardType,
+  inverse?: boolean,
+  outline?: boolean,
+}
+
+export function cardClass({className, align = '', color, inverse, outline}: CardClass = {}) {
   const cardColor = outline ? `${cls.CARD_BORDER}-${color}` : `${cls.CARD_BG}-${color}`
   return classNames(
     className,

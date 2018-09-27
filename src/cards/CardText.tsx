@@ -20,6 +20,6 @@ export const CardText: React.StatelessComponent<ICardTextProps> = function (prop
 CardText.displayName = 'xbrick.CardText'
 CardText.defaultProps = { tag: 'p' }
 
-export function cardTextClass({className}: any) {
+export function cardTextClass({className}: {className?: string} = {}) {
   return classNames(className, CARD_TEXT)
 }

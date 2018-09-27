@@ -29,7 +29,7 @@ CardBody.defaultProps = {
   overlay: false,
 }
 
-export function cardBodyClass({className, overlay}: any) {
+export function cardBodyClass({className, overlay}: {className?: string, overlay?: boolean} = {}) {
   return classNames(
     className,
     {

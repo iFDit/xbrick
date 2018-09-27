@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { CarouselControl } from 'src/carousel/CarouselControl'
+import { CarouselControl, carouselControlClass } from 'src/carousel/CarouselControl'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -25,5 +25,13 @@ describe('CarouselControl', () => {
   it('should render control content by using text props', () => {
     const node = mount(<CarouselControl text="testControl"/>)
     expect(node.find('a').text()).toBe('testControl')
+  })
+
+  describe('carouselControlClass', () => {
+    it('should create default className', () => {
+      expect(carouselControlClass()).toBe('carousel-control-prev')
+      expect(carouselControlClass({className: 'custom'})).toBe('custom carousel-control-prev')
+      expect(carouselControlClass({className: 'custom', direction: 'next'})).toBe('custom carousel-control-next')
+    })
   })
 })

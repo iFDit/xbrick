@@ -67,9 +67,8 @@ export class Animate extends React.Component<IAnimateProps, any> {
     const defaultStyle = this.createDefaultStyle()
     const style = this.createStyle()
     const motionProps = { defaultStyle, style, onRest }
-
     return (
-      <Motion {...motionProps} key={`${JSON.stringify({...defaultStyle, ...style})}`}>
+      <Motion {...motionProps} key={`${JSON.stringify(defaultStyle)}${JSON.stringify(style)}`}>
         {(interpolatingStyle: PlainStyle) => (
           // custom render component
           <Tag

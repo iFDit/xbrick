@@ -29,7 +29,7 @@ export const CarouselControl: React.StatelessComponent<ICarouselControlProps> = 
   const { tag, text, direction, className, ...others } = props
   const Tag = tag!
   return (
-    <Tag {...others} className={className}>
+    <Tag {...others} className={carouselControlClass({className, direction})}>
       {isFunction(text) ? text({direction}) : text}
     </Tag>
   )
@@ -42,7 +42,11 @@ CarouselControl.defaultProps = {
   text: ({direction}: any) => <span className={`${cls[`CAROUSEL_CONTROL_${direction!.toUpperCase()}`]}-${ICON}`}/>,
 }
 
-export function carouselControlClass({className, direction}: any) {
+export type CarouselControlClass = {
+  className?: string,
+  direction?: 'prev' | 'next',
+}
+export function carouselControlClass({className, direction = 'prev'}: CarouselControlClass = {}) {
   const defaultClass = cls[`CAROUSEL_CONTROL_${direction!.toUpperCase()}`]
   return classNames(
     className,

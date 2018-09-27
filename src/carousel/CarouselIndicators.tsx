@@ -51,6 +51,6 @@ CarouselIndicators.defaultProps = {
   onItemClick: () => {/* */},
 }
 
-export function carouselIndicatorClass({className}: any) {
+export function carouselIndicatorClass({className}: {className?: string} = {}) {
   return classNames(className, CAROUSEL_INDICATORS)
 }

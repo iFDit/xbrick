@@ -47,15 +47,6 @@ export class Dropdown extends React.Component<IDropdownProps> {
       {({getToggleProps}) => <DropdownToggle {...getToggleProps(props)}/>}
     </DropdownContext.Consumer>
   )
-  static dropdownClass({className, direction}: any) {
-    return classNames(
-      className,
-      DROPDOWN,
-      {
-        [cls[`DROP${direction.toUpperCase()}`]]: !!direction,
-      },
-    )
-  }
 
   public state = { open: false }
 
@@ -112,8 +103,18 @@ export class Dropdown extends React.Component<IDropdownProps> {
           getToggleProps: this.getToggleProps,
         }}
       >
-        <Tag {...others} className={Dropdown.dropdownClass({className, direction})} />
+        <Tag {...others} className={dropdownClass({className, direction})} />
       </DropdownContext.Provider>
     )
   }
+}
+
+export function dropdownClass({className, direction = ''}: {className?: string, direction?: Direction} = {}) {
+  return classNames(
+    className,
+    DROPDOWN,
+    {
+      [cls[`DROP${direction.toUpperCase()}`]]: !!direction,
+    },
+  )
 }

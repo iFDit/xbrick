@@ -20,6 +20,6 @@ export const CarouselCaption: React.StatelessComponent<ICarouselCaptionProps> = 
 CarouselCaption.displayName = 'xbrick.CarouselCaption'
 CarouselCaption.defaultProps = { tag: 'div' }
 
-export function carouselCaptionClass({className}: any) {
+export function carouselCaptionClass({className}: {className?: string} = {}) {
   return classNames(className, CAROUSEL_CAPTION, NONE, MD_BLOCK)
 }

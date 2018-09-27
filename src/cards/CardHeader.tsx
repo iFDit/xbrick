@@ -26,6 +26,6 @@ export const CardHeaderStyle = {
   headerTab: CARD_HEADER_TAB,
 }
 
-export function cardHeaderClass({className}: any) {
+export function cardHeaderClass({className}: {className?: string} = {}) {
   return classNames(className, CARD_HEADER)
 }

@@ -13,12 +13,12 @@ export interface IFormPorps extends IProps {
 
 export const Form: React.StatelessComponent<IFormPorps> = function (props: IFormPorps) {
   const { inline, className, ...others } = props
-  return <form {...others} className={formClass({className})} />
+  return <form {...others} className={formClass({className, inline})} />
 }
 
 Form.displayName = 'xbrick.Form'
 Form.defaultProps = { inline: false }
 
-export function formClass({className, inline}: any) {
+export function formClass({className, inline}: {className?: string, inline?: boolean} = {}) {
   return classNames(className, { [FORM_INLINE]: !!inline })
 }

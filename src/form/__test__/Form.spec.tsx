@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { Form } from 'src/form/Form'
+import { Form, formClass } from 'src/form/Form'
 import { notCrash, renderChild, defaultProps, displayName } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -16,5 +16,13 @@ describe('Form', () => {
   it('should render inline form by using inline props', () => {
     const node = mount(<Form inline/>)
     expect(node.find('form').hasClass('form-inline')).toBe(true)
+  })
+
+  describe('formClass', () => {
+    it('should create default className', () => {
+      expect(formClass()).toBe('')
+      expect(formClass({className: 'custom'})).toBe('custom')
+      expect(formClass({className: 'custom', inline: true})).toBe('custom form-inline')
+    })
   })
 })

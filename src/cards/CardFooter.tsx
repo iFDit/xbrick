@@ -20,6 +20,6 @@ export const CardFooter: React.StatelessComponent<ICardHeaderProps> = function (
 CardFooter.displayName = 'xbrick.CardFooter'
 CardFooter.defaultProps = { tag: 'div' }
 
-export function cardFooterClass({className}: any) {
+export function cardFooterClass({className}: {className?: string} = {}) {
   return classNames(className, CARD_FOOTER)
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { CardGroup } from 'src/cards/CardGroup'
+import { CardGroup, cardGroupClass } from 'src/cards/CardGroup'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -14,4 +14,11 @@ describe('CardGroup', () => {
   renderChild(CardGroup, child, 'p')
   customTag(CardGroup, 'section', 'section')
   displayName(CardGroup, 'xbrick.CardGroup')
+
+  describe('cardGroupClass', () => {
+    it('should create default className', () => {
+      expect(cardGroupClass()).toBe('card-group')
+      expect(cardGroupClass({className: 'custom'})).toBe('custom card-group')
+    })
+  })
 })

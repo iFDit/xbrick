@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { DropdownToggle } from 'src/dropdowns/DropdownToggle'
+import { DropdownToggle, dropdownToggleClass } from 'src/dropdowns/DropdownToggle'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -23,5 +23,13 @@ describe('DropdownToggle', () => {
   it('should split styles toggler by using split props', () => {
     const node = mount(<DropdownToggle split/>)
     expect(node.find('button').hasClass('dropdown-toggle-split')).toBe(true)
+  })
+
+  describe('dropdownToggleClass', () => {
+    it('should create default className', () => {
+      expect(dropdownToggleClass()).toBe('dropdown-toggle')
+      expect(dropdownToggleClass({className: 'custom'})).toBe('custom dropdown-toggle')
+      expect(dropdownToggleClass({className: 'custom', split: true})).toBe('custom dropdown-toggle dropdown-toggle-split')
+    })
   })
 })

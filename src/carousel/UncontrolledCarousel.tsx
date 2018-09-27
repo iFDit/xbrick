@@ -100,7 +100,11 @@ export class UncontrolledCarousel extends React.Component<IUncontrolledCarouselP
     dom!.addEventListener('mouseenter', this.handleMouseEnter)
     dom!.addEventListener('mouseleave', this.handleMouseLeave)
     this.autoPlayStart()
-    this.setState({ rootDOM: dom })
+    const max = this.getMaxCount(dom)
+    const to = Math.max(Math.min(this.props.startIndex as number, max), -1)
+    const from = Math.min(Math.max(this.props.startIndex as number, -1), max)
+    const reset = from === -1 || to === max
+    this.setState({ rootDOM: dom, to, from, reset })
   }
 
   public componentWillUnmount() {
@@ -110,10 +114,11 @@ export class UncontrolledCarousel extends React.Component<IUncontrolledCarouselP
     rootDOM!.removeEventListener('mouseleave', this.handleMouseLeave)
   }
 
-  private getMaxCount = () => {
+  private getMaxCount = (dom?: HTMLElement) => {
     const { rootDOM } = this.state
-    if (rootDOM) {
-      return get(rootDOM.querySelectorAll(`.${CAROUSEL_ITEM}`), 'length', 0) - 2
+    const elem = dom || rootDOM
+    if (elem) {
+      return get(elem.querySelectorAll(`.${CAROUSEL_ITEM}`), 'length', 0) - 2
     } else {
       return 0
     }
@@ -131,7 +136,6 @@ export class UncontrolledCarousel extends React.Component<IUncontrolledCarouselP
       })
       return
     }
-
     this.setState({
       from: to,
       to: next,

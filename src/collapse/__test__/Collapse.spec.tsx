@@ -20,4 +20,8 @@ describe('Collapse', () => {
     const node = mount(<Collapse open={true} afterChange={afterChange}>111111</Collapse>)
     node.setProps({ open: false })
   })
+
+  it('should render children where is function', () => {
+    mount(<Collapse>{() => <p>child</p>}</Collapse>)
+  })
 })

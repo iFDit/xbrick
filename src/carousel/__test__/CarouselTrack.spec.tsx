@@ -1,4 +1,5 @@
 import React from 'react'
+import sinon from 'sinon'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { CarouselTrack } from 'src/carousel/CarouselTrack'
@@ -17,6 +18,19 @@ describe('CarouselTrack', () => {
 
   it('should invoked afterChange after animate is finish', (next) => {
     const afterChange = () => next()
-    mount(<CarouselTrack from={2} to={2} afterChange={afterChange}><p>1</p><p>2</p></CarouselTrack>)
+    mount(<CarouselTrack from={0} to={1} afterChange={afterChange} crossfade={true}><p>1</p><p>2</p></CarouselTrack>)
+  })
+
+  it('should be trigger custom onresize event', () => {
+    const resize = sinon.spy()
+    const window = global as any
+    window.onresize = resize
+    const node = mount(<CarouselTrack from={2} to={2}><p>1</p><p>2</p></CarouselTrack>)
+    window.dispatchEvent(new Event('resize'))
+    window.dispatchEvent(new Event('resize'))
+    expect(window.onresize).not.toBe(resize)
+    node.unmount()
+    expect(window.onresize).toBe(resize)
+    expect(resize.called).toBe(true)
   })
 })

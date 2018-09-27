@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { DropdownMenu } from 'src/dropdowns/DropdownMenu'
+import { DropdownMenu, dropdownMenuClass } from 'src/dropdowns/DropdownMenu'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -16,7 +16,7 @@ describe('DropdownMenu', () => {
   displayName(DropdownMenu, 'xbrick.DropdownMenu')
 
   it('should render right align styles by using right props', () => {
-    const node = mount(<DropdownMenu right/>)
+    const node = mount(<DropdownMenu right direction="right"/>)
     expect(node.find('div').hasClass('dropdown-menu-right')).toBe(true)
   })
 
@@ -24,5 +24,18 @@ describe('DropdownMenu', () => {
     const afterChange = () => next()
     const node = mount(<DropdownMenu afterChange={afterChange} open={false}/>)
     node.setProps({ open: true })
+  })
+
+  describe('dropdownMenuClass', () => {
+    it('should create default className', () => {
+      expect(dropdownMenuClass()).toBe('xbrick-menu dropdown-menu')
+      expect(dropdownMenuClass({className: 'custom'})).toBe('custom xbrick-menu dropdown-menu')
+      expect(dropdownMenuClass({className: 'custom', right: true})).toBe('custom xbrick-menu dropdown-menu dropdown-menu-right')
+      expect(dropdownMenuClass({className: 'custom', direction: 'right'})).toBe('custom xbrick-menu dropdown-menu')
+      expect(dropdownMenuClass({className: 'custom', direction: 'left'})).toBe('custom xbrick-menu dropdown-menu xbrick-menu-left')
+      expect(dropdownMenuClass({className: 'custom', direction: 'up'})).toBe('custom xbrick-menu dropdown-menu xbrick-menu-up')
+      expect(dropdownMenuClass({className: 'custom', active: true, open: true })).toBe('custom xbrick-menu dropdown-menu')
+      expect(dropdownMenuClass({className: 'custom', active: true, open: false })).toBe('custom xbrick-menu dropdown-menu active')
+    })
   })
 })

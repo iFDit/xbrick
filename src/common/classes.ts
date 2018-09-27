@@ -141,6 +141,7 @@ export const DROPLEFT = 'dropleft'
 export const MENU_UP = 'xbrick-menu-up'
 export const MENU_LEFT = 'xbrick-menu-left'
 
+export const FORM_ROW = 'form-row'
 export const FORM_INLINE = 'form-inline'
 export const FORM_GROUP = 'form-group'
 export const FORM_CHECK = 'form-check'

@@ -20,7 +20,7 @@ export const CardImg: React.StatelessComponent<ICardImgProps> = function (props:
 CardImg.displayName = 'xbrick.CardImg'
 CardImg.defaultProps = { top: true }
 
-export function cardImgClass({className, top}: any) {
+export function cardImgClass({className, top}: {className?: string, top?: boolean} = {}) {
   return classNames(
     className,
     `${CARD_IMG}-${top ? TOP : BOTTOM}`,

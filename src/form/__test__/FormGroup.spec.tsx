@@ -1,7 +1,7 @@
 import React from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { FormGroup } from 'src/form/FormGroup'
+import { FormGroup, formGroupClass } from 'src/form/FormGroup'
 import { notCrash, renderChild, defaultTag, customTag, defaultProps, displayName } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -27,6 +27,18 @@ describe('FormGroup', () => {
 
   it('should render layout row by using row props', () => {
     const node = mount(<FormGroup row/>)
-    expect(node.find('div').hasClass('row')).toBe(true)
+    expect(node.find('div').hasClass('form-row')).toBe(true)
+  })
+
+  describe('formGroupClass', () => {
+    it('should create default className', () => {
+      expect(formGroupClass()).toBe('form-group')
+      expect(formGroupClass({className: 'custom'})).toBe('custom form-group')
+      expect(formGroupClass({className: 'custom', row: true})).toBe('custom form-row')
+      expect(formGroupClass({className: 'custom', check: true})).toBe('custom form-check')
+      expect(formGroupClass({className: 'custom', check: true})).toBe('custom form-check')
+      expect(formGroupClass({className: 'custom', inline: true})).toBe('custom form-group')
+      expect(formGroupClass({className: 'custom', check: true, inline: true})).toBe('custom form-check form-check-inline')
+    })
   })
 })

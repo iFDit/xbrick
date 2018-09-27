@@ -20,6 +20,6 @@ export const CardLink: React.StatelessComponent<ICardLinkProps> = function (prop
 CardLink.displayName = 'xbrick.CardLink'
 CardLink.defaultProps = { tag: 'a' }
 
-export function cardLinkClass({className}: any) {
+export function cardLinkClass({className}: {className?: string} = {}) {
   return classNames(className, CARD_LINK)
 }

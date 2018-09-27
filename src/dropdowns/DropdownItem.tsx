@@ -38,7 +38,7 @@ export interface IDropdownItemProps extends IProps {
 export const DropdownItem: React.StatelessComponent<IDropdownItemProps> = function (props: IDropdownItemProps) {
   const { tag, header, divider, active, disabled, className, ...others } = props
   const Tag = header ? 'h6' : divider ? 'div' : tag!
-  return <Tag {...others} className={dropdownClass({className, header, divider, active, disabled})}/>
+  return <Tag {...others} className={dropdownItemClass({className, header, divider, active, disabled})}/>
 }
 
 DropdownItem.displayName = 'xbrick.DropdownItem'
@@ -50,7 +50,15 @@ DropdownItem.defaultProps = {
   disabled: false,
 }
 
-export function dropdownClass({className, header, divider, active, disabled}: any) {
+export type DropdownItemClass = {
+  className?: string,
+  header?: boolean,
+  divider?: boolean,
+  active?: boolean,
+  disabled?: boolean,
+}
+
+export function dropdownItemClass({className, header, divider, active, disabled}: DropdownItemClass = {}) {
   return classNames(
     className,
     {

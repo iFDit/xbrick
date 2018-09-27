@@ -56,19 +56,6 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps> {
     }
     return null
   }
-  static dropdownMenuClass({className, right, open, direction, active}: any) {
-    return classNames(
-      className,
-      MENU,
-      DROPDOWN_MENU,
-      {
-        [`${DROPDOWN_MENU}-right`]: right,
-        [MENU_LEFT]: direction === 'left',
-        [MENU_UP]: direction === 'up',
-        [ACTIVE]: active && !open,
-      },
-    )
-  }
 
   public state = {
     lastOpen: this.props.open,
@@ -119,7 +106,7 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps> {
     const { active } = this.state
     const Tag = this.props.tag!
     const styles = { ...(this.props.style || {}) }
-    const classes = DropdownMenu.dropdownMenuClass({className, right, open, direction, active})
+    const classes = dropdownMenuClass({className, right, open, direction, active})
     if (!open) {
       styles.display = 'none'
     }
@@ -137,4 +124,26 @@ export class DropdownMenu extends React.Component<IDropdownMenuProps> {
         />
       ) : <Tag {...others} className={classes} style={styles}/>
   }
+}
+
+export type DropdownMenuClass = {
+  className?: string,
+  right?: boolean,
+  open?: boolean,
+  direction?: Direction,
+  active?: boolean,
+}
+
+export function dropdownMenuClass({className, right, open, direction, active}: DropdownMenuClass = {}) {
+  return classNames(
+    className,
+    MENU,
+    DROPDOWN_MENU,
+    {
+      [`${DROPDOWN_MENU}-right`]: right,
+      [MENU_LEFT]: direction === 'left',
+      [MENU_UP]: direction === 'up',
+      [ACTIVE]: active && !open,
+    },
+  )
 }

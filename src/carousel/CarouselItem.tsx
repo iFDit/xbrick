@@ -20,6 +20,6 @@ export const CarouselItem: React.StatelessComponent<ICarouselItemPorps> = functi
 CarouselItem.displayName = 'xbrick.CarouselItem'
 CarouselItem.defaultProps = { tag: 'div' }
 
-export function carouselItemClass({className}: any) {
+export function carouselItemClass({className}: {className?: string} = {}) {
   return classNames(className, CAROUSEL_ITEM)
 }

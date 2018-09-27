@@ -22,6 +22,6 @@ CardGroup.defaultProps = {
   tag: 'div',
 }
 
-export function cardGroupClass({className}: any) {
+export function cardGroupClass({className}: {className?: string} = {}) {
   return classNames(className, CARD_GROUP)
 }

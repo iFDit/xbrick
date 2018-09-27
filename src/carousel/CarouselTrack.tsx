@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import { IProps } from 'src/common/props'
 import { Animate } from 'src/animate/Animate'
-import { get, omit, first, last, toArray } from 'lodash'
+import { get, first, last, toArray } from 'lodash'
 import { CAROUSEL_VIEW, CAROUSEL_TRACK } from 'src/common/classes'
 
 export interface ICarouselTrackProps extends IProps {
@@ -37,7 +37,6 @@ export interface ICarouselTrackProps extends IProps {
   afterChange? (): void
 }
 
-const omitProps = ['from', 'to']
 const defaultConfig = {precision: 0.01, stiffness: 100, damping: 64}
 
 export class CarouselTrack extends React.Component<ICarouselTrackProps> {
@@ -54,9 +53,7 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
   public componentDidMount() {
     const trackDOM: Element = ReactDOM.findDOMNode(this) as Element
     const items = this.getBound(toArray(trackDOM.querySelector('.carousel-track')!.childNodes).filter(Boolean) as HTMLElement[])
-    if (!this.lastHandle) {
-      this.lastHandle = window.onresize
-    }
+    this.lastHandle = window.onresize
     window.onresize = () => {
       this.handleResize(this.getBound(toArray(trackDOM.querySelector('.carousel-track')!.childNodes).filter(Boolean) as HTMLElement[]))
       this.lastHandle && this.lastHandle()
@@ -69,8 +66,9 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
   }
 
   render() {
-    const { tag, children, className, crossfade, afterChange, ...others } = this.props
+    const { tag, to: propTo, from: propFrom, children, className, crossfade, afterChange, ...others } = this.props
     const Tag = tag!
+    const slide = propTo !== propFrom
     const childs = React.Children.map(
       children,
       (child: React.ReactNode) => child,
@@ -79,13 +77,12 @@ export class CarouselTrack extends React.Component<ICarouselTrackProps> {
     const { start, end } = this.calculateStyle()
     const from = {
       left: {value: -start, transition: !crossfade},
-      opacity: {value: 0.5, transition: !!crossfade, config: defaultConfig},
+      opacity: {value: slide ? 0.5 : 1, transition: !!crossfade, config: defaultConfig},
     }
     const to = {left: -end, opacity: 1}
-
     return (
-      <Tag {...omit(others, omitProps)} className={classNames(className, CAROUSEL_VIEW)}>
-        <Animate from={from} to={to} show={true} className={CAROUSEL_TRACK} afterStateChange={afterChange}>
+      <Tag {...others} className={classNames(className, CAROUSEL_VIEW)}>
+        <Animate from={from} to={to} show={true} className={CAROUSEL_TRACK} afterStateChange={(afterChange)}>
           {renderChild.map((child, idx) => React.cloneElement(child as React.ReactElement<any>, {key: idx}))}
         </Animate>
       </Tag>

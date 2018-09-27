@@ -2,7 +2,7 @@ import React from 'react'
 import sinon from 'sinon'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import { CarouselIndicators } from 'src/carousel/CarouselIndicators'
+import { CarouselIndicators, carouselIndicatorClass } from 'src/carousel/CarouselIndicators'
 import { notCrash, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
@@ -36,5 +36,12 @@ describe('CarouselIndicators', () => {
     item && item.simulate('click')
     expect(handleClick.called).toBe(true)
     expect(handleClick.args[0][0]).toBe(2)
+  })
+
+  describe('carouselIndicatorClass', () => {
+    it('should create default className', () => {
+      expect(carouselIndicatorClass()).toBe('carousel-indicators')
+      expect(carouselIndicatorClass({className: 'custom'})).toBe('custom carousel-indicators')
+    })
   })
 })
