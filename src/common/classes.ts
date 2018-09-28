@@ -156,11 +156,13 @@ export const FORM_CHECK_LABEL = 'form-check-label'
 export const COL_FORM_LABEL = 'col-form-label'
 
 export const CUSTOM_SELECT = 'custom-select'
+export const CUSTOM_FILE = 'custom-file-input'
 export const CUSTOM_CONTROL_LABEL = 'custom-control-label'
 export const CUSTOM_CONTROL_INPUT = 'custom-control-input'
 export const CUSTOM_CONTROL = 'custom-control'
 export const CUSTOM_CHECKBOX = 'custom-checkbox'
 export const CUSTOM_RADIO = 'custom-radio'
+export const CUSTOM_RANGE = 'custom-range'
 export const CUSTOM_CONTROL_INLINE = 'custom-control-inline'
 
 export const INPUT_GROUP = 'input-group'
