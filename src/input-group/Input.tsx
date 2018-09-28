@@ -46,9 +46,16 @@ export const Input: React.StatelessComponent<IInputProps> = function (props: IIn
 }
 
 Input.displayName = 'xbrick.Input'
-Input.defaultProps = { plainText: false }
+Input.defaultProps = { type: 'text', size: 'middle', plainText: false }
 
-export function inputClass({className, type, size, plainText}: any) {
+export type InputClass = {
+  className?: string,
+  type?: string,
+  size?: InputSize,
+  plainText?: boolean,
+}
+
+export function inputClass({className, type, size = '', plainText}: InputClass = {}) {
   const sizeMap = { large: 'lg', small: 'sm' }
   const file = type === 'file'
   const range = type === 'range'
@@ -59,10 +66,10 @@ export function inputClass({className, type, size, plainText}: any) {
       FORM_CHECK_INPUT
       : file ?
         FORM_CONTROL_FILE
-        : plainText ?
-          FORM_CONTROL_PLAINTEXT
-          : range ?
-            FORM_CONTROL_RANGE
+        : range ?
+          FORM_CONTROL_RANGE
+          : plainText ?
+            FORM_CONTROL_PLAINTEXT
             : FORM_CONTROL,
     !!sizeMap[size!] && !checkOrRadio ? `${FORM_CONTROL}-${sizeMap[size!]}` : false,
   )

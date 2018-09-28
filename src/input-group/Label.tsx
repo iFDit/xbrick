@@ -26,32 +26,40 @@ export interface ILabelProps extends IProps {
    * use with the FormGroup row.
    * @default false
    */
-  col?: boolean
+  verticalCenter?: boolean
 }
 
 export const Label: React.StatelessComponent<ILabelProps> = function (props: ILabelProps) {
-  const { col, size, check, hiddren, className, ...others } = props
-  return <label {...others} className={labelClass({className, hiddren, col, check, size})} />
+  const { verticalCenter, size, check, hiddren, className, ...others } = props
+  return <label {...others} className={labelClass({className, hiddren, verticalCenter, check, size})} />
 }
 
 Label.displayName = 'xbrick.Label'
 Label.defaultProps = {
-  col: false,
   check: false,
   size: 'middle',
   hiddren: false,
+  verticalCenter: false,
 }
 
-export function labelClass({className, hiddren, col, check, size}: any) {
+export type LabelClass = {
+  check?: boolean,
+  size?: InputSize,
+  hiddren?: boolean,
+  className?: string,
+  verticalCenter?: boolean,
+}
+
+export function labelClass({className, hiddren, verticalCenter, check, size = ''}: LabelClass = {}) {
   const sizeMap = { large: 'lg', small: 'sm' }
   return classNames(
     className,
     'xbrick-lable',
     {
       [SR_ONLY]: !!hiddren,
-      [COL_FORM_LABEL]: !!col,
+      [COL_FORM_LABEL]: !!verticalCenter,
       [FORM_CHECK_LABEL]: !!check,
-      [`${COL_FORM_LABEL}-${sizeMap[size!]}`]: !!sizeMap[size!] && !!col,
+      [`${COL_FORM_LABEL}-${sizeMap[size!]}`]: !!sizeMap[size!] && !!verticalCenter,
     },
   )
 }

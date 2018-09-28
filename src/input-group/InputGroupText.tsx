@@ -6,7 +6,7 @@ import { INPUT_GROUP_TEXT } from 'src/common/classes'
 export interface IInputGroupTextProps extends IProps {
   /**
    * custom render component.
-   * @default div
+   * @default span
    */
   tag?: string | React.Factory<any>
 }
@@ -18,8 +18,8 @@ export const InputGroupText: React.StatelessComponent<IInputGroupTextProps> = fu
 }
 
 InputGroupText.displayName = 'xbrick.InputGroupText'
-InputGroupText.defaultProps = { tag: 'div' }
+InputGroupText.defaultProps = { tag: 'span' }
 
-export function inputGroupTextClass({className}: any) {
+export function inputGroupTextClass({className}: {className?: string} = {}) {
   return classNames(className, INPUT_GROUP_TEXT)
 }

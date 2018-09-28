@@ -1,8 +1,8 @@
 import React from 'react'
 import classNames from 'classnames'
-import * as cls from 'src/common/classes'
-import { IProps } from 'src/common/props'
 import { uniqId } from 'src/common/util'
+import * as cls from 'src/common/classes'
+import { IProps, InputSize } from 'src/common/props'
 import { Input, IInputProps } from 'src/input-group/Input'
 
 export interface ICustomInput extends IProps, IInputProps {
@@ -12,7 +12,6 @@ export interface ICustomInput extends IProps, IInputProps {
    */
   inline?: boolean
 }
-
 
 export const CustomInput: React.StatelessComponent<ICustomInput> = function (props: ICustomInput) {
   const { type, label, plainText, inline, size, id = uniqId(), className, ...others } = props
@@ -40,26 +39,34 @@ CustomInput.defaultProps = {
   plainText: false,
 }
 
-export function customInputClass({className, type, plainText, size}: any) {
+export type CustomInputClass = {
+  className?: string,
+  type?: string,
+  plainText?: boolean,
+  size?: InputSize,
+}
+
+export function customInputClass({className, type, plainText, size}: CustomInputClass = {}) {
   const sizeMap = { large: 'lg', small: 'sm' }
   const checkboxOrRadio = type === 'checkbox' || type === 'radio'
   return classNames(
     className,
-    cls.INPUT_CUSTOM,
     {
+      [cls.CUSTOM_FILE]: type === 'file',
+      [cls.CUSTOM_RANGE]: type === 'range',
       [cls.CUSTOM_SELECT]: type === 'select',
-      [cls.CUSTOM_CONTROL_INPUT]: !!checkboxOrRadio,
       [cls.FORM_CONTROL_PLAINTEXT]: !!plainText,
+      [cls.CUSTOM_CONTROL_INPUT]: !!checkboxOrRadio,
       [`${cls.FORM_CONTROL}-${sizeMap[size!]}`]: !!sizeMap[size!] && !checkboxOrRadio,
     },
   )
 }
 
-export function containerClass({inline, type}: any) {
+export function containerClass({inline, type}: {inline?: boolean, type?: string} = {}) {
   return classNames({
     [cls.CUSTOM_CONTROL]: true,
-    [cls.CUSTOM_CONTROL_INLINE]: !!inline,
     [cls.CUSTOM_RADIO]: type === 'radio',
+    [cls.CUSTOM_CONTROL_INLINE]: !!inline,
     [cls.CUSTOM_CHECKBOX]: type === 'checkbox',
   })
 }

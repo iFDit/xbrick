@@ -28,7 +28,7 @@ InputGroup.defaultProps = {
   size: 'middle',
 }
 
-export function inputGroupClass({className, size}: any) {
+export function inputGroupClass({className, size = ''}: {className?: string, size?: InputSize} = {}) {
   const sizeMap = { large: 'lg', small: 'sm' }
   return classNames(
     className,

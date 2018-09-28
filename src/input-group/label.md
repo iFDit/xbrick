@@ -5,4 +5,4 @@
 | size | 设置Input大小，可选：`small` 和 `large` | string | - |
 | hiddren | 显示/隐藏 | boolean | `false` |
 | check | 用于checkbox或radio | boolean | `false` |
-| col | 用于网格布局居中对齐 | boolean | `false` |
+| verticalCenter | 用于网格布局居中对齐 | boolean | `false` |

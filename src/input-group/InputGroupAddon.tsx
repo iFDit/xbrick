@@ -34,7 +34,7 @@ InputGroupAddon.defaultProps = {
   position: 'prepend',
 }
 
-export function inputGroupAddonClass({className, position}: any) {
+export function inputGroupAddonClass({className, position = 'prepend'}: {className?: string, position?: InputGroupPosition} = {}) {
   return classNames(className, {
     [INPUT_GROUP_PREPEND]: position === 'prepend',
     [INPUT_GROUP_APPEND]: position === 'append',
