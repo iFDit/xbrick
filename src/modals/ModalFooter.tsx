@@ -20,6 +20,6 @@ export const ModalFooter: React.StatelessComponent<IModalFooterProps> = function
 ModalFooter.displayName = 'xbrick.ModalFooter'
 ModalFooter.defaultProps = { tag: 'div' }
 
-export function modalFooterClass({className}: any) {
+export function modalFooterClass({className}: {className?: string} = {}) {
   return classNames(className, MODAL_FOOTER)
 }

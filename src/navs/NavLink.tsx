@@ -51,7 +51,13 @@ NavLink.defaultProps = {
   disabled: false,
 }
 
-export function navLinkClass({className, active, disabled}: any) {
+export type NavLinkClass = {
+  className?: string,
+  active?: boolean,
+  disabled?: boolean,
+}
+
+export function navLinkClass({className, active, disabled}: NavLinkClass = {}) {
   return classNames(
     className,
     NAV_LINK,

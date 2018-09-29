@@ -20,6 +20,6 @@ export const Media: React.StatelessComponent<IMediaProps> = function (props: IMe
 Media.displayName = 'xbrick.Media'
 Media.defaultProps = { tag: 'div' }
 
-export function mediaClass({className}: any) {
+export function mediaClass({className}: {className?: string} = {}) {
   return classNames(className, MEDIA)
 }

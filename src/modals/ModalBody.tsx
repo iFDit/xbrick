@@ -20,6 +20,6 @@ export const ModalBody: React.StatelessComponent<IModalBodyProps> = function (pr
 ModalBody.displayName = 'xbrick.ModalBody'
 ModalBody.defaultProps = { tag: 'div' }
 
-export function modalBodyClass({className}: any) {
+export function modalBodyClass({className}: {className?: string} = {}) {
   return classNames(className, MODAL_BODY)
 }

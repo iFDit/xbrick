@@ -35,16 +35,16 @@ Col.defaultProps = {
   render: true,
 }
 
-function colClass({className, ...others}: any) {
+export function colClass({className, ...others}: {className?: string, [prop: string]: any} = {}) {
   return classNames(className, omitProps.map(propName => {
     const result = {}
     const size = others[propName]
     if (isString(size)) {
-      result[`${cls[`COL_${propName.toUpperCase()}`]}-${size}`] = !!size
+      result[`${cls[`COL_${propName.toUpperCase()}`]}${+size === 0 ? '' : `-${size}`}`] = !!size
       return result
     }
     if (isNumber(size)) {
-      result[`${cls[`COL_${propName.toUpperCase()}`]}${+size === 0 ? '' : `-${size}`}`] = true
+      result[`${cls[`COL_${propName.toUpperCase()}`]}${size === 0 ? '' : `-${size}`}`] = true
       return result
     }
     if (isBoolean(size)) {

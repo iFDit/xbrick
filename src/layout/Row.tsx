@@ -42,8 +42,8 @@ Row.defaultProps = {
   noGutter: false,
 }
 
-function rowClass({className, ...others}: any) {
-  return classNames(className, omitProps.map(propName => {
+export function rowClass({className, ...others}: {className?: string, [prop: string]: any} = {}) {
+  return classNames(className, cls.ROW, omitProps.map(propName => {
     if (propName === 'noGutter') {
       return {[cls.NO_GUTTERS]: !!others[propName]}
     }

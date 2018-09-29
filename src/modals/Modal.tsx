@@ -58,10 +58,8 @@ export class Modal extends React.Component<IModalProps> {
   static displayName = 'xbrick.Modal'
   static defaultProps = {
     tag: 'div',
-    mask: true,
     open: false,
     transition: true,
-    children: () => null,
   }
   static Dialog = (props: IModalDialogProps) => (
     <ModalContext.Consumer>
@@ -161,7 +159,7 @@ export class Modal extends React.Component<IModalProps> {
   }
 
   render() {
-    const { mask, style, open, transition, className, ...others } = this.props
+    const { style, open, transition, className, ...others } = this.props
     const { active } = this.state
     const Tag = this.props.tag!
     const classes = Modal.modalClass({className})

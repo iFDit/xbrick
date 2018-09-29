@@ -7,7 +7,6 @@ import { NAVBAR, STICKY, NAVBAR_DARK, NAVBAR_LIGHT } from 'src/common/classes'
 import { NavbarCollapse, INavbarCollapseProps } from 'src/navbar/NavbarCollapse'
 import { IProps, NavbarExpand, NavbarJustify, NavbarBgColor, NavbarFixed } from 'src/common/props'
 
-
 export interface INavbarProps extends IProps {
   /**
    * custom render component.
@@ -74,20 +73,6 @@ export class Navbar extends React.Component<INavbarProps> {
       {({getTogglerProps}) => <NavbarToggler {...getTogglerProps(props)}/>}
     </NavbarContext.Consumer>
   )
-  static navbarClass({className, fixed, justify, reverse, expand, sticky, color}: any) {
-    return classNames(
-      className,
-      NAVBAR,
-      cls[`BG_${color!.toUpperCase()}`],
-      cls[`NAVBAR_EXPAND_${expand!.toUpperCase()}`],
-      reverse ? NAVBAR_DARK : NAVBAR_LIGHT,
-      {
-        [STICKY]: !!sticky,
-        [cls[`FIXED_${String(fixed).toUpperCase()}`]]: !!fixed,
-        [cls[`JUSTIFY_CONTENT_XS_${String(justify).toUpperCase()}`]]: !!justify,
-      },
-    )
-  }
 
   public state = {
     expand: true,
@@ -111,7 +96,7 @@ export class Navbar extends React.Component<INavbarProps> {
   render () {
     const { tag, expand, fixed, sticky, justify, color, reverse, className, ...others } = this.props
     const Tag = tag!
-    const classes = Navbar.navbarClass({className, fixed, justify, reverse, expand, sticky, color})
+    const classes = navbarClass({className, fixed, justify, reverse, expand, sticky, color})
     return (
       <NavbarContext.Provider value={{
         getTogglerProps: this.getTogglerProps,
@@ -123,6 +108,29 @@ export class Navbar extends React.Component<INavbarProps> {
   }
 }
 
-export const NavbarStyles = {
-  nav: 'navbar-nav',
+export const NavbarStyles = { nav: 'navbar-nav' }
+
+export type NavbarClass = {
+  className?: string,
+  fixed?: NavbarFixed,
+  justify?: NavbarJustify,
+  reverse?: boolean,
+  expand?: NavbarExpand,
+  sticky?: boolean,
+  color?: NavbarBgColor,
+}
+
+export function navbarClass({className, fixed = '', justify = '', expand = 'xs', color = '', reverse, sticky }: NavbarClass = {}) {
+  return classNames(
+    className,
+    NAVBAR,
+    cls[`BG_${color!.toUpperCase()}`],
+    cls[`NAVBAR_EXPAND_${expand!.toUpperCase()}`],
+    reverse ? NAVBAR_DARK : NAVBAR_LIGHT,
+    {
+      [STICKY]: !!sticky,
+      [cls[`FIXED_${fixed.toUpperCase()}`]]: !!fixed,
+      [cls[`JUSTIFY_CONTENT_XS_${justify.toUpperCase()}`]]: !!justify,
+    },
+  )
 }

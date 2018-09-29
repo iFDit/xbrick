@@ -24,6 +24,6 @@ export const NavItemStyles = {
 NavItem.displayName = 'xbrick.NavItem'
 NavItem.defaultProps = { tag: 'li' }
 
-export function navItemClass({className}: any) {
+export function navItemClass({className}: {className?: string} = {}) {
   return classNames(className, NAV_ITEM)
 }

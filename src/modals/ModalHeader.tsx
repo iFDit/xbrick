@@ -41,6 +41,6 @@ ModalHeader.defaultProps = {
   closeIcon: <Close />,
 }
 
-export function modalHeaderClass({className}: any) {
+export function modalHeaderClass({className}: {className?: string} = {}) {
   return classNames(className, MODAL_HEADER)
 }

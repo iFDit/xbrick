@@ -20,6 +20,6 @@ export const ModalContent: React.StatelessComponent<IModalContentProps> = functi
 ModalContent.displayName = 'xbrick.ModalContent'
 ModalContent.defaultProps = { tag: 'div' }
 
-export function modalContentClass({className}: any) {
+export function modalContentClass({className}: {className?: string} = {}) {
   return classNames(className, MODAL_CONTENT)
 }

@@ -29,7 +29,7 @@ Jumbotron.defaultProps = {
   fluid: false,
 }
 
-export function jumbotronClass({className, fluid}: any) {
+export function jumbotronClass({className, fluid}: {className?: string, fluid?: boolean} = {}) {
   return classNames(
     className,
     JUMBOTRON,

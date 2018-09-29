@@ -44,7 +44,14 @@ Nav.defaultProps = {
   vertical: false,
 }
 
-export function navClass({className, tab, vertical, justify}: any) {
+export type NavClass = {
+  className?: string,
+  tab?: boolean,
+  vertical?: boolean,
+  justify?: NavJustify,
+}
+
+export function navClass({className, tab, vertical, justify = ''}: NavClass = {}) {
   const justifyMap = {
     center: 'CENTER',
     end: 'END',

@@ -20,6 +20,6 @@ export const ModalTitle: React.StatelessComponent<IModalTitleProps> = function (
 ModalTitle.displayName = 'xbrick.ModalTitle'
 ModalTitle.defaultProps = { tag: 'h5' }
 
-export function modalTitleClass({className}: any) {
+export function modalTitleClass({className}: {className?: string} = {}) {
   return classNames(className, MODAL_TITLE)
 }

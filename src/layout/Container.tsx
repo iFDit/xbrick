@@ -28,6 +28,6 @@ Container.defaultProps = {
   fluid: false,
 }
 
-export function containerClass({className, fluid}: any) {
+export function containerClass({className, fluid}: {className?: string, fluid?: boolean} = {}) {
   return classNames(className, fluid ? CONTAINER_FLUID : CONTAINER)
 }

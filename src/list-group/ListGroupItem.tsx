@@ -49,7 +49,15 @@ ListGroupItem.defaultProps = {
   dynamic: false,
 }
 
-export function listGroupItemClass({className, disabled, active, dynamic, color}: any) {
+export type ListGroupClass = {
+  className?: string,
+  disabled?: boolean,
+  active?: boolean,
+  dynamic?: boolean,
+  color?: ListGroupItemType,
+}
+
+export function listGroupItemClass({className, disabled, active, dynamic, color = ''}: ListGroupClass = {}) {
   return classNames(
     className,
     LIST_GROUP_ITEM,

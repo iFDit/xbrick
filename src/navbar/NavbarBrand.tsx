@@ -20,6 +20,6 @@ export const NavbarBrand: React.StatelessComponent<INavbarBrandProps> = function
 NavbarBrand.displayName = 'xbrick.NavbarBrand'
 NavbarBrand.defaultProps = { tag: 'a' }
 
-export function narbarBrandClass({className}: any) {
+export function narbarBrandClass({className}: {className?: string} = {}) {
   return classNames(className, NAVBAR_BRAND)
 }

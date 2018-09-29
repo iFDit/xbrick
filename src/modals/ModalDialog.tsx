@@ -71,7 +71,13 @@ ModalDialog.defaultProps = {
   align: 'start',
 }
 
-export function modalDialogClass({className, align, size}: any) {
+export type ModalDialogClass = {
+  className?: string,
+  align?: ModalDialogAlign,
+  size?: ModalSize,
+}
+
+export function modalDialogClass({className, align = 'start', size = ''}: ModalDialogClass = {}) {
   const sizeMap = { large: 'LG', small: 'SM' }
   const alignMap = { center: true }
   return classNames(

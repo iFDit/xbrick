@@ -13,17 +13,18 @@ export interface INavbarTogglerProps extends IProps {
 }
 
 export const NavbarToggler: React.StatelessComponent<INavbarTogglerProps> = function (props: INavbarTogglerProps) {
-  const { className, ...others } = props
+  const { tag, className, ...others } = props
+  const Tag = tag!
   return (
-    <button {...props} className={navbarTogglerClass({className})}>
+    <Tag {...others} className={navbarTogglerClass({className})}>
       <span className={NAVBAR_TOGGLER_ICON} />
-    </button>
+    </Tag>
   )
 }
 
 NavbarToggler.displayName = 'xbrick.NavbarToggler'
 NavbarToggler.defaultProps = { tag: 'button' }
 
-export function navbarTogglerClass({className}: any) {
+export function navbarTogglerClass({className}: {className?: string} = {}) {
   return classNames(className, NAVBAR_TOGGLER)
 }

@@ -29,7 +29,7 @@ ListGroup.defaultProps = {
   flush: false,
 }
 
-export function listGroupClass({className, flush}: any) {
+export function listGroupClass({className, flush}: {className?: string, flush?: boolean} = {}) {
   return classNames(
     className,
     LIST_GROUP,
