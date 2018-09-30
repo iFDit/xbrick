@@ -35,6 +35,7 @@ export class Popover extends Tooltip {
     placement: 'top',
     open: false,
     noarrow: false,
+    children: <span/>,
   }
   static Body = (props: IPopoverBody) => (
     <PopoverContext.Consumer>
@@ -55,21 +56,6 @@ export class Popover extends Tooltip {
     }
     return null
   }
-  static popoverClass({className, open, currentPlacement}: any) {
-    return classNames(
-      className,
-      cls.XPOPOVER,
-      cls.POPOVER,
-      cls.SHOW,
-      {
-        [cls.XPOPOVER_CLOSE]: !open,
-        [cls.POPOVER_LEFT]: currentPlacement === 'left',
-        [cls.POPOVER_RIGHT]: currentPlacement === 'right',
-        [cls.POPOVER_TOP]: currentPlacement === 'top',
-        [cls.POPOVER_BOTTOM]: currentPlacement === 'bottom',
-      },
-    )
-  }
 
   public getHeaderProps = (props: IPopoverHeaderProps) => {
     const { open } = this.props
@@ -88,7 +74,7 @@ export class Popover extends Tooltip {
     const Tag = tag!
     const from = open ? 0 : 1
     const to = open ? 1 : 0
-    const classes = Popover.popoverClass({className, open, currentPlacement})
+    const classes = popoverClass({className, open, currentPlacement})
     const arrowStyleName = placementMap[currentPlacement!.split('-')[0]]
     const modifiers: any = {
       update: {
@@ -118,4 +104,26 @@ export class Popover extends Tooltip {
       </Popper>
     )
   }
+}
+
+export type PopoverClass = {
+  className?: string,
+  open?: boolean,
+  currentPlacement?: PopoverPlacement,
+}
+
+export function popoverClass({className, open, currentPlacement}: PopoverClass = {}) {
+  return classNames(
+    className,
+    cls.XPOPOVER,
+    cls.POPOVER,
+    cls.SHOW,
+    {
+      [cls.XPOPOVER_CLOSE]: !open,
+      [cls.POPOVER_LEFT]: currentPlacement === 'left',
+      [cls.POPOVER_RIGHT]: currentPlacement === 'right',
+      [cls.POPOVER_TOP]: currentPlacement === 'top',
+      [cls.POPOVER_BOTTOM]: currentPlacement === 'bottom',
+    },
+  )
 }

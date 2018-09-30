@@ -5,7 +5,6 @@ import { Button, buttonClass } from 'src/buttons/Button'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps } from 'test/basic'
 
 Enzyme.configure({ adapter: new Adapter() })
-
 const colors = ['primary', 'secondary', 'warning', 'info', 'success', 'light', 'dark']
 const size = {
   large: 'lg',

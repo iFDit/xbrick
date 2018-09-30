@@ -43,6 +43,7 @@ export class Tooltip extends React.Component<ITooltipProps> {
     noarrow: false,
     placement: 'top',
     open: false,
+    children: <span/>,
   }
   static getDerivedStateFromProps(props: ITooltipProps, state: any) {
     if (props.open !== state.lastOpen) {
@@ -52,14 +53,6 @@ export class Tooltip extends React.Component<ITooltipProps> {
       return { ...state, currentPlacement: props.placement }
     }
     return null
-  }
-  static tooltipClass({className, currentPlacement}: any) {
-    return classNames(className, cls.TOOLTIP, cls.SHOW, {
-      [cls.TOOLTIP_LEFT]: currentPlacement === 'left',
-      [cls.TOOLTIP_RIGHT]: currentPlacement === 'right',
-      [cls.TOOLTIP_TOP]: currentPlacement === 'top',
-      [cls.TOOLTIP_BOTTOM]: currentPlacement === 'bottom',
-    })
   }
 
   public state = {
@@ -84,7 +77,7 @@ export class Tooltip extends React.Component<ITooltipProps> {
     const Tag = tag!
     const from = open ? 0 : 1
     const to = open ? 1 : 0
-    const classes = Tooltip.tooltipClass({className, currentPlacement})
+    const classes = tooltipClass({className, currentPlacement})
     const modifiers: any = {
       update: {
         enabled: true,
@@ -110,4 +103,18 @@ export class Tooltip extends React.Component<ITooltipProps> {
       </Popper>
     )
   }
+}
+
+export type TooltipClass = {
+  className?: string,
+  currentPlacement?: tooltipPlacement,
+}
+
+export function tooltipClass({className, currentPlacement}: TooltipClass = {}) {
+  return classNames(className, cls.TOOLTIP, cls.SHOW, {
+    [cls.TOOLTIP_LEFT]: currentPlacement === 'left',
+    [cls.TOOLTIP_RIGHT]: currentPlacement === 'right',
+    [cls.TOOLTIP_TOP]: currentPlacement === 'top',
+    [cls.TOOLTIP_BOTTOM]: currentPlacement === 'bottom',
+  })
 }

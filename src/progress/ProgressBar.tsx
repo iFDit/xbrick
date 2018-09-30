@@ -48,7 +48,14 @@ ProgressBar.defaultProps = {
   animate: false,
 }
 
-export function progressBarClass({className, striped, animate, color}: any) {
+export type ProgressBarClass = {
+  className?: string,
+  striped?: boolean,
+  animate?: boolean,
+  color?: ProgressType,
+}
+
+export function progressBarClass({className, striped, animate, color = ''}: ProgressBarClass = {}) {
   return classNames(
     className, 
     PROGRESS_BAR,

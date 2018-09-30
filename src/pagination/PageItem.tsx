@@ -29,14 +29,20 @@ export const PageItem: React.StatelessComponent<IPageItemProps> = function (prop
   return <Tag {...others} className={pageItemClass({className, active, disabled})} />
 }
 
-PageItem.displayName = 'xbrick.PaginationItem'
+PageItem.displayName = 'xbrick.PageItem'
 PageItem.defaultProps = {
   tag: 'li',
   disabled: false,
   active: false,
 }
 
-export function pageItemClass({className, active, disabled}: any) {
+export type PageItemClass = {
+  className?: string,
+  active?: boolean,
+  disabled?: boolean,
+}
+
+export function pageItemClass({className, active, disabled}: PageItemClass = {}) {
   return classNames(
     className,
     PAGE_ITEM,

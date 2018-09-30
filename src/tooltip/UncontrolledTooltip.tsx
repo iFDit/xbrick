@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { Fade } from 'src/animate/Fade'
 import * as cls from 'src/common/classes'
 import { Popper } from 'src/tooltip/Popper'
+import { tooltipClass } from 'src/tooltip/Tooltip'
 import { IProps, tooltipPlacement } from 'src/common/props'
 
 export interface IUncontrolledTooltipProps extends IProps {
@@ -37,20 +38,13 @@ export class UncontrolledTooltip extends React.Component<IUncontrolledTooltipPro
     tag: 'div',
     noarrow: false,
     placement: 'top',
+    children: <span/>,
   }
   static getDerivedStateFromProps(props: IUncontrolledTooltipProps, state: any) {
     if (props.placement !== state.currentPlacement) {
       return { ...state, currentPlacement: props.placement }
     }
     return null
-  }
-  static tooltipClass({className, currentPlacement}: any) {
-    return classNames(className, cls.TOOLTIP, cls.SHOW, {
-      [cls.TOOLTIP_LEFT]: currentPlacement === 'left',
-      [cls.TOOLTIP_RIGHT]: currentPlacement === 'right',
-      [cls.TOOLTIP_TOP]: currentPlacement === 'top',
-      [cls.TOOLTIP_BOTTOM]: currentPlacement === 'bottom',
-    })
   }
 
   public state = {
@@ -90,7 +84,7 @@ export class UncontrolledTooltip extends React.Component<IUncontrolledTooltipPro
     const Tag = tag!
     const from = open ? 0 : 1
     const to = open ? 1 : 0
-    const classes = UncontrolledTooltip.tooltipClass({className, currentPlacement})
+    const classes = tooltipClass({className, currentPlacement})
     const modifiers: any = {
       update: {
         enabled: true,

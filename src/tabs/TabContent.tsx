@@ -29,6 +29,6 @@ TabContent.defaultProps = {
   open: false,
 }
 
-export function tabContentClass({className, open}: any) {
+export function tabContentClass({className, open}: {className?: string, open?: boolean} = {}) {
   return classNames(className, TAB_CONTENT, open && ACTIVE)
 }

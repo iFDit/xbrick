@@ -42,7 +42,15 @@ Table.defaultProps = {
   dynamic: false,
 }
 
-export function tableClass({className, size, dynamic, border, striped}: any) {
+export type TableClass = {
+  className?: string,
+  size?: TableSize,
+  dynamic?: boolean,
+  border?: TableBoder,
+  striped?: boolean,
+}
+
+export function tableClass({className, size, dynamic, border, striped}: TableClass = {}) {
   return classNames(className, TABLE, {
     [TABLE_SMALL]: size === 'small',
     [TABLE_HOVER]: dynamic,

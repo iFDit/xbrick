@@ -7,7 +7,7 @@ import { POPOVER_BODY, XPOPOVER_BODY } from 'src/common/classes'
 export interface IPopoverBody extends IProps {
   /**
    * custom render component.
-   * @default h3
+   * @default div
    */
   tag?: string | React.Factory<any>
 
@@ -30,6 +30,6 @@ export const PopoverBody: React.StatelessComponent<IPopoverBody> = function (pro
 PopoverBody.displayName = 'xbrick.PopoverBody'
 PopoverBody.defaultProps = { tag: 'div' }
 
-export function popoverBodyClass({className}: any) {
+export function popoverBodyClass({className}: {className?: string} = {}) {
   return classNames(className, POPOVER_BODY, XPOPOVER_BODY)
 }

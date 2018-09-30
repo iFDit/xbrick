@@ -20,13 +20,13 @@ export interface ITableCellProps extends IProps {
 export const TableCell: React.StatelessComponent<ITableCellProps> = function (props: ITableCellProps) {
   const { tag, color, className, ...others } = props
   const Tag = tag!
-  return <Tag {...others} className={tableCellClass({className})}/>
+  return <Tag {...others} className={tableCellClass({className, color})}/>
 }
 
 TableCell.displayName = 'xbrick.TableCell'
 TableCell.defaultProps = { tag: 'td' }
 
-export function tableCellClass({className, color}: any) {
+export function tableCellClass({className, color}: {className?: string, color?: TableType} = {}) {
   return classNames(className, {
     [`${TABLE}-${cls[String(color!).toUpperCase()]}`]: !!color,
   })

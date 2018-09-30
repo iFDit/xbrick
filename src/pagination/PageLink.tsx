@@ -17,9 +17,9 @@ export const PageLink: React.StatelessComponent<IPageLinkProps> = function (prop
   return <Tag {...others} className={pageLinkClass({className})}/>
 }
 
-PageLink.displayName = 'xbrick.PaginationLink'
+PageLink.displayName = 'xbrick.PageLink'
 PageLink.defaultProps = { tag: 'a' }
 
-export function pageLinkClass({className}: any) {
+export function pageLinkClass({className}: {className?: string} = {}) {
   return classNames(className, PAGE_LINK)
 }

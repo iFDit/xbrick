@@ -30,6 +30,6 @@ export const PopoverHeader: React.StatelessComponent<IPopoverHeaderProps> = func
 PopoverHeader.displayName = 'xbrick.PopoverHeader'
 PopoverHeader.defaultProps = { tag: 'h3' }
 
-export function popoverHeaderClass({className}: any) {
+export function popoverHeaderClass({className}: {className?: string} = {}) {
   return classNames(className, POPOVER_HEADER)
 }

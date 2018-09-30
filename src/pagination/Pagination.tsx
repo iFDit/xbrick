@@ -35,7 +35,13 @@ Pagination.defaultProps = {
   size: 'middle',
 }
 
-export function paginationClass({className, size, justify}: any) {
+export type PaginationClass = {
+  className?: string,
+  size?: PaginationSize,
+  justify?: PaginationJustify,
+}
+
+export function paginationClass({className, size, justify}: PaginationClass = {}) {
   return classNames(
     className,
     PAGINATION,

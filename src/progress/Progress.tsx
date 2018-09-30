@@ -20,6 +20,6 @@ export const Progress: React.StatelessComponent<IProgressProps> = function (prop
 Progress.displayName = 'xbrick.Progress'
 Progress.defaultProps = { tag: 'div' }
 
-export function progressClass({className}: any) {
+export function progressClass({className}: {className?: string} = {}) {
   return classNames(className, PROGRESS)
 }

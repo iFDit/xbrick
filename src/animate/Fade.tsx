@@ -30,6 +30,4 @@ export const Fade: React.StatelessComponent<IFadeProps> = function (props: IFade
 }
 
 Fade.displayName = 'xbrick.Fade'
-Fade.defaultProps = {
-  tag: 'div',
-}
+Fade.defaultProps = { tag: 'div' }
