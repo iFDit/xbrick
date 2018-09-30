@@ -32,6 +32,7 @@ describe('Tooltip', () => {
 
   it('should render correct className when set different props', () => {
     const node = mount(<Tooltip tag="section" open={true}/>)
+    node.setState({active: true})
     expect(node.find('section').hasClass('tooltip')).toBe(true)
     expect(node.find('section').hasClass('show')).toBe(true)
     node.setProps({ placement: 'top' })

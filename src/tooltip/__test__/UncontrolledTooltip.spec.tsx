@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { UncontrolledTooltip } from 'src/tooltip/UncontrolledTooltip'
@@ -14,13 +14,14 @@ describe('UncontrolledTooltip', () => {
   displayName(UncontrolledTooltip, 'xbrick.UncontrolledTooltip')
 
   it('should render default div tag', () => {
-    const node = mount(<UncontrolledTooltip><p className="test">1234</p></UncontrolledTooltip>)
+    const Child = forwardRef((props, ref: any) => <p className="test" ref={ref}>1234</p>)
+    const node = mount(<UncontrolledTooltip><Child/></UncontrolledTooltip>)
     node.setState({active: true})
     expect(node.find('div.tooltip').hostNodes().length).toBe(1)
   })
 
   it('should render change tag', () => {
-    const node = mount(<UncontrolledTooltip tag="section"/>)
+    const node = mount(<UncontrolledTooltip tag="section"><p className="test">1234</p></UncontrolledTooltip>)
     node.setState({active: true})
     expect(node.find('section.tooltip').hostNodes().length).toBe(1)
   })
