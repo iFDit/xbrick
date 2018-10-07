@@ -97,7 +97,6 @@ export function formatTransformProps(props: any) {
   }
   
   for (let key in props) {
-
     if (props.hasOwnProperty(key)) {
       const match = key.match(matcher) ? key.match(matcher)![0] : ''
 

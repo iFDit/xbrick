@@ -2,7 +2,6 @@
 export { Alert, AlertStyles } from 'src/alert/Alert'
 export { AlertLink } from 'src/alert/AlertLink'
 export { Badge } from 'src/badge/Badge'
-export { AnimateWrapper } from 'src/animate/AnimateWrapper'
 export { Breadcrumb } from 'src/breadcrumbs/Breadcrumb'
 export { BreadcrumbItem } from 'src/breadcrumbs/BreadcrumbItem'
 export { Button } from 'src/buttons/Button'
