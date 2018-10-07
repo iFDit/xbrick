@@ -22,9 +22,7 @@ export interface ISlideupProps extends IAnimateProps {
 // Controlled Component.
 export class SlideUp extends React.Component<ISlideupProps> {
   static displayName = 'xbrick.SlideUp'
-  static defaultProps = {
-    tag: 'div',
-  }
+  static defaultProps = { tag: 'div' }
 
   public state = {
     from: {},

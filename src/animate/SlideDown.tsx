@@ -23,9 +23,7 @@ export interface ISlideDownProps extends IAnimateProps {
 export class SlideDown extends React.Component<ISlideDownProps> {
 
   static displayName = 'xbrick.SlideDown'
-  static defaultProps = {
-    tag: 'div',
-  }
+  static defaultProps = { tag: 'div' }
 
   public state = {
     from: {},
