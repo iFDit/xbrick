@@ -57,8 +57,8 @@
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
-    "enzyme": "^3.3.0",
-    "enzyme-adapter-react-16": "^1.2.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "fork-ts-checker-webpack-plugin": "^0.2.8",
@@ -102,18 +102,21 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "src/input-group/*.{js,jsx,ts,tsx}",
+      "src/**/*.{js,jsx,ts,tsx}",
       "!**/node_modules/**",
       "!**/vendor/**",
-      "!src/animate/**",
-      "!src/**/*.d.ts"
+      "!src/**/*.d.ts",
+      "!src/App.tsx",
+      "!src/main.tsx",
+      "!src/registerServiceWorker.ts"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/test/setupTest.js"
     ],
     "testMatch": [
-      "<rootDir>/src/input-group/__test__/**/*.(j|t)s?(x)",
-      "<rootDir>/src/input-group/?(*.)(spec|test).(j|t)s?(x)"
+      "<rootDir>/src/**/__test__/**/*.(j|t)s?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
