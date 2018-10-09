@@ -3,7 +3,7 @@
 ````jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Card, CardTitle, CardBody, Button } from 'xbrick'
+import { Card, CardTitle, CardBody, CardText, Button } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
@@ -13,7 +13,7 @@ ReactDOM.render(
       <CardText>
         "a benevolent smile".
       </CardText>
-      <Button bstype="light">LEARN MORE</Button>
+      <Button color="light">LEARN MORE</Button>
     </CardBody>
   </Card>
 , document.getElementById('root'))

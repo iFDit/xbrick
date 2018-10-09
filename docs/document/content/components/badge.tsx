@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 import { Col } from 'xbrick'
 import { Button, Badge } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
@@ -47,7 +46,7 @@ export function BadgeContent() {
       content: (
         <>
           <Col xs="12">
-            <h1>Example heading <Badge>New</Badge></h1>
+            <h1>Example heading <Badge color="secondary">New</Badge></h1>
           </Col>
           <Col xs="12">
             <h2>Example heading <Badge color="secondary">New</Badge></h2>

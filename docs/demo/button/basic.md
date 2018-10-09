@@ -10,7 +10,6 @@ ReactDOM.render(
   <div>
     <Button>primary</Button>
     <Button color="secondary">secondary</Button>
-    <Button color="secondary">secondary</Button>
     <Button color="success">success</Button>
     <Button color="danger">danger</Button>
     <Button color="warning">warning</Button>

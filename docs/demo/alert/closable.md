@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom'
 import { Alert } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
+const AlertClose = Alert.Close
 const afterClose = () => {
   console.log('I had been closed.')
 }

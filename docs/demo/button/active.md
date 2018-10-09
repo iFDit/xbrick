@@ -11,7 +11,7 @@ import 'xbrick/lib/style/index.css'
 ReactDOM.render(
   <div>
     <Button active>Primary button</Button>
-    <Button bstype="secondary" active>Button</Button>
+    <Button color="secondary" active>Button</Button>
   </div>
 , document.getElementById('root'))
 ````
