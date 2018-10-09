@@ -93,6 +93,7 @@ describe('Dropdown', () => {
     it('should create default className', () => {
       expect(dropdownClass()).toBe('dropdown')
       expect(dropdownClass({className: 'custom'})).toBe('custom dropdown')
+      expect(dropdownClass({className: 'custom', open: true})).toBe('custom dropdown active')
       expect(dropdownClass({className: 'custom', direction: 'up'})).toBe('custom dropdown dropup')
       expect(dropdownClass({className: 'custom', direction: 'left'})).toBe('custom dropdown dropleft')
       expect(dropdownClass({className: 'custom', direction: 'right'})).toBe('custom dropdown dropright')
