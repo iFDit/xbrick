@@ -111,7 +111,7 @@
       "!src/registerServiceWorker.ts"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js",
+      "<rootDir>/scripts/polyfills.js",
       "<rootDir>/test/setupTest.js"
     ],
     "testMatch": [
@@ -122,9 +122,9 @@
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.tsx?$": "<rootDir>/config/jest/typescriptTransform.js",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+      "^.+\\.tsx?$": "<rootDir>/scripts/jest/typescriptTransform.js",
+      "^.+\\.css$": "<rootDir>/scripts/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/scripts/jest/fileTransform.js"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"

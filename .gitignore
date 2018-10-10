@@ -25,6 +25,8 @@ yarn-error.log*
 /dist
 
 # custom
+/scripts/build.js
+/scripts/start.js
 App.test.tsx
 App.css
 App.tsx
@@ -32,3 +34,4 @@ index.css
 main.tsx
 logo.svg
 registerServiceWorker.ts
+package-lock.json
