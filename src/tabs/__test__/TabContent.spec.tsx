@@ -1,5 +1,5 @@
 import React from 'react'
-import Enzyme from 'enzyme'
+import Enzyme, { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import { TabContent, tabContentClass } from 'src/tabs/TabContent'
 import { notCrash, renderChild, defaultTag, customTag, defaultProps, displayName } from 'test/basic'
@@ -14,6 +14,13 @@ describe('TabContent', () => {
   renderChild(TabContent, child, 'p')
   customTag(TabContent, 'section', 'section')
   displayName(TabContent, 'xbrick.TabContent')
+
+  it('should render correct className', () => {
+    const node = mount(<TabContent/>)
+    expect(node.find('div').hasClass('xbrick-tab-content'))
+    node.setProps({open: true})
+    expect(node.find('div.xbrick-tab-content').hasClass('active'))
+  })
 
   describe('tabContentClass', () => {
     it('should create default className', () => {

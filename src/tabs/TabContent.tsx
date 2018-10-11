@@ -20,7 +20,7 @@ export interface ITabContentProps extends IProps {
 
 export const TabContent: React.StatelessComponent<ITabContentProps> = function (props: ITabContentProps) {
   const { open, className, ...others } = props
-  return <Fade {...others} from={0.3} to={1} className={tabContentClass({className})}/>
+  return <Fade {...others} from={0.3} to={1} className={tabContentClass({className, open})}/>
 }
 
 TabContent.displayName = 'xbrick.TabContent'
