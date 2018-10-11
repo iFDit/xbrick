@@ -9,7 +9,7 @@ import 'xbrick/lib/style/index.css'
 ReactDOM.render(
   <Card style={{width: '18rem'}}>
     <CardHeader>Featured</CardHeader>
-    <ListGroup>
+    <ListGroup flush>
       <ListGroupItem>Cras justo odio</ListGroupItem>
       <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
       <ListGroupItem>Vestibulum at eros</ListGroupItem>

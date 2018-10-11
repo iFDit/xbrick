@@ -1,7 +1,7 @@
 import React from 'react'
 import { Col, Button, Nav, NavItem, NavLink, TabContent } from 'xbrick'
 import { ListGroup, ListGroupItem  } from 'xbrick'
-import { CardGroup, CardDeck, CardColumns, CardImgOverlay } from 'xbrick'
+import { CardGroup, CardDeck, CardColumns } from 'xbrick'
 import { Card, CardTitle, CardBody, CardText, CardImg, CardLink, CardHeader, CardFooter, CardHeaderStyle } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
@@ -191,7 +191,7 @@ export function CardContent() {
               <CardBody>
                 <CardTitle>Special title treatment</CardTitle>
                 <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                <Button>detail</Button>
+                <Button color="light">detail</Button>
               </CardBody>
             </Card>
           </Col>
@@ -200,7 +200,7 @@ export function CardContent() {
               <CardBody>
                 <CardTitle>Special title treatment</CardTitle>
                 <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                <Button>detail</Button>
+                <Button color="light">detail</Button>
               </CardBody>
             </Card>
           </Col>
@@ -209,7 +209,7 @@ export function CardContent() {
               <CardBody>
                 <CardTitle>Special title treatment</CardTitle>
                 <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                <Button>detail</Button>
+                <Button color="light">detail</Button>
               </CardBody>
             </Card>
           </Col>

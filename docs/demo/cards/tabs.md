@@ -3,7 +3,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Nav, NavItem, NavLink, TabContent, Button } from 'xbrick'
-import { Card, CardTitle, CardBody, CardHeader, CardHeaderStyle } from 'xbrick'
+import { Card, CardTitle, CardText, CardBody, CardHeader, CardHeaderStyle } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 class CardTab extends React.Component {

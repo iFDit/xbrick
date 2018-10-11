@@ -3,13 +3,13 @@
 通过 `color` 和 `outline` 属性修改卡片边框颜色。
 
 ````jsx
-import React from 'react'
+import React, {Fragment} from 'react'
 import ReactDOM from 'react-dom'
 import { Card, CardBody, CardTitle, CardText } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
-  <>
+  <Fragment>
     <Card color="primary" outline>
       <CardBody>
         <CardTitle>Primary card title</CardTitle>
@@ -74,6 +74,6 @@ ReactDOM.render(
         </CardText>
       </CardBody>
     </Card>
-  </>
+  </Fragment>
 , document.getElementById('root'))
 ````

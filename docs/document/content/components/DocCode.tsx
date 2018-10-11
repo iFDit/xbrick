@@ -1,5 +1,4 @@
 import React from 'react'
-import classNames from 'classnames'
 import { Container, Row, Col, Button, Collapse } from 'xbrick'
 const sandbox = require('docs/document/asset/codesandbox.svg')
 import SyntaxHighlighter from 'react-syntax-highlighter/prism'

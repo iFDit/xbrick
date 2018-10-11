@@ -5,7 +5,7 @@
 ````jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Card, CardBody, CardTitle, CardText, CardHeader, CardFooter, Button } from 'xbrick'
+import { Card, CardBody, CardTitle, CardText, CardHeader, CardFooter, CardLink } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 
@@ -15,7 +15,7 @@ ReactDOM.render(
     <CardBody>
       <CardTitle>Special Title Treatment</CardTitle>
       <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-      <Button>Go somewhere</Button>
+      <CardLink href="#">Go somewhere</CardLink>
     </CardBody>
     <CardFooter>footer</CardFooter>
   </Card>

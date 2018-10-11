@@ -8,7 +8,7 @@ import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <Card>
-    <CardImg src={imageSrc.replace(/[\r\n]/g, '')} />
+    <CardImg src={data.imageSrc.replace(/[\r\n]/g, '')} />
     <CardBody>
       <CardTitle>Card title</CardTitle>
       <CardText>

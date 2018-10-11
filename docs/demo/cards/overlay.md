@@ -7,7 +7,7 @@ import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <Card>
-    <CardImg src={overlayImage.replace(/[\r\n]/g, '')} />
+    <CardImg src={data.overlayImage.replace(/[\r\n]/g, '')} />
     <CardBody overlay>
       <CardTitle>Card title</CardTitle>
       <CardText>This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</CardText>
