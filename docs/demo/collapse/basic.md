@@ -16,7 +16,7 @@ class Example extends React.Component {
 
   render () {
     return (
-      <>
+      <Fragment>
         <Button style={{marginBottom: 4}} onClick={() => this.toggle()}>Toggle</Button>
         <Collapse
           open={this.state.open}
@@ -29,7 +29,7 @@ class Example extends React.Component {
             craft beer labore wes anderson cred nesciunt sapiente ea proident.
           </p>
         </Collapse>
-      </>
+      </Fragment>
     )
   }
 }

@@ -13,7 +13,7 @@ class Accordion extends React.Component {
     last: false,
   }
 
-  public toggle = (key) => {
+  toggle = (key) => {
     const last = this.state[key]
     this.setState({
       first: false,
