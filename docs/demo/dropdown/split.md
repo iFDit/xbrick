@@ -3,65 +3,65 @@
 ````jsx
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
-import { Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Button } from 'xbrick'
+import { SplitDropdown, Button } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <Fragment>
-    <Dropdown btnGroup>
+    <SplitDropdown>
       <Button>primary</Button>
-      <DropdownToggle button split/>
-      <DropdownMenu>
-        <DropdownItem>Action</DropdownItem>
-        <DropdownItem>Another action</DropdownItem>
-        <DropdownItem>Something else here</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
-    <Dropdown btnGroup>
-      <Button bstype="secondary">secondary</Button>
-      <DropdownToggle bstype="secondary" button split/>
-      <DropdownMenu>
-        <DropdownItem>Action</DropdownItem>
-        <DropdownItem>Another action</DropdownItem>
-        <DropdownItem>Something else here</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
-    <Dropdown btnGroup>
-      <Button bstype="success">success</Button>
-      <DropdownToggle bstype="success" button split/>
-      <DropdownMenu>
-        <DropdownItem>Action</DropdownItem>
-        <DropdownItem>Another action</DropdownItem>
-        <DropdownItem>Something else here</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
-    <Dropdown btnGroup>
-      <Button bstype="info">info</Button>
-      <DropdownToggle bstype="info" button split/>
-      <DropdownMenu>
-        <DropdownItem>Action</DropdownItem>
-        <DropdownItem>Another action</DropdownItem>
-        <DropdownItem>Something else here</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
-    <Dropdown btnGroup>
-      <Button bstype="warning">warning</Button>
-      <DropdownToggle bstype="warning" button split/>
-      <DropdownMenu>
-        <DropdownItem>Action</DropdownItem>
-        <DropdownItem>Another action</DropdownItem>
-        <DropdownItem>Something else here</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
-    <Dropdown btnGroup>
-      <Button bstype="danger">danger</Button>
-      <DropdownToggle bstype="danger" button split/>
-      <DropdownMenu>
-        <DropdownItem>Action</DropdownItem>
-        <DropdownItem>Another action</DropdownItem>
-        <DropdownItem>Something else here</DropdownItem>
-      </DropdownMenu>
-    </Dropdown>
+      <SplitDropdown.Toggle button split/>
+      <SplitDropdown.Menu>
+        <SplitDropdown.Item>Action</SplitDropdown.Item>
+        <SplitDropdown.Item>Another action</SplitDropdown.Item>
+        <SplitDropdown.Item>Something else here</SplitDropdown.Item>
+      </SplitDropdown.Menu>
+    </SplitDropdown>
+    <SplitDropdown >
+      <Button color="secondary">secondary</Button>
+      <SplitDropdown.Toggle color="secondary" button split/>
+      <SplitDropdown.Menu>
+        <SplitDropdown.Item>Action</SplitDropdown.Item>
+        <SplitDropdown.Item>Another action</SplitDropdown.Item>
+        <SplitDropdown.Item>Something else here</SplitDropdown.Item>
+      </SplitDropdown.Menu>
+    </SplitDropdown>
+    <SplitDropdown >
+      <Button color="success">success</Button>
+      <SplitDropdown.Toggle color="success" button split/>
+      <SplitDropdown.Menu>
+        <SplitDropdown.Item>Action</SplitDropdown.Item>
+        <SplitDropdown.Item>Another action</SplitDropdown.Item>
+        <SplitDropdown.Item>Something else here</SplitDropdown.Item>
+      </SplitDropdown.Menu>
+    </SplitDropdown>
+    <SplitDropdown >
+      <Button color="info">info</Button>
+      <SplitDropdown.Toggle color="info" button split/>
+      <SplitDropdown.Menu>
+        <SplitDropdown.Item>Action</SplitDropdown.Item>
+        <SplitDropdown.Item>Another action</SplitDropdown.Item>
+        <SplitDropdown.Item>Something else here</SplitDropdown.Item>
+      </SplitDropdown.Menu>
+    </SplitDropdown>
+    <SplitDropdown >
+      <Button color="warning">warning</Button>
+      <SplitDropdown.Toggle color="warning" button split/>
+      <SplitDropdown.Menu>
+        <SplitDropdown.Item>Action</SplitDropdown.Item>
+        <SplitDropdown.Item>Another action</SplitDropdown.Item>
+        <SplitDropdown.Item>Something else here</SplitDropdown.Item>
+      </SplitDropdown.Menu>
+    </SplitDropdown>
+    <SplitDropdown >
+      <Button color="danger">danger</Button>
+      <SplitDropdown.Toggle color="danger" button split/>
+      <SplitDropdown.Menu>
+        <SplitDropdown.Item>Action</SplitDropdown.Item>
+        <SplitDropdown.Item>Another action</SplitDropdown.Item>
+        <SplitDropdown.Item>Something else here</SplitDropdown.Item>
+      </SplitDropdown.Menu>
+    </SplitDropdown>
   </Fragment>
 , document.getElementById('root'))
 ````

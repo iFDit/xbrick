@@ -64,7 +64,7 @@ export const Home = () => {
             </Col>
             <Col sm="4" className="home-block">
               <h3 className="block-title">目的</h3>
-              <p>提供一套灵活，稳定和简单的基础组件，以便开发人员在此基础上构建更完善的业务组件。</p>
+              <p>基于Bootstrap样式提供一套灵活，稳定和简单的基础组件，以便开发人员在此基础上构建更完善的业务组件。</p>
             </Col>
           </Row>
         </Container>

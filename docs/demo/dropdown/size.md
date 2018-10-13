@@ -3,41 +3,41 @@
 ````jsx
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
-import { Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Button } from 'xbrick'
+import { Dropdown, Button } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
- <>
+ <Fragment>
     <Dropdown>
-      <DropdownToggle button bstype="secondary" size="large">
+      <Dropdown.Toggle button color="secondary" size="large">
         Large button
-      </DropdownToggle>
-      <DropdownMenu>
-        <DropdownItem>Action</DropdownItem>
-        <DropdownItem>Another action</DropdownItem>
-        <DropdownItem>Something else here</DropdownItem>
-      </DropdownMenu>
+      </Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item>Action</Dropdown.Item>
+        <Dropdown.Item>Another action</Dropdown.Item>
+        <Dropdown.Item>Something else here</Dropdown.Item>
+      </Dropdown.Menu>
     </Dropdown>
     <Dropdown>
-      <DropdownToggle button bstype="secondary">
+      <Dropdown.Toggle button color="secondary">
         Middle button
-      </DropdownToggle>
-      <DropdownMenu>
-        <DropdownItem>Action</DropdownItem>
-        <DropdownItem>Another action</DropdownItem>
-        <DropdownItem>Something else here</DropdownItem>
-      </DropdownMenu>
+      </Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item>Action</Dropdown.Item>
+        <Dropdown.Item>Another action</Dropdown.Item>
+        <Dropdown.Item>Something else here</Dropdown.Item>
+      </Dropdown.Menu>
     </Dropdown>
     <Dropdown>
-      <DropdownToggle button bstype="secondary" size="small">
+      <Dropdown.Toggle button color="secondary" size="small">
         Small button
-      </DropdownToggle>
-      <DropdownMenu>
-        <DropdownItem>Action</DropdownItem>
-        <DropdownItem>Another action</DropdownItem>
-        <DropdownItem>Something else here</DropdownItem>
-      </DropdownMenu>
+      </Dropdown.Toggle>
+      <Dropdown.Menu>
+        <Dropdown.Item>Action</Dropdown.Item>
+        <Dropdown.Item>Another action</Dropdown.Item>
+        <Dropdown.Item>Something else here</Dropdown.Item>
+      </Dropdown.Menu>
     </Dropdown>
-  </>
+  </Fragment>
 , document.getElementById('root'))
 ````

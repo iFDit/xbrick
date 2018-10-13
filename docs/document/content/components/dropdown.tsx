@@ -81,7 +81,7 @@ export function DropdownContent() {
       describe: <p>分割样式的下拉组件，可以设置不同的颜色。</p>,
       content: (
         <>
-          <SplitDropdown className="mr-2">
+          <SplitDropdown className="mr-2 mb-2">
             <Button>primary</Button>
             <SplitDropdown.Toggle button split/>
             <SplitDropdown.Menu>
@@ -90,7 +90,7 @@ export function DropdownContent() {
               <SplitDropdown.Item>Something else here</SplitDropdown.Item>
             </SplitDropdown.Menu>
           </SplitDropdown>
-          <SplitDropdown className="mr-2">
+          <SplitDropdown className="mr-2 mb-2">
             <Button color="secondary">secondary</Button>
             <SplitDropdown.Toggle color="secondary" button split/>
             <SplitDropdown.Menu>
@@ -99,7 +99,7 @@ export function DropdownContent() {
               <SplitDropdown.Item>Something else here</SplitDropdown.Item>
             </SplitDropdown.Menu>
           </SplitDropdown>
-          <SplitDropdown className="mr-2">
+          <SplitDropdown className="mr-2 mb-2">
             <Button color="success">success</Button>
             <SplitDropdown.Toggle color="success" button split/>
             <SplitDropdown.Menu>
@@ -108,7 +108,7 @@ export function DropdownContent() {
               <SplitDropdown.Item>Something else here</SplitDropdown.Item>
             </SplitDropdown.Menu>
           </SplitDropdown>
-          <SplitDropdown className="mr-2">
+          <SplitDropdown className="mr-2 mb-2">
             <Button color="info">info</Button>
             <SplitDropdown.Toggle color="info" button split/>
             <SplitDropdown.Menu>
@@ -117,7 +117,7 @@ export function DropdownContent() {
               <SplitDropdown.Item>Something else here</SplitDropdown.Item>
             </SplitDropdown.Menu>
           </SplitDropdown>
-          <SplitDropdown className="mr-2">
+          <SplitDropdown className="mr-2 mb-2">
             <Button color="warning">warning</Button>
             <SplitDropdown.Toggle color="warning" button split/>
             <SplitDropdown.Menu>
@@ -126,7 +126,7 @@ export function DropdownContent() {
               <SplitDropdown.Item>Something else here</SplitDropdown.Item>
             </SplitDropdown.Menu>
           </SplitDropdown>
-          <SplitDropdown className="mr-2">
+          <SplitDropdown className="mr-2 mb-2">
             <Button color="danger">danger</Button>
             <SplitDropdown.Toggle color="danger" button split/>
             <SplitDropdown.Menu>

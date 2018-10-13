@@ -3,19 +3,19 @@
 ````jsx
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
-import { Dropdown, DropdownItem, DropdownToggle, DropdownMenu, Button } from 'xbrick'
+import { Dropdown, Button } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <Dropdown>
-    <DropdownToggle button bstype="secondary">
+    <Dropdown.Toggle button bstype="secondary">
       Dropdown button
-    </DropdownToggle>
-    <DropdownMenu>
-      <DropdownItem>Action</DropdownItem>
-      <DropdownItem>Another action</DropdownItem>
-      <DropdownItem>Something else here</DropdownItem>
-    </DropdownMenu>
+    </Dropdown.Toggle>
+    <Dropdown.Menu>
+      <Dropdown.Item>Action</Dropdown.Item>
+      <Dropdown.Item>Another action</Dropdown.Item>
+      <Dropdown.Item>Something else here</Dropdown.Item>
+    </Dropdown.Menu>
   </Dropdown>
 , document.getElementById('root'))
 ````
