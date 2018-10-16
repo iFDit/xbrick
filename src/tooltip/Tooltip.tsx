@@ -51,7 +51,7 @@ export class Tooltip extends React.Component<ITooltipProps> {
     if (props.open !== state.lastOpen) {
       newState = { ...state, lastOpen: props.open, active: true }
     }
-    if (lastPropsPlacement !== state.currentPlacement) {
+    if (lastPropsPlacement !== state.currentPlacement || props.placement !== lastPropsPlacement) {
       const nextPlacement = lastPropsPlacement !== props.placement ? props.placement : state.currentPlacement
       newState = { ...(newState || state), currentPlacement: nextPlacement, lastPropsPlacement: props.placement }
     }
