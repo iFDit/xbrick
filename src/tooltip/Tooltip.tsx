@@ -46,18 +46,22 @@ export class Tooltip extends React.Component<ITooltipProps> {
     children: <span/>,
   }
   static getDerivedStateFromProps(props: ITooltipProps, state: any) {
+    const { lastPropsPlacement } = state
+    let newState = null
     if (props.open !== state.lastOpen) {
-      return { ...state, lastOpen: props.open, active: true }
+      newState = { ...state, lastOpen: props.open, active: true }
     }
-    if (props.placement !== state.currentPlacement) {
-      return { ...state, currentPlacement: props.placement }
+    if (lastPropsPlacement !== state.currentPlacement) {
+      const nextPlacement = lastPropsPlacement !== props.placement ? props.placement : state.currentPlacement
+      newState = { ...(newState || state), currentPlacement: nextPlacement, lastPropsPlacement: props.placement }
     }
-    return null
+    return newState
   }
 
   public state = {
     active: false,
     lastOpen: this.props.open,
+    lastPropsPlacement: this.props.placement,
     currentPlacement: this.props.placement,
   }
 

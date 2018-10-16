@@ -47,15 +47,16 @@ export class Popover extends Tooltip {
       {({getHeaderProps}) => <PopoverHeader {...getHeaderProps(props)}/>}
     </PopoverContext.Consumer>
   )
-  static getDerivedStateFromProps(props: IPopoverProps, state: any) {
-    if (props.open !== state.lastOpen) {
-      return { ...state, lastOpen: props.open, active: true }
-    }
-    if (props.placement !== state.currentPlacement) {
-      return { ...state, currentPlacement: props.placement }
-    }
-    return null
-  }
+  // static getDerivedStateFromProps(props: IPopoverProps, state: any) {
+  //   let newState = null
+  //   if (props.open !== state.lastOpen) {
+  //     newState = { ...state, lastOpen: props.open, active: true }
+  //   }
+  //   if (props.placement !== state.currentPlacement) {
+  //     newState = { ...(newState || state), currentPlacement: props.placement }
+  //   }
+  //   return newState
+  // }
 
   public getHeaderProps = (props: IPopoverHeaderProps) => {
     const { open } = this.props
