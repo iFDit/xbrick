@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavbarStyles, NavItemStyles, NavLinkStyles } from 'xbrick'
-import { Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'xbrick'
+import { Col, Dropdown, DropdownItem } from 'xbrick'
 import { Nav, NavItem, NavLink, Navbar, NavbarBrand, NavbarToggler, NavbarCollapse } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
@@ -184,9 +184,9 @@ export function NavbarContent() {
             <Dropdown className={NavItemStyles.item}>
               <Dropdown.Toggle tag="a" href="#" className={NavLinkStyles.link} onClick={noop}>Dropdown</Dropdown.Toggle>
               <Dropdown.Menu transition={false}>
-                <DropdownItem href="#" onClick={noop}>Action</DropdownItem>
-                <DropdownItem href="#" onClick={noop}>Another action</DropdownItem>
-                <DropdownItem href="#" onClick={noop}>Something else here</DropdownItem>
+                <Dropdown.Item href="#" onClick={noop}>Action</Dropdown.Item>
+                <Dropdown.Item href="#" onClick={noop}>Another action</Dropdown.Item>
+                <Dropdown.Item href="#" onClick={noop}>Something else here</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
             <NavItem>

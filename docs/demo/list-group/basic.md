@@ -1,7 +1,7 @@
 基本使用
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { ListGroup, ListGroupItem } from 'xbrick'
 import 'xbrick/lib/style/index.css'

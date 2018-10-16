@@ -1,13 +1,13 @@
 水平对齐
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Container, Row, Col } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
-  <Container>
+  <Container className="doc-layout-example-container">
     <Row xs={{ justify: 'start' }}>
       <Col xs={{col: 4}}>One of three columns</Col>
       <Col xs={{col: 4}}>One of three columns</Col>

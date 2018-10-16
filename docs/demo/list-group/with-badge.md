@@ -1,9 +1,9 @@
 搭配 `Badge` 组件使用
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import { ListGroup, ListGroupItem, Row, Col } from 'xbrick'
+import { ListGroup, ListGroupItem, Badge, Row, Col } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(

@@ -1,7 +1,7 @@
 `Form` 水平布局
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Form, FormGroup, Input, Label, Button, Row, Col } from 'xbrick'
 import 'xbrick/lib/style/index.css'

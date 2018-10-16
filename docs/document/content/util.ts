@@ -19,7 +19,17 @@ export const getcodesandboxParam = (code: string) => getParameters({
       content: `import "./styles.css"\nimport * as data from "./data.js"\n${code}`,
     },
     'styles.css': {
-      content: '.app { padding: 20px; }',
+      content: `
+      .app { padding: 20px; }
+      .doc-layout-example-container .row {
+        margin-bottom: 5px;
+      }
+      .doc-layout-example-container .row>div {
+        padding: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: rgb(226, 230, 234);
+      }
+      `,
     },
     'index.html': {
       content: '<div id="root" class="app"></div>',

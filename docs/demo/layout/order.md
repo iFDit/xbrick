@@ -1,13 +1,13 @@
 列排序
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Container, Row, Col } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
-  <Container>
+  <Container className="doc-layout-example-container">
     <Row>
       <Col xs>First, but unordered</Col>
       <Col xs={{ order: 12, col: 0 }}>Second, but last</Col>

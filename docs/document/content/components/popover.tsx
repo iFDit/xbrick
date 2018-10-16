@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Col, Button } from 'xbrick'
-import { Popover, PopoverBody, PopoverHeader } from 'xbrick'
+import { Popover } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
 import basic from 'docs/demo/popover/basic.md'

@@ -1,7 +1,7 @@
 基本用法
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Form, FormGroup, Input, Label, Button } from 'xbrick'
 import 'xbrick/lib/style/index.css'
@@ -62,13 +62,13 @@ ReactDOM.render(
         <Input type="radio" name="rd1" label="Option one is this and that—be sure to include why it's great"/>
       </FormGroup>
       <FormGroup check>
-        <Input type="radio" name="rd2" label="Option two can be something else and selecting it will deselect option one"/>
+        <Input type="radio" name="rd1" label="Option two can be something else and selecting it will deselect option one"/>
       </FormGroup>
       <FormGroup check>
-        <Input type="radio" name="rd3" label="Option three is disabled" disabled/>
+        <Input type="radio" name="rd1" label="Option three is disabled" disabled/>
       </FormGroup>
       <FormGroup check>
-        <Input type="radio" name="rd4" label="Option one is this and that—be sure to include why it's great"/>
+        <Input type="radio" name="rd1" label="Option one is this and that—be sure to include why it's great"/>
       </FormGroup>
     </FormGroup>
     <FormGroup check>

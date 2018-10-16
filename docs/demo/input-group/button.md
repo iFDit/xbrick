@@ -1,15 +1,15 @@
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import { InputGroup, Input, InputGropAddon, InputGroupText, Button } from 'xbrick'
+import { InputGroup, Input, InputGroupAddon, Button } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <InputGroup>
-    <InputGroupText>
-      <Button bstype="secondary">Button</Button>
-    </InputGroupText>
+    <InputGroupAddon>
+      <Button color="secondary">Button</Button>
+    </InputGroupAddon>
     <Input />
   </InputGroup>
 , document.getElementById('root'))

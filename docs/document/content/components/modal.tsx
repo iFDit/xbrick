@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Button } from 'xbrick'
-import { Modal, ModalDialog, ModalHeader, ModalTitle, ModalContent, ModalBody, ModalFooter, ModalBackdrop } from 'xbrick'
+import { Modal, ModalHeader, ModalTitle, ModalContent, ModalBody, ModalFooter } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
 import basic from 'docs/demo/modals/basic.md'

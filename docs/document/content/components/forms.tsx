@@ -9,6 +9,7 @@ import readonly from 'docs/demo/form/readonly.md'
 import readonlyplain from 'docs/demo/form/readonly-plain.md'
 import horizontal from 'docs/demo/form/horizontal.md'
 import inline from 'docs/demo/form/inline.md'
+import range from 'docs/demo/form/range.md'
 import custom from 'docs/demo/form/custom.md'
 
 // API
@@ -195,19 +196,19 @@ export function FormContent() {
           </FormGroup>
         </Form>
       ),
-      codeText: getCodeFromString(converter.makeHtml(readonly)),
+      codeText: getCodeFromString(converter.makeHtml(range)),
     })
     .addSection({
       title: 'Horizontal',
       describe: <p>使用Col组件和FormGroup的row属性布局，具体可参考Layout组件。</p>,
       content: (
         <Form>
-          <FormGroup row>
-            <Col render={false} sm="3"><Label htmlFor="email" col>Email</Label></Col>
+          <FormGroup row className="mb-2">
+            <Col render={false} sm="3"><Label htmlFor="email" verticalCenter>Email</Label></Col>
             <Col sm="9"><Input id="email" placehold="Email" /></Col>
           </FormGroup>
-          <FormGroup row>
-            <Col render={false} sm="3"><Label htmlFor="password" col>Password</Label></Col>
+          <FormGroup row className="mb-2">
+            <Col render={false} sm="3"><Label htmlFor="password" verticalCenter>Password</Label></Col>
             <Col sm="9"><Input id="password" placehold="Password" type="password" /></Col>
           </FormGroup>
           <FormGroup tag="fieldset">

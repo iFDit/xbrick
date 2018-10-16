@@ -100,11 +100,11 @@ export function ListGroupContent() {
       describe: <p>渲染为{`<a>`}元素的ListGroupItem。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
-          <ListGroupItem tag="a" href="#" action>Cras justo odio</ListGroupItem>
-          <ListGroupItem tag="a" href="#" action>Dapibus ac facilisis in</ListGroupItem>
-          <ListGroupItem tag="a" href="#" action>Morbi leo risus</ListGroupItem>
-          <ListGroupItem tag="a" href="#" action>Porta ac consectetur ac</ListGroupItem>
-          <ListGroupItem tag="a" href="#" action>Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" dynamic>Cras justo odio</ListGroupItem>
+          <ListGroupItem tag="a" href="#" dynamic>Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem tag="a" href="#" dynamic>Morbi leo risus</ListGroupItem>
+          <ListGroupItem tag="a" href="#" dynamic>Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem tag="a" href="#" dynamic>Vestibulum at eros</ListGroupItem>
         </ListGroup>
       ),
       codeText: getCodeFromString(converter.makeHtml(hover)),
@@ -114,11 +114,11 @@ export function ListGroupContent() {
       describe: <p>渲染为{`<button>`}元素的ListGroupItem。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
-          <ListGroupItem tag="button" action>Cras justo odio</ListGroupItem>
-          <ListGroupItem tag="button" action>Dapibus ac facilisis in</ListGroupItem>
-          <ListGroupItem tag="button" action>Morbi leo risus</ListGroupItem>
-          <ListGroupItem tag="button" action>Porta ac consectetur ac</ListGroupItem>
-          <ListGroupItem tag="button" action>Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="button" dynamic>Cras justo odio</ListGroupItem>
+          <ListGroupItem tag="button" dynamic>Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem tag="button" dynamic>Morbi leo risus</ListGroupItem>
+          <ListGroupItem tag="button" dynamic>Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem tag="button" dynamic>Vestibulum at eros</ListGroupItem>
         </ListGroup>
       ),
       codeText: getCodeFromString(converter.makeHtml(buttons)),
@@ -142,14 +142,14 @@ export function ListGroupContent() {
       describe: <p>通过color属性可以快捷的设置ListGroupItem背景颜色。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
-          <ListGroupItem tag="a" href="#" color="primary">Cras justo odio</ListGroupItem>
-          <ListGroupItem tag="a" href="#" color="secondary">Dapibus ac facilisis in</ListGroupItem>
-          <ListGroupItem tag="a" href="#" color="warning">Morbi leo risus</ListGroupItem>
-          <ListGroupItem tag="a" href="#" color="success">Porta ac consectetur ac</ListGroupItem>
-          <ListGroupItem tag="a" href="#" color="danger">Vestibulum at eros</ListGroupItem>
-          <ListGroupItem tag="a" href="#" color="info">Vestibulum at eros</ListGroupItem>
-          <ListGroupItem tag="a" href="#" color="light">Vestibulum at eros</ListGroupItem>
-          <ListGroupItem tag="a" href="#" color="dark">Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="primary" dynamic>Cras justo odio</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="secondary" dynamic>Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="warning" dynamic>Morbi leo risus</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="success" dynamic>Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="danger" dynamic>Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="info" dynamic>Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="light" dynamic>Vestibulum at eros</ListGroupItem>
+          <ListGroupItem tag="a" href="#" color="dark" dynamic>Vestibulum at eros</ListGroupItem>
         </ListGroup>
       ),
       codeText: getCodeFromString(converter.makeHtml(bstype)),
@@ -186,7 +186,7 @@ export function ListGroupContent() {
       describe: <p>ListGroupItem中可以展示自定义的组件和内容。</p>,
       content: (
         <ListGroup style={{width: '100%'}}>
-          <ListGroupItem tag="a" href="#" action active>
+          <ListGroupItem tag="a" href="#" dynamic active>
             <Row xs={{justify: 'between'}}>
               <h5 className="mb-1">List group item heading</h5>
               <small>3 days ago</small>
@@ -194,7 +194,7 @@ export function ListGroupContent() {
             <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
             <small>Donec id elit non mi porta.</small>
           </ListGroupItem>
-          <ListGroupItem tag="a" href="#" action>
+          <ListGroupItem tag="a" href="#" dynamic>
             <Row xs={{justify: 'between'}}>
               <h5 className="mb-1">List group item heading</h5>
               <small>3 days ago</small>
@@ -202,7 +202,7 @@ export function ListGroupContent() {
             <p className="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
             <small>Donec id elit non mi porta.</small>
           </ListGroupItem>
-          <ListGroupItem tag="a" href="#" action>
+          <ListGroupItem tag="a" href="#" dynamic>
             <Row xs={{justify: 'between'}}>
               <h5 className="mb-1">List group item heading</h5>
               <small>3 days ago</small>

@@ -3,11 +3,11 @@
 ````jsx
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
-import { Modal, ModalDialog, ModalHeader, ModalTitle, ModalConten, ModalBody, ModalFooter, Button, ModalBackdrop } from 'xbrick'
+import { Modal, ModalContent, ModalHeader, ModalTitle, ModalFooter, ModalBody, Button } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 class Example extends React.Component {
-  public state = { open: false }
+  state = { open: false }
 
   open = () => {
     this.setState({ open: true })
@@ -22,7 +22,7 @@ class Example extends React.Component {
       <Fragment>
         <Button onClick={() => this.open()}>Launch demo modal</Button>
         <Modal open={open}>
-          <ModalDialog>
+          <Modal.Dialog>
             <ModalContent>
               <ModalHeader onIconClick={() => this.close()}>
                 <ModalTitle>title</ModalTitle>
@@ -33,8 +33,8 @@ class Example extends React.Component {
                 <Button>Save changes</Button>
               </ModalFooter>
             </ModalContent>
-          </ModalDialog>
-          <ModalBackdrop />
+          </Modal.Dialog>
+          <Modal.Backdrop />
         </Modal>
       </Fragment>
     )

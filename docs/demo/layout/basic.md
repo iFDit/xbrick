@@ -1,13 +1,13 @@
 网格布局基本用法
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Container, Row, Col } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
-  <Container>
+  <Container className="doc-layout-example-container">
     <Row>
       <Col>1 of 2</Col>
       <Col>2 of 2</Col>

@@ -3,20 +3,20 @@
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import 'xbrick/lib/style/index.css'
-import { Popover, PopoverBody, PopoverHeader, Button } from 'xbrick'
+import { Popover, Button } from 'xbrick'
 
 class Examples extends React.Component {
-  state = { open: true }
+  state = { open: false }
   renderPopoverContent = () => {
     return (
-      <>
-        <PopoverHeader>
+      <Fragment>
+        <Popover.Header>
           Popover Header
-        </PopoverHeader>
-        <PopoverBody>
+        </Popover.Header>
+        <Popover.Body>
           And here's some amazing content. It's very engaging. Right?
-        </PopoverBody>
-      </>
+        </Popover.Body>
+      </Fragment>
     )
   }
   toggle = () => {
@@ -25,8 +25,8 @@ class Examples extends React.Component {
   }
   render () {
     return (
-      <Popover open={this.state.open} content={this.renderPopoverContent()}>
-        <Button bstype="secondary" onClick={this.toggle}>Toggle Popover</Button>
+      <Popover open={this.state.open} content={this.renderPopoverContent()} placement="auto">
+        <Button color="primary" onClick={this.toggle}>Toggle Popover</Button>
       </Popover>
     )
   }

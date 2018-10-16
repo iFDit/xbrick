@@ -1,7 +1,7 @@
 改变 `Input` 组件的大小。
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Form, FormGroup, Input } from 'xbrick'
 import 'xbrick/lib/style/index.css'

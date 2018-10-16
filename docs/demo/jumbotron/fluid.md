@@ -1,7 +1,7 @@
 占据整个宽度
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Jumbotron, Container } from 'xbrick'
 import 'xbrick/lib/style/index.css'

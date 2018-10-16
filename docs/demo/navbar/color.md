@@ -3,15 +3,15 @@
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import 'xbrick/lib/style/index.css'
-import { Navbar, NavbarBrand, NavbarCollapse, Nav, NavItem, NavLink } from 'xbrick'
+import { Navbar, NavbarBrand, NavbarCollapse, Nav, NavItem, NavLink, NavbarStyles } from 'xbrick'
 
 ReactDOM.render(
   <Fragment>
-    <Navbar bgColor="primary" className="mb-2" reverse>
+    <Navbar color="primary" className="mb-2" reverse>
       <NavbarBrand href="/">Navbar</NavbarBrand>
-      <NavbarToggler/>
-      <NavbarCollapse>
-        <Nav navbar>
+      <Navbar.Toggler/>
+      <Navbar.Collapse>
+        <Nav className={NavbarStyles.nav}>
           <NavItem>
             <NavLink href="#" active>Home</NavLink>
           </NavItem>
@@ -22,12 +22,12 @@ ReactDOM.render(
             <NavLink disabled>Disabled</NavLink>
           </NavItem>
         </Nav>
-      </NavbarCollapse>
+      </Navbar.Collapse>
     </Navbar>
-    <Navbar bgColor="success" className="mb-2" reverse>
+    <Navbar color="success" className="mb-2" reverse>
       <NavbarBrand href="/">Navbar</NavbarBrand>
-      <NavbarCollapse>
-        <Nav navbar>
+      <Navbar.Collapse>
+        <Nav className={NavbarStyles.nav}>
           <NavItem>
             <NavLink href="#" active>Home</NavLink>
           </NavItem>
@@ -38,12 +38,12 @@ ReactDOM.render(
             <NavLink disabled>Disabled</NavLink>
           </NavItem>
         </Nav>
-      </NavbarCollapse>
+      </Navbar.Collapse>
     </Navbar>
-    <Navbar bgColor="dark" className="mb-2" reverse>
+    <Navbar color="dark" className="mb-2" reverse>
       <NavbarBrand href="/">Navbar</NavbarBrand>
-      <NavbarCollapse>
-        <Nav navbar>
+      <Navbar.Collapse>
+        <Nav className={NavbarStyles.nav}>
           <NavItem>
             <NavLink href="#" active>Home</NavLink>
           </NavItem>
@@ -54,12 +54,12 @@ ReactDOM.render(
             <NavLink disabled>Disabled</NavLink>
           </NavItem>
         </Nav>
-      </NavbarCollapse>
+      </Navbar.Collapse>
     </Navbar>
-    <Navbar bgColor="light" className="mb-2">
+    <Navbar color="light" className="mb-2">
       <NavbarBrand href="/">Navbar</NavbarBrand>
-      <NavbarCollapse>
-        <Nav navbar>
+      <Navbar.Collapse>
+        <Nav className={NavbarStyles.nav}>
           <NavItem>
             <NavLink href="#" active>Home</NavLink>
           </NavItem>
@@ -70,7 +70,7 @@ ReactDOM.render(
             <NavLink disabled>Disabled</NavLink>
           </NavItem>
         </Nav>
-      </NavbarCollapse>
+      </Navbar.Collapse>
     </Navbar>
   </Fragment>
 , document.getElementById('root'))

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Col, Button, Dropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'xbrick'
+import { Col, Button, Dropdown } from 'xbrick'
 import { Input, InputGroup, InputGroupAddon, InputGroupText, InputGroupAddonStyles } from 'xbrick'
 import { getCodeFromString, getTableFromString } from 'docs/document/content/util'
 // code text
@@ -8,6 +8,7 @@ import sizing from 'docs/demo/input-group/sizing.md'
 import multipleinput from 'docs/demo/input-group/multiple-input.md'
 import multipleaddons from 'docs/demo/input-group/multiple-addons.md'
 import button from 'docs/demo/input-group/button.md'
+import dropdown from 'docs/demo/input-group/dropdown.md'
 
 // STYLE
 import style from 'src/input-group/input-group-addons-styles.md'
@@ -22,7 +23,7 @@ import showdown from 'showdown'
 const converter = new showdown.Converter()
 converter.setOption('tables', true)
 
-const { prepend, append } = InputGroupAddonStyles
+const { prepend } = InputGroupAddonStyles
 export function InputGroupContent() {
   return new Content('Input Group')
     .addNav({ text: 'Overview', anchor: 'overview' })
@@ -147,7 +148,7 @@ export function InputGroupContent() {
           <Input />
         </InputGroup>
       ),
-      codeText: getCodeFromString(converter.makeHtml(button)),
+      codeText: getCodeFromString(converter.makeHtml(dropdown)),
     })
     .addStyles({
       header: true,

@@ -1,18 +1,20 @@
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import { InputGroup, Input, InputGropAddon, InputGroupText } from 'xbrick'
+import { InputGroup, Input, InputGroupAddon, InputGroupText } from 'xbrick'
 import 'xbrick/lib/style/index.css'
 
 ReactDOM.render(
   <InputGroup>
-    <InputGroupText>
-      $
-    </InputGroupText>
-    <InputGroupText>
-      0.00
-    </InputGroupText>
+    <InputGroupAddon>
+      <InputGroupText>
+        $
+      </InputGroupText>
+      <InputGroupText>
+        0.00
+      </InputGroupText>
+    </InputGroupAddon>
     <Input />
   </InputGroup>
 , document.getElementById('root'))

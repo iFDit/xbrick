@@ -1,7 +1,7 @@
 
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { Dropdown, Button } from 'xbrick'
 import 'xbrick/lib/style/index.css'

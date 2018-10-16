@@ -1,5 +1,5 @@
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import 'xbrick/lib/style/index.css'
 import { Pagination, PageItem, PageLink } from 'xbrick'

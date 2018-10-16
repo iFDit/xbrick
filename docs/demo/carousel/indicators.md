@@ -1,6 +1,6 @@
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import { UncontrolledCarousel, CarouselTrack, CarouselItem, CarouselControl, CarouselIndicators } from 'xbrick'
 import 'xbrick/lib/style/index.css'
