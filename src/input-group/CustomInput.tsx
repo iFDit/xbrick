@@ -51,6 +51,7 @@ export function customInputClass({className, type, plainText, size}: CustomInput
   const checkboxOrRadio = type === 'checkbox' || type === 'radio'
   return classNames(
     className,
+    cls.INPUT_CUSTOM,
     {
       [cls.CUSTOM_FILE]: type === 'file',
       [cls.CUSTOM_RANGE]: type === 'range',
