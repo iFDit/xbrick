@@ -14,14 +14,14 @@ class Examples extends React.Component {
   }
   renderPopoverContent = () => {
     return (
-      <>
-        <PopoverHeader>
+      <Fragment>
+        <Popover.Header>
           Popover Header
-        </PopoverHeader>
-        <PopoverBody>
+        </Popover.Header>
+        <Popover.Body>
           And here's some amazing content. It's very engaging. Right?
-        </PopoverBody>
-      </>
+        </Popover.Body>
+      </Fragment>
     )
   }
 
@@ -32,20 +32,23 @@ class Examples extends React.Component {
 
   render () {
     return (
-      <Fragment>
+      <div style={{marginTop: 200,marginLeft: 280}}>
         <Popover open={this.state.top} content={this.renderPopoverContent()} placement="top">
-          <Button bstype="secondary" onClick={this.toggle('top')}>Popover on top</Button>
+          <Button color="secondary" onClick={this.toggle('top')} className="mt-2">Popover on top</Button>
         </Popover>
+        <br/>
         <Popover open={this.state.bottom} content={this.renderPopoverContent()} placement="bottom">
-          <Button bstype="secondary" onClick={this.toggle('bottom')}>Popover on bottom</Button>
+          <Button color="warning" onClick={this.toggle('bottom')} className="mt-2">Popover on bottom</Button>
         </Popover>
+          <br/>
         <Popover open={this.state.left} content={this.renderPopoverContent()} placement="left">
-          <Button bstype="secondary" onClick={this.toggle('left')}>Popover on left</Button>
+          <Button color="info" onClick={this.toggle('left')} className="mt-2">Popover on left</Button>
         </Popover>
+        <br/>
         <Popover open={this.state.right} content={this.renderPopoverContent()} placement="right">
-          <Button bstype="secondary" onClick={this.toggle('right')}>Popover on right</Button>
+          <Button color="success" onClick={this.toggle('right')} className="mt-2">Popover on right</Button>
         </Popover>
-      </Fragment>
+      </div>
     )
   }
 }

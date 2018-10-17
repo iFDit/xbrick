@@ -7,7 +7,7 @@ import { Progress, ProgressBar } from 'xbrick'
 
 ReactDOM.render(
   <Fragment>
-    <Progress style={{height: 1}}>
+    <Progress style={{height: 1}} className="mb-2">
       <ProgressBar width={25}/>
     </Progress>
     <Progress>

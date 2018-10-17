@@ -1,6 +1,6 @@
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import 'xbrick/lib/style/index.css'
 import { Tab, TabContent, Nav, NavItem, NavLink } from 'xbrick'
@@ -36,13 +36,13 @@ class Examples extends React.Component {
             }}>Profile</NavLink>
           </NavItem>
           <NavItem>
-            <NavLink href="#" active={this.state.tab2} onClick={(e: any) => {
+            <NavLink href="#" active={this.state.tab3} onClick={(e: any) => {
               e.preventDefault()
               this.open('tab3')
             }}>Contact</NavLink>
           </NavItem>
         </Nav>
-        <TabContent open={this.state.tab1}>
+        <TabContent open={this.state.tab1} key={`${this.state.tab1}-1`}>
           Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam.
           Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim.
           Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat.
@@ -50,7 +50,7 @@ class Examples extends React.Component {
           Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore.
           Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
         </TabContent>
-        <TabContent open={this.state.tab2}>
+        <TabContent open={this.state.tab2} key={`${this.state.tab2}-2`}>
           Nulla est ullamco ut irure incididunt nulla Lorem Lorem minim irure officia enim reprehenderit.
           Magna duis labore cillum sint adipisicing exercitation ipsum. Nostrud ut anim non exercitatio
           n velit laboris fugiat cupidatat.
@@ -58,7 +58,7 @@ class Examples extends React.Component {
           Labore labore veniam irure irure ipsum pariatur mollit magna in cupidatat dolore magna irure esse tempor ad mollit.
           Dolore commodo nulla minim amet ipsum officia consectetur amet ullamco voluptate nisi commodo ea sit eu.
         </TabContent>
-        <TabContent open={this.state.tab3}>
+        <TabContent open={this.state.tab3} key={`${this.state.tab3}-3`}>
           Sint sit mollit irure quis est nostrud cillum consequat Lorem esse do quis dolor esse fugiat sunt do.
           Eu ex commodo veniam Lorem aliquip laborum occaecat qui Lorem esse mollit dolore anim cupidatat.
           Deserunt officia id Lorem nostrud aute id commodo elit eiusmod enim irure amet eiusmod qui reprehenderit nostrud tempor.

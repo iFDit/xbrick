@@ -7,19 +7,19 @@ import { Progress, ProgressBar } from 'xbrick'
 
 ReactDOM.render(
   <Fragment>
-    <Progress>
+    <Progress className="mb-2">
       <ProgressBar width={0}/>
     </Progress>
-    <Progress>
+    <Progress className="mb-2">
       <ProgressBar width={25}/>
     </Progress>
-    <Progress>
+    <Progress className="mb-2">
       <ProgressBar width={50}/>
     </Progress>
-    <Progress>
+    <Progress className="mb-2">
       <ProgressBar width={70}/>
     </Progress>
-    <Progress>
+    <Progress className="mb-2">
       <ProgressBar width={100}/>
     </Progress>
   </Fragment>

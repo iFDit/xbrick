@@ -31,6 +31,7 @@ export function TablesContent() {
     .addNav({ text: 'Hoverable rows', anchor: 'hoverable-rows' })
     .addNav({ text: 'Small table', anchor: 'small-table' })
     .addNav({ text: 'Bootstrap type', anchor: 'contextual-classes' })
+    .addNav({ text: 'Colors', anchor: 'colors' })
     .addNav({ text: 'API', anchor: 'api' })
     .addSection({
       title: 'Overview',
@@ -193,7 +194,7 @@ export function TablesContent() {
       title: 'Hoverable rows',
       describe: <p>设置hover属性开启交互式的表格行。</p>,
       content: (
-        <Table hover>
+        <Table dynamic>
           <TableHeader>
             <TableRow>
               <TableCell tag="th">#</TableCell>

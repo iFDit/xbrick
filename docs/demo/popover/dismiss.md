@@ -6,17 +6,17 @@ import 'xbrick/lib/style/index.css'
 import { Popover, PopoverBody, PopoverHeader, Button } from 'xbrick'
 
 class Examples extends React.Component {
-  state = { open: true }
+  state = { open: false }
   renderPopoverContent = () => {
     return (
-      <>
-        <PopoverHeader>
+      <Fragment>
+        <Popover.Header>
           Popover Header
-        </PopoverHeader>
-        <PopoverBody>
+        </Popover.Header>
+        <Popover.Body>
           And here's some amazing content. It's very engaging. Right?
-        </PopoverBody>
-      </>
+        </Popover.Body>
+      </Fragment>
     )
   }
   toggle = () => {
@@ -31,7 +31,7 @@ class Examples extends React.Component {
   }
   handleClick = evt => {
     const { target } = evt
-    if (!ReactDOM.findDOMNode(this)!.contains(target)) {
+    if (!ReactDOM.findDOMNode(this).contains(target)) {
       this.toggle()
     }
   }

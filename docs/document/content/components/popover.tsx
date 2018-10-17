@@ -239,17 +239,19 @@ class Triggers extends React.Component {
       <>
         <Col xs="auto" className="handle-hover">
           <Popover open={this.state.hover} content={this.renderPopoverContent()}>
-            <Button bstype="secondary">Toggle Popover</Button>
+            <Button color="secondary" className="mt-2">Toggle Hover</Button>
           </Popover>
         </Col>
         <Col xs="auto">
           <Popover open={this.state.focus} content={this.renderPopoverContent()}>
-            <Button bstype="secondary" onFocus={this.toggle('focus')} onBlur={this.toggle('focus')}>Toggle Popover</Button>
+            <Button color="secondary" onFocus={this.toggle('focus')} onBlur={this.toggle('focus')} className="mt-2">
+              Toggle Focus
+            </Button>
           </Popover>
         </Col>
         <Col xs="auto">
           <Popover open={this.state.click} content={this.renderPopoverContent()}>
-            <Button bstype="secondary" onClick={this.toggle('click')}>Toggle Popover</Button>
+            <Button color="secondary" onClick={this.toggle('click')} className="mt-2">Toggle Click</Button>
           </Popover>
         </Col>
       </>

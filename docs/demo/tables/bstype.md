@@ -1,6 +1,6 @@
 
 ````jsx
-import React, { Fragment } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import 'xbrick/lib/style/index.css'
 import { Table, TableBody, TableHeader, TableRow, TableCell } from 'xbrick'
@@ -16,19 +16,19 @@ ReactDOM.render(
       </TableRow>
     </TableHeader>
     <TableBody>
-      <TableRow bstype="primary">
+      <TableRow color="primary">
         <TableCell>1</TableCell>
         <TableCell>Mark</TableCell>
         <TableCell>Otto</TableCell>
         <TableCell>@mdo</TableCell>
       </TableRow>
-      <TableRow bstype="success">
+      <TableRow color="success">
         <TableCell>2</TableCell>
         <TableCell>Jacob</TableCell>
         <TableCell>Thornton</TableCell>
         <TableCell>@fat</TableCell>
       </TableRow>
-      <TableRow bstype="warning">
+      <TableRow color="warning">
         <TableCell>3</TableCell>
         <TableCell>Larry</TableCell>
         <TableCell>Thornton</TableCell>

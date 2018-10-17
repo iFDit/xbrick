@@ -3,7 +3,7 @@
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import 'xbrick/lib/style/index.css'
-import { Popover, PopoverBody, PopoverHeader, Button } from 'xbrick'
+import { Popover, PopoverBody, PopoverHeader, Button, Col } from 'xbrick'
 
 class Examples extends React.Component {
   state = {
@@ -15,7 +15,7 @@ class Examples extends React.Component {
   element
 
   componentDidMount() {
-    const dom = ReactDOM.findDOMNode(this) as HTMLElement
+    const dom = ReactDOM.findDOMNode(this)
     this.element = dom
     if (this.element) {
       this.element.addEventListener('mouseenter', this.handleMouseenter)
@@ -44,36 +44,38 @@ class Examples extends React.Component {
 
   renderPopoverContent = () => {
     return (
-      <>
-        <PopoverHeader>
+      <Fragment>
+        <Popover.Header>
           Popover Header
-        </PopoverHeader>
-        <PopoverBody>
+        </Popover.Header>
+        <Popover.Body>
           And here's some amazing content. It's very engaging. Right?
-        </PopoverBody>
-      </>
+        </Popover.Body>
+      </Fragment>
     )
   }
 
   render () {
     return (
-      <>
+      <Fragment>
         <Col xs="auto" className="handle-hover">
           <Popover open={this.state.hover} content={this.renderPopoverContent()}>
-            <Button bstype="secondary">Toggle Popover</Button>
+            <Button color="secondary" className="mt-2">Toggle hover</Button>
           </Popover>
         </Col>
         <Col xs="auto">
           <Popover open={this.state.focus} content={this.renderPopoverContent()}>
-            <Button bstype="secondary" onFocus={this.toggle('focus')} onBlur={this.toggle('focus')}>Toggle Popover</Button>
+            <Button color="secondary" onFocus={this.toggle('focus')} onBlur={this.toggle('focus')} className="mt-2">
+              Toggle Focus
+            </Button>
           </Popover>
         </Col>
         <Col xs="auto">
           <Popover open={this.state.click} content={this.renderPopoverContent()}>
-            <Button bstype="secondary" onClick={this.toggle('click')}>Toggle Popover</Button>
+            <Button color="secondary" onClick={this.toggle('click')} className="mt-2">Toggle Click</Button>
           </Popover>
         </Col>
-      </>
+      </Fragment>
     )
   }
 }
