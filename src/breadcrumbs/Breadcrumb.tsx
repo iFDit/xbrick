@@ -20,9 +20,7 @@ export const Breadcrumb: React.StatelessComponent<IBreadcrumbProps> = function (
 }
 
 Breadcrumb.displayName = 'xbrick.Breadcrumb'
-Breadcrumb.defaultProps = {
-  tag: 'ol',
-}
+Breadcrumb.defaultProps = { tag: 'ol' }
 
 export function breadcrumbClass({ className }: { className?: string} = {}) {
   return classNames(className, BREADCRUMB)

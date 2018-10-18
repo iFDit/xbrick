@@ -14,4 +14,4 @@
 | --- | --- | --- | --- |
 | tag | 自定义标签 | string\|ReactNode | `div` |
 | render | 是否包含wrap组件 | boolean | `true` |
-| align | 垂直布局 | string | `start` |
+| align | 垂直布局 | `start`, `center` 和 `end` | `start` |

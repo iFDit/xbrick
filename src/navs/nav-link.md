@@ -16,4 +16,5 @@
 | --- | --- | --- | --- |
 | tag | 自定义标签 | string\|ReactNode | `a` |
 | active | 是否激活 | boolean | `false` |
+| render | 是否渲染NavLink | boolean | `true` |
 | disabled | 是否禁用 | boolean | `false` |

@@ -8,4 +8,4 @@
 | width | 进度条长度 | number | - |
 | striped | 展示条纹样式 | boolean | `false` |
 | animate | 启用动画效果 | boolean | `false` |
-| bgColor | 背景颜色 | string | `light` |
+| color | 背景颜色 | string | - |

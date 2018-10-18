@@ -12,7 +12,7 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| tag | 自定义标签 | string\|ReactNode | `ul` |
+| tag | 自定义标签 | string\|ReactNode | `nav` |
 | expand | 响应式导航最小宽度 | string | `xs` |
 | justify | 对齐方式, 有 `start`, `center`, `end`, `around` 和 `between` | string | - |
 | color | navbar背景颜色 | string | `light` |

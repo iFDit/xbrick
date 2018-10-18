@@ -43,9 +43,6 @@ export class UncontrolledTooltip extends React.Component<IUncontrolledTooltipPro
   static getDerivedStateFromProps(props: IUncontrolledTooltipProps, state: any) {
     const { lastPropsPlacement } = state
     let newState = null
-    if (props.placement !== state.currentPlacement) {
-      newState = { ...state, currentPlacement: props.placement }
-    }
     if (lastPropsPlacement !== state.currentPlacement || props.placement !== lastPropsPlacement) {
       const nextPlacement = lastPropsPlacement !== props.placement ? props.placement : state.currentPlacement
       newState = { ...(newState || state), currentPlacement: nextPlacement, lastPropsPlacement: props.placement }

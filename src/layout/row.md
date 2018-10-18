@@ -15,7 +15,7 @@
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | tag | 自定义标签 | string\|ReactNode | `div` |
-| nowrap | 是否添加wrap元素 | boolean | `false` |
+| render | 是否渲染container元素 | boolean | `true` |
 | noGutter | 是否移除padding | boolean | `false` |
 | xs | 无论视口多大 | {align?: "start"\|"center"\|"end";justify?: "start"\|"center"\|"end"\|"around"\| "between";} | 无 |
 | sm | 当视口大于576px | {align?: "start"\|"center"\|"end";justify?: "start"\|"center"\|"end"\|"around"\|"between";} | 无 |

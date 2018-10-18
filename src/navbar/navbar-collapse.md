@@ -12,5 +12,4 @@
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| tag | 自定义标签 | string\|ReactNode | `ul` |
-| open | 是否展开（内部） | boolean | `false` |
+| tag | 自定义标签 | string\|ReactNode | `div` |
