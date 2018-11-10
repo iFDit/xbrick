@@ -1,10 +1,6 @@
 import React from 'react'
-import Enzyme from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
 import { SlideDown } from 'src/animate/SlideDown'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('SlideDown', () => {
   const child = () => <p>111</p>

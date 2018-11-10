@@ -1,7 +1,7 @@
 import React from 'react'
 import classNames from 'classnames'
 import { IProps } from 'src/common/props'
-import { CONTAINER_FLUID, CONTAINER} from 'src/common/classes'
+import { CONTAINER_FLUID, CONTAINER } from 'src/common/classes'
 
 export interface IContainerProps extends IProps {
   /**

@@ -1,5 +1,5 @@
 import React from 'react'
-import { isFunction } from 'lodash'
+import { isFunction } from 'src/common/minLodash'
 import { IProps } from 'src/common/props'
 import { Slide } from 'src/animate/Slide'
 import { UncontrolledSlide } from 'src/animate/UncontrolledSlide'

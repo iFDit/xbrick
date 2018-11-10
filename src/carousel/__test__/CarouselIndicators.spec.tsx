@@ -1,11 +1,8 @@
 import React from 'react'
 import sinon from 'sinon'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { CarouselIndicators, carouselIndicatorClass } from 'src/carousel/CarouselIndicators'
 import { notCrash, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('CarouselIndicators', () => {
   notCrash(CarouselIndicators)

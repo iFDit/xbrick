@@ -1,6 +1,6 @@
 import React, { createContext } from 'react'
 import ReactDOM from 'react-dom'
-import { get } from 'lodash'
+import { get } from 'src/common/minLodash'
 import { IProps } from 'src/common/props'
 import { mergeCall } from 'src/common/util'
 import { Carousel } from 'src/carousel/Carousel'

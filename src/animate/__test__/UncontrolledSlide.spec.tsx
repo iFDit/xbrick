@@ -1,11 +1,8 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { UncontrolledSlide } from 'src/animate/UncontrolledSlide'
 import { Animate } from 'src/animate/Animate'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('UncontrolledSlide', () => {
   const child = () => <p>111</p>

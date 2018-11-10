@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { isFunction } from 'lodash'
+import { isFunction } from 'src/common/minLodash'
 import { IProps } from 'src/common/props'
 import { ICON } from 'src/common/classes'
 import * as cls from 'src/common/classes'

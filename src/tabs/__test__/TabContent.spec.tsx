@@ -1,10 +1,7 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { TabContent, tabContentClass } from 'src/tabs/TabContent'
 import { notCrash, renderChild, defaultTag, customTag, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('TabContent', () => {
   const child = <p>111</p>

@@ -1,11 +1,8 @@
 import React from 'react'
 import sinon from 'sinon'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { Alert, AlertContext, alertClass } from 'src/alert/Alert'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('Alert', () => {
   const child = <p>111</p>

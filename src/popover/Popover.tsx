@@ -1,6 +1,5 @@
 import React, { createContext } from 'react'
 import classNames from 'classnames'
-import { Fade } from 'src/animate/Fade'
 import * as cls from 'src/common/classes'
 import { Popper } from 'src/tooltip/Popper'
 import { PopoverPlacement } from 'src/common/props'
@@ -61,10 +60,10 @@ export class Popover extends Tooltip {
   render () {
     // noarrow props no use but use for extends Tooltip.
     const { tag, open, noarrow, content, placement, children, className, ...others } = this.props
-    const { currentPlacement, active } = this.state
+    const { currentPlacement } = this.state
     const Tag = tag!
-    const from = open ? 0 : 1
-    const to = open ? 1 : 0
+    // const from = open ? 0 : 1
+    // const to = open ? 1 : 0
     const classes = popoverClass({className, open, currentPlacement})
     const arrowStyleName = placementMap[currentPlacement!.split('-')[0]]
     const modifiers: any = {
@@ -76,11 +75,11 @@ export class Popover extends Tooltip {
     }
 
     return (
-      <Popper reference={children as React.ReactElement<any>} open={open || active} placement={placement} modifiers={modifiers}>
+      <Popper reference={children as React.ReactElement<any>} open={open} placement={placement} modifiers={modifiers}>
         {({ ref, style, placement: innerPlacement, arrowProps }) => (
           <Tag {...others} ref={ref} style={style} data-placement={innerPlacement} className={classes}>
             <div ref={arrowProps.ref} className={classNames(cls.ARROW, cls.ARROW_WRAP)} style={{[arrowStyleName]: 0}}>
-              <Fade from={from} to={to} className={cls.ARROW} style={arrowProps.style} afterStateChange={this.handleAnimateEnd}/>
+              <div className={cls.ARROW} style={arrowProps.style}/>
             </div>
             <PopoverContext.Provider
               value={{

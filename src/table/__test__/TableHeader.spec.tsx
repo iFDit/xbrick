@@ -1,10 +1,7 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { TableHeader } from 'src/table/TableHeader'
 import { displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('TableHeader', () => {
   displayName(TableHeader, 'xbrick.TableHeader')

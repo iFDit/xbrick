@@ -2,7 +2,7 @@ import React from 'react'
 import { SlideDown } from 'src/animate/SlideDown'
 import { SlideUp } from 'src/animate/SlideUp'
 import { IProps } from 'src/common/props'
-import { isFunction } from 'lodash'
+import { isFunction } from 'src/common/minLodash'
 
 export interface ISlideProps extends IProps {
   /**

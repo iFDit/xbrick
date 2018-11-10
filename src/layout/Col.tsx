@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import * as cls from 'src/common/classes'
 import { IProps, IColumn } from 'src/common/props'
 import { cloneWithClassName } from 'src/common/util'
-import { omit, isObject, isString, isNumber, isBoolean } from 'lodash'
+import { omit, isObject, isString, isNumber, isBoolean } from 'src/common/minLodash'
 
 export interface IColProps extends IProps, IColumn {
   /**

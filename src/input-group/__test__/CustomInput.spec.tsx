@@ -1,10 +1,7 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { CustomInput, containerClass, customInputClass } from 'src/input-group/CustomInput'
 import { notCrash, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('CustomInput', () => {
   notCrash(CustomInput)

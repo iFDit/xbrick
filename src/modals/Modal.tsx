@@ -1,7 +1,7 @@
 import React, { createContext } from 'react'
 import ReactDOM from 'react-dom'
 import classNames from 'classnames'
-import { omit } from 'lodash'
+import { omit } from 'src/common/minLodash'
 import { IProps } from 'src/common/props'
 import { Animate } from 'src/animate/Animate'
 import { MODAL, MODAL_OPEN } from 'src/common/classes'

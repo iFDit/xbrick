@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { get } from 'lodash'
+import { get } from 'src/common/minLodash'
 import { Animate } from 'src/animate/Animate'
 import { IProps, Direction } from 'src/common/props'
 import { MENU, MENU_UP, MENU_LEFT, ACTIVE, DROPDOWN_MENU } from 'src/common/classes'

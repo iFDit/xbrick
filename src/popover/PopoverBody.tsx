@@ -1,6 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Fade } from 'src/animate/Fade'
 import { IProps } from 'src/common/props'
 import { POPOVER_BODY, XPOPOVER_BODY } from 'src/common/classes'
 
@@ -10,20 +9,13 @@ export interface IPopoverBody extends IProps {
    * @default div
    */
   tag?: string | React.Factory<any>
-
-  /**
-   * open/close component.
-   * @default false
-   */
-  open?: boolean
 }
 
 export const PopoverBody: React.StatelessComponent<IPopoverBody> = function (props: IPopoverBody) {
-  const { open, className, ...others } = props
-  const from = open ? 0 : 1
-  const to = open ? 1 : 0
+  const { tag, className, ...others } = props
+  const Tag = tag!
   return (
-    <Fade {...others} from={from} to={to} className={popoverBodyClass({className})}/>
+    <Tag {...others} className={popoverBodyClass({className})}/>
   )
 }
 

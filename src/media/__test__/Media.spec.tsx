@@ -1,10 +1,7 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { Media, mediaClass } from 'src/media/Media'
 import { notCrash, renderChild, defaultTag, customTag, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('Media', () => {
   const child = <p>111</p>

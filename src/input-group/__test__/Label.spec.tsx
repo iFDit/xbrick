@@ -1,10 +1,6 @@
 import React from 'react'
-import Enzyme from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
 import { Label, labelClass } from 'src/input-group/Label'
 import { notCrash, renderChild, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('Label', () => {
   const child = <p>111</p>

@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { omit, isObject } from 'lodash'
+import { omit, isObject } from 'src/common/minLodash'
 import * as cls from 'src/common/classes'
 import { cloneWithClassName } from 'src/common/util'
 import { IProps, IRowLayout } from 'src/common/props'

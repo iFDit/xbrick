@@ -1,10 +1,7 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { TableBody } from 'src/table/TableBody'
 import { displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('TableBody', () => {
   displayName(TableBody, 'xbrick.TableBody')

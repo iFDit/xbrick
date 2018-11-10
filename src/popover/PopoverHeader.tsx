@@ -1,6 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-import { Fade } from 'src/animate/Fade'
 import { IProps } from 'src/common/props'
 import { POPOVER_HEADER } from 'src/common/classes'
 
@@ -10,20 +9,13 @@ export interface IPopoverHeaderProps extends IProps {
    * @default h3
    */
   tag?: string | React.Factory<any>
-
-  /**
-   * open/close component.
-   * @default false
-   */
-  open?: boolean
 }
 
 export const PopoverHeader: React.StatelessComponent<IPopoverHeaderProps> = function (props: IPopoverHeaderProps) {
-  const { open, className, ...others } = props
-  const from = open ? 0 : 1
-  const to = open ? 1 : 0
+  const { tag, className, ...others } = props
+  const Tag = tag!
   return (
-    <Fade {...others} from={from} to={to} className={popoverHeaderClass({className})}/>
+    <Tag {...others} className={popoverHeaderClass({className})}/>
   )
 }
 

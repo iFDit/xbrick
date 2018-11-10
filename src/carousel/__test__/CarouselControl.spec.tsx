@@ -1,10 +1,7 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { CarouselControl, carouselControlClass } from 'src/carousel/CarouselControl'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('CarouselControl', () => {
   const child = <span>111</span>

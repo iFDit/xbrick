@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import classNames from 'classnames'
 import { IProps } from 'src/common/props'
 import { Animate } from 'src/animate/Animate'
-import { get, first, last, toArray } from 'lodash'
+import { get, first, last, toArray } from 'src/common/minLodash'
 import { CAROUSEL_VIEW, CAROUSEL_TRACK } from 'src/common/classes'
 
 export interface ICarouselTrackProps extends IProps {

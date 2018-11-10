@@ -1,10 +1,7 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { PageLink, pageLinkClass } from 'src/pagination/PageLink'
 import { notCrash, renderChild, defaultTag, customTag, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('PageLink', () => {
   const child = <p>111</p>

@@ -1,10 +1,7 @@
 import React, { forwardRef } from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { UncontrolledTooltip } from 'src/tooltip/UncontrolledTooltip'
 import { notCrash, renderChild, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('UncontrolledTooltip', () => {
   const child = <p>111</p>

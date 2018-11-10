@@ -1,6 +1,6 @@
 import React from 'react'
 import { Reference, Manager, Popper as ReactPopper, PopperChildrenProps } from 'react-popper'
-import { get, isFunction } from 'lodash'
+import { get, isFunction } from 'src/common/minLodash'
 import { mergeCall } from 'src/common/util'
 import { IProps } from 'src/common/props'
 

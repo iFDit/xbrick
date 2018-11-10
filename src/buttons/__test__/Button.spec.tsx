@@ -1,10 +1,8 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { Button, buttonClass } from 'src/buttons/Button'
 import { notCrash, renderChild, customTag, defaultTag, defaultProps } from 'test/basic'
 
-Enzyme.configure({ adapter: new Adapter() })
 const colors = ['primary', 'secondary', 'warning', 'info', 'success', 'light', 'dark']
 const size = {
   large: 'lg',

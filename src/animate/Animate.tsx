@@ -1,6 +1,6 @@
 import React from 'react'
 import { IProps } from 'src/common/props'
-import { get, omit, isObject } from 'lodash'
+import { get, omit, isObject } from 'src/common/minLodash'
 import { spring, Motion, presets, PlainStyle } from 'react-motion'
 import { formatTransformProps } from 'src/common/util'
 

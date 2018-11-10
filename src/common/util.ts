@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
-import { get } from 'lodash'
+import { get } from 'src/common/minLodash'
 
 /**
  * Get HTMLElement css value.

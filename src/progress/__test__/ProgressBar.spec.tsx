@@ -1,10 +1,7 @@
 import React from 'react'
-import Enzyme, { mount } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
+import { mount } from 'enzyme'
 import { ProgressBar, progressBarClass } from 'src/progress/ProgressBar'
 import { notCrash, renderChild, defaultTag, customTag, defaultProps, displayName } from 'test/basic'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 describe('ProgressBar', () => {
   const colors = ['primary', 'secondary', 'warning', 'info', 'success', 'light', 'dark']
