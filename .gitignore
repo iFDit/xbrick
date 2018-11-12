@@ -23,6 +23,9 @@ yarn-error.log*
 # other
 /config
 /dist
+/public
+/lib
+/lib-backup
 
 # custom
 /scripts/build.js
